@@ -9,30 +9,32 @@ export default function Header() {
   const showNavbar = (isActive) => {
     setActiveNav(isActive);
   };
+  const [activeCate, setActiveCate] = useState(null);
+
+  const categoryHover = (bigCategoryId) => {
+    setActiveCate(bigCategoryId);
+  };
+
   return (
     <>
-      <header
-        onMouseEnter={() => showNavbar(true)}
-        onMouseLeave={() => showNavbar(false)}
-      >
+      <header onMouseLeave={() => showNavbar(false)}>
         <nav className={`${styles.nav_wrapper} ${activeNav && styles.active}`}>
           <ul>
             <li className={styles.nav_logo}>
               {activeNav ? (
-                <img
-                  src={require("../../assets/LogoBlack.png")}
-                  alt="LogoBlack"
-                />
+                <img src={require("../../assets/LogoBlack.png")} alt="Logo" />
               ) : (
                 <img src={require("../../assets/Logo.png")} alt="Logo" />
               )}
             </li>
           </ul>
-          <ul className={styles.nav}>
+          <ul className={styles.nav} onMouseEnter={() => showNavbar(true)}>
             {category.map((value, index) => (
               <li
                 key={index}
-                className={`${styles.nav_item} ${activeNav && styles.active}`}
+                className={`${styles.nav_item} ${activeNav && styles.active} ${
+                  activeCate === value.id && styles.selected
+                }`}
               >
                 <p>{value.title}</p>
               </li>
@@ -59,7 +61,7 @@ export default function Header() {
           </ul>
           <div className={`${styles.line} ${activeNav && styles.active}`}></div>
         </nav>
-        {activeNav && <GlobalNav />}
+        {activeNav && <GlobalNav categoryHover={categoryHover} />}
       </header>
     </>
   );

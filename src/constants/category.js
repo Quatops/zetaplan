@@ -1,10 +1,10 @@
 export const category = [
-  { title: "회사소개", path: "" },
-  { title: "투자 IR", path: "" },
-  { title: "M&A", path: "" },
-  { title: "IPO", path: "" },
-  { title: "해외진출", path: "" },
-  { title: "기술거래", path: "" },
+  { id: 0, title: "회사소개", path: "" },
+  { id: 1, title: "투자 IR", path: "" },
+  { id: 2, title: "M&A", path: "" },
+  { id: 3, title: "IPO", path: "" },
+  { id: 4, title: "해외진출", path: "" },
+  { id: 5, title: "기술거래", path: "" },
 ];
 
 export const subCategory = {
