@@ -1,43 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Header.module.css";
 import { FaSearch } from "react-icons/fa";
+import GlobalNav from "../GlobalNav/GlobalNav";
+import { category } from "../../constants/category";
 
 export default function Header() {
-  const navItems = [
-    { title: "회사소개", path: "" },
-    { title: "투자 IR", path: "" },
-    { title: "M&A", path: "" },
-    { title: "IPO", path: "" },
-    { title: "해외진출", path: "" },
-    { title: "기술거래", path: "" },
-  ];
+  const [activeNav, setActiveNav] = useState(false);
+  const showNavbar = (isActive) => {
+    setActiveNav(isActive);
+  };
   return (
-    <header className={styles.header}>
-      <ul>
-        <li className={styles.nav_logo}>
-          <img src={require("../../assets/Logo.png")} alt="Logo" />
-        </li>
-      </ul>
-      <ul className={styles.nav}>
-        {navItems.map((value, index) => (
-          <li key={index} className={styles.nav_item}>
-            {value.title}
-          </li>
-        ))}
-        <li className={`${styles.search_wrapper} ${styles.nav_item}`}>
-          <input className={styles.search} placeholder=" #오늘의 #스타트업 " />
-          <FaSearch className={styles.search_icon} />
-        </li>
-        <li>
-          <select name="Language" className={styles.language_wrapper}>
-            <option selected className={styles.language}>
-              Kor
-            </option>
-            <option className={styles.language}>Eng</option>
-            <option className={styles.language}>Chi</option>
-          </select>
-        </li>
-      </ul>
-    </header>
+    <>
+      <header
+        onMouseEnter={() => showNavbar(true)}
+        onMouseLeave={() => showNavbar(false)}
+      >
+        <nav className={`${styles.nav_wrapper} ${activeNav && styles.active}`}>
+          <ul>
+            <li className={styles.nav_logo}>
+              {activeNav ? (
+                <img
+                  src={require("../../assets/LogoBlack.png")}
+                  alt="LogoBlack"
+                />
+              ) : (
+                <img src={require("../../assets/Logo.png")} alt="Logo" />
+              )}
+            </li>
+          </ul>
+          <ul className={styles.nav}>
+            {category.map((value, index) => (
+              <li
+                key={index}
+                className={`${styles.nav_item} ${activeNav && styles.active}`}
+              >
+                <p>{value.title}</p>
+              </li>
+            ))}
+            <li className={`${styles.search_wrapper} ${styles.nav_item}`}>
+              <input
+                className={styles.search}
+                placeholder=" #오늘의 #스타트업 "
+              />
+              <FaSearch className={styles.search_icon} />
+            </li>
+            <li>
+              <select
+                name="Language"
+                className={`${styles.language_wrapper} ${
+                  activeNav && styles.active
+                }`}
+              >
+                <option defaultValue={true}>Kor</option>
+                <option>Eng</option>
+                <option>Chi</option>
+              </select>
+            </li>
+          </ul>
+          <div className={`${styles.line} ${activeNav && styles.active}`}></div>
+        </nav>
+        {activeNav && <GlobalNav />}
+      </header>
+    </>
   );
 }

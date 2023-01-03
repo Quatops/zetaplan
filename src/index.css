@@ -4,6 +4,8 @@
   --color-grey: #cccccc;
   --color-black: #2c3540;
   --color-white: white;
+
+  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 body {
