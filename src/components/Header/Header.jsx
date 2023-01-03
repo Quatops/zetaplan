@@ -22,9 +22,9 @@ export default function Header() {
           <ul>
             <li className={styles.nav_logo}>
               {activeNav ? (
-                <img src={require("../../assets/LogoBlack.png")} alt="Logo" />
+                <img src={require("../../assets/LogoBlack.png")} alt='Logo' />
               ) : (
-                <img src={require("../../assets/Logo.png")} alt="Logo" />
+                <img src={require("../../assets/Logo.png")} alt='Logo' />
               )}
             </li>
           </ul>
@@ -42,13 +42,13 @@ export default function Header() {
             <li className={`${styles.search_wrapper} ${styles.nav_item}`}>
               <input
                 className={styles.search}
-                placeholder=" #오늘의 #스타트업 "
+                placeholder=' #오늘의 #스타트업 '
               />
               <FaSearch className={styles.search_icon} />
             </li>
             <li>
               <select
-                name="Language"
+                name='Language'
                 className={`${styles.language_wrapper} ${
                   activeNav && styles.active
                 }`}

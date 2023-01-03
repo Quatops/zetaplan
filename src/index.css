@@ -6,6 +6,9 @@
   --color-white: white;
 
   --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+  @media (max-width: 960px) {
+    font-size: 14px;
+  }
 }
 
 body {
