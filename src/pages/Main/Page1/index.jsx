@@ -8,11 +8,9 @@ const Button = ({ name, img }) => {
   return (
     <button className={styles.etc_btn}>
       <div className="flex_center">
-        <img
-          src={require(`assets/${img}.png`)}
-          alt="icon"
-          style={{ "margin-right": "1rem" }}
-        />
+        <div className={styles.etc_icon}>
+          <img src={require(`assets/${img}.png`)} alt="icon" />
+        </div>
         {name}
       </div>
       <FaAngleRight />
@@ -137,8 +135,11 @@ export default function Page1() {
               ))}
             </div>
             <div className={styles.etc_info}>
-              <Button name="협력네트워크" img="cooperation_icon" />
-              <Button name="경영연구소" img="management_icon" />
+              <div className={styles.etc_button_wrapper}>
+                <Button name="기술거래" img="cooperation_icon" />
+                <Button name="협력네트워크" img="cooperation_icon" />
+                <Button name="경영연구소" img="management_icon" />
+              </div>
             </div>
             <div className={styles.map_info}>
               <div>
