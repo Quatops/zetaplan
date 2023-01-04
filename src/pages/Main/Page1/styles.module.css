@@ -1,0 +1,12 @@
+.page_wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main_container {
+  width: 70%;
+  height: 60%;
+  background-color: var(--color-white);
+}
