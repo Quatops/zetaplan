@@ -6,9 +6,6 @@
   --color-white: white;
 
   --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
-  @media (max-width: 960px) {
-    font-size: 14px;
-  }
 }
 
 body {
@@ -16,7 +13,7 @@ body {
   font-family: pretendard, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   width: 100vw;
   height: 100vh;
@@ -40,6 +37,22 @@ ul {
 button {
   outline: none;
   border: none;
+  font-family: pretendard, sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  background-color: var(--color-white);
+  cursor: pointer;
+}
+
+.flex_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex_between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 ::-webkit-scrollbar {

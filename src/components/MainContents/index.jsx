@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import styles from "./styles.module.css";
 
 const News = ({ news, isActive, updateActiveNews }) => {
+  var moment = require("moment");
   return (
     <div
       className={`${styles.news} ${isActive && styles.active}`}
       onClick={() => updateActiveNews(news.id)}
     >
       <div className={styles.news_title}>{news.title}</div>
-      <div className={styles.news_date}>{news.date}</div>
+      <div className={styles.news_date}>
+        {moment(news.date).format("YYYY년 MM월 DD일")}
+      </div>
     </div>
   );
 };
@@ -32,7 +35,7 @@ export default function MainContents({ newsList }) {
     setActiveNews(idx);
   };
   return (
-    <div className={styles.contents_wrapper}>
+    <div className={`${styles.contents_wrapper} flex_between`}>
       <div className={styles.contents_left}>
         <NewsDetail news={newsList[activeNews]} />
       </div>

@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.css";
 import BannerCarousel from "components/BannerCarousel";
 import MainContents from "components/MainContents";
+import { FaPhoneAlt, FaAngleRight } from "react-icons/fa";
+
+const Button = ({ name, img }) => {
+  return (
+    <button className={styles.etc_btn}>
+      <div className="flex_center">
+        <img
+          src={require(`assets/${img}.png`)}
+          alt="icon"
+          style={{ "margin-right": "1rem" }}
+        />
+        {name}
+      </div>
+      <FaAngleRight />
+    </button>
+  );
+};
 
 export default function Page1() {
   const banner = ["banner_img", "banner_img", "banner_img"];
@@ -47,30 +64,83 @@ export default function Page1() {
       date: "2022-12-26",
     },
   ];
+  const intro_header = [
+    "제타플랜 인사이트",
+    "NEWS",
+    "지원사업",
+    "M&A · 투자IR",
+  ];
+
+  const [activeNavIdx, setActiveNavIdx] = useState(0);
   return (
-    <div className={styles.page_wrapper}>
+    <div className={`${styles.page_wrapper} flex_center`}>
       <div className={styles.main_container}>
-        <div className={styles.left}>
+        <section className={styles.left}>
+          {/* banner */}
           <div className={styles.banner}>
             <BannerCarousel bannerImages={banner} />
           </div>
+
+          {/* zetaplan insight */}
           <div className={styles.main_intro}>
             <div className={styles.intro_wrapper}>
-              <header className={styles.intro_header}></header>
+              <ul className={styles.intro_header}>
+                {intro_header.map((item, index) => (
+                  <li
+                    className={`${styles.header_item} flex_center ${
+                      activeNavIdx === index && styles.active
+                    }`}
+                    onClick={() => setActiveNavIdx(index)}
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
               <div className={styles.inro_contents}>
                 <MainContents newsList={newsList} />
               </div>
             </div>
           </div>
-        </div>
-        <div className={styles.right}>
-          <div className={styles.call_info}></div>
-          <div className={styles.infos}>
-            <div className={styles.company_info}></div>
-            <div className={styles.ect_info}></div>
-            <div className={styles.map_info}></div>
+        </section>
+        <section className={styles.right}>
+          {/* call */}
+          <div className={styles.call_info}>
+            <h1>고객센터</h1>
+            <div>
+              <p>09:00 - 18:00</p>
+              <span className={styles.call_number}>02&#41; 538 - 4801</span>
+              <p>
+                02&#41; 561 - 6698 | 070&#41; 8129 - 5884 | 070&#41; 8129 - 5885
+              </p>
+              <span className={styles.email}>zetabiz @ zetaplan.com</span>
+            </div>
+            <span className={`${styles.phone_icon} flex_center`}>
+              <FaPhoneAlt />
+            </span>
           </div>
-        </div>
+          {/* 기업평가? */}
+          <div className={styles.infos}>
+            <div className={styles.company_ass}>
+              <button className={styles.ass_btn}>기업가치평가</button>
+              <button className={styles.ass_btn}>기업가치평가</button>
+              <button className={styles.ass_btn}>기업가치평가</button>
+              <button className={styles.ass_btn}>기업가치평가</button>
+            </div>
+            <div className={styles.etc_info}>
+              <Button name="협력네트워크" img="cooperation_icon" />
+              <Button name="경영연구소" img="management_icon" />
+            </div>
+            <div className={styles.map_info}>
+              <div>
+                <span>찾아오시는 길</span>
+                <p>오시는 길을 안내해 드립니다.</p>
+              </div>
+              <div>
+                <img src={require("assets/map_icon.png")} alt="map_icon" />
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

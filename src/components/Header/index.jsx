@@ -18,13 +18,17 @@ export default function Header() {
   return (
     <>
       <header className={styles.header} onMouseLeave={() => showNavbar(false)}>
-        <nav className={`${styles.nav_wrapper} ${activeNav && styles.active}`}>
+        <nav
+          className={`${styles.nav_wrapper} ${
+            activeNav && styles.active
+          } flex_between`}
+        >
           <ul>
             <li className={styles.nav_logo}>
               {activeNav ? (
-                <img src={require("../../assets/LogoBlack.png")} alt="Logo" />
+                <img src={require("assets/LogoBlack.png")} alt="Logo" />
               ) : (
-                <img src={require("../../assets/Logo.png")} alt="Logo" />
+                <img src={require("assets/Logo.png")} alt="Logo" />
               )}
             </li>
           </ul>
