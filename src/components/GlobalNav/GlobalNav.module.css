@@ -3,7 +3,6 @@
 .nav_wrapper {
   width: 100%;
   padding: 1.375rem 3.125rem;
-  height: 250px;
   background-color: var(--color-white);
   animation: slideUp 1s var(--ease-out-quint);
   z-index: -1;
@@ -54,11 +53,11 @@
 }
 
 .space_search {
-  width: 12vw;
+  width: 11vw;
 }
 
 .space_lang {
-  width: 5vw;
+  width: 4vw;
 }
 
 @keyframes slideUp {
