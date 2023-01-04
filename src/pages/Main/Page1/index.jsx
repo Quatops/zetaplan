@@ -70,6 +70,12 @@ export default function Page1() {
     "지원사업",
     "M&A · 투자IR",
   ];
+  const assess_button = [
+    { name: "기업가치평가 기술가치평가", icon: "value_assess_icon" },
+    { name: "ESG평가", icon: "ESG_assess_icon" },
+    { name: "기업인증", icon: "certification_icon" },
+    { name: "신용평가", icon: "credit_assess_icon" },
+  ];
 
   const [activeNavIdx, setActiveNavIdx] = useState(0);
   return (
@@ -121,10 +127,14 @@ export default function Page1() {
           {/* 기업평가? */}
           <div className={styles.infos}>
             <div className={styles.company_ass}>
-              <button className={styles.ass_btn}>기업가치평가</button>
-              <button className={styles.ass_btn}>기업가치평가</button>
-              <button className={styles.ass_btn}>기업가치평가</button>
-              <button className={styles.ass_btn}>기업가치평가</button>
+              {assess_button.map((value, index) => (
+                <button className={styles.ass_btn}>
+                  <div className={styles.ass_icon}>
+                    <img src={require(`assets/${value.icon}.png`)} alt="icon" />
+                  </div>
+                  <p className={styles.ass_name}>{value.name}</p>
+                </button>
+              ))}
             </div>
             <div className={styles.etc_info}>
               <Button name="협력네트워크" img="cooperation_icon" />
