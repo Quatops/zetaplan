@@ -77,9 +77,6 @@
 .etc_info {
   width: 100%;
   height: 17vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 .map_info {
@@ -169,14 +166,18 @@
 .ass_name {
   word-break: keep-all;
 }
-
+.etc_button_wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .etc_btn {
+  padding: 1% 5%;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem;
-  height: 45%;
   border-radius: 10px;
   border: 1px solid var(--color-grey);
   font-weight: 800;
@@ -186,6 +187,14 @@
 
 .etc_btn:hover {
   opacity: 0.9;
+}
+.etc_icon {
+  height: 4vh;
+  margin-right: 1rem;
+}
+.etc_icon img {
+  width: 100%;
+  height: 100%;
 }
 .map_info span {
   font-size: 1.25rem;
