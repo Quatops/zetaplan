@@ -1,0 +1,152 @@
+.nav_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.375rem 3.125rem;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.nav_wrapper.active {
+  animation: fadein 300ms;
+  transition: transform 200ms ease;
+  background-color: var(--color-white);
+}
+
+.line {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-white);
+}
+
+.line.active {
+  background-color: var(--color-grey);
+}
+
+.nav {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  max-width: 72%;
+  padding-left: 3.125rem;
+  color: var(--color-white);
+}
+
+.sub_nav:nth-child(1) {
+  padding-left: 20px;
+}
+
+.nav_item {
+  font-weight: bold;
+  color: var(--color-white);
+  height: 100%;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+.nav_item > p::after {
+  display: block;
+  content: "";
+  width: 0%;
+  height: 2px;
+  background: var(--color-red);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease-out;
+  bottom: -1.8rem;
+  z-index: 11;
+}
+.nav_item > p {
+  font-size: 1.125rem;
+  width: 6vw;
+}
+.nav_item > p:hover {
+  color: var(--color-red);
+  transition: all 300ms ease;
+  font-size: 1.25rem;
+}
+.nav_item > p:hover::after {
+  width: 100%;
+}
+
+.nav_logo {
+  width: 137px;
+  height: 37px;
+  cursor: pointer;
+}
+
+.search_wrapper {
+  position: relative;
+}
+.search {
+  width: 11vw;
+  padding: 11px 30px 11px 20px;
+  border-radius: 50px;
+  border: 1px solid var(--color-grey);
+  font-size: 0.8rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-weight: bold;
+}
+
+.search:focus {
+  outline: none;
+}
+
+.search_icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-grey);
+  font-size: 1rem;
+}
+
+.language_wrapper {
+  background-color: transparent;
+  border: none;
+  color: var(--color-white);
+  font-size: 1.125rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 4vw;
+}
+
+.nav_item.active,
+.language_wrapper.active,
+.language_wrapper option {
+  color: var(--color-black);
+}
+
+.language_wrapper:focus {
+  border: none;
+  outline: none;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.nav_item.selected {
+  color: var(--color-red);
+  transition: all 300ms ease;
+  font-size: 1.25rem;
+}
+.nav_item.selected > p::after {
+  width: 100%;
+}
