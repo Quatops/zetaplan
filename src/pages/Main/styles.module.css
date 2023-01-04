@@ -1,0 +1,9 @@
+.main_wrapper {
+  overflow-y: hidden;
+  height: 100vh;
+}
+
+.main_item {
+  height: 100vh;
+  position: relative;
+}

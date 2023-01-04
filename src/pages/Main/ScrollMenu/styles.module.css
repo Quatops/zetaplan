@@ -1,0 +1,43 @@
+.scroll {
+}
+
+.line {
+  /*여기다 선그어야딩*/
+  background: var(--color-red);
+  height: 1px;
+  width: 40px;
+  position: absolute;
+  left: -60%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.scroll.active .name {
+  color: var(--color-red);
+}
+.name {
+  color: var(--color-white);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 200ms ease;
+  position: relative;
+}
+.name:hover {
+  color: var(--color-red);
+  font-size: 1.05rem;
+}
+
+.menu_wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50px;
+  transform: translateY(-50%);
+  z-index: 101;
+}
+
+.menu_list {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 120px;
+  user-select: none;
+}

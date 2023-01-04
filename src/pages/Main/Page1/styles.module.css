@@ -1,0 +1,198 @@
+/*setting layout */
+
+.page_wrapper {
+  height: 100%;
+  margin-top: 2.5rem;
+}
+
+.main_container {
+  width: 70vw;
+  height: 80vh;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.left {
+  height: 100%;
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.banner {
+  width: 100%;
+  height: 22vh;
+  background-color: var(--color-white);
+}
+.main_intro {
+  width: 100%;
+  height: 55vh;
+  border-radius: 10px;
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+
+.right {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.call_info {
+  position: relative;
+  width: 100%;
+  height: 22vh;
+  border-radius: 10px;
+  background-color: var(--color-black);
+  border: 1px solid var(--color-grey);
+  color: var(--color-white);
+  padding: 1.563rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.infos {
+  width: 100%;
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.company_ass {
+  background-color: var(--color-white);
+  overflow: hidden;
+  height: 20vh;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.etc_info {
+  width: 100%;
+  height: 17vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.map_info {
+  height: 13vh;
+  border-radius: 10px;
+  border: 1px solid var(--color-grey);
+  background-color: var(--color-black);
+  color: var(--color-white);
+  display: flex;
+  justify-content: space-between;
+  padding: 1.875rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* contents css*/
+.intro_header {
+  width: 100%;
+  height: 6vh;
+  background-color: var(--color-black);
+  display: flex;
+  justify-content: space-between;
+}
+
+.header_item {
+  width: 100%;
+  color: var(--color-white);
+  cursor: pointer;
+  border-top: 1px solid var(--color-grey);
+  border-left: 1px solid var(--color-grey);
+  border-right: 1px solid var(--color-grey);
+  transition: all 300ms var(--ease-out-quint);
+}
+
+.header_item:hover,
+.header_item.active {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.inro_contents {
+  height: 49vh;
+}
+.call_info > h1 {
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+.call_info p {
+  font-weight: 200;
+  font-size: 0.875rem;
+  padding: 0.3rem 0;
+}
+.call_number {
+  font-size: 2.25rem;
+}
+.email {
+  font-weight: 500;
+}
+.phone_icon {
+  position: absolute;
+  right: 10%;
+  top: 10%;
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 3.75rem;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-size: 1.688rem;
+  cursor: pointer;
+  transition: all 400ms var(--ease-out-quint);
+}
+
+.phone_icon:hover {
+  transform: scale(1.07);
+}
+
+.ass_btn {
+  width: 50%;
+  height: 50%;
+  padding: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 0.5px solid #e4e4e4;
+  font-weight: 800;
+}
+.ass_name {
+  word-break: keep-all;
+}
+
+.etc_btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  height: 45%;
+  border-radius: 10px;
+  border: 1px solid var(--color-grey);
+  font-weight: 800;
+  font-size: 1.25rem;
+  transition: all 200ms ease;
+}
+
+.etc_btn:hover {
+  opacity: 0.9;
+}
+.map_info span {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.map_info p {
+  font-size: 0.875rem;
+  font-weight: 200;
+  padding: 0.5rem 0;
+}

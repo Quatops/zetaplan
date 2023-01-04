@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./GlobalNav.module.css";
-import { category, subCategory } from "../../constants/category";
+import styles from "./styles.module.css";
+import { category, subCategory } from "../../../constants/category";
 
 export default function GlobalNavigator({ categoryHover }) {
   return (

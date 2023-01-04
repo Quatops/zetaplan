@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import styles from "./Header.module.css";
+import styles from "./styles.module.css";
 import { FaSearch } from "react-icons/fa";
-import GlobalNav from "../GlobalNav/GlobalNav";
-import { category } from "../../constants/category";
+import GlobalNav from "./GlobalNav";
+import { category } from "constants/category";
 
 export default function Header() {
   const [activeNav, setActiveNav] = useState(false);
@@ -17,14 +17,18 @@ export default function Header() {
 
   return (
     <>
-      <header onMouseLeave={() => showNavbar(false)}>
-        <nav className={`${styles.nav_wrapper} ${activeNav && styles.active}`}>
+      <header className={styles.header} onMouseLeave={() => showNavbar(false)}>
+        <nav
+          className={`${styles.nav_wrapper} ${
+            activeNav && styles.active
+          } flex_between`}
+        >
           <ul>
             <li className={styles.nav_logo}>
               {activeNav ? (
-                <img src={require("../../assets/LogoBlack.png")} alt='Logo' />
+                <img src={require("assets/LogoBlack.png")} alt="Logo" />
               ) : (
-                <img src={require("../../assets/Logo.png")} alt='Logo' />
+                <img src={require("assets/Logo.png")} alt="Logo" />
               )}
             </li>
           </ul>
@@ -42,13 +46,13 @@ export default function Header() {
             <li className={`${styles.search_wrapper} ${styles.nav_item}`}>
               <input
                 className={styles.search}
-                placeholder=' #오늘의 #스타트업 '
+                placeholder=" #오늘의 #스타트업 "
               />
               <FaSearch className={styles.search_icon} />
             </li>
             <li>
               <select
-                name='Language'
+                name="Language"
                 className={`${styles.language_wrapper} ${
                   activeNav && styles.active
                 }`}
