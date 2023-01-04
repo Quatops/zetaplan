@@ -1,18 +1,30 @@
 import React from "react";
-import Carousel from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
 
-export default function index() {
+import styles from "./styles.module.css";
+import "swiper/css";
+import "swiper/css/navigation";
+
+export default function BannerCarousel({ bannerImages }) {
   return (
-    <Carousel>
-      <div>
-        <img src={require("../../assets/banner_img.png")} />
-        <p className="legend">banner 1</p>
-      </div>
-      <div>
-        <img src={require("../../assets/banner_img.png")} />
-        <p className="legend">banner 2</p>
-      </div>
-    </Carousel>
+    <Swiper
+      navigation={true}
+      modules={[Navigation]}
+      className={styles.banner_swiper}
+    >
+      {bannerImages.map((value, index) => (
+        <SwiperSlide key={index}>
+          <div className={styles.banner_wrapper}>
+            <img
+              src={require(`assets/${value}.png`)}
+              alt={value}
+              className={styles.banner_img}
+            />
+            <p className="legend">{value}</p>
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 }

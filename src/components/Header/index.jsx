@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./styles.module.css";
 import { FaSearch } from "react-icons/fa";
 import GlobalNav from "./GlobalNav";
-import { category } from "../../constants/category";
+import { category } from "constants/category";
 
 export default function Header() {
   const [activeNav, setActiveNav] = useState(false);

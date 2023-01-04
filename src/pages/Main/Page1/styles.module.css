@@ -1,3 +1,5 @@
+/*setting layout */
+
 .page_wrapper {
   height: 100%;
   display: flex;
@@ -17,7 +19,7 @@
 
 .left {
   height: 100%;
-  width: 70%;
+  width: 65%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -31,12 +33,14 @@
 .main_intro {
   width: 100%;
   height: 55vh;
+  border-radius: 10px;
   background-color: var(--color-white);
+  overflow: hidden;
 }
 
 .right {
   height: 100%;
-  width: 25%;
+  width: 30%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -45,11 +49,28 @@
 .call_info {
   width: 100%;
   height: 22vh;
-  background-color: var(--color-white);
+  border-radius: 10px;
+  background-color: var(--color-black);
 }
 
 .infos {
   width: 100%;
   height: 55vh;
   background-color: var(--color-white);
+}
+
+.etc_info {
+}
+
+.map_info {
+}
+
+/* contents css*/
+.intro_header {
+  width: 100%;
+  height: 6vh;
+  background-color: var(--color-black);
+}
+.inro_contents {
+  height: 49vh;
 }
