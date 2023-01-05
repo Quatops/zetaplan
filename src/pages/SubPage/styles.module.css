@@ -1,0 +1,21 @@
+.subPage_wrap {
+  height: 100vh;
+  padding-top: 80px;
+  width: 100vw;
+}
+.page_title {
+  height: 22%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-white);
+  font-size: 2.25rem;
+  font-weight: 600;
+}
+.page_content {
+  height: 78%;
+  background-color: var(--color-white);
+  width: 100%;
+  padding: 50px 340px;
+}

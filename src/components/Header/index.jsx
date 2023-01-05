@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
 import { FaSearch } from "react-icons/fa";
-import GlobalNav from "./GlobalNav";
+import GlobalNav from "./GlobalNavbar";
 import { category } from "constants/category";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [activeNav, setActiveNav] = useState(false);
@@ -24,24 +25,27 @@ export default function Header() {
           } flex_between`}
         >
           <ul>
-            <li className={styles.nav_logo}>
-              {activeNav ? (
-                <img src={require("assets/LogoBlack.png")} alt="Logo" />
-              ) : (
-                <img src={require("assets/Logo.png")} alt="Logo" />
-              )}
-            </li>
+            <Link to="/">
+              <li className={styles.nav_logo}>
+                {activeNav ? (
+                  <img src={require("assets/LogoBlack.png")} alt="Logo" />
+                ) : (
+                  <img src={require("assets/Logo.png")} alt="Logo" />
+                )}
+              </li>
+            </Link>
           </ul>
           <ul className={styles.nav} onMouseEnter={() => showNavbar(true)}>
             {category.map((value, index) => (
-              <li
-                key={index}
-                className={`${styles.nav_item} ${activeNav && styles.active} ${
-                  activeCate === value.id && styles.selected
-                }`}
-              >
-                <p>{value.title}</p>
-              </li>
+              <Link to={value.path} key={index}>
+                <li
+                  className={`${styles.nav_item} ${
+                    activeNav && styles.active
+                  } ${activeCate === value.id && styles.selected}`}
+                >
+                  <p>{value.title}</p>
+                </li>
+              </Link>
             ))}
             <li className={`${styles.search_wrapper} ${styles.nav_item}`}>
               <input

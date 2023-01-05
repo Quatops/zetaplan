@@ -6,7 +6,7 @@ export default function GlobalNavigator({ categoryHover }) {
   return (
     <div className={styles.nav_wrapper}>
       <nav className={styles.nav}>
-        <ul className={styles.left}></ul>
+        <ul className={styles.left}>&nbsp;</ul>
         <ul className={styles.right}>
           {category.map((big, index) => (
             <ul key={index} className={styles.cate_area}>
@@ -22,8 +22,8 @@ export default function GlobalNavigator({ categoryHover }) {
               ))}
             </ul>
           ))}
-          <ul className={styles.space_search}></ul>
-          <ul className={styles.space_lang}></ul>
+          <ul className={styles.space_search}>&nbsp;</ul>
+          <ul className={styles.space_lang}>&nbsp;</ul>
         </ul>
       </nav>
     </div>

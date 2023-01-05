@@ -81,12 +81,12 @@ export default function Page1() {
       <div className={styles.main_container}>
         <section className={styles.left}>
           {/* banner */}
-          <div className={styles.banner}>
+          <article className={styles.banner}>
             <BannerCarousel bannerImages={banner} />
-          </div>
+          </article>
 
           {/* zetaplan insight */}
-          <div className={styles.main_intro}>
+          <article className={styles.main_intro}>
             <div className={styles.intro_wrapper}>
               <ul className={styles.intro_header}>
                 {intro_header.map((item, index) => (
@@ -105,11 +105,11 @@ export default function Page1() {
                 <MainContents newsList={newsList} />
               </div>
             </div>
-          </div>
+          </article>
         </section>
-        <section className={styles.right}>
+        <aside className={styles.right}>
           {/* call */}
-          <div className={styles.call_info}>
+          <section className={styles.call_info}>
             <h1>고객센터</h1>
             <div>
               <p>09:00 - 18:00</p>
@@ -122,9 +122,9 @@ export default function Page1() {
             <span className={`${styles.phone_icon} flex_center`}>
               <FaPhoneAlt />
             </span>
-          </div>
+          </section>
           {/* 기업평가? */}
-          <div className={styles.infos}>
+          <section className={styles.infos}>
             <div className={styles.company_ass}>
               {assess_button.map((value, index) => (
                 <button className={styles.ass_btn} key={index}>
@@ -135,14 +135,14 @@ export default function Page1() {
                 </button>
               ))}
             </div>
-            <div className={styles.etc_info}>
+            <section className={styles.etc_info}>
               <div className={styles.etc_button_wrapper}>
                 <Button name="기술거래" img="cooperation_icon" />
                 <Button name="협력네트워크" img="cooperation_icon" />
                 <Button name="경영연구소" img="management_icon" />
               </div>
-            </div>
-            <div className={styles.map_info}>
+            </section>
+            <section className={styles.map_info}>
               <div>
                 <span>찾아오시는 길</span>
                 <p>오시는 길을 안내해 드립니다.</p>
@@ -150,9 +150,9 @@ export default function Page1() {
               <div>
                 <img src={require("assets/map_icon.png")} alt="map_icon" />
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
+          </section>
+        </aside>
       </div>
     </div>
   );
