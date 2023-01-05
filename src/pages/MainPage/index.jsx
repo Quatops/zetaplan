@@ -19,7 +19,6 @@ export default function Main() {
     });
     setPageIdx(idx);
   };
-
   useEffect(() => {
     const wheelHandler = (e) => {
       e.preventDefault();
@@ -36,36 +35,28 @@ export default function Main() {
         } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 3) {
           // 현재 2페이지
           updatePage(3, true);
-        } else {
-          // 스크롤을 내릴 때
-          if (scrollTop >= 0 && scrollTop < pageHeight) {
-            //현재 1페이지
-            mainWrapperRef.current.scrollTo({
-              top: 0,
-              left: 0,
-              behavior: "smooth",
-            });
-            setPageIdx(1);
-          } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 2) {
-            //현재 2페이지
-            mainWrapperRef.current.scrollTo({
-              top: 0,
-              left: 0,
-              behavior: "smooth",
-            });
-            setPageIdx(1);
-          } else if (
-            scrollTop >= pageHeight * 2 &&
-            scrollTop < pageHeight * 3
-          ) {
-            // 현재 3페이지
-            mainWrapperRef.current.scrollTo({
-              top: pageHeight + DIVIDER_HEIGHT,
-              left: 0,
-              behavior: "smooth",
-            });
-            setPageIdx(2);
-          }
+        }
+      } else {
+        // 스크롤을 내릴 때
+        if (
+          (scrollTop >= 0 && scrollTop < pageHeight) ||
+          (scrollTop >= pageHeight && scrollTop < pageHeight * 2)
+        ) {
+          //현재 1페이지이거나 2페이지
+          mainWrapperRef.current.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+          });
+          setPageIdx(1);
+        } else if (scrollTop >= pageHeight * 2 && scrollTop < pageHeight * 3) {
+          // 현재 3페이지
+          mainWrapperRef.current.scrollTo({
+            top: pageHeight + DIVIDER_HEIGHT,
+            left: 0,
+            behavior: "smooth",
+          });
+          setPageIdx(2);
         }
       }
     };
