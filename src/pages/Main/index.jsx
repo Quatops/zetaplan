@@ -87,6 +87,7 @@ export default function Main() {
       <div className={styles.chatbot}>
         <img src={require("assets/chat_icon.png")} alt="chat_icon" />
       </div>
+      <div className={styles.bottom_line}></div>
       <ScrollMenu pageIdx={pageIdx} />
       <div className={styles.main_item}>
         <Page1 />
