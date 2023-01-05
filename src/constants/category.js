@@ -9,12 +9,21 @@ export const category = [
 
 export const subCategory = {
   회사소개: [
-    { title: "인사말", path: "" },
-    { title: "컨설팅 서비스 분야", path: "" },
-    { title: "컨설턴트 소개", path: "" },
-    { title: "주요 경제 신문 보도기사", path: "" },
-    { title: "CI", path: "" },
-    { title: "인증 및 수상내역", path: "" },
+    { title: "인사말", path: "/company-intro/greetings" },
+    {
+      title: "컨설팅 서비스 분야",
+      path: "/company-intro/zeta-plan-consulting-services-sector",
+    },
+    {
+      title: "컨설턴트 소개",
+      path: "/company-intro/consultant-about",
+    },
+    {
+      title: "주요 경제 신문 보도기사",
+      path: "/company-intro/the-main-economic-newspaper-article",
+    },
+    { title: "CI", path: "/company-intro/ci-guide" },
+    { title: "인증 및 수상내역", path: "/company-intro/zeta-plan-marks" },
   ],
   "투자 IR": [
     { title: "투자IR 컨설팅 개요", path: "" },
