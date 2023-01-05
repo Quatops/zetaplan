@@ -22,8 +22,8 @@
 }
 
 .category {
+  color: black;
   padding: 0.313rem 0;
-  cursor: pointer;
   width: 11.25rem;
 }
 
