@@ -9,39 +9,33 @@ export default function Main() {
   const [pageIdx, setPageIdx] = useState(1);
   const mainWrapperRef = useRef();
   const DIVIDER_HEIGHT = 3;
+  const pageHeight = window.innerHeight;
+  const updatePage = (idx, isLast) => {
+    let v = isLast ? idx : idx - 1;
+    mainWrapperRef.current.scrollTo({
+      top: pageHeight * v + DIVIDER_HEIGHT * v,
+      left: 0,
+      behavior: "smooth",
+    });
+    setPageIdx(idx);
+  };
 
   useEffect(() => {
     const wheelHandler = (e) => {
       e.preventDefault();
       const { deltaY } = e;
       const { scrollTop } = mainWrapperRef.current;
-      const pageHeight = window.innerHeight; // 화면의 세로 길이. 100vh
       if (deltaY > 0) {
         // 스크롤을 내릴 때
         if (scrollTop >= 0 && scrollTop < pageHeight) {
           // 현재 1페이지
-          mainWrapperRef.current.scrollTo({
-            top: pageHeight + DIVIDER_HEIGHT,
-            left: 0,
-            behavior: "smooth",
-          });
-          setPageIdx(2);
+          updatePage(2);
         } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 2) {
           // 현재 2페이지
-          mainWrapperRef.current.scrollTo({
-            top: pageHeight * 2 + DIVIDER_HEIGHT * 2,
-            left: 0,
-            behavior: "smooth",
-          });
-          setPageIdx(3);
+          updatePage(3);
         } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 3) {
           // 현재 2페이지
-          mainWrapperRef.current.scrollTo({
-            top: pageHeight * 3 + DIVIDER_HEIGHT * 3,
-            left: 0,
-            behavior: "smooth",
-          });
-          setPageIdx(3);
+          updatePage(3, true);
         } else {
           // 스크롤을 내릴 때
           if (scrollTop >= 0 && scrollTop < pageHeight) {
@@ -88,7 +82,7 @@ export default function Main() {
         <img src={require("assets/chat_icon.png")} alt="chat_icon" />
       </div>
       <div className={styles.bottom_line}></div>
-      <ScrollMenu pageIdx={pageIdx} />
+      <ScrollMenu pageIdx={pageIdx} updatePage={updatePage} />
       <div className={styles.main_item}>
         <Page1 />
       </div>

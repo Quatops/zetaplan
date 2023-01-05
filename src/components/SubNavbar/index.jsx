@@ -14,19 +14,17 @@ export default function SubNavbar({
       <div className={styles.nav_title}>{navTitle}</div>
       <ul className={styles.nav}>
         {navItems.map((value, index) => (
-          <>
-            <Link
-              key={index}
-              className={`${styles.nav_item} ${
-                activeNavId === index && styles.active
-              }`}
-              onClick={() => updateActiveNavId(index)}
-              to={value.path}
-            >
-              <p>{value.title}</p>
-              {activeNavId === index ? <FaAngleRight /> : <></>}
-            </Link>
-          </>
+          <Link
+            key={index}
+            className={`${styles.nav_item} ${
+              activeNavId === index && styles.active
+            }`}
+            onClick={() => updateActiveNavId(index)}
+            to={value.path}
+          >
+            <p>{value.title}</p>
+            {activeNavId === index ? <FaAngleRight /> : <></>}
+          </Link>
         ))}
       </ul>
     </div>
