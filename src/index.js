@@ -12,6 +12,8 @@ import ConsultingService from "pages/ComapnyIntro/ConsultingService";
 import ConsultingAbout from "pages/ComapnyIntro/ConsultingAbout";
 import InvestmentOverview from "pages/InvestmentIr/InvestmentOverview";
 import InvestmentBuisnessPlan from "pages/InvestmentIr/InvestmentBuisnessPlan";
+import MnAOverview from "pages/MnA/MnAOverview";
+import IpoOverview from "pages/Ipo/IpoOverview";
 
 const router = createBrowserRouter([
   {
@@ -53,10 +55,24 @@ const router = createBrowserRouter([
       {
         path: "mergers-and-acquisitions",
         element: <SubPage pageName="M&A" />,
+        children: [
+          {
+            index: true,
+            path: "mergers-and-acquisitions-overview",
+            element: <MnAOverview />,
+          },
+        ],
       },
       {
         path: "ipo",
         element: <SubPage pageName="IPO" />,
+        children: [
+          {
+            index: true,
+            path: "listed-overview",
+            element: <IpoOverview />,
+          },
+        ],
       },
     ],
   },

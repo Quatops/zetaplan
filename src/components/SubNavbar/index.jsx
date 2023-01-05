@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 import { FaAngleRight } from "react-icons/fa";
 
-export default function SubNavbar({ navItems, navTitle }) {
-  const [activeNav, setActiveNav] = useState(0);
+export default function SubNavbar({
+  navItems,
+  navTitle,
+  updateActiveNavId,
+  activeNavId,
+}) {
   return (
     <div className={styles.nav_wrap}>
       <div className={styles.nav_title}>{navTitle}</div>
@@ -14,13 +18,13 @@ export default function SubNavbar({ navItems, navTitle }) {
             <Link
               key={index}
               className={`${styles.nav_item} ${
-                activeNav === index && styles.active
+                activeNavId === index && styles.active
               }`}
-              onClick={() => setActiveNav(index)}
+              onClick={() => updateActiveNavId(index)}
               to={value.path}
             >
               <p>{value.title}</p>
-              {activeNav === index ? <FaAngleRight /> : <></>}
+              {activeNavId === index ? <FaAngleRight /> : <></>}
             </Link>
           </>
         ))}

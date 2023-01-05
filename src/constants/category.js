@@ -5,7 +5,11 @@ export const category = [
     title: "투자 IR",
     path: "/investment-ir/investment-consulting-ir-overview",
   },
-  { id: 2, title: "M&A", path: "/mergers-and-acquisitions" },
+  {
+    id: 2,
+    title: "M&A",
+    path: "/mergers-and-acquisitions/mergers-and-acquisitions-overview",
+  },
   { id: 3, title: "IPO", path: "/ipo/listed-overview" },
   { id: 4, title: "해외진출", path: "/overseas/about-overseas-business" },
   {
@@ -38,15 +42,24 @@ export const subCategory = {
     { title: "인증 및 수상내역", path: "/company-intro/zeta-plan-marks" },
   ],
   "투자 IR": [
-    { title: "투자IR 컨설팅 개요", path: "investment-consulting-ir-overview" },
-    { title: "투자IR 사업계획서", path: "investment-ir-business-plan" },
+    {
+      title: "투자IR 컨설팅 개요",
+      path: "/investment-ir/investment-consulting-ir-overview",
+    },
+    {
+      title: "투자IR 사업계획서",
+      path: "/investment-ir/investment-ir-business-plan",
+    },
     { title: "네트워크를 활용 컨설팅", path: "" },
     { title: "컨설팅 진행 절차", path: "" },
     { title: "투자유치 성공사례", path: "" },
     { title: "컨설팅 신청", path: "" },
   ],
   "M&A": [
-    { title: "M&A 개요", path: "" },
+    {
+      title: "M&A 개요",
+      path: "/mergers-and-acquisitions/mergers-and-acquisitions-overview",
+    },
     { title: "M&A 분류", path: "" },
     { title: "M&A 목적", path: "" },
     { title: "우회 상장", path: "" },
@@ -55,7 +68,7 @@ export const subCategory = {
     { title: "M&A 중개지원", path: "" },
   ],
   IPO: [
-    { title: "상장의 개요", path: "" },
+    { title: "상장의 개요", path: "/ipo/listed-overview" },
     { title: "상장의 혜택 및 효과", path: "" },
     { title: "유가증권 시장 상장", path: "" },
     { title: "코스닥 시장 상장", path: "" },
