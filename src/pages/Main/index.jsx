@@ -84,6 +84,9 @@ export default function Main() {
 
   return (
     <div className={styles.main_wrapper} ref={mainWrapperRef}>
+      <div className={styles.chatbot}>
+        <img src={require("assets/chat_icon.png")} alt="chat_icon" />
+      </div>
       <ScrollMenu pageIdx={pageIdx} />
       <div className={styles.main_item}>
         <Page1 />
