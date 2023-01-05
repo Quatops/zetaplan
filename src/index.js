@@ -14,6 +14,10 @@ import InvestmentOverview from "pages/InvestmentIr/InvestmentOverview";
 import InvestmentBuisnessPlan from "pages/InvestmentIr/InvestmentBuisnessPlan";
 import MnAOverview from "pages/MnA/MnAOverview";
 import IpoOverview from "pages/Ipo/IpoOverview";
+import MainArticle from "pages/ComapnyIntro/MainArticle";
+import CIGuide from "pages/ComapnyIntro/CIGuide";
+import ZetaplanMarks from "pages/ComapnyIntro/ZetaplanMarks";
+import AffiliateNetwork from "pages/ComapnyIntro/AffiliateNetwork";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +38,19 @@ const router = createBrowserRouter([
           {
             path: "consultant-about",
             element: <ConsultingAbout />,
+          },
+          {
+            path: "the-main-economic-newspaper-article",
+            element: <MainArticle />,
+          },
+          { path: "affiliate-network", element: <AffiliateNetwork /> },
+          {
+            path: "ci-guide",
+            element: <CIGuide />,
+          },
+          {
+            path: "zeta-plan-marks",
+            element: <ZetaplanMarks />,
           },
         ],
       },
@@ -79,11 +96,7 @@ const router = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
+root.render(<RouterProvider router={router} />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

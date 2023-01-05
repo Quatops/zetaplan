@@ -37,7 +37,7 @@ export default function Header() {
           </ul>
           <ul className={styles.nav} onMouseEnter={() => showNavbar(true)}>
             {category.map((value, index) => (
-              <Link to={value.path} key={index}>
+              <Link to={value.path} state={{ id: 0 }} key={index}>
                 <li
                   className={`${styles.nav_item} ${
                     activeNav && styles.active
