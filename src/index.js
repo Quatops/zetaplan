@@ -4,24 +4,18 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Main from "./pages/Main";
-import CompanyIntro from "pages/ComapnyIntro";
-import Greetings from "pages/ComapnyIntro/Greetings";
-import ConsultingService from "pages/ComapnyIntro/ConsultingService";
-import ConsultingAbout from "pages/ComapnyIntro/ConsultingAbout";
+import MainPage from "./pages/MainPage";
+import CompanyIntro from "pages/SubPage/ComapnyIntro";
+import InvestmentIr from "pages/SubPage/InvestmentIr";
+import Ipo from "pages/SubPage/Ipo";
+import MnA from "pages/SubPage/MnA";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     errorElement: <p>Not Found</p>,
-    children: [
-      { index: true, path: "/", element: <Main /> },
-      {
-        path: "/company-inro",
-        element: <CompanyIntro />,
-      },
-    ],
+    children: [{ index: true, path: "/", element: <MainPage /> }, {}],
   },
 ]);
 
