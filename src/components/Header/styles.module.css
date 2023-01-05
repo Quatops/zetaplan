@@ -1,11 +1,12 @@
 .header {
   position: fixed;
   width: 100%;
+  height: 80px;
   z-index: 10;
 }
 
 .nav_wrapper {
-  padding: 1.375rem 3.125rem;
+  padding: 21px 50px;
   width: 100%;
   height: 100%;
   position: relative;
@@ -38,8 +39,7 @@
   justify-content: space-between;
   width: 100%;
   height: 100%;
-  max-width: 72%;
-  padding-left: 3.125rem;
+  max-width: 1475px;
   color: var(--color-white);
 }
 
@@ -50,7 +50,10 @@
 .nav_item {
   font-weight: bold;
   color: var(--color-white);
-  height: 100%;
+  height: 80px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
   text-align: center;
   cursor: pointer;
   position: relative;
@@ -63,14 +66,14 @@
   background: var(--color-red);
   position: absolute;
   left: 50%;
+  bottom: 0;
   transform: translateX(-50%);
   transition: all 0.3s ease-out;
-  bottom: -1.8rem;
   z-index: 11;
 }
 .nav_item > p {
   font-size: 1.125rem;
-  width: 6vw;
+  width: 180px;
 }
 .nav_item > p:hover {
   color: var(--color-red);
@@ -91,7 +94,7 @@
   position: relative;
 }
 .search {
-  width: 11vw;
+  width: 170px;
   padding: 11px 30px 11px 20px;
   border-radius: 50px;
   border: 1px solid var(--color-grey);
@@ -114,6 +117,10 @@
 }
 
 .language_wrapper {
+  width: 110px;
+  text-align: center;
+}
+.languages {
   background-color: transparent;
   border: none;
   color: var(--color-white);
@@ -122,16 +129,15 @@
   text-transform: uppercase;
   cursor: pointer;
   border-radius: 5px;
-  width: 4vw;
 }
 
 .nav_item.active,
-.language_wrapper.active,
-.language_wrapper option {
+.languages.active,
+.languages option {
   color: var(--color-black);
 }
 
-.language_wrapper:focus {
+.languages:focus {
   border: none;
   outline: none;
 }

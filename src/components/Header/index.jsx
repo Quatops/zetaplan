@@ -50,12 +50,10 @@ export default function Header() {
               />
               <FaSearch className={styles.search_icon} />
             </li>
-            <li>
+            <li className={styles.language_wrapper}>
               <select
                 name="Language"
-                className={`${styles.language_wrapper} ${
-                  activeNav && styles.active
-                }`}
+                className={`${styles.languages} ${activeNav && styles.active}`}
               >
                 <option defaultValue={true}>Kor</option>
                 <option>Eng</option>
