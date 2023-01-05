@@ -7,3 +7,28 @@
   height: 100vh;
   position: relative;
 }
+
+.chatbot {
+  position: fixed;
+  right: 3.125rem;
+  bottom: 6.25rem;
+  background-color: var(--color-red);
+  width: 6.25rem;
+  height: 6.25rem;
+  border-radius: 6.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 500ms var(--ease-out-quint);
+  cursor: pointer;
+  z-index: 1;
+}
+.chatbot > img {
+  width: 3.125rem;
+  height: 2.563rem;
+}
+
+.chatbot:hover {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
