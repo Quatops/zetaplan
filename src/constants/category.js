@@ -1,10 +1,18 @@
 export const category = [
-  { id: 0, title: "회사소개", path: "/company-intro" },
-  { id: 1, title: "투자 IR", path: "/investment-ir" },
-  { id: 2, title: "M&A", path: "" },
-  { id: 3, title: "IPO", path: "" },
-  { id: 4, title: "해외진출", path: "" },
-  { id: 5, title: "기술거래", path: "" },
+  { id: 0, title: "회사소개", path: "/company-intro/greetings" },
+  {
+    id: 1,
+    title: "투자 IR",
+    path: "/investment-ir/investment-consulting-ir-overview",
+  },
+  { id: 2, title: "M&A", path: "/mergers-and-acquisitions" },
+  { id: 3, title: "IPO", path: "/ipo/listed-overview" },
+  { id: 4, title: "해외진출", path: "/overseas/about-overseas-business" },
+  {
+    id: 5,
+    title: "기술거래",
+    path: "/technology-deals/technical-trading-overview",
+  },
 ];
 
 export const subCategory = {
@@ -22,12 +30,16 @@ export const subCategory = {
       title: "주요 경제 신문 보도기사",
       path: "/company-intro/the-main-economic-newspaper-article",
     },
-    { title: "CI", path: "/company-intro/ci-guide" },
+    {
+      title: "제휴 네트워크",
+      path: "/company-intro/",
+    },
+    { title: "CI 안내", path: "/company-intro/ci-guide" },
     { title: "인증 및 수상내역", path: "/company-intro/zeta-plan-marks" },
   ],
   "투자 IR": [
-    { title: "투자IR 컨설팅 개요", path: "" },
-    { title: "투자IR 사업계획서", path: "" },
+    { title: "투자IR 컨설팅 개요", path: "investment-consulting-ir-overview" },
+    { title: "투자IR 사업계획서", path: "investment-ir-business-plan" },
     { title: "네트워크를 활용 컨설팅", path: "" },
     { title: "컨설팅 진행 절차", path: "" },
     { title: "투자유치 성공사례", path: "" },
