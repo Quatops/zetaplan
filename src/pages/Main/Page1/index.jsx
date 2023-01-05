@@ -91,6 +91,7 @@ export default function Page1() {
               <ul className={styles.intro_header}>
                 {intro_header.map((item, index) => (
                   <li
+                    key={index}
                     className={`${styles.header_item} flex_center ${
                       activeNavIdx === index && styles.active
                     }`}
@@ -126,7 +127,7 @@ export default function Page1() {
           <div className={styles.infos}>
             <div className={styles.company_ass}>
               {assess_button.map((value, index) => (
-                <button className={styles.ass_btn}>
+                <button className={styles.ass_btn} key={index}>
                   <div className={styles.ass_icon}>
                     <img src={require(`assets/${value.icon}.png`)} alt="icon" />
                   </div>
