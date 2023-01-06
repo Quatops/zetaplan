@@ -1,16 +1,16 @@
 /*setting layout */
 
 .page_wrapper {
-  height: 100%;
-  padding-top: 5rem;
+  margin-top: calc(5rem + 3.125rem);
+  height: calc(100vh - 5rem);
+  overflow: hidden;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .main_container {
-  width: 81.25rem;
-  height: 49.375rem;
+  width: 1300px;
+  height: 790px;
   background-color: transparent;
   display: flex;
   justify-content: space-between;
@@ -19,20 +19,23 @@
 
 .left {
   height: 100%;
-  width: 54.375rem;
+  width: 870px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-right: 30px;
 }
 
 .banner {
   width: 100%;
-  height: 13.75rem;
+  height: 20.37vh;
+  /*height: 13rem*/
   background-color: var(--color-white);
 }
 .main_intro {
   width: 100%;
-  height: 33.75rem;
+  /* height: 33.75rem; */
+  height: 540px;
   border-radius: 10px;
   background-color: var(--color-white);
   overflow: hidden;
@@ -40,7 +43,7 @@
 
 .right {
   height: 100%;
-  width: 25rem;
+  width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -49,12 +52,12 @@
 .call_info {
   position: relative;
   width: 100%;
-  height: 13.75rem;
+  height: 220px;
   border-radius: 10px;
   background-color: var(--color-black);
   border: 1px solid var(--color-grey);
   color: var(--color-white);
-  padding: 1.563rem;
+  padding: 1.8vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -62,7 +65,7 @@
 
 .infos {
   width: 100%;
-  height: 33.75rem;
+  height: 540px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -71,7 +74,7 @@
 .company_ass {
   background-color: var(--color-white);
   overflow: hidden;
-  height: 12.188rem;
+  height: 195px;
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
@@ -79,11 +82,11 @@
 
 .etc_info {
   width: 100%;
-  height: 11.563rem;
+  height: 185px;
 }
 
 .map_info {
-  height: 7.813rem;
+  height: 125px;
   border-radius: 10px;
   border: 1px solid var(--color-grey);
   background-color: var(--color-black);
@@ -98,7 +101,7 @@
 /* contents css*/
 .intro_header {
   width: 100%;
-  height: 3.75rem;
+  height: 50px;
   background-color: var(--color-black);
   display: flex;
   justify-content: space-between;
@@ -120,8 +123,8 @@
   color: var(--color-black);
 }
 
-.inro_contents {
-  height: 30rem;
+.intro_contents {
+  height: 480px;
 }
 .call_info > h1 {
   font-weight: 800;
@@ -129,33 +132,21 @@
 }
 .call_info p {
   font-weight: 200;
+  padding: 0.2rem 0;
   font-size: 0.875rem;
-  padding: 0.3rem 0;
 }
 .call_number {
-  font-size: 2.25rem;
+  font-size: 1.875rem;
+  font-weight: 300;
 }
 .email {
   font-weight: 500;
 }
-.phone_icon {
-  position: absolute;
-  right: 10%;
-  top: 10%;
-  width: 3.75rem;
-  height: 3.75rem;
-  border-radius: 3.75rem;
-  background-color: var(--color-white);
-  color: var(--color-black);
-  font-size: 1.688rem;
-  cursor: pointer;
-  transition: all 400ms var(--ease-out-quint);
+.cosulting_apply_btn {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
 }
-
-.phone_icon:hover {
-  transform: scale(1.07);
-}
-
 .ass_btn {
   width: 50%;
   height: 50%;
@@ -177,7 +168,7 @@
 }
 .etc_btn {
   padding: 1% 5%;
-  height: 3.438rem;
+  height: 55px;
   width: 100%;
   display: flex;
   justify-content: space-between;

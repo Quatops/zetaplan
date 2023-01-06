@@ -2,12 +2,11 @@
 }
 
 .line {
-  /*여기다 선그어야딩*/
   background: var(--color-red);
   height: 1px;
   width: 40px;
   position: absolute;
-  left: -60%;
+  left: -38%;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -36,8 +35,9 @@
 
 .menu_list {
   display: flex;
+  filter: drop-shadow(4px 5px 3px #3131317e);
   justify-content: space-between;
   flex-direction: column;
-  height: 120px;
+  height: 215px;
   user-select: none;
 }

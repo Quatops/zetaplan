@@ -19,6 +19,7 @@ body {
   height: 100vh;
   font-size: 1rem;
   background-size: cover;
+  background-repeat: no-repeat;
   background-image: url(./assets/Background.png);
 }
 
@@ -58,6 +59,13 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+/*header active setting*/
+
+.active > li {
+  color: var(--color-red);
+  font-weight: bold;
 }
 
 ::-webkit-scrollbar {

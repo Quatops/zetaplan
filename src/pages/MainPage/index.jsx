@@ -1,77 +1,63 @@
 import React, { useEffect, useState, useRef } from "react";
 import styles from "./styles.module.css";
-import Page1 from "./Page1";
-import Page2 from "./Page2";
-import Page3 from "./Page3";
+import Main from "./Main";
+import AcceleratingProgram from "./AcceleratingProgram";
+import InvestmentPortfolio from "./InvestmentPortfolio";
 import ScrollMenu from "./ScrollMenu";
+import GlobalNetwork from "./GlobalNetwork";
+import InvestmentInquiry from "pages/InvestmentInquiry";
 
-export default function Main() {
+export default function MainPage() {
   const [pageIdx, setPageIdx] = useState(1);
   const mainWrapperRef = useRef();
-  const DIVIDER_HEIGHT = 3;
+  const updatePage = (idx, top, left, behavior) => {
+    mainWrapperRef.current.scrollTo({
+      top,
+      left,
+      behavior,
+    });
+    setPageIdx(idx);
+  };
 
   useEffect(() => {
     const wheelHandler = (e) => {
       e.preventDefault();
       const { deltaY } = e;
       const { scrollTop } = mainWrapperRef.current;
-      const pageHeight = window.innerHeight; // 화면의 세로 길이. 100vh
+      const pageHeight = window.innerHeight;
       if (deltaY > 0) {
         // 스크롤을 내릴 때
         if (scrollTop >= 0 && scrollTop < pageHeight) {
           // 현재 1페이지
-          mainWrapperRef.current.scrollTo({
-            top: pageHeight + DIVIDER_HEIGHT,
-            left: 0,
-            behavior: "smooth",
-          });
-          setPageIdx(2);
+          updatePage(2, pageHeight, 0, "smooth");
         } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 2) {
           // 현재 2페이지
-          mainWrapperRef.current.scrollTo({
-            top: pageHeight * 2 + DIVIDER_HEIGHT * 2,
-            left: 0,
-            behavior: "smooth",
-          });
-          setPageIdx(3);
-        } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 3) {
-          // 현재 2페이지
-          mainWrapperRef.current.scrollTo({
-            top: pageHeight * 3 + DIVIDER_HEIGHT * 3,
-            left: 0,
-            behavior: "smooth",
-          });
-          setPageIdx(3);
-        } else {
-          // 스크롤을 내릴 때
-          if (scrollTop >= 0 && scrollTop < pageHeight) {
-            //현재 1페이지
-            mainWrapperRef.current.scrollTo({
-              top: 0,
-              left: 0,
-              behavior: "smooth",
-            });
-            setPageIdx(1);
-          } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 2) {
-            //현재 2페이지
-            mainWrapperRef.current.scrollTo({
-              top: 0,
-              left: 0,
-              behavior: "smooth",
-            });
-            setPageIdx(1);
-          } else if (
-            scrollTop >= pageHeight * 2 &&
-            scrollTop < pageHeight * 3
-          ) {
-            // 현재 3페이지
-            mainWrapperRef.current.scrollTo({
-              top: pageHeight + DIVIDER_HEIGHT,
-              left: 0,
-              behavior: "smooth",
-            });
-            setPageIdx(2);
-          }
+          updatePage(3, pageHeight * 2, 0, "smooth");
+        } else if (scrollTop >= pageHeight * 2 && scrollTop < pageHeight * 3) {
+          // 현재 3페이지
+          updatePage(4, pageHeight * 3, 0, "smooth");
+        } else if (scrollTop >= pageHeight * 3 && scrollTop < pageHeight * 4) {
+          // 현재 4페이지
+          updatePage(5, pageHeight * 4, 0, "smooth");
+        } else if (scrollTop >= pageHeight * 4 && scrollTop < pageHeight * 5) {
+          // 현재 5페이지
+          updatePage(5, pageHeight * 5, 0, "smooth");
+        }
+      } else {
+        // 스크롤을 내릴 때
+        if (
+          (scrollTop >= 0 && scrollTop < pageHeight) ||
+          (scrollTop >= pageHeight && scrollTop < pageHeight * 2)
+        ) {
+          //현재 1페이지이거나 2페이지
+          updatePage(1, 0, 0, "smooth");
+        } else if (scrollTop >= pageHeight * 2 && scrollTop < pageHeight * 3) {
+          // 현재 3페이지
+          updatePage(2, pageHeight, 0, "smooth");
+        } else if (scrollTop >= pageHeight * 3 && scrollTop < pageHeight * 4) {
+          updatePage(3, pageHeight * 2, 0, "smooth");
+        } else if (scrollTop >= pageHeight * 4 && scrollTop < pageHeight * 5) {
+          updatePage(4, pageHeight * 3, 0, "smooth");
         }
       }
     };
@@ -84,19 +70,21 @@ export default function Main() {
 
   return (
     <div className={styles.main_wrapper} ref={mainWrapperRef}>
-      <div className={styles.chatbot}>
-        <img src={require("assets/chat_icon.png")} alt="chat_icon" />
-      </div>
-      <div className={styles.bottom_line}></div>
-      <ScrollMenu pageIdx={pageIdx} />
+      <ScrollMenu pageIdx={pageIdx} updatePage={updatePage} />
       <div className={styles.main_item}>
-        <Page1 />
+        <Main />
       </div>
       <div className={styles.main_item}>
-        <Page2 />
+        <AcceleratingProgram />
       </div>
       <div className={styles.main_item}>
-        <Page3 />
+        <InvestmentPortfolio />
+      </div>
+      <div className={styles.main_item}>
+        <GlobalNetwork />
+      </div>
+      <div className={styles.main_item}>
+        <InvestmentInquiry />
       </div>
     </div>
   );

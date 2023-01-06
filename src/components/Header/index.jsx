@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./styles.module.css";
 import { FaSearch } from "react-icons/fa";
 import GlobalNav from "./GlobalNavbar";
-import { category } from "constants/category";
+import { category, subCategory } from "constants/category";
 import { Link } from "react-router-dom";
 
 export default function Header() {
@@ -21,7 +21,7 @@ export default function Header() {
       <header className={styles.header} onMouseLeave={() => showNavbar(false)}>
         <nav
           className={`${styles.nav_wrapper} ${
-            activeNav && styles.active
+            activeNav && styles.active_sub
           } flex_between`}
         >
           <ul>
@@ -36,11 +36,15 @@ export default function Header() {
             </Link>
           </ul>
           <ul className={styles.nav} onMouseEnter={() => showNavbar(true)}>
-            {category.map((value, index) => (
-              <Link to={value.path} key={index}>
+            {category.map((value) => (
+              <Link
+                to={value.path}
+                state={{ id: subCategory[value.title][0].id }}
+                key={value.id}
+              >
                 <li
                   className={`${styles.nav_item} ${
-                    activeNav && styles.active
+                    activeNav && styles.active_sub
                   } ${activeCate === value.id && styles.selected}`}
                 >
                   <p>{value.title}</p>
@@ -57,7 +61,9 @@ export default function Header() {
             <li className={styles.language_wrapper}>
               <select
                 name="Language"
-                className={`${styles.languages} ${activeNav && styles.active}`}
+                className={`${styles.languages} ${
+                  activeNav && styles.active_sub
+                }`}
               >
                 <option defaultValue={true}>Kor</option>
                 <option>Eng</option>
@@ -65,7 +71,9 @@ export default function Header() {
               </select>
             </li>
           </ul>
-          <div className={`${styles.line} ${activeNav && styles.active}`}></div>
+          <div
+            className={`${styles.line} ${activeNav && styles.active_sub}`}
+          ></div>
         </nav>
         {activeNav && <GlobalNav categoryHover={categoryHover} />}
       </header>

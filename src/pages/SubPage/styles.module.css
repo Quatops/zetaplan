@@ -1,6 +1,6 @@
 .subPage_wrap {
   height: 100vh;
-  padding-top: 80px;
+  padding-top: 5rem;
   width: 100vw;
 }
 .page_title {
@@ -17,5 +17,7 @@
   height: 78%;
   background-color: var(--color-white);
   width: 100%;
-  padding: 50px 340px;
+  padding: 50px 0;
+  padding-left: 350px;
+  padding-right: 16.66vw;
 }

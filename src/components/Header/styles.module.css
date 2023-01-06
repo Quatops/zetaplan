@@ -10,9 +10,10 @@
   width: 100%;
   height: 100%;
   position: relative;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-.nav_wrapper.active {
+.nav_wrapper.active_sub {
   animation: fadein 300ms;
   transition: transform 200ms ease;
   background-color: var(--color-white);
@@ -28,7 +29,7 @@
   background-color: var(--color-white);
 }
 
-.line.active {
+.line.active_sub {
   background-color: var(--color-grey);
 }
 
@@ -42,7 +43,6 @@
   max-width: 1475px;
   color: var(--color-white);
 }
-
 .sub_nav:nth-child(1) {
   padding-left: 20px;
 }
@@ -129,8 +129,8 @@
   border-radius: 5px;
 }
 
-.nav_item.active,
-.languages.active,
+.nav_item.active_sub,
+.languages.active_sub,
 .languages option {
   color: var(--color-black);
 }

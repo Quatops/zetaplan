@@ -4,16 +4,32 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+/* MainPage */
 import MainPage from "./pages/MainPage";
 
+/* SubPage */
 import SubPage from "pages/SubPage";
+
+/* CompanyIntro */
 import Greetings from "pages/ComapnyIntro/Greetings";
 import ConsultingService from "pages/ComapnyIntro/ConsultingService";
 import ConsultingAbout from "pages/ComapnyIntro/ConsultingAbout";
+import MainArticle from "pages/ComapnyIntro/MainArticle";
+import CIGuide from "pages/ComapnyIntro/CIGuide";
+import ZetaplanMarks from "pages/ComapnyIntro/ZetaplanMarks";
+import AffiliateNetwork from "pages/ComapnyIntro/AffiliateNetwork";
+
+/* Accelerating */
+import AcceleratingOverview from "pages/Accelerating";
+
+/*InvestmentIr */
 import InvestmentOverview from "pages/InvestmentIr/InvestmentOverview";
 import InvestmentBuisnessPlan from "pages/InvestmentIr/InvestmentBuisnessPlan";
+
 import MnAOverview from "pages/MnA/MnAOverview";
-import IpoOverview from "pages/Ipo/IpoOverview";
+
+import { category } from "constants/category";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +40,7 @@ const router = createBrowserRouter([
       { index: true, path: "/", element: <MainPage /> },
       {
         path: "company-intro",
-        element: <SubPage pageName="회사소개" />,
+        element: <SubPage pageName={category[0].title} />,
         children: [
           { index: true, path: "greetings", element: <Greetings /> },
           {
@@ -35,11 +51,35 @@ const router = createBrowserRouter([
             path: "consultant-about",
             element: <ConsultingAbout />,
           },
+          {
+            path: "the-main-economic-newspaper-article",
+            element: <MainArticle />,
+          },
+          { path: "affiliate-network", element: <AffiliateNetwork /> },
+          {
+            path: "ci-guide",
+            element: <CIGuide />,
+          },
+          {
+            path: "zeta-plan-marks",
+            element: <ZetaplanMarks />,
+          },
+        ],
+      },
+      {
+        path: "accelerating",
+        element: <SubPage pageName={category[1].title} />,
+        children: [
+          {
+            index: true,
+            path: "accelerating-overview",
+            element: <AcceleratingOverview />,
+          },
         ],
       },
       {
         path: "investment-ir",
-        element: <SubPage pageName="투자 IR" />,
+        element: <SubPage pageName={category[2].title} />,
         children: [
           {
             index: true,
@@ -54,7 +94,7 @@ const router = createBrowserRouter([
       },
       {
         path: "mergers-and-acquisitions",
-        element: <SubPage pageName="M&A" />,
+        element: <SubPage pageName={category[3].title} />,
         children: [
           {
             index: true,
@@ -63,27 +103,12 @@ const router = createBrowserRouter([
           },
         ],
       },
-      {
-        path: "ipo",
-        element: <SubPage pageName="IPO" />,
-        children: [
-          {
-            index: true,
-            path: "listed-overview",
-            element: <IpoOverview />,
-          },
-        ],
-      },
     ],
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
+root.render(<RouterProvider router={router} />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
