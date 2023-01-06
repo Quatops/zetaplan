@@ -69,10 +69,10 @@ export default function Main() {
     "M&A · 투자IR",
   ];
   const assess_button = [
-    { name: "기업가치평가 기술가치평가", icon: "value_assess_icon" },
-    { name: "ESG평가", icon: "ESG_assess_icon" },
-    { name: "기업인증", icon: "certification_icon" },
-    { name: "신용평가", icon: "credit_assess_icon" },
+    { name: "기업 · 기술 가치평가", icon: "value_assess_icon" },
+    { name: "경영전략 연구소", icon: "management_strategy_icon" },
+    { name: "시스템인증 기업인증", icon: "certification_icon" },
+    { name: "ESG 평가 신용평가", icon: "ESG_assess_icon" },
   ];
 
   const [activeNavIdx, setActiveNavIdx] = useState(0);
@@ -118,9 +118,7 @@ export default function Main() {
               </p>
               <span className={styles.email}>zetabiz @ zetaplan.com</span>
             </div>
-            <button className={styles.cosulting_apply_btn}>
-              컨설팅 상담신청
-            </button>
+            <button className={styles.cosulting_apply_btn}>상담신청</button>
           </section>
           <section className={styles.infos}>
             <div className={styles.company_ass}>
@@ -135,9 +133,12 @@ export default function Main() {
             </div>
             <section className={styles.etc_info}>
               <div className={styles.etc_button_wrapper}>
-                <Button name="기술거래" img="cooperation_icon" />
-                <Button name="협력네트워크" img="cooperation_icon" />
-                <Button name="경영연구소" img="management_icon" />
+                <Button
+                  name="기술사업화"
+                  img="technology_commercialization_icon"
+                />
+                <Button name="R&BD전략수집" img="cooperation_icon" />
+                <Button name="협력네트워크" img="cooperation_network_icon" />
               </div>
             </section>
             <section className={styles.map_info}>

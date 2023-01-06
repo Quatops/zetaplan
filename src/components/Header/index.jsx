@@ -59,7 +59,7 @@ export default function Header() {
               <FaSearch className={styles.search_icon} />
             </li>
             <li className={styles.language_wrapper}>
-              <select
+              {/* <select
                 name="Language"
                 className={`${styles.languages} ${
                   activeNav && styles.active_sub
@@ -68,7 +68,10 @@ export default function Header() {
                 <option defaultValue={true}>Kor</option>
                 <option>Eng</option>
                 <option>Chi</option>
-              </select>
+              </select> */}
+              <p>KOR</p>
+              <p>ENG</p>
+              <p>CHI</p>
             </li>
           </ul>
           <div

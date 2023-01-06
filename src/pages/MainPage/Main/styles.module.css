@@ -144,21 +144,24 @@
 }
 .cosulting_apply_btn {
   width: 100%;
+  font-weight: 800;
   height: 40px;
   border-radius: 10px;
 }
 .ass_btn {
   width: 50%;
   height: 50%;
-  padding: 1.25rem;
+  padding: 1.1rem;
   display: flex;
   justify-content: space-between;
+  text-align: right;
   align-items: center;
   border: 0.5px solid #e4e4e4;
   font-weight: 800;
 }
 .ass_name {
   word-break: keep-all;
+  max-width: 85px;
 }
 .etc_button_wrapper {
   height: 100%;
