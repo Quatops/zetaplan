@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
 import BannerCarousel from "components/BannerCarousel";
-import MainContents from "components/MainContents";
-import { FaAngleRight, FaPlus } from "react-icons/fa";
+import MainContents from "pages/MainPage/Main/MainContents";
+
+import { FaAngleRight } from "react-icons/fa";
 import { FiPlus } from "react-icons/fi";
 
 const Button = ({ name, img }) => {
@@ -147,6 +148,22 @@ export default function Main() {
           "㈜제타플랜인베스트(이하 ‘제타플랜’)은 국내 투자 후 회수 시장의 활성화에 기여한 공로로 지난 12월 15일 중소벤처기업부의...",
         date: "2022-12-26",
       },
+      {
+        id: 5,
+        title: "기업가정신 수준 개인·기업 동시↑…기업 긍정인식＞반기업정서",
+        thumb: "news_thumb",
+        content:
+          "㈜제타플랜인베스트(이하 ‘제타플랜’)은 국내 투자 후 회수 시장의 활성화에 기여한 공로로 지난 12월 15일 중소벤처기업부의...",
+        date: "2022-12-26",
+      },
+      {
+        id: 6,
+        title: "기보, 기술거래 플랫폼 ‘스마트 테크 브릿지’ 구축",
+        thumb: "news_thumb",
+        content:
+          "㈜제타플랜인베스트(이하 ‘제타플랜’)은 국내 투자 후 회수 시장의 활성화에 기여한 공로로 지난 12월 15일 중소벤처기업부의...",
+        date: "2022-12-26",
+      },
     ],
     [
       {
@@ -191,7 +208,12 @@ export default function Main() {
       },
     ],
   ];
-  const intro_header = ["인사이트", "뉴스", "지원사업", "M&A · 투자IR"];
+  const intro_header = [
+    { name: "인사이트", isPhoto: true },
+    { name: "뉴스", isPhoto: true },
+    { name: "지원사업", isPhoto: false },
+    { name: "M&A · 투자IR", isPhoto: false },
+  ];
   const assess_button = [
     { name: "기업 · 기술 가치평가", icon: "value_assess_icon" },
     { name: "경영전략 연구소", icon: "management_strategy_icon" },
@@ -221,7 +243,7 @@ export default function Main() {
                     }`}
                     onClick={() => setActiveTabIdx(index)}
                   >
-                    {item}
+                    {item.name}
                   </li>
                 ))}
                 <li className={styles.header_item}>
@@ -229,7 +251,10 @@ export default function Main() {
                 </li>
               </ul>
               <div className={styles.intro_contents}>
-                <MainContents newsList={newsList[activeTabIdx]} />
+                <MainContents
+                  newsList={newsList[activeTabIdx]}
+                  isPhoto={intro_header[activeTabIdx].isPhoto}
+                />
               </div>
             </div>
           </article>
