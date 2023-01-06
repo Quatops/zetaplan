@@ -58,20 +58,16 @@ export default function Header() {
               />
               <FaSearch className={styles.search_icon} />
             </li>
-            <li className={styles.language_wrapper}>
-              {/* <select
-                name="Language"
-                className={`${styles.languages} ${
-                  activeNav && styles.active_sub
-                }`}
-              >
-                <option defaultValue={true}>Kor</option>
-                <option>Eng</option>
-                <option>Chi</option>
-              </select> */}
-              <p>KOR</p>
-              <p>ENG</p>
-              <p>CHI</p>
+            <li
+              className={`${styles.language_wrapper} ${
+                activeNav && styles.active_sub
+              }`}
+            >
+              <p className={styles.language}>KR</p>
+              <span className={styles.boundary}>|</span>
+              <p className={styles.language}>EN</p>
+              <span className={styles.boundary}>|</span>
+              <p className={styles.language}>CN</p>
             </li>
           </ul>
           <div
