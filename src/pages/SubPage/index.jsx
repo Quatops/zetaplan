@@ -7,6 +7,7 @@ import SubPageContent from "components/SubPageContent";
 
 export default function SubPage({ pageName, navIdx }) {
   const location = useLocation();
+  location.state ? console.log(location.state.id) : console.log("없나보다해");
   const [activeNavId, setActiveNavId] = useState(
     location.state ? location.state.id : 0
   );

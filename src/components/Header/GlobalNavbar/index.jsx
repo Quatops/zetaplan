@@ -11,8 +11,8 @@ export default function GlobalNavigator({ categoryHover }) {
         <ul className={styles.right}>
           {category.map((big, index) => (
             <ul key={index} className={styles.cate_area}>
-              {subCategory[big.title].map((small, index) => (
-                <Link key={index} to={small.path} state={{ id: small.id }}>
+              {subCategory[big.title].map((small) => (
+                <Link key={small.id} to={small.path} state={{ id: small.id }}>
                   <li
                     className={styles.category}
                     onMouseEnter={() => categoryHover(big.id)}

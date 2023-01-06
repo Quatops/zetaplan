@@ -2,7 +2,6 @@
 
 .page_wrapper {
   height: 100%;
-  padding-top: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +9,7 @@
 
 .main_container {
   width: 81.25rem;
-  height: 49.375rem;
+  height: 73.148vh;
   background-color: transparent;
   display: flex;
   justify-content: space-between;
@@ -18,21 +17,24 @@
 }
 
 .left {
-  height: 100%;
+  height: 73.148vh;
   width: 54.375rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-right: 30px;
 }
 
 .banner {
   width: 100%;
-  height: 13.75rem;
+  height: 20.37vh;
+  /*height: 13rem*/
   background-color: var(--color-white);
 }
 .main_intro {
   width: 100%;
-  height: 33.75rem;
+  /* height: 33.75rem; */
+  height: 50vh;
   border-radius: 10px;
   background-color: var(--color-white);
   overflow: hidden;
@@ -49,7 +51,7 @@
 .call_info {
   position: relative;
   width: 100%;
-  height: 13.75rem;
+  height: 20.37vh;
   border-radius: 10px;
   background-color: var(--color-black);
   border: 1px solid var(--color-grey);
@@ -62,7 +64,7 @@
 
 .infos {
   width: 100%;
-  height: 33.75rem;
+  height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -71,7 +73,7 @@
 .company_ass {
   background-color: var(--color-white);
   overflow: hidden;
-  height: 12.188rem;
+  height: 18.05vh;
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
@@ -79,11 +81,11 @@
 
 .etc_info {
   width: 100%;
-  height: 11.563rem;
+  height: 17.13vh;
 }
 
 .map_info {
-  height: 7.813rem;
+  height: 11.57vh;
   border-radius: 10px;
   border: 1px solid var(--color-grey);
   background-color: var(--color-black);
@@ -98,7 +100,7 @@
 /* contents css*/
 .intro_header {
   width: 100%;
-  height: 3.75rem;
+  height: 5.55vh;
   background-color: var(--color-black);
   display: flex;
   justify-content: space-between;
@@ -121,7 +123,7 @@
 }
 
 .inro_contents {
-  height: 30rem;
+  height: 44.44vh;
 }
 .call_info > h1 {
   font-weight: 800;
@@ -177,7 +179,7 @@
 }
 .etc_btn {
   padding: 1% 5%;
-  height: 3.438rem;
+  height: 5.09vh;
   width: 100%;
   display: flex;
   justify-content: space-between;

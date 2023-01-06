@@ -181,32 +181,32 @@ export const subCategory = {
       path: "",
     },
     {
-      id: 32,
+      id: 33,
       title: "기술거래 절차",
       path: "",
     },
     {
-      id: 33,
+      id: 34,
       title: "국내외 협력기관",
       path: "",
     },
     {
-      id: 34,
+      id: 35,
       title: "국내외 기술거래 사진",
       path: "",
     },
     {
-      id: 35,
+      id: 36,
       title: "자료실",
       path: "",
     },
     {
-      id: 36,
+      id: 37,
       title: "기술거래 리스트",
       path: "",
     },
     {
-      id: 37,
+      id: 38,
       title: "도입희망기술등록",
       path: "",
     },
