@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { subCategory } from "constants/category";
 import styles from "./styles.module.css";
 import { Outlet, useLocation } from "react-router-dom";
-import SubPageContent from "components/SubPageContent";
+import SubPageTitle from "components/SubPageTitle";
 
 export default function SubPage({ pageName, navIdx }) {
   const location = useLocation();
@@ -29,9 +29,10 @@ export default function SubPage({ pageName, navIdx }) {
           activeNavId={activeNavId}
           updateActiveNavId={updateActiveNavId}
         />
-        <SubPageContent
+        <SubPageTitle
           pageName={pageName}
-          activeNav={subCategory[pageName][activeNavId]}
+          // activeNav={subCategory[pageName][activeNavId]}
+          activeNav={subCategory[pageName].find((e) => e.id === activeNavId)}
         />
         <Outlet />
       </div>

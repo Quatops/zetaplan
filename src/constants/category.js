@@ -212,3 +212,9 @@ export const subCategory = {
     },
   ],
 };
+
+const happy = (activeNavId) => {
+  subCategory["회사소개"].find((e) => e.id === activeNavId);
+};
+
+happy(0);

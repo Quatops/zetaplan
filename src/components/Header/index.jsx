@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./styles.module.css";
 import { FaSearch } from "react-icons/fa";
 import GlobalNav from "./GlobalNavbar";
-import { category } from "constants/category";
+import { category, subCategory } from "constants/category";
 import { Link } from "react-router-dom";
 
 export default function Header() {
@@ -36,8 +36,12 @@ export default function Header() {
             </Link>
           </ul>
           <ul className={styles.nav} onMouseEnter={() => showNavbar(true)}>
-            {category.map((value, index) => (
-              <Link to={value.path} state={{ id: 0 }} key={index}>
+            {category.map((value) => (
+              <Link
+                to={value.path}
+                state={{ id: subCategory[value.title][0].id }}
+                key={value.id}
+              >
                 <li
                   className={`${styles.nav_item} ${
                     activeNav && styles.active

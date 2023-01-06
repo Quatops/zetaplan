@@ -13,17 +13,17 @@ export default function SubNavbar({
     <div className={styles.nav_wrap}>
       <div className={styles.nav_title}>{navTitle}</div>
       <ul className={styles.nav}>
-        {navItems.map((value, index) => (
+        {navItems.map((value) => (
           <Link
-            key={index}
+            key={value.id}
             className={`${styles.nav_item} ${
-              activeNavId === index && styles.active
+              activeNavId === value.id && styles.active
             }`}
-            onClick={() => updateActiveNavId(index)}
+            onClick={() => updateActiveNavId(value.id)}
             to={value.path}
           >
             <p>{value.title}</p>
-            {activeNavId === index ? <FaAngleRight /> : <></>}
+            {activeNavId === value.id ? <FaAngleRight /> : <></>}
           </Link>
         ))}
       </ul>
