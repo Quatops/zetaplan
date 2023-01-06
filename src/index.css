@@ -19,6 +19,7 @@ body {
   height: 100vh;
   font-size: 1rem;
   background-size: cover;
+  background-repeat: no-repeat;
   background-image: url(./assets/Background.png);
 }
 

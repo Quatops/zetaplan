@@ -35,8 +35,9 @@
 
 .menu_list {
   display: flex;
+  filter: drop-shadow(4px 5px 3px #3131317e);
   justify-content: space-between;
   flex-direction: column;
-  height: 19.91vh;
+  height: 215px;
   user-select: none;
 }

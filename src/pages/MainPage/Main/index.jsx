@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./styles.module.css";
 import BannerCarousel from "components/BannerCarousel";
 import MainContents from "components/MainContents";
-import { FaPhoneAlt, FaAngleRight } from "react-icons/fa";
+import { FaAngleRight } from "react-icons/fa";
 
 const Button = ({ name, img }) => {
   return (
@@ -77,7 +77,7 @@ export default function Main() {
 
   const [activeNavIdx, setActiveNavIdx] = useState(0);
   return (
-    <div className={`${styles.page_wrapper} flex_center`}>
+    <div className={`${styles.page_wrapper} `}>
       <div className={styles.main_container}>
         <section className={styles.left}>
           {/* banner */}
@@ -101,29 +101,27 @@ export default function Main() {
                   </li>
                 ))}
               </ul>
-              <div className={styles.inro_contents}>
+              <div className={styles.intro_contents}>
                 <MainContents newsList={newsList} />
               </div>
             </div>
           </article>
         </section>
         <aside className={styles.right}>
-          {/* call */}
           <section className={styles.call_info}>
-            <h1>고객센터</h1>
+            <h1>CONTACT US</h1>
             <div>
               <p>09:00 - 18:00</p>
-              <span className={styles.call_number}>02&#41; 538 - 4801</span>
+              <span className={styles.call_number}>02&#41; 538-4801</span>
               <p>
                 02&#41; 561 - 6698 | 070&#41; 8129 - 5884 | 070&#41; 8129 - 5885
               </p>
               <span className={styles.email}>zetabiz @ zetaplan.com</span>
             </div>
-            <span className={`${styles.phone_icon} flex_center`}>
-              <FaPhoneAlt />
-            </span>
+            <button className={styles.cosulting_apply_btn}>
+              컨설팅 상담신청
+            </button>
           </section>
-          {/* 기업평가? */}
           <section className={styles.infos}>
             <div className={styles.company_ass}>
               {assess_button.map((value, index) => (

@@ -70,10 +70,6 @@ export default function MainPage() {
 
   return (
     <div className={styles.main_wrapper} ref={mainWrapperRef}>
-      <div className={styles.chatbot}>
-        <img src={require("assets/chat_icon.png")} alt="chat_icon" />
-      </div>
-      <div className={styles.bottom_line}></div>
       <ScrollMenu pageIdx={pageIdx} updatePage={updatePage} />
       <div className={styles.main_item}>
         <Main />
