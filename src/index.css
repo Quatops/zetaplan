@@ -60,6 +60,13 @@ button {
   align-items: center;
 }
 
+/*header active setting*/
+
+.active > li {
+  color: var(--color-red);
+  font-weight: bold;
+}
+
 ::-webkit-scrollbar {
   border-radius: 10px;
 }

@@ -21,6 +21,11 @@
   align-items: center;
 }
 
+.active li {
+  transition: all 300ms ease;
+  color: var(--color-red);
+  font-weight: bold;
+}
 .category {
   color: black;
   padding: 0.313rem 0;

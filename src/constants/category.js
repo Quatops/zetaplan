@@ -2,15 +2,19 @@ export const category = [
   { id: 0, title: "회사소개", path: "/company-intro/greetings" },
   {
     id: 1,
+    title: "액셀러레이팅",
+    path: "/accelerating/accelerating-overview",
+  },
+  {
+    id: 2,
     title: "투자 IR",
     path: "/investment-ir/investment-consulting-ir-overview",
   },
   {
-    id: 2,
-    title: "M&A",
+    id: 3,
+    title: "M&A · IPO",
     path: "/mergers-and-acquisitions/mergers-and-acquisitions-overview",
   },
-  { id: 3, title: "IPO", path: "/ipo/listed-overview" },
   { id: 4, title: "해외진출", path: "/overseas/about-overseas-business" },
   {
     id: 5,
@@ -41,76 +45,76 @@ export const subCategory = {
       path: "/company-intro/zeta-plan-marks",
     },
   ],
-  "투자 IR": [
+  액셀러레이팅: [
     {
       id: 7,
-      title: "투자IR 컨설팅 개요",
-      path: "/investment-ir/investment-consulting-ir-overview",
+      title: "액셀러레이팅 개요",
+      path: "/accelerating/accelerating-overview",
     },
     {
       id: 8,
-      title: "투자IR 사업계획서",
-      path: "/investment-ir/investment-ir-business-plan",
+      title: "액셀러레이팅 사업계획서",
+      path: "/accelerating/accelerating-wbusiness-plan",
     },
     {
       id: 9,
       title: "네트워크를 활용 컨설팅",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 10,
       title: "컨설팅 진행 절차",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 11,
       title: "투자유치 성공사례",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 12,
       title: "컨설팅 신청",
-      path: "",
+      path: "/notfound",
     },
   ],
-  "M&A": [
+  "투자 IR": [
     {
       id: 13,
-      title: "M&A 개요",
-      path: "/mergers-and-acquisitions/mergers-and-acquisitions-overview",
+      title: "투자IR 컨설팅 개요",
+      path: "/investment-ir/investment-consulting-ir-overview",
     },
     {
       id: 14,
-      title: "M&A 분류",
-      path: "",
+      title: "투자IR 사업계획서",
+      path: "/investment-ir/investment-ir-business-plan",
     },
     {
       id: 15,
       title: "M&A 목적",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 16,
       title: "우회 상장",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 17,
       title: "M&A 거래정보",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 18,
       title: "M&A 보증지원",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 19,
       title: "M&A 중개지원",
-      path: "",
+      path: "/notfound",
     },
   ],
-  IPO: [
+  "M&A · IPO": [
     {
       id: 20,
       title: "상장의 개요",
@@ -119,102 +123,96 @@ export const subCategory = {
     {
       id: 21,
       title: "상장의 혜택 및 효과",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 22,
       title: "유가증권 시장 상장",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 23,
       title: "코스닥 시장 상장",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 24,
       title: "SPAC 우회 상장",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 25,
       title: "IOP 절차",
-      path: "",
+      path: "/notfound",
     },
   ],
   해외진출: [
     {
       id: 26,
       title: "해외진출 사업 소개",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 27,
       title: "제타플랜 해외네트워크",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 28,
       title: "해외지사화사업",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 29,
       title: "해외시장조사",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 30,
       title: "해외법인설립",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 31,
       title: "글로벌기술사업화(중국)",
-      path: "",
+      path: "/notfound",
     },
   ],
   기술거래: [
     {
       id: 32,
       title: "기술거래 개요",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 33,
       title: "기술거래 절차",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 34,
       title: "국내외 협력기관",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 35,
       title: "국내외 기술거래 사진",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 36,
       title: "자료실",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 37,
       title: "기술거래 리스트",
-      path: "",
+      path: "/notfound",
     },
     {
       id: 38,
       title: "도입희망기술등록",
-      path: "",
+      path: "/notfound",
     },
   ],
 };
-
-const happy = (activeNavId) => {
-  subCategory["회사소개"].find((e) => e.id === activeNavId);
-};
-
-happy(0);

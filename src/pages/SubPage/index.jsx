@@ -5,14 +5,14 @@ import styles from "./styles.module.css";
 import { Outlet, useLocation } from "react-router-dom";
 import SubPageTitle from "components/SubPageTitle";
 
-export default function SubPage({ pageName, navIdx }) {
+export default function SubPage({ pageName }) {
   const location = useLocation();
-  location.state ? console.log(location.state.id) : console.log("없나보다해");
   const [activeNavId, setActiveNavId] = useState(
     location.state ? location.state.id : 0
   );
+  console.log(pageName + ", 그리고 activeNavId는 " + activeNavId);
   const updateActiveNavId = (idx) => {
-    setActiveNavId(idx);
+    setActiveNavId((prev) => (prev = idx));
   };
   useEffect(() => {
     updateActiveNavId(location.state ? location.state.id : 0);
@@ -31,7 +31,6 @@ export default function SubPage({ pageName, navIdx }) {
         />
         <SubPageTitle
           pageName={pageName}
-          // activeNav={subCategory[pageName][activeNavId]}
           activeNav={subCategory[pageName].find((e) => e.id === activeNavId)}
         />
         <Outlet />

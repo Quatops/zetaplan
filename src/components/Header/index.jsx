@@ -21,7 +21,7 @@ export default function Header() {
       <header className={styles.header} onMouseLeave={() => showNavbar(false)}>
         <nav
           className={`${styles.nav_wrapper} ${
-            activeNav && styles.active
+            activeNav && styles.active_sub
           } flex_between`}
         >
           <ul>
@@ -44,7 +44,7 @@ export default function Header() {
               >
                 <li
                   className={`${styles.nav_item} ${
-                    activeNav && styles.active
+                    activeNav && styles.active_sub
                   } ${activeCate === value.id && styles.selected}`}
                 >
                   <p>{value.title}</p>
@@ -61,7 +61,9 @@ export default function Header() {
             <li className={styles.language_wrapper}>
               <select
                 name="Language"
-                className={`${styles.languages} ${activeNav && styles.active}`}
+                className={`${styles.languages} ${
+                  activeNav && styles.active_sub
+                }`}
               >
                 <option defaultValue={true}>Kor</option>
                 <option>Eng</option>
@@ -69,7 +71,9 @@ export default function Header() {
               </select>
             </li>
           </ul>
-          <div className={`${styles.line} ${activeNav && styles.active}`}></div>
+          <div
+            className={`${styles.line} ${activeNav && styles.active_sub}`}
+          ></div>
         </nav>
         {activeNav && <GlobalNav categoryHover={categoryHover} />}
       </header>

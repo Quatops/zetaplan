@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 export default function SubPageTitle({ pageName, activeNav }) {
   return (
     <>
-      {activeNav && (
+      {activeNav ? (
         <div>
           <div
             className={styles.route_url}
@@ -12,6 +12,8 @@ export default function SubPageTitle({ pageName, activeNav }) {
           <h1 className={styles.sub_title}>{activeNav.title}</h1>
           <div className={styles.line}></div>
         </div>
+      ) : (
+        <>로딩중입니다만.</>
       )}
     </>
   );

@@ -18,7 +18,7 @@ const Button = ({ name, img }) => {
   );
 };
 
-export default function Page1() {
+export default function Main() {
   const banner = ["banner_img", "banner_img", "banner_img"];
   const newsList = [
     {

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 import { category, subCategory } from "../../../constants/category";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function GlobalNavigator({ categoryHover }) {
   return (
@@ -12,7 +12,11 @@ export default function GlobalNavigator({ categoryHover }) {
           {category.map((big, index) => (
             <ul key={index} className={styles.cate_area}>
               {subCategory[big.title].map((small) => (
-                <Link key={small.id} to={small.path} state={{ id: small.id }}>
+                <NavLink
+                  key={small.id}
+                  to={small.path}
+                  state={{ id: small.id }}
+                >
                   <li
                     className={styles.category}
                     onMouseEnter={() => categoryHover(big.id)}
@@ -20,7 +24,7 @@ export default function GlobalNavigator({ categoryHover }) {
                   >
                     {small.title}
                   </li>
-                </Link>
+                </NavLink>
               ))}
             </ul>
           ))}
