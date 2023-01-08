@@ -16,6 +16,7 @@ export default function SubPage({ pageName }) {
   };
   useEffect(() => {
     updateActiveNavId(location.state ? location.state.id : 0);
+    console.log(location.state + " 가 변했습니다");
   }, [location.state]);
   return (
     <div className={styles.subPage_wrap}>
