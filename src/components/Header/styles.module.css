@@ -37,10 +37,10 @@
   display: flex;
   position: relative;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
   height: 100%;
-  max-width: 1475px;
+  justify-content: flex-end;
+  max-width: 1000px;
   color: var(--color-white);
 }
 .sub_nav:nth-child(1) {
@@ -53,8 +53,8 @@
   height: 80px;
   display: flex;
   justify-items: center;
-  align-items: center;
   text-align: center;
+  align-items: center;
   cursor: pointer;
   position: relative;
 }
@@ -73,7 +73,7 @@
 }
 .nav_item > p {
   font-size: 1.125rem;
-  width: 11.25rem;
+  width: 10rem;
 }
 .nav_item > p:hover {
   color: var(--color-red);
@@ -115,10 +115,13 @@
 }
 
 .language_wrapper {
-  width: 6.875rem;
+  width: 120px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.languages {
+.language {
   background-color: transparent;
   border: none;
   color: var(--color-white);
@@ -129,24 +132,19 @@
   border-radius: 5px;
 }
 
+.boundary {
+  padding: 5px;
+  color: var(--color-white);
+}
+
 .nav_item.active_sub,
-.languages.active_sub,
-.languages option {
+.language_wrapper.active_sub > * {
   color: var(--color-black);
 }
 
 .languages:focus {
   border: none;
   outline: none;
-}
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 .nav_item.selected {
@@ -156,4 +154,13 @@
 }
 .nav_item.selected > p::after {
   width: 100%;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
