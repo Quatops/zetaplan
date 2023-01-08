@@ -25,12 +25,12 @@ export default function Header() {
           } flex_between`}
         >
           <ul>
-            <Link to="/">
+            <Link to='/'>
               <li className={styles.nav_logo}>
                 {activeNav ? (
-                  <img src={require("assets/LogoBlack.png")} alt="Logo" />
+                  <img src={require("assets/LogoBlack.png")} alt='Logo' />
                 ) : (
-                  <img src={require("assets/Logo.png")} alt="Logo" />
+                  <img src={require("assets/Logo.png")} alt='Logo' />
                 )}
               </li>
             </Link>
@@ -51,25 +51,25 @@ export default function Header() {
                 </li>
               </Link>
             ))}
-            <li className={`${styles.search_wrapper} ${styles.nav_item}`}>
-              <input
-                className={styles.search}
-                placeholder=" #오늘의 #스타트업 "
-              />
-              <FaSearch className={styles.search_icon} />
-            </li>
-            <li
-              className={`${styles.language_wrapper} ${
-                activeNav && styles.active_sub
-              }`}
-            >
-              <p className={styles.language}>KR</p>
-              <span className={styles.boundary}>|</span>
-              <p className={styles.language}>EN</p>
-              <span className={styles.boundary}>|</span>
-              <p className={styles.language}>CN</p>
-            </li>
           </ul>
+          <li className={`${styles.search_wrapper} ${styles.nav_item}`}>
+            <input
+              className={styles.search}
+              placeholder=' #오늘의 #스타트업 '
+            />
+            <FaSearch className={styles.search_icon} />
+          </li>
+          <li
+            className={`${styles.language_wrapper} ${
+              activeNav && styles.active_sub
+            }`}
+          >
+            <p className={styles.language}>KR</p>
+            <span className={styles.boundary}>|</span>
+            <p className={styles.language}>EN</p>
+            <span className={styles.boundary}>|</span>
+            <p className={styles.language}>CN</p>
+          </li>
           <div
             className={`${styles.line} ${activeNav && styles.active_sub}`}
           ></div>

@@ -31,7 +31,7 @@ const NewsDetail = ({ news }) => {
   return (
     <>
       <div className={styles.thumb}>
-        <img src={require(`assets/${news.thumb}.png`)} alt="thumb" />
+        <img src={require(`assets/${news.thumb}.png`)} alt='thumb' />
       </div>
       <div className={styles.news_title}>{news.title}</div>
       <div className={styles.content}>{news.content}</div>
@@ -56,6 +56,7 @@ export default function MainContents({ newsList, isPhoto }) {
           <div className={styles.contents_right}>
             {newsList.map((news, index) => (
               <News
+                isPhoto={isPhoto}
                 key={news.id}
                 news={news}
                 isActive={activeNews === index}
@@ -69,7 +70,6 @@ export default function MainContents({ newsList, isPhoto }) {
           <div className={styles.news_list}>
             {newsList.map((news, index) => (
               <News
-                isPhoto={isPhoto}
                 key={news.id}
                 news={news}
                 isActive={activeNews === index}
