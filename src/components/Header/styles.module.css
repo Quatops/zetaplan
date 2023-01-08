@@ -85,7 +85,8 @@
 }
 
 .nav_logo {
-  width: 8.563rem;
+  width: 100%;
+  min-width: 8.563rem;
 }
 
 .search_wrapper {

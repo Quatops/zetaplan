@@ -15,7 +15,7 @@ export default function SubPage({ pageName }) {
     setActiveNavId((prev) => (prev = idx));
   };
   useEffect(() => {
-    updateActiveNavId(location.state ? location.state.id : 0);
+    if (location.state) updateActiveNavId(location.state.id);
   }, [location.state]);
   return (
     <div className={styles.subPage_wrap}>

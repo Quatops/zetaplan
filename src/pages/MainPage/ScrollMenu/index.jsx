@@ -30,6 +30,7 @@ const ScrollMenu = ({ pageIdx, updatePage }) => {
       <div className={styles.menu_list}>
         {scrollMenu.map((title, index) => (
           <Menu
+            key={index}
             num={index + 1}
             pageIdx={pageIdx}
             pageName={title}
