@@ -1,68 +1,74 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReactGlobe from "react-globe.gl";
 import Earth from "assets/earth_texture.jpg";
+import styles from "../../GlobalNetwork/styles.module.css";
+const markers = [
+  {
+    id: 0,
+    city: "Korea",
+    color: "blue",
+    size: 7 + Math.random() * 40,
+    lat: 37.541,
+    lng: 126.986,
+    value: 50,
+  },
+  {
+    id: 1,
+    city: "Singapore",
+    color: "#d7000e",
+    size: 7 + Math.random() * 30,
+    lat: 1.3521,
+    lng: 103.8198,
+    value: 25,
+  },
+  {
+    id: 2,
+    city: "New York",
+    color: "#d7000e",
+    size: 7 + Math.random() * 30,
+    lat: 40.73061,
+    lng: -73.935242,
+    value: 35,
+  },
+  {
+    id: 3,
+    city: "San Francisco",
+    color: "#d7000e",
+    size: 7 + Math.random() * 30,
+    lat: 37.773972,
+    lng: -122.431297,
+    value: 135,
+  },
+  {
+    id: 4,
+    city: "London",
+    color: "#d7000e",
+    size: 7 + Math.random() * 30,
+    lat: 51.5074,
+    lng: 0.1278,
+    value: 80,
+  },
+  {
+    id: 5,
+    city: "Los Angeles",
+    color: "#d7000e",
+    size: 7 + Math.random() * 30,
+    lat: 29.7604,
+    lng: -95.3698,
+    value: 54,
+  },
+];
+export default function Globe({ activeIdx, updateActiveIdx }) {
+  const globeRef = useRef();
 
-export default function Globe({ activeIdx }) {
-  const [focus, setFocus] = useState({ lat: 37.541, lng: 126.986 });
-  const markers = [
-    {
-      id: "marker1",
-      city: "Singapore",
-      color: "blue",
-      size: 7 + Math.random() * 40,
-      lat: 37.541,
-      lng: 126.986,
-      value: 50,
-    },
-    {
-      id: "marker2",
-      city: "New York",
-      color: "#d7000e",
-      size: 7 + Math.random() * 30,
-      lat: (Math.random() - 0.5) * 180,
-      lng: (Math.random() - 0.5) * 360,
-      value: 25,
-    },
-    {
-      id: "marker3",
-      city: "San Francisco",
-      color: "#d7000e",
-      size: 7 + Math.random() * 30,
-      lat: (Math.random() - 0.5) * 180,
-      lng: (Math.random() - 0.5) * 360,
-      value: 35,
-    },
-    {
-      id: "marker4",
-      city: "Beijing",
-      color: "#d7000e",
-      size: 7 + Math.random() * 30,
-      lat: (Math.random() - 0.5) * 180,
-      lng: (Math.random() - 0.5) * 360,
-      value: 135,
-    },
-    {
-      id: "marker5",
-      city: "London",
-      color: "#d7000e",
-      size: 7 + Math.random() * 30,
-      lat: (Math.random() - 0.5) * 180,
-      lng: (Math.random() - 0.5) * 360,
-      value: 80,
-    },
-    {
-      id: "marker6",
-      city: "Los Angeles",
-      color: "#d7000e",
-      size: 7 + Math.random() * 30,
-      lat: (Math.random() - 0.5) * 180,
-      lng: 7 + Math.random() * 30,
-      value: 54,
-    },
-  ];
   useEffect(() => {
-    setFocus(markers[activeIdx].coordinates);
-    return () => {};
+    globeRef.current.pointOfView(
+      {
+        lat: markers[activeIdx].lat,
+        lng: markers[activeIdx].lng,
+      },
+      5
+    );
   }, [activeIdx]);
   const markerSvg = `<svg viewBox="-4 0 36 36">
   <path fill="#d7000e" d="M14,0 C21.732,0 28,5.641 28,12.6 C28,23.963 14,36 14,36 C14,36 0,24.064 0,12.6 C0,5.641 6.268,0 14,0 Z"></path>
@@ -70,13 +76,16 @@ export default function Globe({ activeIdx }) {
 </svg>`;
   //currentColor
 
+  const shiftAmmount = 0.2 * window.innerWidth;
   return (
-    <>
+    <div className={styles.globe_wrap}>
       <ReactGlobe
-        animateIn={false}
+        ref={globeRef}
+        animateIn={true}
         backgroundColor="rgba(0,0,0,0)"
         globeImageUrl={Earth}
-        bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
+        showAtmosphere={true}
+        showGraticules={true}
         htmlElementsData={markers}
         htmlElement={(d) => {
           const el = document.createElement("div");
@@ -86,13 +95,10 @@ export default function Globe({ activeIdx }) {
 
           el.style["pointer-events"] = "auto";
           el.style.cursor = "pointer";
-          el.onclick = () => console.log(d);
+          el.onclick = () => updateActiveIdx(d.id);
           return el;
         }}
-        onGlobeClick={({ focus }, console.log("gpgp"))}
-        htmlTransitionDuration={300}
-        focus={focus}
       />
-    </>
+    </div>
   );
 }

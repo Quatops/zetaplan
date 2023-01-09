@@ -16,14 +16,12 @@ export default function GlobalNetwork() {
   return (
     <div className={styles.page_wrapper}>
       <div className={`${styles.content_wrap}`}>
-        <div className={styles.left_wrap}>
-          <Globe
-            className={styles.globe_wrap}
-            activeIdx={activeIdx}
-            updateActiveIdx={updateActiveIdx}
-          />
-        </div>
-        <div className={styles.right_wrap}>ddd</div>
+        <article className={styles.nations_globe_wrap}>
+          <Globe activeIdx={activeIdx} updateActiveIdx={updateActiveIdx} />
+        </article>
+        <article className={styles.nations_networklist_wrap}>
+          ssssssssssssssssssssss
+        </article>
       </div>
     </div>
   );

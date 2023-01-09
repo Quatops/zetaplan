@@ -2,17 +2,27 @@
   overflow: hidden;
   background-color: var(--color-white);
   display: flex;
-  align-items: center;
-}
-.content_wrap {
-  width: 1300px;
+  padding: 3rem;
+  height: 100%;
 }
 
-.left_wrap {
+.content_wrap {
+  width: 1300px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .globe_wrap {
-  display: absolute;
+  width: 650px;
+}
+
+.scene-container {
+  width: 650px;
+}
+
+.left_wrap {
+  width: 500px;
+  overflow: hidden;
 }
 
 .right_wrap {
