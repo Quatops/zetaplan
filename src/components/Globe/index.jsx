@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import ReactGlobe from "react-globe.gl";
 import Earth from "assets/earth_texture.jpg";
-import styles from "../../GlobalNetwork/styles.module.css";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/scale.css";
 const markers = [
@@ -71,7 +70,6 @@ export default function Globe({ activeIdx, updateActiveIdx }) {
         .children.find((obj3d) => obj3d.type === "DirectionalLight");
       directionalLight && directionalLight.position.set(1, 1, 1); // change light position to see the specularMap's effect
     });
-    console.log(globeRef.current.scene());
   });
 
   useEffect(() => {
@@ -94,7 +92,10 @@ export default function Globe({ activeIdx, updateActiveIdx }) {
 
   const shiftAmmount = 0.2 * window.innerWidth;
   return (
-    <div className={styles.globe_wrap}>
+    <div
+      style={{ width: "100%", height: "650px", overflow: "hidden" }}
+      className="flex_center"
+    >
       <ReactGlobe
         ref={globeRef}
         animateIn={true}
