@@ -16,16 +16,55 @@
 .globe_wrap {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 650px;
+}
+.nations_list_wrap {
+  height: 100px;
+}
+.continents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cont_btn {
+  width: 103px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-red);
+  border: 1px solid var(--color-red);
+  border-radius: 10px;
+  margin: 0.5rem;
 }
 
+.nations_wrap {
+  background-color: #f2f2f2;
+  width: 100%;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nation {
+  font-weight: 700;
+  margin: 0 5px;
+}
+.nation:hover {
+  color: var(--color-red);
+}
 .nations_globe_wrap {
   width: 650px;
   overflow: hidden;
 }
-
+.boundary {
+  width: 1px;
+  height: 100%;
+  background-color: var(--color-grey);
+}
 .nations_networklist_wrap {
   width: 600px;
 }
@@ -57,44 +96,8 @@
 }
 
 .network_list {
+  margin-top: 1rem;
   padding: 1rem;
-  height: 690px;
+  height: 680px;
   overflow: auto;
-}
-
-.network_wrap {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 110px;
-  margin: 15px 0;
-}
-.network_desc {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 100%;
-  margin-left: 30px;
-}
-
-.network_name {
-  font-size: 1.25rem;
-  font-weight: 700;
-}
-
-.network_detial {
-  font-size: 0.938rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.network_btn {
-  width: 100px;
-  height: 32px;
-  padding: 5px 35px;
-  border: 1px solid var(--color-grey);
-  color: var(--color-grey);
-  border-radius: 10px;
 }

@@ -6,6 +6,7 @@ import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/scale.css";
 import Globe from "./Globe";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import NetworkCard from "components/NetworkdCard";
 
 export default function GlobalNetwork() {
   const [activeIdx, setActiveIdx] = useState(0);
@@ -66,40 +67,56 @@ export default function GlobalNetwork() {
           name: "ICI",
           detail: "Beijing B&R International Co-incubation",
           "intro-link": "",
-          logo: "",
+          logo: "china1",
         },
         {
           name: "베이징기술교역촉진중심",
           detail: "Beijing Technology Transfer & Exchange, ...",
           "intro-link": "",
-          logo: "",
+          logo: "china2",
         },
         {
           name: "상하이기술교역소",
           detail: "Shanghai Technology Transfer & Exchange Center",
           "intro-link": "",
-          logo: "",
+          logo: "china3",
         },
         {
           name: "절강성과학기술교류중심",
           detail: "Zhejang Provincial and Technology Center...",
           "intro-link": "",
-          logo: "",
+          logo: "china4",
         },
       ],
     },
   ];
-  // // globe 에서 마커 클릭했을 때 클릭한 나라 id값 받을 변수
   // const [nationsNetwork, setNationsNetwork] = useState([]);
   return (
     <div className={styles.page_wrapper}>
       <div className={`${styles.content_wrap}`}>
         <article className={styles.nations_globe_wrap}>
           <Globe activeIdx={activeIdx} updateActiveIdx={updateActiveIdx} />
+          <div className={styles.nations_list_wrap}>
+            <header className={styles.continents}>
+              <button className={styles.cont_btn}>유럽</button>
+              <button className={styles.cont_btn}>아시아</button>
+              <button className={styles.cont_btn}>아메리카</button>
+            </header>
+            <div className={styles.nations_wrap}>
+              <p className={styles.nation}>중국 </p>
+              <p className={styles.nation}>중국 </p>
+              <p className={styles.nation}>중국 </p>
+              <p className={styles.nation}>중국 </p>
+            </div>
+          </div>
         </article>
+        <div className={styles.boundary}></div>
         <article className={styles.nations_networklist_wrap}>
           <header className={styles.nations_header_wrap}>
-            <p className={styles.arrow_icon}>
+            <p
+              className={styles.arrow_icon}
+              onClick={() => updateActiveIdx((prev) => prev !== 0 && prev - 1)}
+            >
               <FiChevronLeft />
             </p>
             <div className={styles.nations_title_wrap}>
@@ -110,22 +127,16 @@ export default function GlobalNetwork() {
                 {nations[activeIdx]["nation-kor"]}
               </div>
             </div>
-            <p className={styles.arrow_icon}>
+            <p
+              className={styles.arrow_icon}
+              onClick={() => updateActiveIdx((prev) => prev + 1)}
+            >
               <FiChevronRight />
             </p>
           </header>
           <article className={styles.network_list}>
             {nations[activeIdx].networks.map((network, index) => (
-              <div className={styles.network_wrap} key={index}>
-                <div className={styles.network_logo}>
-                  <img src={require(`assets/${network.logo}.png`)} />
-                </div>
-                <div className={styles.network_desc}>
-                  <span className={styles.network_name}>{network.name}</span>
-                  <p className={styles.network_detial}>{network.detail}</p>
-                  <button className={styles.network_btn}>소개</button>
-                </div>
-              </div>
+              <NetworkCard key={index} network={network} />
             ))}
           </article>
         </article>
