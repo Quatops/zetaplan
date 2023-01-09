@@ -5,5 +5,6 @@
 
 .main_item {
   height: 100vh;
+  padding-top: 5rem;
   position: relative;
 }

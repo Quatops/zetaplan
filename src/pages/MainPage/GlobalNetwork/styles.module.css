@@ -1,0 +1,21 @@
+.page_wrapper {
+  overflow: hidden;
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+}
+.content_wrap {
+  width: 1300px;
+}
+
+.left_wrap {
+}
+
+.globe_wrap {
+  display: absolute;
+}
+
+.right_wrap {
+  width: 550px;
+  background-color: red;
+}

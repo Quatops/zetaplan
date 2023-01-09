@@ -4,12 +4,16 @@ import React from "react";
 const Menu = ({ num, pageIdx, pageName, updatePage }) => {
   return (
     <div
-      className={`${styles.scroll} ${pageIdx === num && styles.active}`}
+      className={`${styles.scroll} ${pageIdx === num && styles.active} `}
       onClick={() =>
         updatePage(num, window.innerHeight * (num - 1), 0, "smooth")
       }
     >
-      <div className={styles.name}>
+      <div
+        className={`${styles.name} ${
+          pageIdx >= 4 ? styles.black : styles.white
+        }`}
+      >
         {pageName}
         {pageIdx === num && <div className={styles.line}></div>}
       </div>
