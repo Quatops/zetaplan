@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import ReactGlobe from "react-globe.gl";
 import Earth from "assets/earth_texture.jpg";
 import styles from "../../GlobalNetwork/styles.module.css";
+import "tippy.js/dist/tippy.css";
+import "tippy.js/animations/scale.css";
 const markers = [
   {
     id: 0,
@@ -62,12 +64,26 @@ export default function Globe({ activeIdx, updateActiveIdx }) {
   const globeRef = useRef();
 
   useEffect(() => {
+    setTimeout(() => {
+      // wait for scene to be populated (asynchronously)
+      const directionalLight = globeRef.current
+        .scene()
+        .children.find((obj3d) => obj3d.type === "DirectionalLight");
+      directionalLight && directionalLight.position.set(1, 1, 1); // change light position to see the specularMap's effect
+    });
+    console.log(globeRef.current.scene());
+  });
+
+  useEffect(() => {
+    globeRef.current.controls().enableZoom = false;
+    globeRef.current.controls().enablePointerInteraction = true;
     globeRef.current.pointOfView(
       {
         lat: markers[activeIdx].lat,
         lng: markers[activeIdx].lng,
+        altitude: 2.8,
       },
-      5
+      800
     );
   }, [activeIdx]);
   const markerSvg = `<svg viewBox="-4 0 36 36">
@@ -86,6 +102,7 @@ export default function Globe({ activeIdx, updateActiveIdx }) {
         globeImageUrl={Earth}
         showAtmosphere={true}
         showGraticules={true}
+        bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
         htmlElementsData={markers}
         htmlElement={(d) => {
           const el = document.createElement("div");
