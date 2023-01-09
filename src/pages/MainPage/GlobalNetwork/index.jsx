@@ -11,6 +11,40 @@ export default function GlobalNetwork() {
   const updateActiveIdx = (idx) => {
     setActiveIdx(idx);
   };
+
+  const nations = [
+    {
+      id: 0,
+      "nation-eng": "CHINA",
+      "nation-kor": "중국",
+      networks: [
+        {
+          name: "ICI",
+          detail: "Beijing B&R International Co-incubation",
+          "intro-link": "",
+          logo: "",
+        },
+        {
+          name: "베이징기술교역촉진중심",
+          detail: "Beijing Technology Transfer & Exchange, ...",
+          "intro-link": "",
+          logo: "",
+        },
+        {
+          name: "상하이기술교역소",
+          detail: "Shanghai Technology Transfer & Exchange Center",
+          "intro-link": "",
+          logo: "",
+        },
+        {
+          name: "절강성과학기술교류중심",
+          detail: "Zhejang Provincial and Technology Center...",
+          "intro-link": "",
+          logo: "",
+        },
+      ],
+    },
+  ];
   // // globe 에서 마커 클릭했을 때 클릭한 나라 id값 받을 변수
   // const [nationsNetwork, setNationsNetwork] = useState([]);
   return (
@@ -20,7 +54,7 @@ export default function GlobalNetwork() {
           <Globe activeIdx={activeIdx} updateActiveIdx={updateActiveIdx} />
         </article>
         <article className={styles.nations_networklist_wrap}>
-          ssssssssssssssssssssss
+          <header></header>
         </article>
       </div>
     </div>

@@ -3,29 +3,32 @@
   background-color: var(--color-white);
   display: flex;
   padding: 3rem;
+  justify-content: center;
   height: 100%;
 }
 
 .content_wrap {
-  width: 1300px;
+  width: 1350px;
+  background-color: blue;
   display: flex;
   justify-content: space-between;
 }
 
 .globe_wrap {
-  width: 650px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
-.scene-container {
+.nations_globe_wrap {
   width: 650px;
-}
-
-.left_wrap {
-  width: 500px;
   overflow: hidden;
+  background-color: red;
 }
 
-.right_wrap {
-  width: 550px;
+.nations_networklist_wrap {
+  width: 600px;
   background-color: red;
 }
