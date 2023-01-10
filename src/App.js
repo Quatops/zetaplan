@@ -2,14 +2,14 @@ import Header from "./components/Header";
 import { Outlet } from "react-router-dom";
 import React, { useState } from "react";
 function App() {
-  const [activeNav, setActiveNav] = useState(false);
-  const updateActiveNav = (isActive) => {
-    setActiveNav(isActive);
+  const [isWhite, setIsWhite] = useState(false);
+  const updateisWhite = (isWhite) => {
+    setIsWhite(isWhite);
   };
   return (
     <div className="App">
-      <Header activeNav={activeNav} updateActiveNav={updateActiveNav} />
-      <Outlet context={updateActiveNav} />
+      <Header isWhite={isWhite} updateisWhite={updateisWhite} />
+      <Outlet context={updateisWhite} />
     </div>
   );
 }

@@ -20,10 +20,6 @@ export default function MainPage() {
       behavior,
     });
     setPageIdx(idx);
-    if (idx === 2) {
-      updateActiveNav(false);
-    }
-
     idx === 4 ? updateActiveNav(true) : updateActiveNav(false);
   };
 
