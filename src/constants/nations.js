@@ -5,6 +5,9 @@ export const nations = [
     continent: 0,
     name_eng: "France",
     name_kor: "프랑스",
+    flag: "china_flag",
+    lat: 46.227638,
+    lng: 2.213749,
     networks: [
       {
         name: "프랑스임ICI",
@@ -47,29 +50,41 @@ export const nations = [
   {
     id: 1,
     continent: 0,
+    flag: "china_flag",
     name_eng: "United Kingdom",
     name_kor: "영국",
+    lat: 55.378051,
+    lng: -3.435973,
     networks: [],
   },
   {
     id: 2,
     continent: 0,
-    name_eng: "United Kingdom",
-    name_kor: "영국2",
+    flag: "china_flag",
+    name_eng: "Spain",
+    name_kor: "스페인",
+    lat: 40.463667,
+    lng: -3.74922,
     networks: [],
   },
   {
     id: 3,
     continent: 0,
-    name_eng: "United Kingdom",
-    name_kor: "영국3",
+    flag: "china_flag",
+    name_eng: "Germany",
+    name_kor: "독일",
+    lat: 51.165691,
+    lng: 10.451526,
     networks: [],
   },
   {
     id: 4,
     continent: 1,
+    flag: "china_flag",
     name_eng: "CHINA",
     name_kor: "중국",
+    lat: 35.86166,
+    lng: 104.195397,
     networks: [
       {
         name: "ICI",
@@ -112,8 +127,11 @@ export const nations = [
   {
     id: 5,
     continent: 1,
+    flag: "china_flag",
     name_eng: "Vietnam",
     name_kor: "베트남",
+    lat: 14.058324,
+    lng: 108.277199,
     networks: [
       {
         name: "ICI",
@@ -144,8 +162,11 @@ export const nations = [
   {
     id: 6,
     continent: 1,
+    flag: "china_flag",
     name_eng: "Singapore",
     name_kor: "싱가포르",
+    lat: 1.352083,
+    lng: 103.819836,
     networks: [
       {
         name: "ICI",
@@ -176,8 +197,11 @@ export const nations = [
   {
     id: 7,
     continent: 1,
+    flag: "china_flag",
     name_eng: "Malaysia",
     name_kor: "말레이시아",
+    lat: 4.210484,
+    lng: 101.975766,
     networks: [
       {
         name: "ICI",
@@ -208,8 +232,11 @@ export const nations = [
   {
     id: 8,
     continent: 1,
+    flag: "china_flag",
     name_eng: "Japan",
     name_kor: "일본",
+    lat: 36.204824,
+    lng: 138.252924,
     networks: [
       {
         name: "ICI",
@@ -240,8 +267,11 @@ export const nations = [
   {
     id: 9,
     continent: 1,
+    flag: "china_flag",
     name_eng: "Indonesia",
     name_kor: "인니",
+    lat: -0.789275,
+    lng: 113.921327,
     networks: [
       {
         name: "ICI",
@@ -273,6 +303,7 @@ export const nations = [
   {
     id: 10,
     continent: 2,
+    flag: "china_flag",
     name_eng: "Africa1",
     name_kor: "아프리카1",
     networks: [],
@@ -280,6 +311,7 @@ export const nations = [
   {
     id: 11,
     continent: 2,
+    flag: "china_flag",
     name_eng: "Africa2",
     name_kor: "아프리카2",
     networks: [],
@@ -287,6 +319,7 @@ export const nations = [
   {
     id: 12,
     continent: 2,
+    flag: "china_flag",
     name_eng: "Africa3",
     name_kor: "아프리카3",
     networks: [],
@@ -294,6 +327,7 @@ export const nations = [
   {
     id: 13,
     continent: 2,
+    flag: "china_flag",
     name_eng: "Africa4",
     name_kor: "아프리카4",
     networks: [],
@@ -301,6 +335,7 @@ export const nations = [
   {
     id: 13,
     continent: 2,
+    flag: "china_flag",
     name_eng: "Africa5",
     name_kor: "아프리카5",
     networks: [],
