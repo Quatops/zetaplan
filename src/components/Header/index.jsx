@@ -25,12 +25,12 @@ export default function Header() {
           } flex_between`}
         >
           <ul>
-            <Link to='/'>
+            <Link to="/">
               <li className={styles.nav_logo}>
                 {activeNav ? (
-                  <img src={require("assets/LogoBlack.png")} alt='Logo' />
+                  <img src={require("assets/LogoBlack.png")} alt="Logo" />
                 ) : (
-                  <img src={require("assets/Logo.png")} alt='Logo' />
+                  <img src={require("assets/Logo.png")} alt="Logo" />
                 )}
               </li>
             </Link>
@@ -55,7 +55,7 @@ export default function Header() {
           <li className={`${styles.search_wrapper} ${styles.nav_item}`}>
             <input
               className={styles.search}
-              placeholder=' #오늘의 #스타트업 '
+              placeholder=" #오늘의 #스타트업 "
             />
             <FaSearch className={styles.search_icon} />
           </li>

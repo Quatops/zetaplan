@@ -1,0 +1,107 @@
+.page_wrapper {
+  overflow: hidden;
+  background-color: var(--color-white);
+  display: flex;
+  padding: 3rem;
+  justify-content: center;
+  height: 100%;
+}
+
+.content_wrap {
+  width: 1350px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nations_list_wrap {
+  height: 100px;
+}
+.continents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nations_wrap {
+  background-color: #f2f2f2;
+  width: 100%;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nation {
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  margin: 0 5px;
+}
+.nation:hover,
+.nation.active {
+  color: var(--color-red);
+}
+.nations_globe_wrap {
+  width: 650px;
+  overflow: hidden;
+}
+.boundary {
+  width: 1px;
+  height: 100%;
+  background-color: var(--color-grey);
+}
+.nations_networklist_wrap {
+  width: 600px;
+}
+.arrow_icon {
+  font-size: 40px;
+  cursor: pointer;
+  font-weight: bolder;
+  color: var(--color-grey);
+  transition: all 300ms ease;
+}
+
+.arrow_icon:hover {
+  color: var(--color-black);
+}
+
+.nations_header_wrap {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nations_title_eng {
+  text-transform: uppercase;
+  font-size: 2.25rem;
+  font-weight: 800;
+}
+.nations_title_kor {
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.network_list {
+  margin-top: 1rem;
+  padding: 1rem;
+  height: 680px;
+  overflow: auto;
+}
+.conti_btn {
+  width: 103px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-red);
+  border: 1px solid var(--color-red);
+  border-radius: 10px;
+  transition: all 500ms var(--ease-out-quint);
+  margin: 0.5rem;
+}
+
+.conti_btn:hover,
+.conti_btn.active {
+  background-color: var(--color-red);
+  color: var(--color-white);
+  border: 1px solid var(--color-white);
+}
