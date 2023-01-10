@@ -21,6 +21,17 @@
   justify-content: space-between;
 }
 
+.flag {
+  width: 95px;
+  height: 65px;
+}
+
+.flag img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
 .nation_info {
   display: flex;
   align-items: center;
