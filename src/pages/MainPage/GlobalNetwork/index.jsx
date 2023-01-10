@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import styles from "./styles.module.css";
 
 // import optional tippy styles for tooltip support
-import "tippy.js/dist/tippy.css";
-import "tippy.js/animations/scale.css";
 import Globe from "components/Globe";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import NetworkCard from "components/NetworkdCard";

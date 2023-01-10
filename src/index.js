@@ -30,6 +30,7 @@ import InvestmentBuisnessPlan from "pages/InvestmentIr/InvestmentBuisnessPlan";
 import MnAOverview from "pages/MnA/MnAOverview";
 
 import { category } from "constants/category";
+import AdminPostRegist from "pages/AdminPostRegist";
 
 const router = createBrowserRouter([
   {
@@ -104,6 +105,10 @@ const router = createBrowserRouter([
         ],
       },
     ],
+  },
+  {
+    path: "/admin",
+    element: <AdminPostRegist />,
   },
 ]);
 
