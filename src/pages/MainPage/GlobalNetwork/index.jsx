@@ -52,14 +52,14 @@ export default function GlobalNetwork() {
             <header className={styles.continents}>{contimentBtns()}</header>
             <div className={styles.nations_wrap}>
               {nations.map(
-                (nation, index) =>
+                (nation) =>
                   nation.continent === activeContinentIdx && (
                     <p
-                      key={nations.id}
+                      key={nation.id}
                       className={`${styles.nation} ${
-                        activeNationIdx === index && styles.active
+                        activeNationIdx === nation.id && styles.active
                       }`}
-                      onClick={() => setActiveNationIdx(index)}
+                      onClick={() => setActiveNationIdx(nation.id)}
                     >
                       {nation.name_kor}
                     </p>

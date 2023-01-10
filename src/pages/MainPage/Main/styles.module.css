@@ -10,6 +10,7 @@
 .main_container {
   width: 1300px;
   height: 790px;
+  overflow: hidden;
   background-color: transparent;
   display: flex;
   justify-content: space-between;
