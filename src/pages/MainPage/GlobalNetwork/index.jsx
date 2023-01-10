@@ -23,7 +23,7 @@ export default function GlobalNetwork() {
   };
   const contimentBtns = () => {
     const result = [];
-    const continents = ["유럽", "아시아", "아프리카"];
+    const continents = ["유럽", "아시아", "아메리카"];
     for (let i = 0; i < continents.length; ++i) {
       result.push(
         <button

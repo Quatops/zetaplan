@@ -68,7 +68,6 @@ export default function Globe({ activeIdx, updateActiveIdx }) {
           el.innerHTML += markerSvg;
           el.style.color = "#d7000e";
           el.style.width = "30px";
-
           el.style["pointer-events"] = "auto";
           el.style.cursor = "pointer";
           el.onclick = () => updateActiveIdx(d.id);
