@@ -5,7 +5,7 @@ export default function NetworkCard({ network }) {
   return (
     <div className={styles.network_wrap}>
       <div className={styles.network_logo}>
-        <img src={require(`assets/${network.logo}.png`)} />
+        <img src={require(`assets/${network.logo}.png`)} alt="logo" />
       </div>
       <div className={styles.network_desc}>
         <span className={styles.network_name}>{network.name}</span>

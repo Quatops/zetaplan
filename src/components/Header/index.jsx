@@ -5,20 +5,25 @@ import GlobalNav from "./GlobalNavbar";
 import { category, subCategory } from "constants/category";
 import { Link } from "react-router-dom";
 
-export default function Header() {
-  const [activeNav, setActiveNav] = useState(false);
-  const showNavbar = (isActive) => {
-    setActiveNav(isActive);
-  };
+export default function Header({ activeNav, updateActiveNav }) {
   const [activeCate, setActiveCate] = useState(null);
+  const [showCate, setShowCate] = useState(false);
 
   const categoryHover = (bigCategoryId) => {
+    setShowCate(true);
     setActiveCate(bigCategoryId);
+  };
+  const updateActiveCate = (isActive) => {
+    updateActiveNav(isActive);
+    setShowCate(isActive);
   };
 
   return (
     <>
-      <header className={styles.header} onMouseLeave={() => showNavbar(false)}>
+      <header
+        className={styles.header}
+        onMouseLeave={() => updateActiveCate(false)}
+      >
         <nav
           className={`${styles.nav_wrapper} ${
             activeNav && styles.active_sub
@@ -35,7 +40,10 @@ export default function Header() {
               </li>
             </Link>
           </ul>
-          <ul className={styles.nav} onMouseEnter={() => showNavbar(true)}>
+          <ul
+            className={styles.nav}
+            onMouseEnter={() => updateActiveCate(true)}
+          >
             {category.map((value) => (
               <Link
                 to={value.path}
@@ -74,7 +82,7 @@ export default function Header() {
             className={`${styles.line} ${activeNav && styles.active_sub}`}
           ></div>
         </nav>
-        {activeNav && <GlobalNav categoryHover={categoryHover} />}
+        {showCate && <GlobalNav categoryHover={categoryHover} />}
       </header>
     </>
   );

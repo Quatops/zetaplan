@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import styles from "./styles.module.css";
+import { useOutletContext } from "react-router-dom";
+
 import Main from "./Main";
 import AcceleratingProgram from "./AcceleratingProgram";
 import InvestmentPortfolio from "./InvestmentPortfolio";
@@ -9,6 +11,7 @@ import InvestmentInquiry from "pages/InvestmentInquiry";
 
 export default function MainPage() {
   const [pageIdx, setPageIdx] = useState(1);
+  const updateActiveNav = useOutletContext();
   const mainWrapperRef = useRef();
   const updatePage = (idx, top, left, behavior) => {
     mainWrapperRef.current.scrollTo({
@@ -17,6 +20,11 @@ export default function MainPage() {
       behavior,
     });
     setPageIdx(idx);
+    if (idx === 2) {
+      updateActiveNav(false);
+    }
+
+    idx === 4 ? updateActiveNav(true) : updateActiveNav(false);
   };
 
   useEffect(() => {
