@@ -9,7 +9,7 @@
   padding: 21px 50px;
   width: 100%;
   height: 100%;
-  transition: all 500ms ease-in;
+  transition: all 700ms var(--ease-out-quint);
   position: relative;
   background-color: rgba(255, 255, 255, 0.2);
 }

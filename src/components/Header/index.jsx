@@ -5,16 +5,20 @@ import GlobalNav from "./GlobalNavbar";
 import { category, subCategory } from "constants/category";
 import { Link } from "react-router-dom";
 
-export default function Header({ activeNav, updateActiveNav }) {
-  const [activeCate, setActiveCate] = useState(null);
+/*
+showCate : 카테고리를 보여줄것인지에 대한 변수. 
+activeCateIdx : header nav-item중 활성화된 카테고리의 idx
+isWhite : header 테마가 white인지 default인지에 대한 변수.
+*/
+export default function Header({ isWhite }) {
+  const [activeCateIdx, setActiveCateIdx] = useState(null);
   const [showCate, setShowCate] = useState(false);
 
   const categoryHover = (bigCategoryId) => {
     setShowCate(true);
-    setActiveCate(bigCategoryId);
+    setActiveCateIdx(bigCategoryId);
   };
-  const updateActiveCate = (isActive) => {
-    updateActiveNav(isActive);
+  const updateShowCate = (isActive) => {
     setShowCate(isActive);
   };
 
@@ -22,17 +26,17 @@ export default function Header({ activeNav, updateActiveNav }) {
     <>
       <header
         className={styles.header}
-        onMouseLeave={() => updateActiveCate(false)}
+        onMouseLeave={() => updateShowCate(false)}
       >
         <nav
           className={`${styles.nav_wrapper} ${
-            activeNav && styles.active_sub
+            (isWhite || showCate) && styles.active_sub
           } flex_between`}
         >
           <ul>
             <Link to="/">
               <li className={styles.nav_logo}>
-                {activeNav ? (
+                {isWhite || showCate ? (
                   <img src={require("assets/LogoBlack.png")} alt="Logo" />
                 ) : (
                   <img src={require("assets/Logo.png")} alt="Logo" />
@@ -40,10 +44,7 @@ export default function Header({ activeNav, updateActiveNav }) {
               </li>
             </Link>
           </ul>
-          <ul
-            className={styles.nav}
-            onMouseEnter={() => updateActiveCate(true)}
-          >
+          <ul className={styles.nav} onMouseEnter={() => updateShowCate(true)}>
             {category.map((value) => (
               <Link
                 to={value.path}
@@ -52,8 +53,8 @@ export default function Header({ activeNav, updateActiveNav }) {
               >
                 <li
                   className={`${styles.nav_item} ${
-                    activeNav && styles.active_sub
-                  } ${activeCate === value.id && styles.selected}`}
+                    (isWhite || showCate) && styles.active_sub
+                  } ${activeCateIdx === value.id && styles.selected}`}
                 >
                   <p>{value.title}</p>
                 </li>
@@ -69,7 +70,7 @@ export default function Header({ activeNav, updateActiveNav }) {
           </li>
           <li
             className={`${styles.language_wrapper} ${
-              activeNav && styles.active_sub
+              (isWhite || showCate) && styles.active_sub
             }`}
           >
             <p className={styles.language}>KR</p>
@@ -79,7 +80,9 @@ export default function Header({ activeNav, updateActiveNav }) {
             <p className={styles.language}>CN</p>
           </li>
           <div
-            className={`${styles.line} ${activeNav && styles.active_sub}`}
+            className={`${styles.line} ${
+              (isWhite || showCate) && styles.active_sub
+            }`}
           ></div>
         </nav>
         {showCate && <GlobalNav categoryHover={categoryHover} />}
