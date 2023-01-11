@@ -66,9 +66,13 @@ export default function MainPage() {
       }
     };
     const wrapperRefCurrent = mainWrapperRef.current;
-    wrapperRefCurrent.addEventListener("wheel", wheelHandler);
+    wrapperRefCurrent.addEventListener("wheel", wheelHandler, {
+      passive: true,
+    });
     return () => {
-      wrapperRefCurrent.removeEventListener("wheel", wheelHandler);
+      wrapperRefCurrent.removeEventListener("wheel", wheelHandler, {
+        passive: true,
+      });
     };
   });
 
