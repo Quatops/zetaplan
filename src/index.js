@@ -1,105 +1,105 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 /* MainPage */
-import MainPage from "./pages/MainPage";
+import MainPage from './pages/MainPage';
 
 /* SubPage */
-import SubPage from "pages/SubPage";
+import SubPage from 'pages/SubPage';
 
 /* CompanyIntro */
-import Greetings from "pages/ComapnyIntro/Greetings";
-import ConsultingService from "pages/ComapnyIntro/ConsultingService";
-import ConsultingAbout from "pages/ComapnyIntro/ConsultingAbout";
-import MainArticle from "pages/ComapnyIntro/MainArticle";
-import CIGuide from "pages/ComapnyIntro/CIGuide";
-import ZetaplanMarks from "pages/ComapnyIntro/ZetaplanMarks";
-import AffiliateNetwork from "pages/ComapnyIntro/AffiliateNetwork";
+import Greetings from 'pages/ComapnyIntro/Greetings';
+import ConsultingService from 'pages/ComapnyIntro/ConsultingService';
+import ConsultingAbout from 'pages/ComapnyIntro/ConsultingAbout';
+import MainArticle from 'pages/ComapnyIntro/MainArticle';
+import CIGuide from 'pages/ComapnyIntro/CIGuide';
+import ZetaplanMarks from 'pages/ComapnyIntro/ZetaplanMarks';
+import AffiliateNetwork from 'pages/ComapnyIntro/AffiliateNetwork';
 
 /* Accelerating */
-import AcceleratingOverview from "pages/Accelerating";
+import AcceleratingOverview from 'pages/Accelerating';
 
 /*InvestmentIr */
-import InvestmentOverview from "pages/InvestmentIr/InvestmentOverview";
-import InvestmentBuisnessPlan from "pages/InvestmentIr/InvestmentBuisnessPlan";
+import InvestmentOverview from 'pages/InvestmentIr/InvestmentOverview';
+import InvestmentBuisnessPlan from 'pages/InvestmentIr/InvestmentBuisnessPlan';
 
-import MnAOverview from "pages/MnA/MnAOverview";
+import MnAOverview from 'pages/MnA/MnAOverview';
 
-import { category } from "constants/category";
-import AdminPostRegist from "pages/AdminPostRegist";
+import { category } from 'constants/category';
+import AdminPostRegist from 'pages/AdminPostRegist';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     errorElement: <p>Not Found</p>,
     children: [
-      { index: true, path: "/", element: <MainPage /> },
+      { index: true, path: '/', element: <MainPage /> },
       {
-        path: "company-intro",
+        path: 'company-intro',
         element: <SubPage pageName={category[0].title} />,
         children: [
-          { index: true, path: "greetings", element: <Greetings /> },
+          { index: true, path: 'greetings', element: <Greetings /> },
           {
-            path: "zeta-plan-consulting-services-sector",
+            path: 'zeta-plan-consulting-services-sector',
             element: <ConsultingService />,
           },
           {
-            path: "consultant-about",
+            path: 'consultant-about',
             element: <ConsultingAbout />,
           },
           {
-            path: "the-main-economic-newspaper-article",
+            path: 'the-main-economic-newspaper-article',
             element: <MainArticle />,
           },
-          { path: "affiliate-network", element: <AffiliateNetwork /> },
+          { path: 'affiliate-network', element: <AffiliateNetwork /> },
           {
-            path: "ci-guide",
+            path: 'ci-guide',
             element: <CIGuide />,
           },
           {
-            path: "zeta-plan-marks",
+            path: 'zeta-plan-marks',
             element: <ZetaplanMarks />,
           },
         ],
       },
       {
-        path: "accelerating",
+        path: 'accelerating',
         element: <SubPage pageName={category[1].title} />,
         children: [
           {
             index: true,
-            path: "accelerating-overview",
+            path: 'accelerating-overview',
             element: <AcceleratingOverview />,
           },
         ],
       },
       {
-        path: "investment-ir",
+        path: 'investment-ir',
         element: <SubPage pageName={category[2].title} />,
         children: [
           {
             index: true,
-            path: "investment-consulting-ir-overview",
+            path: 'investment-consulting-ir-overview',
             element: <InvestmentOverview />,
           },
           {
-            path: "investment-ir-business-plan",
+            path: 'investment-ir-business-plan',
             element: <InvestmentBuisnessPlan />,
           },
         ],
       },
       {
-        path: "mergers-and-acquisitions",
+        path: 'mergers-and-acquisitions',
         element: <SubPage pageName={category[3].title} />,
         children: [
           {
             index: true,
-            path: "mergers-and-acquisitions-overview",
+            path: 'mergers-and-acquisitions-overview',
             element: <MnAOverview />,
           },
         ],
@@ -107,12 +107,12 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/admin",
+    path: '/admin',
     element: <AdminPostRegist />,
   },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RouterProvider router={router} />);
 
 // If you want to start measuring performance in your app, pass a function

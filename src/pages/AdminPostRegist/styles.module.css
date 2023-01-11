@@ -1,5 +1,11 @@
 .admin_wrap {
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
   background-color: var(--color-white);
+}
+
+.tox-toolbar__primary {
+  display: flex;
+  justify-content: center;
 }

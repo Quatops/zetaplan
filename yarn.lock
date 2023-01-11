@@ -2503,6 +2503,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tinymce/tinymce-react@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "@tinymce/tinymce-react@npm:4.2.0"
+  dependencies:
+    prop-types: ^15.6.2
+    tinymce: ^6.0.0 || ^5.5.1
+  peerDependencies:
+    react: ^18.0.0 || ^17.0.1 || ^16.7.0
+    react-dom: ^18.0.0 || ^17.0.1 || ^16.7.0
+  checksum: 4aed633830e79aff8c1ba3518180f9a12edecc3c681d150cb7959e2b04d6c6d0af2fed97d3ef6afae5722c0c1fe5499da648756621e3ecf2f2bc48aeb614947b
+  languageName: node
+  linkType: hard
+
 "@tootallnate/once@npm:1":
   version: 1.1.2
   resolution: "@tootallnate/once@npm:1.1.2"
@@ -10565,7 +10578,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.8, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.6.2, prop-types@npm:^15.8, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -10749,16 +10762,6 @@ __metadata:
   peerDependencies:
     react: "*"
   checksum: dad72828e474181cf4825348bd1dd657970c44a85ee995f2b47c3eca15c426c33acbb58a2ac4f0bde69e7917b6f293d93db6c8031f3db4a3ef581e8e00c6a2b3
-  languageName: node
-  linkType: hard
-
-"react-icon@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "react-icon@npm:1.0.0"
-  peerDependencies:
-    babel-runtime: ^5.3.3
-    react: ">=0.12.0"
-  checksum: 3c36c9a2ad076e480c352ba4e4006aba3ff7d57f2597ae6daad5becc18d9ceabe098234ddef6fcd1c9886cf751059ff487e49ec6ecdf7bc8bdac6a0deec4d033
   languageName: node
   linkType: hard
 
@@ -12350,6 +12353,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tinymce@npm:^6.0.0 || ^5.5.1":
+  version: 6.3.1
+  resolution: "tinymce@npm:6.3.1"
+  checksum: 43c5dd3de9bfbdc3092b4eeeca56cff5df39a097764b60bc12940161f69e396f9fed590528d9d29457f8887c97e4213f603ed8cee9796d851dcce5dfb998d934
+  languageName: node
+  linkType: hard
+
 "tmpl@npm:1.0.5":
   version: 1.0.5
   resolution: "tmpl@npm:1.0.5"
@@ -13416,12 +13426,12 @@ __metadata:
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^13.4.0
     "@testing-library/user-event": ^13.5.0
+    "@tinymce/tinymce-react": ^4.2.0
     eslint-config-react-app: ^7.0.1
     moment: ^2.29.4
     react: ^18.2.0
     react-dom: ^18.2.0
     react-globe.gl: ^2.22.10
-    react-icon: ^1.0.0
     react-icons: ^4.7.1
     react-router-dom: ^6.6.1
     react-scripts: 5.0.1

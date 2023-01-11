@@ -38,7 +38,7 @@ export default function Globe({ activeIdx, updateActiveIdx }) {
     <div class=${styles.nationInfo_wrap}>
       <div class=${styles.nation_info}>
         <div class=${styles.flag}>
-          <img src=${require(`assets/${nation.flag}.png`)}>
+          <img src=${require(`assets/${nation.flag}.png`)} alt="flag">
         </div>
         <div class=${styles.nation_name}>
           <p>${nation.name_eng}</p>

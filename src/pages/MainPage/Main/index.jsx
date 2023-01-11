@@ -9,9 +9,9 @@ import { FiPlus } from "react-icons/fi";
 const Button = ({ name, img }) => {
   return (
     <button className={styles.etc_btn}>
-      <div className='flex_center'>
+      <div className="flex_center">
         <div className={styles.etc_icon}>
-          <img src={require(`assets/${img}.png`)} alt='icon' />
+          <img src={require(`assets/${img}.png`)} alt="icon" />
         </div>
         {name}
       </div>
@@ -276,7 +276,7 @@ export default function Main() {
               {assess_button.map((value, index) => (
                 <button className={styles.ass_btn} key={index}>
                   <div className={styles.ass_icon}>
-                    <img src={require(`assets/${value.icon}.png`)} alt='icon' />
+                    <img src={require(`assets/${value.icon}.png`)} alt="icon" />
                   </div>
                   <p className={styles.ass_name}>{value.name}</p>
                 </button>
@@ -285,11 +285,11 @@ export default function Main() {
             <section className={styles.etc_info}>
               <div className={styles.etc_button_wrapper}>
                 <Button
-                  name='기술사업화'
-                  img='technology_commercialization_icon'
+                  name="기술사업화"
+                  img="technology_commercialization_icon"
                 />
-                <Button name='R&BD전략수집' img='cooperation_icon' />
-                <Button name='협력네트워크' img='cooperation_network_icon' />
+                <Button name="R&BD전략수집" img="cooperation_icon" />
+                <Button name="협력네트워크" img="cooperation_network_icon" />
               </div>
             </section>
             <section className={styles.map_info}>
@@ -298,7 +298,7 @@ export default function Main() {
                 <p>오시는 길을 안내해 드립니다.</p>
               </div>
               <div>
-                <img src={require("assets/map_icon.png")} alt='map_icon' />
+                <img src={require("assets/map_icon.png")} alt="map_icon" />
               </div>
             </section>
           </section>

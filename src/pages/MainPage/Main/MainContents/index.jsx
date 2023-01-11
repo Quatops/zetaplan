@@ -31,7 +31,7 @@ const NewsDetail = ({ news }) => {
   return (
     <>
       <div className={styles.thumb}>
-        <img src={require(`assets/${news.thumb}.png`)} alt='thumb' />
+        <img src={require(`assets/${news.thumb}.png`)} alt="thumb" />
       </div>
       <div className={styles.news_title}>{news.title}</div>
       <div className={styles.content}>{news.content}</div>
