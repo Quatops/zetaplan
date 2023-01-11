@@ -1,15 +1,14 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { EDITOR_CONFIG } from './config';
 
 export default function TextEditor() {
   const editorRef = useRef(null);
-
-  const log = () => {
+  useEffect(() => {
     if (editorRef.current) {
       console.log(editorRef.current.getContent());
     }
-  };
+  }, []);
 
   return (
     <>
@@ -20,10 +19,12 @@ export default function TextEditor() {
         style={{ display: 'none' }}
       />
       <Editor
-        onInit={(evt, editor) => (editorRef.current = editor)}
+        onInit={(evt, editor) => {
+          editorRef.current = editor;
+          editor.contentCSS.push(require('./style.css'));
+        }}
         {...EDITOR_CONFIG}
       />
-      <button onClick={log}>클릭해서 열어라.</button>
     </>
   );
 }

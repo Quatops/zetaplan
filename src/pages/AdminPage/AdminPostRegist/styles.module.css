@@ -1,0 +1,28 @@
+.admin_wrap {
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--color-white);
+}
+
+.submit_btn {
+  color: var(--color-white);
+  position: absolute;
+  background-color: var(--color-black);
+  width: 200px;
+  height: 45px;
+  border-radius: 10px;
+  bottom: 30px;
+  right: 30px;
+}
+.text_area {
+  width: 100%;
+  height: calc(100% - 50px);
+}
+
+.header_temp {
+  height: 50px;
+  width: 100%;
+  background-color: var(--color-grey);
+}

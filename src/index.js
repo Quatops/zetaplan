@@ -12,25 +12,26 @@ import MainPage from './pages/MainPage';
 import SubPage from 'pages/SubPage';
 
 /* CompanyIntro */
-import Greetings from 'pages/ComapnyIntro/Greetings';
-import ConsultingService from 'pages/ComapnyIntro/ConsultingService';
-import ConsultingAbout from 'pages/ComapnyIntro/ConsultingAbout';
-import MainArticle from 'pages/ComapnyIntro/MainArticle';
-import CIGuide from 'pages/ComapnyIntro/CIGuide';
-import ZetaplanMarks from 'pages/ComapnyIntro/ZetaplanMarks';
-import AffiliateNetwork from 'pages/ComapnyIntro/AffiliateNetwork';
+import Greetings from 'pages/SubPage/ComapnyIntro/Greetings';
+import ConsultingService from 'pages/SubPage/ComapnyIntro/ConsultingService';
+import ConsultingAbout from 'pages/SubPage/ComapnyIntro/ConsultingAbout';
+import MainArticle from 'pages/SubPage/ComapnyIntro/MainArticle';
+import CIGuide from 'pages/SubPage/ComapnyIntro/CIGuide';
+import ZetaplanMarks from 'pages/SubPage/ComapnyIntro/ZetaplanMarks';
+import AffiliateNetwork from 'pages/SubPage/ComapnyIntro/AffiliateNetwork';
 
 /* Accelerating */
-import AcceleratingOverview from 'pages/Accelerating';
+import AcceleratingOverview from 'pages/SubPage/Accelerating';
 
 /*InvestmentIr */
-import InvestmentOverview from 'pages/InvestmentIr/InvestmentOverview';
-import InvestmentBuisnessPlan from 'pages/InvestmentIr/InvestmentBuisnessPlan';
+import InvestmentBuisnessPlan from 'pages/SubPage/InvestmentIr/InvestmentBuisnessPlan';
+import InvestmentOverview from 'pages/SubPage/InvestmentIr/InvestmentOverview';
 
-import MnAOverview from 'pages/MnA/MnAOverview';
+import MnAOverview from 'pages/SubPage/MnA/MnAOverview';
 
 import { category } from 'constants/category';
-import AdminPostRegist from 'pages/AdminPostRegist';
+import AdminPostRegist from 'pages/AdminPage/AdminPostRegist';
+import AdminLogin from 'pages/AdminLogin';
 
 const router = createBrowserRouter([
   {
@@ -108,6 +109,10 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin',
+    element: <AdminLogin />,
+  },
+  {
+    path: '/admin/write',
     element: <AdminPostRegist />,
   },
 ]);

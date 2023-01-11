@@ -18,9 +18,14 @@ body {
   width: 100vw;
   height: 100vh;
   font-size: 1rem;
+}
+
+.page_background {
+  width: 100vw;
+  height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url(./assets/Background.png);
+  background-image: url(./assets/Background.webp);
 }
 
 * {
@@ -88,4 +93,4 @@ button {
   background-color: var(--color-darkgrey);
 }
 
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css');

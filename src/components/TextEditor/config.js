@@ -1,4 +1,27 @@
 const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+const content_style = `
+html {
+  padding: 1rem;
+  width: 50%;
+  margin: 0 auto;
+  -webkit-box-shadow: 4px 4px 14px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 4px 4px 14px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 4px 14px 0px rgba(0, 0, 0, 0.2);
+  height: 100%;
+}
+body {
+  font-family: 나눔고딕, 나눔스퀘어, 돋움, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  border: none;
+}
+#tinymce{
+  height: 100%;
+  overflow: scroll;
+}
+
+`;
+
 export const EDITOR_CONFIG = {
   init: {
     /*setup: (editor) => {
@@ -9,12 +32,11 @@ export const EDITOR_CONFIG = {
     },  => 버튼 커스텀할때... icon도 커스텀하긴 할 수 있나보다. 노오력을하면...*/
 
     /* 기본설정 */
-    content_style:
-      'body { font-family:나눔고딕,나눔스퀘어,돋움,Helvetica,Arial,sans-serif; font-size:14px }',
+    content_style,
+    content_css: useDarkMode ? 'dark' : 'default',
     language: 'ko_KR',
     selector: 'textarea',
     placeholder: '내용을 입력하세요.',
-    height: '100%',
     statusbar: false,
     menubar: false,
     plugins:
@@ -52,8 +74,7 @@ export const EDITOR_CONFIG = {
     quickbars_selection_toolbar:
       'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
     font_family_formats:
-      '나눔고딕;나눔스퀘어;나눔바른고딕;돋움;돋움체;굴림;굴림체;궁서;궁서체;Arial=arial;Helvetica=helvetica,sans-serif; Courier New=courier new,courier,monospace; AkrutiKndPadmini=Akpdmi-n',
+      '나눔고딕;나눔스퀘어;나눔바른고딕;고닥;돋움;돋움체;굴림;굴림체;궁서;궁서체;Arial=arial;Helvetica=helvetica,sans-serif; Courier New=courier new,courier,monospace; AkrutiKndPadmini=Akpdmi-n',
     skin: useDarkMode ? 'oxide-dark' : 'oxide',
-    content_css: useDarkMode ? 'dark' : 'default',
   },
 };
