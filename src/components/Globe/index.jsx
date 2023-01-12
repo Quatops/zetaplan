@@ -1,8 +1,13 @@
-import React, { useEffect, useRef } from "react";
-import ReactGlobe from "react-globe.gl";
-import Earth from "assets/earth_texture.jpg";
-import styles from "./styles.module.css";
-import { nations } from "constants/nations";
+import React, { useEffect, useRef } from 'react';
+import ReactGlobe from 'react-globe.gl';
+import Earth from 'assets/earth_texture.jpg';
+import styles from './styles.module.css';
+import { nations } from 'constants/nations';
+const markerSvg = `<svg viewBox="-4 0 36 36">
+<path fill="#d7000e" d="M14,0 C21.732,0 28,5.641 28,12.6 C28,23.963 14,36 14,36 C14,36 0,24.064 0,12.6 C0,5.641 6.268,0 14,0 Z"></path>
+<circle fill="black" cx="14" cy="14" r="7"></circle>
+</svg>`;
+
 export default function Globe({ activeIdx, updateActiveIdx }) {
   const globeRef = useRef();
 
@@ -11,7 +16,7 @@ export default function Globe({ activeIdx, updateActiveIdx }) {
       // wait for scene to be populated (asynchronously)
       const directionalLight = globeRef.current
         .scene()
-        .children.find((obj3d) => obj3d.type === "DirectionalLight");
+        .children.find((obj3d) => obj3d.type === 'DirectionalLight');
       directionalLight && directionalLight.position.set(1, 1, 1); // change light position to see the specularMap's effect
     });
   });
@@ -25,14 +30,9 @@ export default function Globe({ activeIdx, updateActiveIdx }) {
         lng: nations[activeIdx].lng,
         altitude: 2.7,
       },
-      800
+      800,
     );
   }, [activeIdx]);
-  const markerSvg = `<svg viewBox="-4 0 36 36">
-  <path fill="#d7000e" d="M14,0 C21.732,0 28,5.641 28,12.6 C28,23.963 14,36 14,36 C14,36 0,24.064 0,12.6 C0,5.641 6.268,0 14,0 Z"></path>
-  <circle fill="black" cx="14" cy="14" r="7"></circle>
-</svg>`;
-
   const info_modal = (nation) => {
     return `
     <div class=${styles.nationInfo_wrap}>
@@ -63,13 +63,13 @@ export default function Globe({ activeIdx, updateActiveIdx }) {
         bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
         htmlElementsData={nations}
         htmlElement={(d) => {
-          const el = document.createElement("div");
+          const el = document.createElement('div');
           if (activeIdx === d.id) el.innerHTML = info_modal(d);
           el.innerHTML += markerSvg;
-          el.style.color = "#d7000e";
-          el.style.width = "30px";
-          el.style["pointer-events"] = "auto";
-          el.style.cursor = "pointer";
+          el.style.color = '#d7000e';
+          el.style.width = '30px';
+          el.style['pointer-events'] = 'auto';
+          el.style.cursor = 'pointer';
           el.onclick = () => updateActiveIdx(d.id);
           return el;
         }}

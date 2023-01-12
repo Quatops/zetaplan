@@ -7,7 +7,6 @@ import AcceleratingProgram from './AcceleratingProgram';
 import InvestmentPortfolio from './InvestmentPortfolio';
 import ScrollMenu from './ScrollMenu';
 import GlobalNetwork from './GlobalNetwork';
-import InvestmentInquiry from './InvestmentInquiry';
 
 export default function MainPage() {
   const [pageIdx, setPageIdx] = useState(1);
@@ -20,9 +19,8 @@ export default function MainPage() {
       behavior,
     });
     setPageIdx(idx);
-    idx === 4 ? updateActiveNav(true) : updateActiveNav(false);
+    idx === 4 || idx === 3 ? updateActiveNav(true) : updateActiveNav(false);
   };
-
   useEffect(() => {
     const wheelHandler = (e) => {
       e.preventDefault();
@@ -42,10 +40,7 @@ export default function MainPage() {
           updatePage(4, pageHeight * 3, 0, 'smooth');
         } else if (scrollTop >= pageHeight * 3 && scrollTop < pageHeight * 4) {
           // 현재 4페이지
-          updatePage(5, pageHeight * 4, 0, 'smooth');
-        } else if (scrollTop >= pageHeight * 4 && scrollTop < pageHeight * 5) {
-          // 현재 5페이지
-          updatePage(5, pageHeight * 5, 0, 'smooth');
+          updatePage(4, pageHeight * 4, 0, 'smooth');
         }
       } else {
         // 스크롤을 내릴 때
@@ -60,8 +55,6 @@ export default function MainPage() {
           updatePage(2, pageHeight, 0, 'smooth');
         } else if (scrollTop >= pageHeight * 3 && scrollTop < pageHeight * 4) {
           updatePage(3, pageHeight * 2, 0, 'smooth');
-        } else if (scrollTop >= pageHeight * 4 && scrollTop < pageHeight * 5) {
-          updatePage(4, pageHeight * 3, 0, 'smooth');
         }
       }
     };
@@ -75,6 +68,7 @@ export default function MainPage() {
   return (
     <div className={styles.main_wrapper} ref={mainWrapperRef}>
       <ScrollMenu pageIdx={pageIdx} updatePage={updatePage} />
+
       <div className={styles.main_item}>
         <Main />
       </div>
@@ -86,9 +80,6 @@ export default function MainPage() {
       </div>
       <div className={styles.main_item}>
         <GlobalNetwork />
-      </div>
-      <div className={styles.main_item}>
-        <InvestmentInquiry />
       </div>
     </div>
   );

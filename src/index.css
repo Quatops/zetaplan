@@ -28,9 +28,9 @@ body {
   background-repeat: no-repeat;
   background-image: url(./assets/Background.webp);
 }
-.page_background.admin {
+/* .page_background.admin {
   width: calc(100vw - 300px);
-}
+} */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -46,6 +46,14 @@ ul {
 
 a {
   color: white;
+}
+input {
+  border: none;
+  font-family: pretendard, sans-serif;
+}
+
+input:focus {
+  outline: none;
 }
 
 button {

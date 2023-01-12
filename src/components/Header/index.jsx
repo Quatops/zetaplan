@@ -52,7 +52,11 @@ export default function Header({ isWhite }) {
           <ul className={styles.nav} onMouseEnter={() => updateShowCate(true)}>
             {category.map((value) =>
               activeEdit === 1 ? (
-                <input key={value.id} placeholder={value.title} />
+                <input
+                  key={value.id}
+                  value={value.title}
+                  className={styles.input_header}
+                />
               ) : (
                 <Link
                   to={value.path}
@@ -67,12 +71,14 @@ export default function Header({ isWhite }) {
                 </Link>
               ),
             )}
+            {isAdmin && (
+              <EditButton
+                activeEdit={activeEdit}
+                updateActiveEdit={updateActiveEdit}
+                idx={1}
+              />
+            )}
           </ul>
-          {isAdmin && activeEdit === 1 ? (
-            <button onClick={() => updateActiveEdit(0)}>완료하기</button>
-          ) : (
-            <EditButton updateActiveEdit={updateActiveEdit} idx={1} />
-          )}
 
           <li className={`${styles.search_wrapper} ${styles.nav_item}`}>
             <input
