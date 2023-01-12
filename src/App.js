@@ -7,12 +7,12 @@ function App() {
     setIsWhite(isWhite);
   };
   return (
-    <div className="App">
+    <>
       <Header isWhite={isWhite} updateisWhite={updateisWhite} />
       <div className="page_background">
         <Outlet context={updateisWhite} />
       </div>
-    </div>
+    </>
   );
 }
 

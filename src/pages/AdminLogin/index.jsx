@@ -2,19 +2,19 @@ import React from 'react';
 import { useState } from 'react';
 import { FaExclamationTriangle } from 'react-icons/fa';
 import styles from './styles.module.css';
+import { FaUser, FaLock, FaBackward } from 'react-icons/fa';
+import { useAuthContext } from 'context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
-export default function SignIn() {
-  const [Email, setEmail] = useState('');
-  const [Password, setPassword] = useState('');
+export default function AdminLogin() {
+  const [id, setId] = useState('');
+  const [password, setPassword] = useState('');
   const [isCorrect, setIsCorrect] = useState(true);
-  const [capsLockFlag, setCapsLockFlag] = useState(false);
+  const { isAdmin, login } = useAuthContext();
+  const navigate = useNavigate();
 
   const onEmailHandler = (e) => {
-    setEmail(e.currentTarget.value);
-  };
-  const checkCapsLock = (e) => {
-    let capsLock = e.getModifierState('CapsLock');
-    setCapsLockFlag(capsLock);
+    setId(e.currentTarget.value);
   };
   const onPasswordHandler = (e) => {
     setPassword(e.currentTarget.value);
@@ -22,53 +22,60 @@ export default function SignIn() {
 
   const onLoginHandler = (e) => {
     e.preventDefault();
+    console.log(password);
+    console.log(id);
+    if (login(id, password)) {
+      navigate('/');
+    } else setIsCorrect(false);
   };
 
   return (
-    <div className="page_background">
+    <div className="page_background flex_center">
       <form className={`${styles.login} flex_center`} onSubmit={onLoginHandler}>
         <div className={styles.logo}>
-          <img src={require(`assets/Logo.png`)} />
+          <img src={require(`assets/Logo.png`)} alt="logo" />
         </div>
         <div className={styles.input_wrap}>
+          <label htmlFor={styles.id}>
+            <FaUser />
+          </label>
           <input
+            id={styles.id}
+            className={styles.input}
             type="text"
             placeholder="아이디를 입력하세요."
-            value={Email}
+            value={id}
             onChange={onEmailHandler}
-            onKeyDown={(e) => checkCapsLock(e)}
             required
           />
         </div>
         <div className={styles.input_wrap}>
+          <label htmlFor="password">
+            <FaLock />
+          </label>
           <input
+            id="password"
+            className={styles.input}
             type="password"
-            onKeyDown={(e) => checkCapsLock(e)}
             placeholder="비밀번호를 입력하세요."
-            value={Password}
+            value={password}
             onChange={onPasswordHandler}
             required
           />
         </div>
-        {!isCorrect ? (
-          <p className="error">
-            <FaExclamationTriangle /> 아이디 또는 비밀번호가 맞지 않습니다.
-          </p>
-        ) : (
-          <p>&nbsp;</p>
-        )}
-        <span className={capsLockFlag ? 'caps-lock caps-lock-on' : 'caps-lock'}>
-          {capsLockFlag ? 'Caps Lock On' : 'Caps Lock Off'}
-        </span>{' '}
-        {!isCorrect ? (
-          <p className="error">
-            <FaExclamationTriangle /> 아이디 또는 비밀번호가 맞지 않습니다.
-          </p>
-        ) : (
-          <p>&nbsp;</p>
-        )}
-        <button className="login-btn">로그인</button>
-        <p></p>
+        <span className={styles.error}>
+          {!isCorrect && (
+            <>
+              <FaExclamationTriangle /> 아이디 또는 비밀번호가 맞지 않습니다.
+            </>
+          )}
+        </span>
+
+        <button className={styles.login_btn}>로그인</button>
+
+        <div className={`${styles.back_btn} flex_center`}>
+          <FaBackward /> &nbsp;&nbsp;제타플랜 돌아가기
+        </div>
       </form>
     </div>
   );

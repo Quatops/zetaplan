@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import styles from "./styles.module.css";
-import { FaSearch } from "react-icons/fa";
-import GlobalNav from "./GlobalNavbar";
-import { category, subCategory } from "constants/category";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import styles from './styles.module.css';
+import { FaSearch } from 'react-icons/fa';
+import GlobalNav from './GlobalNavbar';
+import { category, subCategory } from 'constants/category';
+import { Link } from 'react-router-dom';
+import { useAuthContext } from 'context/AuthContext';
 
 /*
 showCate : 카테고리를 보여줄것인지에 대한 변수. 
@@ -21,25 +22,27 @@ export default function Header({ isWhite }) {
   const updateShowCate = (isActive) => {
     setShowCate(isActive);
   };
+  const { isAdmin } = useAuthContext();
 
   return (
     <>
       <header
         className={styles.header}
-        onMouseLeave={() => updateShowCate(false)}
-      >
+        onMouseLeave={() => updateShowCate(false)}>
+        {isAdmin && (
+          <nav className={styles.admin_header}>admin인데용.하이하이.</nav>
+        )}
         <nav
           className={`${styles.nav_wrapper} ${
             (isWhite || showCate) && styles.active_sub
-          } flex_between`}
-        >
+          } flex_between`}>
           <ul>
             <Link to="/">
               <li className={styles.nav_logo}>
                 {isWhite || showCate ? (
-                  <img src={require("assets/LogoBlack.png")} alt="Logo" />
+                  <img src={require('assets/LogoBlack.png')} alt="Logo" />
                 ) : (
-                  <img src={require("assets/Logo.png")} alt="Logo" />
+                  <img src={require('assets/Logo.png')} alt="Logo" />
                 )}
               </li>
             </Link>
@@ -49,13 +52,11 @@ export default function Header({ isWhite }) {
               <Link
                 to={value.path}
                 state={{ id: subCategory[value.title][0].id }}
-                key={value.id}
-              >
+                key={value.id}>
                 <li
                   className={`${styles.nav_item} ${
                     (isWhite || showCate) && styles.active_sub
-                  } ${activeCateIdx === value.id && styles.selected}`}
-                >
+                  } ${activeCateIdx === value.id && styles.selected}`}>
                   <p>{value.title}</p>
                 </li>
               </Link>
@@ -71,8 +72,7 @@ export default function Header({ isWhite }) {
           <li
             className={`${styles.language_wrapper} ${
               (isWhite || showCate) && styles.active_sub
-            }`}
-          >
+            }`}>
             <p className={styles.language}>KR</p>
             <span className={styles.boundary}>|</span>
             <p className={styles.language}>EN</p>
@@ -82,8 +82,7 @@ export default function Header({ isWhite }) {
           <div
             className={`${styles.line} ${
               (isWhite || showCate) && styles.active_sub
-            }`}
-          ></div>
+            }`}></div>
         </nav>
         {showCate && <GlobalNav categoryHover={categoryHover} />}
       </header>
