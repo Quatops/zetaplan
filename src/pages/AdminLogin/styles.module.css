@@ -24,8 +24,11 @@
   padding: 1rem;
   font-weight: 600;
   transition: all 300ms ease;
+  font-family: pretendard, sans-serif;
 }
-
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
 .input:focus,
 .input:focus label,
 .input:hover {

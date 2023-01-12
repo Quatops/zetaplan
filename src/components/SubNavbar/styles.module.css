@@ -1,5 +1,5 @@
 .nav_wrap {
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 20%;
   height: 38.75rem;

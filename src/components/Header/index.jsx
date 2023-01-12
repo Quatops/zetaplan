@@ -29,9 +29,6 @@ export default function Header({ isWhite }) {
       <header
         className={styles.header}
         onMouseLeave={() => updateShowCate(false)}>
-        {isAdmin && (
-          <nav className={styles.admin_header}>admin인데용.하이하이.</nav>
-        )}
         <nav
           className={`${styles.nav_wrapper} ${
             (isWhite || showCate) && styles.active_sub
