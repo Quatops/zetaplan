@@ -1,7 +1,8 @@
-import React from "react";
-import styles from "./styles.module.css";
-import { category, subCategory } from "../../../constants/category";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import styles from './styles.module.css';
+import { category, subCategory } from '../../../constants/category';
+import { NavLink } from 'react-router-dom';
+import EditButton from 'components/EditButton';
 
 export default function GlobalNavigator({ categoryHover }) {
   return (
@@ -15,13 +16,11 @@ export default function GlobalNavigator({ categoryHover }) {
                 <NavLink
                   key={small.id}
                   to={small.path}
-                  state={{ id: small.id }}
-                >
+                  state={{ id: small.id }}>
                   <li
                     className={styles.category}
                     onMouseEnter={() => categoryHover(big.id)}
-                    onMouseLeave={() => categoryHover(null)}
-                  >
+                    onMouseLeave={() => categoryHover(null)}>
                     {small.title}
                   </li>
                 </NavLink>
@@ -32,6 +31,7 @@ export default function GlobalNavigator({ categoryHover }) {
       </div>
       <ul className={styles.space_search}>&nbsp;</ul>
       <ul className={styles.space_lang}>&nbsp;</ul>
+      <EditButton />
     </nav>
   );
 }

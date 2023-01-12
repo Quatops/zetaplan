@@ -7,7 +7,7 @@ export default function AdminSidebar() {
   return (
     <nav className={styles.sidebar_wrapper}>
       <ul className={styles.logo}>
-        <img src={require('assets/LogoBlack.png')} />
+        <img src={require('assets/LogoBlack.png')} alt="logo" />
       </ul>
       <ul className={styles.nav_items}>
         {activeNav.map((name, index) => (

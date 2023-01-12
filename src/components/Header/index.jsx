@@ -5,6 +5,7 @@ import GlobalNav from './GlobalNavbar';
 import { category, subCategory } from 'constants/category';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from 'context/AuthContext';
+import EditButton from 'components/EditButton';
 
 /*
 showCate : 카테고리를 보여줄것인지에 대한 변수. 
@@ -23,6 +24,10 @@ export default function Header({ isWhite }) {
     setShowCate(isActive);
   };
   const { isAdmin } = useAuthContext();
+  const [activeEdit, setActiveEdit] = useState(0);
+  const updateActiveEdit = (idx) => {
+    setActiveEdit(idx);
+  };
 
   return (
     <>
@@ -45,20 +50,30 @@ export default function Header({ isWhite }) {
             </Link>
           </ul>
           <ul className={styles.nav} onMouseEnter={() => updateShowCate(true)}>
-            {category.map((value) => (
-              <Link
-                to={value.path}
-                state={{ id: subCategory[value.title][0].id }}
-                key={value.id}>
-                <li
-                  className={`${styles.nav_item} ${
-                    (isWhite || showCate) && styles.active_sub
-                  } ${activeCateIdx === value.id && styles.selected}`}>
-                  <p>{value.title}</p>
-                </li>
-              </Link>
-            ))}
+            {category.map((value) =>
+              activeEdit === 1 ? (
+                <input key={value.id} placeholder={value.title} />
+              ) : (
+                <Link
+                  to={value.path}
+                  state={{ id: subCategory[value.title][0].id }}
+                  key={value.id}>
+                  <li
+                    className={`${styles.nav_item} ${
+                      (isWhite || showCate) && styles.active_sub
+                    } ${activeCateIdx === value.id && styles.selected}`}>
+                    <p>{value.title}</p>
+                  </li>
+                </Link>
+              ),
+            )}
           </ul>
+          {isAdmin && activeEdit === 1 ? (
+            <button onClick={() => updateActiveEdit(0)}>완료하기</button>
+          ) : (
+            <EditButton updateActiveEdit={updateActiveEdit} idx={1} />
+          )}
+
           <li className={`${styles.search_wrapper} ${styles.nav_item}`}>
             <input
               className={styles.search}
