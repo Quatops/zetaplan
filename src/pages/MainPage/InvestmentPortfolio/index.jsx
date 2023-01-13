@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './styles.module.css';
 import portfolio from 'constants/portfolio.json';
-
+import PortfolioCard from 'components/PorfolioCard';
 const sectors = [
   'ALL',
   '소재부품장비',
@@ -26,7 +26,10 @@ const sectors = [
 ];
 
 export default function InvestmentPortfolio() {
-  console.log(portfolio);
+  const [pageItems, setPageItems] = useState(portfolio);
+  const [limit, setLimit] = useState(4);
+  const [page, setPage] = useState(1);
+  const offset = (page - 1) * limit;
   return (
     <div className={styles.page_wrapper}>
       <div className={styles.contents_wrapper}>
@@ -45,7 +48,13 @@ export default function InvestmentPortfolio() {
             </button>
           ))}
         </section>
-        <section className={styles.content}></section>
+        <section className={styles.content}>
+          <article className={styles.portfolio_wrap}>
+            {pageItems.slice(offset, offset + limit).map((portfolio, index) => (
+              <PortfolioCard portfolio={portfolio} key={index} />
+            ))}
+          </article>
+        </section>
       </div>
     </div>
   );

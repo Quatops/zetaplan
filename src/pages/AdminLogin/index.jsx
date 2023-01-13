@@ -22,8 +22,6 @@ export default function AdminLogin() {
 
   const onLoginHandler = (e) => {
     e.preventDefault();
-    console.log(password);
-    console.log(id);
     if (login(id, password)) {
       navigate('/');
     } else setIsCorrect(false);

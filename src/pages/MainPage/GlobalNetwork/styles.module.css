@@ -2,13 +2,14 @@
   overflow: hidden;
   background-color: var(--color-white);
   display: flex;
-  padding: 3rem;
+  padding-top: 8rem;
   justify-content: center;
   height: 100%;
 }
 
 .content_wrap {
   width: 1350px;
+  height: 800px;
   display: flex;
   justify-content: space-between;
 }

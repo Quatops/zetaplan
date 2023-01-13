@@ -9,7 +9,6 @@ export default function Modal({ targetName, updateActiveModal }) {
           className={styles.back_area}
           onClick={() => {
             updateActiveModal(false);
-            console.log('안녕여기클릭했구나.');
           }}></div>
         <div className={`${styles.modal_wrap} flex_center`}>
           관리자인데용?? + {targetName}
