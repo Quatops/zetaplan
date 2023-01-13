@@ -1,0 +1,43 @@
+.tox-tinymce {
+  border: none;
+}
+
+.tox-toolbar__primary {
+  width: 100%;
+}
+.tox:not(.tox-tinymce-inline) .tox-editor-header {
+  border-bottom: 1px solid var(--color-grey);
+}
+
+.tox-sidebar-wrap {
+  height: 100%;
+}
+
+.tox-tinymce {
+  height: 100vh !important;
+  overflow: hidden;
+}
+
+iframe {
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  border-radius: 10px;
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  border: 1px solid rgb(231, 231, 231);
+  border-radius: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-grey);
+  border: 0;
+  border-radius: 7px;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: var(--color-darkgrey);
+}

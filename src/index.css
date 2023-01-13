@@ -18,11 +18,19 @@ body {
   width: 100vw;
   height: 100vh;
   font-size: 1rem;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url(./assets/Background.png);
 }
 
+.page_background {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(./assets/Background.webp);
+}
+/* .page_background.admin {
+  width: calc(100vw - 300px);
+} */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -38,6 +46,14 @@ ul {
 
 a {
   color: white;
+}
+input {
+  border: none;
+  font-family: pretendard, sans-serif;
+}
+
+input:focus {
+  outline: none;
 }
 
 button {
@@ -60,7 +76,6 @@ button {
   justify-content: space-between;
   align-items: center;
 }
-
 /*header active setting*/
 
 .active > li {
@@ -88,4 +103,4 @@ button {
   background-color: var(--color-darkgrey);
 }
 
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css');
