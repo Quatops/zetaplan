@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './styles.module.css';
 import { FaEdit } from 'react-icons/fa';
-import EditModal from 'components/Modal';
 
 export default function EditButton({ activeEdit, idx, updateActiveEdit }) {
   return (

@@ -10,7 +10,7 @@ export default function AdminLogin() {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [isCorrect, setIsCorrect] = useState(true);
-  const { isAdmin, login } = useAuthContext();
+  const { login } = useAuthContext();
   const navigate = useNavigate();
 
   const onEmailHandler = (e) => {
