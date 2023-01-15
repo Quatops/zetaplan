@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import React, { useRef, useState } from 'react';
 import { useAuthContext } from 'context/AuthContext';
 import AdminSidebar from 'components/AdminSidebar';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 function App() {
   const [isWhite, setIsWhite] = useState(false);
   const updateisWhite = (isWhite) => {
@@ -12,12 +13,12 @@ function App() {
   // const { isAdmin } = useAuthContext();
 
   return (
-    <div>
+    <QueryClientProvider client={queryClient}>
       <Header isWhite={isWhite} updateisWhite={updateisWhite} />
       <div ref={pageRef} className="page_background">
         <Outlet context={updateisWhite} />
       </div>
-    </div>
+    </QueryClientProvider>
   );
 }
 /*<div style={{ display: 'flex', width: '100%' }}>
