@@ -10,7 +10,8 @@ function App() {
     setIsWhite(isWhite);
   };
   const pageRef = useRef();
-  // const { isAdmin } = useAuthContext();
+
+  const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -21,14 +22,5 @@ function App() {
     </QueryClientProvider>
   );
 }
-/*<div style={{ display: 'flex', width: '100%' }}>
-       {isAdmin && <AdminSidebar />} 
-      <div>
-        <Header isWhite={isWhite} updateisWhite={updateisWhite} />
-        <div ref={pageRef} className={`page_background ${isAdmin && 'admin'}`}>
-          <Outlet context={updateisWhite} />
-        </div>
-      </div>
-  </div>*/
 
 export default App;
