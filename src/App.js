@@ -1,8 +1,6 @@
 import Header from './components/Header';
 import { Outlet } from 'react-router-dom';
 import React, { useRef, useState } from 'react';
-import { useAuthContext } from 'context/AuthContext';
-import AdminSidebar from 'components/AdminSidebar';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 function App() {
   const [isWhite, setIsWhite] = useState(false);

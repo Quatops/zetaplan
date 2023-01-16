@@ -1,6 +1,7 @@
 //firebase.js
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getDatabase, ref, set, get, remove } from 'firebase/database';
 
 const firebaseConfig = {
   // firebase 설정과 관련된 개인 정보
@@ -12,26 +13,11 @@ const firebaseConfig = {
 
 // firebaseConfig 정보로 firebase 시작
 const app = initializeApp(firebaseConfig);
-
-// firebase의 firestore 인스턴스를 변수에 저장
-//export const firestore = firebase.firestore();
-
-// const auth = getAuth(app);
 const auth = getAuth();
-createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
+const database = getDatabase(app);
 
-//Email로 로그인하는 함수
-export async function loginWithEamil(email, password) {
+// 관리자 로그인
+export async function loginAdmin(email, password) {
   try {
     await signInWithEmailAndPassword(authService, email, password);
   } catch (e) {
@@ -39,9 +25,16 @@ export async function loginWithEamil(email, password) {
   }
 }
 
-//Logout 하는 함수
-export async function logout() {
+// 관리자 로그아웃
+export async function logoutAdmin() {
   await signOut(authService);
   return;
 }
-0
+export async function addNewPost(post) {
+  const id = uuid();
+  return set(ref(database, `products/${id}`), {
+    ...post,
+    id,
+    image,
+  });
+}
