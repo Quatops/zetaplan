@@ -1,7 +1,9 @@
 //firebase.js
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { getDatabase, ref, set, get, remove } from 'firebase/database';
+import { v4 as uuid } from 'uuid';
+
+import { getDatabase, ref, set } from 'firebase/database';
+var moment = require('moment');
 
 const firebaseConfig = {
   // firebase 설정과 관련된 개인 정보
@@ -13,28 +15,14 @@ const firebaseConfig = {
 
 // firebaseConfig 정보로 firebase 시작
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
 const database = getDatabase(app);
 
-// 관리자 로그인
-export async function loginAdmin(email, password) {
-  try {
-    await signInWithEmailAndPassword(authService, email, password);
-  } catch (e) {
-    return e.message.replace('Firebase: Error ', '');
-  }
-}
-
-// 관리자 로그아웃
-export async function logoutAdmin() {
-  await signOut(authService);
-  return;
-}
-export async function addNewPost(post) {
+export async function addNewPost(content) {
   const id = uuid();
-  return set(ref(database, `products/${id}`), {
-    ...post,
+  return set(ref(database, `posts/${id}`), {
+    content,
     id,
-    image,
+    writer: 'admin',
+    date: moment(new Date()).format('YYYY-MM-DD'),
   });
 }
