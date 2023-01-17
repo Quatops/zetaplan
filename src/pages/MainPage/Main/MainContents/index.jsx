@@ -1,25 +1,24 @@
-import React, { useState } from "react";
-import styles from "./styles.module.css";
+import React, { useState } from 'react';
+import styles from './styles.module.css';
 
 const News = ({ isPhoto, news, isActive, updateActiveNews }) => {
-  var moment = require("moment");
+  var moment = require('moment');
   return (
     <>
       {isPhoto ? (
         <div
           className={`${styles.news} ${isActive && styles.active}`}
-          onClick={() => updateActiveNews(news.id)}
-        >
+          onClick={() => updateActiveNews(news.id)}>
           <div className={styles.news_title}>{news.title}</div>
           <div className={styles.news_date}>
-            {moment(news.date).format("YYYY년 MM월 DD일")}
+            {moment(news.date).format('YYYY년 MM월 DD일')}
           </div>
         </div>
       ) : (
         <div className={styles.news_horizon}>
           <div className={styles.news_title}>· {news.title}</div>
           <div className={styles.news_date}>
-            {moment(news.date).format("YYYY년 MM월 DD일")}
+            {moment(news.date).format('YYYY년 MM월 DD일')}
           </div>
         </div>
       )}
@@ -42,7 +41,6 @@ const NewsDetail = ({ news }) => {
 export default function MainContents({ newsList, isPhoto }) {
   const [activeNews, setActiveNews] = useState(0);
   const updateActiveNews = (idx) => {
-    console.log(idx);
     setActiveNews(idx);
   };
   return (

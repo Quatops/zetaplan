@@ -5,7 +5,6 @@ export function AuthProvider({ children }) {
   const [isAdmin, setIsAdmin] = useState(false);
   const login = (id, password) => {
     if (id === 'admin' && password === process.env.REACT_APP_ADMIN_PASSWORD) {
-      console.log('id : ' + id + ' , pass : ' + password);
       setIsAdmin(true);
       return true;
     }

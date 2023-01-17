@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import styles from "./styles.module.css";
+import React, { useState } from 'react';
+import styles from './styles.module.css';
 
 // import optional tippy styles for tooltip support
-import Globe from "components/Globe";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import NetworkCard from "components/NetworkdCard";
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import NetworkCard from 'components/NetworkdCard';
+import Globe from 'components/Globe';
 
-import { nations } from "constants/nations";
+import { nations } from 'constants/nations';
 
 export default function GlobalNetwork() {
   const [activeContinentIdx, setActiveContinentIdx] = useState(0);
@@ -21,7 +21,7 @@ export default function GlobalNetwork() {
   };
   const contimentBtns = () => {
     const result = [];
-    const continents = ["유럽", "아시아", "아메리카"];
+    const continents = ['유럽', '아시아', '아메리카'];
     for (let i = 0; i < continents.length; ++i) {
       result.push(
         <button
@@ -29,10 +29,9 @@ export default function GlobalNetwork() {
           className={`${styles.conti_btn} ${
             i === activeContinentIdx && styles.active
           }`}
-          onClick={() => updateActiveContinentIdx(i)}
-        >
+          onClick={() => updateActiveContinentIdx(i)}>
           {continents[i]}
-        </button>
+        </button>,
       );
     }
     return result;
@@ -57,11 +56,10 @@ export default function GlobalNetwork() {
                       className={`${styles.nation} ${
                         activeNationIdx === nation.id && styles.active
                       }`}
-                      onClick={() => setActiveNationIdx(nation.id)}
-                    >
+                      onClick={() => setActiveNationIdx(nation.id)}>
                       {nation.name_kor}
                     </p>
-                  )
+                  ),
               )}
             </div>
           </div>
@@ -73,8 +71,7 @@ export default function GlobalNetwork() {
             {activeNationIdx !== 0 ? (
               <p
                 className={styles.arrow_icon}
-                onClick={() => updateActiveNationIdx(activeNationIdx - 1)}
-              >
+                onClick={() => updateActiveNationIdx(activeNationIdx - 1)}>
                 <FiChevronLeft />
               </p>
             ) : (
@@ -91,8 +88,7 @@ export default function GlobalNetwork() {
             {activeNationIdx !== nations.length - 1 ? (
               <p
                 className={styles.arrow_icon}
-                onClick={() => updateActiveNationIdx(activeNationIdx + 1)}
-              >
+                onClick={() => updateActiveNationIdx(activeNationIdx + 1)}>
                 <FiChevronRight />
               </p>
             ) : (

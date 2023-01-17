@@ -1,12 +1,13 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, Suspense } from 'react';
 import styles from './styles.module.css';
 import { useOutletContext } from 'react-router-dom';
 
 import Main from './Main';
 import AcceleratingProgram from './AcceleratingProgram';
-import InvestmentPortfolio from './InvestmentPortfolio';
 import ScrollMenu from './ScrollMenu';
-import GlobalNetwork from './GlobalNetwork';
+
+const GlobalNetwork = React.lazy(() => import('./GlobalNetwork'));
+const InvestmentPortfolio = React.lazy(() => import('./InvestmentPortfolio'));
 
 export default function MainPage() {
   const [pageIdx, setPageIdx] = useState(1);
@@ -64,7 +65,6 @@ export default function MainPage() {
       wrapperRefCurrent.removeEventListener('wheel', wheelHandler);
     };
   });
-
   return (
     <div className={styles.main_wrapper} ref={mainWrapperRef}>
       <ScrollMenu pageIdx={pageIdx} updatePage={updatePage} />
@@ -75,12 +75,16 @@ export default function MainPage() {
       <div className={styles.main_item}>
         <AcceleratingProgram />
       </div>
-      <div className={styles.main_item}>
-        <InvestmentPortfolio />
-      </div>
-      <div className={styles.main_item}>
-        <GlobalNetwork />
-      </div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <div className={styles.main_item}>
+          <InvestmentPortfolio />
+        </div>
+      </Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
+        <div className={styles.main_item}>
+          <GlobalNetwork />
+        </div>
+      </Suspense>
     </div>
   );
 }

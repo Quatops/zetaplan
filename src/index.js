@@ -1,38 +1,53 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+import { category } from 'constants/category';
+import { AuthProvider } from 'context/AuthContext';
+import Loading from 'components/Loading';
+
 /* MainPage */
-import MainPage from './pages/MainPage';
+import MainPage from 'pages/MainPage';
 
 /* SubPage */
-import SubPage from 'pages/SubPage';
+const SubPage = lazy(() => import('pages/SubPage'));
 
 /* CompanyIntro */
-import Greetings from 'pages/SubPage/ComapnyIntro/Greetings';
-import ConsultingService from 'pages/SubPage/ComapnyIntro/ConsultingService';
-import ConsultingAbout from 'pages/SubPage/ComapnyIntro/ConsultingAbout';
-import MainArticle from 'pages/SubPage/ComapnyIntro/MainArticle';
-import CIGuide from 'pages/SubPage/ComapnyIntro/CIGuide';
-import ZetaplanMarks from 'pages/SubPage/ComapnyIntro/ZetaplanMarks';
-import AffiliateNetwork from 'pages/SubPage/ComapnyIntro/AffiliateNetwork';
+const Greetings = lazy(() => import('pages/SubPage/ComapnyIntro/Greetings'));
+const ConsultingService = lazy(() =>
+  import('pages/SubPage/ComapnyIntro/ConsultingService'),
+);
+const ConsultingAbout = lazy(() =>
+  import('pages/SubPage/ComapnyIntro/ConsultingAbout'),
+);
+const MainArticle = lazy(() =>
+  import('pages/SubPage/ComapnyIntro/MainArticle'),
+);
+const CIGuide = lazy(() => import('pages/SubPage/ComapnyIntro/CIGuide'));
+const ZetaplanMarks = lazy(() =>
+  import('pages/SubPage/ComapnyIntro/ZetaplanMarks'),
+);
+const AffiliateNetwork = lazy(() =>
+  import('pages/SubPage/ComapnyIntro/AffiliateNetwork'),
+);
 
 /* Accelerating */
-import AcceleratingOverview from 'pages/SubPage/Accelerating';
+const AcceleratingOverview = lazy(() => import('pages/SubPage/Accelerating'));
 
 /*InvestmentIr */
-import InvestmentBuisnessPlan from 'pages/SubPage/InvestmentIr/InvestmentBuisnessPlan';
-import InvestmentOverview from 'pages/SubPage/InvestmentIr/InvestmentOverview';
-
-import MnAOverview from 'pages/SubPage/MnA/MnAOverview';
-
-import { category } from 'constants/category';
-import AdminPostRegist from 'pages/AdminPostRegist';
-import AdminLogin from 'pages/AdminLogin';
-import { AuthProvider } from 'context/AuthContext';
+const InvestmentBuisnessPlan = lazy(() =>
+  import('pages/SubPage/InvestmentIr/InvestmentBuisnessPlan'),
+);
+const InvestmentOverview = lazy(() =>
+  import('pages/SubPage/InvestmentIr/InvestmentOverview'),
+);
+const MnAOverview = lazy(() => import('pages/SubPage/MnA/MnAOverview'));
+/* admin page */
+const AdminPostRegist = lazy(() => import('pages/AdminPostRegist'));
+const AdminLogin = lazy(() => import('pages/AdminLogin'));
 
 const router = createBrowserRouter([
   {
@@ -121,7 +136,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <AuthProvider>
-    <RouterProvider router={router} />
+    <Suspense fallback={<Loading />}>
+      <RouterProvider router={router} />
+    </Suspense>
   </AuthProvider>,
 );
 
