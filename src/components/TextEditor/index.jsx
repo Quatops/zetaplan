@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
+import { uploadImage } from 'api/uploader';
+import { v4 as uuid } from 'uuid';
 
 export default function TextEditor({ images, updateValue, updateText }) {
   const editorRef = useRef(null);
@@ -27,15 +29,20 @@ export default function TextEditor({ images, updateValue, updateText }) {
   
   `;
 
+  const handleSubmit = () => {
+    console.log('여기로와봐.');
+  };
+
   useEffect(() => {
     if (editorRef.current) {
-      console.log('출력해봐라', editorRef.current.getContent());
+      //console.log('출력해봐라', editorRef.current.getContent());
     }
   }, []);
 
   return (
     <>
       <input
+        onSubmit={() => handleSubmit()}
         id="my-file"
         type="file"
         name="my-file"
@@ -49,6 +56,10 @@ export default function TextEditor({ images, updateValue, updateText }) {
         onEditorChange={(newValue, editor) => {
           updateValue(newValue);
           updateText(editor.getContent({ format: 'text' }));
+          console.log(editor);
+          editor.uploadImages().then(() => {
+            document.forms[0].submit();
+          });
         }}
         init={{
           /* 기본설정 */
@@ -73,7 +84,7 @@ export default function TextEditor({ images, updateValue, updateText }) {
           file_browser_callback_types: 'image',
           file_picker_callback: function (callback, value, meta) {
             if (meta.filetype === 'image') {
-              let input = document.getElementById('my-file');
+              const input = document.getElementById('my-file');
               if (!input) return;
               input.click();
               input.onchange = function () {
