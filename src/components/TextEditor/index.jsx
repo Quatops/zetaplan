@@ -1,12 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { uploadImage } from 'api/uploader';
-import { v4 as uuid } from 'uuid';
 
-export default function TextEditor({ images, updateValue, updateText }) {
+export default function TextEditor({ images, updateImages, updateValue }) {
   const editorRef = useRef(null);
   const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
   const content_style = `
   html {
     padding: 1rem;
@@ -29,10 +27,6 @@ export default function TextEditor({ images, updateValue, updateText }) {
   
   `;
 
-  const handleSubmit = () => {
-    console.log('여기로와봐.');
-  };
-
   useEffect(() => {
     if (editorRef.current) {
       //console.log('출력해봐라', editorRef.current.getContent());
@@ -41,13 +35,15 @@ export default function TextEditor({ images, updateValue, updateText }) {
 
   return (
     <>
-      <input
-        onSubmit={() => handleSubmit()}
-        id="my-file"
-        type="file"
-        name="my-file"
-        style={{ display: 'none' }}
-      />
+      <form>
+        <input
+          id="my-file"
+          type="file"
+          name="my-file"
+          style={{ display: 'none' }}
+        />
+      </form>
+
       <Editor
         onInit={(evt, editor) => {
           editorRef.current = editor;
@@ -55,11 +51,6 @@ export default function TextEditor({ images, updateValue, updateText }) {
         }}
         onEditorChange={(newValue, editor) => {
           updateValue(newValue);
-          updateText(editor.getContent({ format: 'text' }));
-          console.log(editor);
-          editor.uploadImages().then(() => {
-            document.forms[0].submit();
-          });
         }}
         init={{
           /* 기본설정 */
@@ -82,6 +73,26 @@ export default function TextEditor({ images, updateValue, updateText }) {
           image_advtab: true,
           image_caption: true,
           file_browser_callback_types: 'image',
+          // images_upload_handler: async function (blobInfo, success, failure) {
+          //   try {
+          //     uploadImage(blobInfo.blob()).then((url) => success(url));
+          //   } catch (error) {
+          //     console.log(error);
+          //     return;
+          //   }
+          // },
+          images_upload_handler: async (blobInfo) => {
+            return new Promise((resolve, reject) => {
+              uploadImage(blobInfo.blob())
+                .then((url) => {
+                  resolve(url);
+                })
+                .catch((e) => {
+                  console.log(e);
+                  reject(e);
+                });
+            });
+          },
           file_picker_callback: function (callback, value, meta) {
             if (meta.filetype === 'image') {
               const input = document.getElementById('my-file');
