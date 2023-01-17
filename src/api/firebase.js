@@ -20,7 +20,7 @@ const database = getDatabase(app);
 export async function addNewPost(content) {
   const id = uuid();
   return set(ref(database, `posts/${id}`), {
-    ...content,
+    content,
     id,
     writer: 'admin',
     date: moment(new Date()).format('YYYY-MM-DD'),
