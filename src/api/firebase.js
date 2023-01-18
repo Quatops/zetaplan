@@ -19,7 +19,7 @@ const database = getDatabase(app);
 
 export async function addNewPost(content, info) {
   const { cate, subCate, id } = info;
-  return set(ref(database, `posts/` + id), {
+  return set(ref(database, `posts/${id}`), {
     content,
     id,
     cate,
@@ -29,11 +29,20 @@ export async function addNewPost(content, info) {
   });
 }
 
-export async function getPost(id) {
+/*export async function getPost(id) {
   const dbRef = ref(getDatabase());
   return get(child(dbRef, `posts/` + id)).then((snapshot) => {
     if (snapshot.exists()) {
-      return snapshot.val();
+      return Object.values(snapshot.val());
+    }
+    return [];
+  });
+}*/
+
+export async function getPost() {
+  return get(ref(database, `posts`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      return Object.values(snapshot.val());
     }
     return [];
   });

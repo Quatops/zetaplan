@@ -27,7 +27,6 @@ export default function AdminPostRegist() {
     setSelectCate(select);
   };
   const updateSelectSubCate = (select) => {
-    console.log('selected sub 바꿀거다');
     setSelectSubCate(select);
   };
 

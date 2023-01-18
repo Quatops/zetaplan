@@ -88,7 +88,6 @@ export default function TextEditor({ images, updateImages, updateValue }) {
                   resolve(url);
                 })
                 .catch((e) => {
-                  console.log(e);
                   reject(e);
                 });
             });

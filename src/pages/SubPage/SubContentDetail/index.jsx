@@ -1,20 +1,21 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.css';
-import SubPageTitle from 'components/SubPageTitle';
 import { subCategory } from 'constants/category';
-export default function SubContentDetail({ pageName, activeNavId, post }) {
+export default function SubContentDetail({ post }) {
   const contentRef = useRef();
-  const { content } = post;
   useEffect(() => {
-    console.log(content);
-    contentRef.current.innerHTML = content;
-  }, []);
+    contentRef.current.innerHTML = post.content;
+  }, [post]);
   return (
     <div className={styles.content_wrap}>
-      <SubPageTitle
-        pageName={pageName}
-        activeNav={subCategory[pageName].find((e) => e.id === activeNavId)}
-      />
+      <div>
+        <div
+          className={
+            styles.route_url
+          }>{`HOME > ${post.cate} > ${post.subCate}`}</div>
+        <h1 className={styles.sub_title}>{post.subCate}</h1>
+        <div className={styles.line}></div>
+      </div>
       <div className={styles.content} ref={contentRef}></div>
     </div>
   );

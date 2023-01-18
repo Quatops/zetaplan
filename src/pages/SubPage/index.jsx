@@ -19,12 +19,14 @@ export default function SubPage({ pageName }) {
   const updateActiveNavId = (idx) => {
     setActiveNavId((prev) => (prev = idx));
   };
-  const [post, setPost] = useState(
-    useQuery([`posts/${activeNavId}`], () => getPost(activeNavId)).data,
-  );
+
   useEffect(() => {
     if (location.state) updateActiveNavId(location.state.id);
   }, [location.state]);
+  const { data: posts } = useQuery([`posts`], getPost);
+  useEffect(() => {
+    console.log(posts);
+  }, [posts]);
 
   return (
     <div className={styles.subPage_wrap}>
@@ -38,11 +40,11 @@ export default function SubPage({ pageName }) {
           activeNavId={activeNavId}
           updateActiveNavId={updateActiveNavId}
         />
-        {post && (
+        {posts && (
           <SubContentDetail
             pageName={pageName}
             activeNavId={activeNavId}
-            post={post}
+            post={posts[activeNavId]}
           />
         )}
         {isAdmin && (
