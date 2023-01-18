@@ -10,9 +10,9 @@ export default function TextEditor({ images, updateImages, updateValue }) {
     padding: 1rem;
     width: 50%;
     margin: 0 auto;
-    -webkit-box-shadow: 4px 4px 14px 0px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 4px 4px 14px 0px rgba(0, 0, 0, 0.2);
-    box-shadow: 4px 4px 14px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px -3px 14px 0px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0px -3px 14px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px -3px 14px 0px rgba(0,0,0,0.15);
     height: 100%;
   }
   body {

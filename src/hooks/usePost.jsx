@@ -7,7 +7,7 @@ export default function usePost() {
     staleTime: 1000 * 60,
   });
 
-  const addPost = useMutation(({ post, url }) => addNewPost(post, url), {
+  const addPost = useMutation(({ content }) => addNewPost(content), {
     onSuccess: () => queryClient.invalidateQueries(['posts']),
   });
   return { postsQuery, addPost };

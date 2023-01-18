@@ -2,7 +2,7 @@
 import { initializeApp } from 'firebase/app';
 import { v4 as uuid } from 'uuid';
 
-import { getDatabase, ref, set } from 'firebase/database';
+import { getDatabase, ref, set, get } from 'firebase/database';
 var moment = require('moment');
 
 const firebaseConfig = {
@@ -17,12 +17,25 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-export async function addNewPost(content) {
+export async function addNewPost(content, info) {
+  const { cate, subCate, path } = info;
   const id = uuid();
   return set(ref(database, `posts/${id}`), {
     content,
     id,
+    cate,
+    subCate,
+    path,
     writer: 'admin',
     date: moment(new Date()).format('YYYY-MM-DD'),
+  });
+}
+
+export async function getPost() {
+  return get(ref(database, 'posts')).then((snapshot) => {
+    if (snapshot.exist) {
+      return Object.values(snapshot.val());
+    }
+    return [];
   });
 }

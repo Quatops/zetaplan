@@ -1,10 +1,11 @@
 .subPage_wrap {
   height: 100vh;
   padding-top: 5rem;
+  overflow-x: hidden;
   width: 100vw;
 }
 .page_title {
-  height: 22%;
+  height: 200px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -14,7 +15,7 @@
   font-weight: 600;
 }
 .page_content {
-  height: 78%;
+  height: 100%;
   background-color: var(--color-white);
   width: 100%;
   padding: 50px 0;
