@@ -14,9 +14,13 @@ export function AuthProvider({ children }) {
     const id_email = id + '@admin.com';
     return login(id_email, password);
   };
+
+  const user_logout = () => {
+    logout();
+  };
   return (
     <AuthContext.Provider
-      value={{ isAdmin: user ? user.isAdmin : false, user_login }}>
+      value={{ isAdmin: user ? user.isAdmin : false, user_login, user_logout }}>
       {children}
     </AuthContext.Provider>
   );

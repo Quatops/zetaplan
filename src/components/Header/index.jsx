@@ -6,7 +6,6 @@ import { category, subCategory } from 'constants/category';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from 'context/AuthContext';
 import EditButton from 'components/EditButton';
-
 /*
 showCate : 카테고리를 보여줄것인지에 대한 변수. 
 activeCateIdx : header nav-item중 활성화된 카테고리의 idx
@@ -23,10 +22,14 @@ export default function Header({ isWhite }) {
   const updateShowCate = (isActive) => {
     setShowCate(isActive);
   };
-  const { isAdmin } = useAuthContext();
+  const { isAdmin, user_logout } = useAuthContext();
   const [activeEdit, setActiveEdit] = useState(0);
   const updateActiveEdit = (idx) => {
     setActiveEdit(idx);
+  };
+
+  const handleLogout = () => {
+    if (window.confirm('로그아웃 하시겠습니까?')) user_logout();
   };
 
   return (
@@ -101,6 +104,12 @@ export default function Header({ isWhite }) {
             className={`${styles.line} ${
               (isWhite || showCate) && styles.active_sub
             }`}></div>
+
+          {isAdmin && (
+            <ul>
+              <button onClick={handleLogout}>로그아웃</button>
+            </ul>
+          )}
         </nav>
         {showCate && <GlobalNav categoryHover={categoryHover} />}
       </header>
