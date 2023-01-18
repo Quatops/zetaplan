@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.css';
-import { subCategory } from 'constants/category';
 export default function SubContentDetail({ post }) {
   const contentRef = useRef();
   useEffect(() => {
