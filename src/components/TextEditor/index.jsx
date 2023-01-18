@@ -20,7 +20,7 @@ export default function TextEditor({ updateValue }) {
     height: 100%;
   }
   body {
-    font-family: 나눔고딕, 나눔스퀘어, 돋움, Helvetica, Arial, sans-serif;
+    font-family: pretendard,나눔고딕, 나눔스퀘어, 돋움, Helvetica, Arial, sans-serif;
     font-size: 14px;
     border: none;
   }
@@ -119,7 +119,7 @@ export default function TextEditor({ updateValue }) {
           quickbars_selection_toolbar:
             'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
           font_family_formats:
-            '나눔고딕;나눔스퀘어;나눔바른고딕;고닥;돋움;돋움체;굴림;굴림체;궁서;궁서체;Arial=arial;Helvetica=helvetica,sans-serif; Courier New=courier new,courier,monospace; AkrutiKndPadmini=Akpdmi-n',
+            'pretendard;나눔고딕;나눔스퀘어;나눔바른고딕;고닥;돋움;돋움체;굴림;굴림체;궁서;궁서체;Arial=arial;Helvetica=helvetica,sans-serif; Courier New=courier new,courier,monospace; AkrutiKndPadmini=Akpdmi-n',
           skin: useDarkMode ? 'oxide-dark' : 'oxide',
         }}
       />

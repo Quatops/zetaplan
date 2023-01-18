@@ -57,6 +57,7 @@ const router = createBrowserRouter([
   {
     path: 'admin/write',
     element: <AdminPostRegist />,
+    state: { post: null },
   },
   {
     path: 'admin',
