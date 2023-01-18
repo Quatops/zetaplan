@@ -1,8 +1,8 @@
 .subPage_wrap {
   height: 100vh;
   padding-top: 5rem;
-  overflow-x: hidden;
   width: 100vw;
+  overflow-x: hidden;
 }
 .page_title {
   height: 200px;
@@ -21,4 +21,17 @@
   padding: 50px 0;
   padding-left: 350px;
   padding-right: 16.66vw;
+}
+.btn_wrap {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.write_btn {
+  color: var(--color-white);
+  background-color: var(--color-black);
+  height: 45px;
+  border-radius: 10px;
+  width: 150px;
 }

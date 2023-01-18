@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './styles.module.css';
 import TextEditor from 'components/TextEditor';
-import { uploadImage } from 'api/uploader';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { addNewPost } from 'api/firebase';
 import SelectCategry from './SelectCategory';
 import { category, subCategory } from 'constants/category';
@@ -10,6 +10,10 @@ export default function AdminPostRegist() {
   const [images, setImages] = useState();
   const [value, setValue] = useState('');
   const [selectSubCate, setSelectSubCate] = useState({});
+  const queryClient = useQueryClient();
+  const addPost = useMutation(({ value, info }) => addNewPost(value, info), {
+    onSuccess: () => queryClient.invalidateQueries('posts'),
+  });
   const updateImages = (image) => {
     setImages(image);
   };
@@ -28,16 +32,23 @@ export default function AdminPostRegist() {
   };
 
   const handleSubmit = () => {
-    const path = subCategory[selectCate].find(
+    const id = subCategory[selectCate].find(
       (v) => v.title === selectSubCate,
-    ).path;
+    ).id;
     if (window.confirm('저장하시겠습니까?')) {
       const info = {
         cate: selectCate,
         subCate: selectSubCate,
-        path,
+        id,
       };
-      addNewPost(value, info);
+      addPost.mutate(
+        { value, info },
+        {
+          onSuccess: () => {
+            alert('성공적으로 글이 등록되었습니다.');
+          },
+        },
+      );
     }
   };
   return (

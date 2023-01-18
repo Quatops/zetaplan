@@ -12,12 +12,12 @@ function App() {
   const queryClient = new QueryClient();
 
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
       <Header isWhite={isWhite} updateisWhite={updateisWhite} />
       <div ref={pageRef} className="page_background">
         <Outlet context={updateisWhite} />
       </div>
-    </QueryClientProvider>
+    </>
   );
 }
 

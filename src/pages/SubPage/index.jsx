@@ -4,43 +4,59 @@ import { subCategory } from 'constants/category';
 import styles from './styles.module.css';
 import { Outlet, useLocation } from 'react-router-dom';
 import SubContentDetail from './SubContentDetail';
+import { useAuthContext } from 'context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import { getPost } from 'api/firebase';
 import { useQuery } from '@tanstack/react-query';
 
 export default function SubPage({ pageName }) {
-  const { isLoading, error, data: post } = useQuery(['posts'], getPost);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { isAdmin } = useAuthContext();
   const [activeNavId, setActiveNavId] = useState(
     location.state ? location.state.id : 0,
   );
   const updateActiveNavId = (idx) => {
     setActiveNavId((prev) => (prev = idx));
   };
+  const [post, setPost] = useState(
+    useQuery([`posts/${activeNavId}`], () => getPost(activeNavId)).data,
+  );
   useEffect(() => {
     if (location.state) updateActiveNavId(location.state.id);
   }, [location.state]);
 
   return (
     <div className={styles.subPage_wrap}>
-      <div className={styles.page_title}>
+      <section className={styles.page_title}>
         <p>{pageName}</p>
-      </div>
-      <div className={styles.page_content}>
+      </section>
+      <section className={styles.page_content}>
         <SubNavbar
           navItems={subCategory[pageName]}
           navTitle={pageName}
           activeNavId={activeNavId}
           updateActiveNavId={updateActiveNavId}
         />
-
-        {isLoading && <div>Loading...</div>}
-        {error && <p>{error}</p>}
-        <SubContentDetail
-          pageName={pageName}
-          activeNavId={activeNavId}
-          post={post}
-        />
-      </div>
+        {post && (
+          <SubContentDetail
+            pageName={pageName}
+            activeNavId={activeNavId}
+            post={post}
+          />
+        )}
+        {isAdmin && (
+          <article className={styles.btn_wrap}>
+            <button
+              className={styles.write_btn}
+              onClick={() => {
+                navigate('/admin/write');
+              }}>
+              글쓰기
+            </button>
+          </article>
+        )}
+      </section>
     </div>
   );
 }

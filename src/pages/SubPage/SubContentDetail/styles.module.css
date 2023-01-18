@@ -1,5 +1,10 @@
 .content_wrap {
   width: 100%;
-  background-color: red;
-  height: 100%;
+}
+
+.content {
+  padding: 1.5rem;
+}
+.content p {
+  line-height: 1.8rem;
 }
