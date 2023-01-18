@@ -25,7 +25,7 @@ export default function SubPage({ pageName }) {
   }, [location.state]);
   const { data: posts } = useQuery([`posts`], getPost);
   useEffect(() => {
-    console.log(posts);
+    console.log('posts변경됐대!' + posts);
   }, [posts]);
 
   return (

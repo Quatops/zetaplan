@@ -2,7 +2,15 @@
 import { initializeApp } from 'firebase/app';
 import { v4 as uuid } from 'uuid';
 
-import { getDatabase, ref, set, get, child } from 'firebase/database';
+import {
+  getDatabase,
+  ref,
+  set,
+  get,
+  child,
+  push,
+  update,
+} from 'firebase/database';
 var moment = require('moment');
 
 const firebaseConfig = {
@@ -46,4 +54,18 @@ export async function getPost() {
     }
     return [];
   });
+}
+
+export async function updatePost(content, info) {
+  const { cate, subCate, id } = info;
+  const update = {};
+  update['/posts/' + id] = {
+    content,
+    id,
+    cate,
+    subCate,
+    writer: 'admin',
+    date: moment(new Date()).format('YYYY-MM-DD'),
+  };
+  return update(ref(database), update);
 }
