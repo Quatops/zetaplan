@@ -44,11 +44,23 @@ const router = createBrowserRouter([
         path: 'mergers-and-acquisitions/:path',
         element: <SubPage pageName={category[3].title} />,
       },
+      {
+        path: 'overseas/:path',
+        element: <SubPage pageName={category[4].title} />,
+      },
+      {
+        path: 'technology-deals/:path',
+        element: <SubPage pageName={category[5].title} />,
+      },
     ],
   },
   {
     path: 'admin/write',
     element: <AdminPostRegist />,
+  },
+  {
+    path: 'admin',
+    element: <AdminLogin />,
   },
 ]);
 
@@ -60,7 +72,6 @@ root.render(
         <RouterProvider router={router} />
       </Suspense>
     </AuthProvider>
-    ,
   </QueryClientProvider>,
 );
 

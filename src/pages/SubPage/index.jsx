@@ -40,23 +40,40 @@ export default function SubPage({ pageName }) {
           activeNavId={activeNavId}
           updateActiveNavId={updateActiveNavId}
         />
-        {posts && (
-          <SubContentDetail
-            pageName={pageName}
-            activeNavId={activeNavId}
-            post={posts[activeNavId]}
-          />
-        )}
-        {isAdmin && (
-          <article className={styles.btn_wrap}>
-            <button
-              className={styles.write_btn}
-              onClick={() => {
-                navigate('/admin/write');
-              }}>
-              글쓰기
-            </button>
-          </article>
+        {posts && posts.find((v) => v.id === activeNavId) ? (
+          <>
+            <SubContentDetail
+              pageName={pageName}
+              activeNavId={activeNavId}
+              post={posts[activeNavId]}
+            />
+            {isAdmin && (
+              <article className={styles.btn_wrap}>
+                <button
+                  className={styles.write_btn}
+                  onClick={() => {
+                    navigate('/admin/write');
+                  }}>
+                  수정
+                </button>
+              </article>
+            )}
+          </>
+        ) : (
+          <div>
+            <p>페이지를 찾을 수 없습니다.</p>
+            {isAdmin && (
+              <article className={styles.btn_wrap}>
+                <button
+                  className={styles.write_btn}
+                  onClick={() => {
+                    navigate('/admin/write');
+                  }}>
+                  글쓰기
+                </button>
+              </article>
+            )}
+          </div>
         )}
       </section>
     </div>
