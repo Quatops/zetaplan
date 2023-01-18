@@ -50,11 +50,21 @@ export default function SubPage({ pageName }) {
             {isAdmin && (
               <article className={styles.btn_wrap}>
                 <button
-                  className={styles.write_btn}
+                  className={`${styles.write_btn} ${styles.btn}`}
                   onClick={() => {
-                    navigate('/admin/write');
+                    navigate('/admin/write', {
+                      state: { post: posts.find((v) => v.id === activeNavId) },
+                      // 나중에 로직좀 바꿔야겠다.
+                    });
                   }}>
                   수정
+                </button>{' '}
+                <button
+                  className={`${styles.delete_btn} ${styles.btn}`}
+                  onClick={() => {
+                    navigate('/admin/write', { state: { post: null } });
+                  }}>
+                  삭제
                 </button>
               </article>
             )}
@@ -67,7 +77,7 @@ export default function SubPage({ pageName }) {
                 <button
                   className={styles.write_btn}
                   onClick={() => {
-                    navigate('/admin/write');
+                    navigate('/admin/write', { state: { post: null } });
                   }}>
                   글쓰기
                 </button>

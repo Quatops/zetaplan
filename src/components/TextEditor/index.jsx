@@ -1,8 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { uploadImage } from 'api/uploader';
+import { useLocation } from 'react-router-dom';
 
-export default function TextEditor({ images, updateImages, updateValue }) {
+export default function TextEditor({ updateValue }) {
+  const {
+    state: { post },
+  } = useLocation();
   const editorRef = useRef(null);
   const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const content_style = `
@@ -49,6 +53,7 @@ export default function TextEditor({ images, updateImages, updateValue }) {
           editorRef.current = editor;
           editor.contentCSS.push(require('./style.css'));
         }}
+        initialValue={post ? post.content : ''}
         onEditorChange={(newValue, editor) => {
           updateValue(newValue);
         }}

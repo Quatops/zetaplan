@@ -31,7 +31,22 @@
 .write_btn {
   color: var(--color-white);
   background-color: var(--color-black);
+}
+
+.delete_btn {
+  color: var(--color-white);
+  background-color: var(--color-red);
+}
+
+.btn {
   height: 45px;
   border-radius: 10px;
   width: 150px;
+  margin: 0 10px;
+  transition: all 300ms ease;
+}
+
+.btn:hover {
+  filter: brightness(1.2);
+  transform: scale(1.015);
 }
