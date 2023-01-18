@@ -10,7 +10,7 @@ export default function AdminLogin() {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [isCorrect, setIsCorrect] = useState(true);
-  const { login } = useAuthContext();
+  const { user_login } = useAuthContext();
   const navigate = useNavigate();
 
   const onEmailHandler = (e) => {
@@ -22,7 +22,7 @@ export default function AdminLogin() {
 
   const onLoginHandler = (e) => {
     e.preventDefault();
-    if (login(id, password)) {
+    if (user_login(id, password)) {
       navigate('/');
     } else setIsCorrect(false);
   };
