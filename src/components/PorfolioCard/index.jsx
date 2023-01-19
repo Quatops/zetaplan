@@ -12,9 +12,7 @@ export default function PortfolioCard({ portfolio }) {
       </article>
       <article className={styles.invest_info}>
         <div className={styles.invest_name}>
-          <span className={styles.subject}>{portfolio.투자주체}</span>
           <span className={styles.name}>{portfolio.투자업체명}</span>
-          <div className={styles.line}></div>
         </div>
         <p className={styles.summary}>{portfolio.기업한줄요약}</p>
       </article>

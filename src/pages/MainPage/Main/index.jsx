@@ -4,7 +4,7 @@ import BannerCarousel from 'components/BannerCarousel';
 import MainContents from 'pages/MainPage/Main/MainContents';
 
 import { useAuthContext } from 'context/AuthContext';
-import EditButton from 'components/EditButton';
+//import EditButton from 'components/EditButton';
 import { FaAngleRight } from 'react-icons/fa';
 import { FiPlus } from 'react-icons/fi';
 

@@ -11,7 +11,9 @@ import { AuthProvider } from 'context/AuthContext';
 import Loading from 'components/Loading';
 
 /* MainPage */
-import MainPage from 'pages/MainPage';
+//import MainPage from 'pages/MainPage';
+
+const MainPage = lazy(() => import('pages/MainPage'));
 
 /* SubPage */
 const queryClient = new QueryClient();
