@@ -79,8 +79,6 @@ export default function MainPage() {
         <div className={styles.main_item}>
           <InvestmentPortfolio />
         </div>
-      </Suspense>
-      <Suspense fallback={<div>Loading...</div>}>
         <div className={styles.main_item}>
           <GlobalNetwork />
         </div>
