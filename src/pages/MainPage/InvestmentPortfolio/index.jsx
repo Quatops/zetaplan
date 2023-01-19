@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './styles.module.css';
 import portfolio from 'constants/portfolio.json';
 import PortfolioCard from 'components/PorfolioCard';
+import Pagenation from 'components/Pagination';
 const sectors = [
   'ALL',
   '소재부품장비',
@@ -29,7 +30,16 @@ export default function InvestmentPortfolio() {
   const [pageItems, setPageItems] = useState(portfolio);
   const [limit, setLimit] = useState(8);
   const [page, setPage] = useState(1);
+  const updatePage = (idx) => {
+    setPage(idx);
+  };
   const offset = (page - 1) * limit;
+  const postsData = (posts) => {
+    if (posts) {
+      let result = posts.slice(offset, offset + limit);
+      return result;
+    }
+  };
   return (
     <div className={styles.page_wrapper}>
       <div className={styles.contents_wrapper}>
@@ -57,6 +67,14 @@ export default function InvestmentPortfolio() {
             ))}
           </article>
         </section>
+        <footer className="flex_center">
+          <Pagenation
+            limit={limit}
+            page={page}
+            totalPosts={pageItems.length}
+            updatePage={updatePage}
+          />
+        </footer>
       </div>
     </div>
   );

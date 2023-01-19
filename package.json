@@ -17,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-globe.gl": "^2.22.10",
     "react-icons": "^4.7.1",
+    "react-js-pagination": "^3.0.3",
     "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
     "swiper": "^8.4.5",
