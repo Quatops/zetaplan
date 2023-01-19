@@ -1,12 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { uploadImage } from 'api/uploader';
-import { useLocation } from 'react-router-dom';
 
-export default function TextEditor({ updateValue }) {
-  const {
-    state: { post },
-  } = useLocation();
+export default function TextEditor({ updateValue, post }) {
   const editorRef = useRef(null);
   const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const content_style = `
@@ -30,12 +26,6 @@ export default function TextEditor({ updateValue }) {
   }
   
   `;
-
-  useEffect(() => {
-    if (editorRef.current) {
-      //console.log('출력해봐라', editorRef.current.getContent());
-    }
-  }, []);
 
   return (
     <>
@@ -78,14 +68,6 @@ export default function TextEditor({ updateValue }) {
           image_advtab: true,
           image_caption: true,
           file_browser_callback_types: 'image',
-          // images_upload_handler: async function (blobInfo, success, failure) {
-          //   try {
-          //     uploadImage(blobInfo.blob()).then((url) => success(url));
-          //   } catch (error) {
-          //     console.log(error);
-          //     return;
-          //   }
-          // },
           images_upload_handler: async (blobInfo) => {
             return new Promise((resolve, reject) => {
               uploadImage(blobInfo.blob())

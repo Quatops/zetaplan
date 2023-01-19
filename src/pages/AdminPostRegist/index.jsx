@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './styles.module.css';
 import TextEditor from 'components/TextEditor';
+import { useLocation } from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { addNewPost } from 'api/firebase';
 import SelectCategry from './SelectCategory';
@@ -11,6 +12,13 @@ export default function AdminPostRegist() {
   const [value, setValue] = useState('');
   const [selectSubCate, setSelectSubCate] = useState({});
   const queryClient = useQueryClient();
+  // const {
+  //   state: { post },
+  // } = useLocation();
+
+  const location = useLocation();
+  console.log('로케이션임', location);
+  const post = location.state ? location.state.post : null;
   const addPost = useMutation(({ value, info }) => addNewPost(value, info), {
     onSuccess: () => queryClient.invalidateQueries('posts'),
   });
@@ -58,6 +66,7 @@ export default function AdminPostRegist() {
           images={images}
           updateValue={updateValue}
           value={value}
+          post={post}
           updateImages={updateImages}
         />
       </section>

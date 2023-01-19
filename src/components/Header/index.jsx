@@ -74,13 +74,13 @@ export default function Header({ isWhite }) {
                 </Link>
               ),
             )}
-            {isAdmin && (
+            {/* {isAdmin && (
               <EditButton
                 activeEdit={activeEdit}
                 updateActiveEdit={updateActiveEdit}
                 idx={1}
               />
-            )}
+            )} */}
           </ul>
 
           <li className={`${styles.search_wrapper} ${styles.nav_item}`}>
