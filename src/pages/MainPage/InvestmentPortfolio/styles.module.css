@@ -2,17 +2,19 @@
   overflow: hidden;
   background-color: var(--color-white);
   display: flex;
-  padding-top: 8rem;
+  padding-top: 3rem;
   justify-content: center;
+  align-items: center;
   height: 100%;
 }
 
 .contents_wrapper {
   display: flex;
+  padding: 30px 0;
   flex-direction: column;
   justify-content: space-around;
   width: 1300px;
-  height: 750px;
+  height: 858px;
 }
 
 .search {
@@ -40,18 +42,23 @@
   height: 50px;
   border-radius: 10px;
 }
-
+.sector {
+  display: flex;
+}
 .sector_btn {
   min-width: 96px;
   max-width: 112px;
   font-size: 0.938rem;
-  font-weight: 600;
+  font-weight: 700;
   height: 35px;
   margin: 3px;
   border-radius: 10px;
   background-color: #eeeeee;
 }
 .portfolio_wrap {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
 }

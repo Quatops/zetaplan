@@ -27,7 +27,7 @@ const sectors = [
 
 export default function InvestmentPortfolio() {
   const [pageItems, setPageItems] = useState(portfolio);
-  const [limit, setLimit] = useState(4);
+  const [limit, setLimit] = useState(8);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
   return (
@@ -42,11 +42,13 @@ export default function InvestmentPortfolio() {
         </section>
         <section className={styles.sector}>
           <p>sector</p>
-          {sectors.map((value, index) => (
-            <button key={index} className={styles.sector_btn}>
-              {value}
-            </button>
-          ))}
+          <div>
+            {sectors.map((value, index) => (
+              <button key={index} className={styles.sector_btn}>
+                {value}
+              </button>
+            ))}
+          </div>
         </section>
         <section className={styles.content}>
           <article className={styles.portfolio_wrap}>
