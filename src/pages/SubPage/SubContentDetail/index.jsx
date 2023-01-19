@@ -10,8 +10,8 @@ export default function SubContentDetail({ post, subCategory, category }) {
       <div>
         <div className={styles.route_url}>{`HOME > ${
           category[post.cate].title
-        } > ${subCategory[post.subCate].title}`}</div>
-        <h1 className={styles.sub_title}>{subCategory[post.subCate].title}</h1>
+        } > ${subCategory[post.id].title}`}</div>
+        <h1 className={styles.sub_title}>{subCategory[post.id].title}</h1>
         <div className={styles.line}></div>
       </div>
       <div className={styles.content} ref={contentRef}></div>

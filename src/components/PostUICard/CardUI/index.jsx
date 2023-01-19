@@ -1,5 +1,4 @@
 import React from 'react';
+import styles from './styles.module.css';
 
-export default function CardUI() {
-  return <div>CardUI</div>;
-}
+export default function CardUI({ children }) {}

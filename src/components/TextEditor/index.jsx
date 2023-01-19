@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { uploadImage } from 'api/uploader';
+import ToggleUI from 'components/PostUICard/ToggleUI';
 
 export default function TextEditor({ updateValue, post }) {
   const editorRef = useRef(null);
@@ -26,6 +27,15 @@ export default function TextEditor({ updateValue, post }) {
   }
   `;
 
+  const component = (idx) => {
+    switch (idx) {
+      case 0:
+        return <ToggleUI>제목을 입력하세요.</ToggleUI>;
+      case 1:
+        break;
+    }
+  };
+
   return (
     <>
       <form>
@@ -42,7 +52,9 @@ export default function TextEditor({ updateValue, post }) {
           editorRef.current = editor;
           editor.contentCSS.push(require('./style.css'));
         }}
-        initialValue={post ? post.content : ''}
+        initialValue={
+          post ? post.content : '<ToggleUI>제목을 입력하세요.</ToggleUI>'
+        }
         onEditorChange={(newValue, editor) => {
           updateValue(newValue);
         }}
@@ -102,8 +114,7 @@ export default function TextEditor({ updateValue, post }) {
           font_family_formats:
             'pretendard;나눔고딕;나눔스퀘어;나눔바른고딕;고닥;돋움;돋움체;굴림;굴림체;궁서;궁서체;Arial=arial;Helvetica=helvetica,sans-serif; Courier New=courier new,courier,monospace; AkrutiKndPadmini=Akpdmi-n',
           skin: useDarkMode ? 'oxide-dark' : 'oxide',
-        }}
-      />
+        }}></Editor>
     </>
   );
 }

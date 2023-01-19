@@ -13,7 +13,7 @@
   padding: 40px 0;
   flex-direction: column;
   justify-content: space-between;
-  width: 1300px;
+  width: 1250px;
   height: 858px;
 }
 
@@ -67,6 +67,6 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 25px;
-  grid-row-gap: 25px;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
 }

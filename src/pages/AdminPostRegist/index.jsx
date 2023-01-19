@@ -7,12 +7,21 @@ import { addNewPost } from 'api/firebase';
 import SelectCategory from './SelectCategory';
 import { category, subCategory } from 'constants/category';
 import WriteFormList from './WriteFormList';
+import ToggleUI from 'components/PostUICard/ToggleUI';
 
 export default function AdminPostRegist() {
   const [images, setImages] = useState();
   const [value, setValue] = useState('');
   const [selectSubCate, setSelectSubCate] = useState(0);
   const queryClient = useQueryClient();
+  const [adduiIdx, setAdduiIdx] = useState(null);
+
+  const addComponent = (idx) => {
+    console.log(idx + '번 컴포넌트 추가할라구~ 그러니까 추가해줄럐?');
+    // value만 적용하면 메인에서만 와! 추가됐나보다! 할텐데,
+    // 아냐. 내가 이걸 적용시키려면... 텍스트 에디터에 추가가 되어야하잖아.
+    setAdduiIdx(idx);
+  };
 
   const location = useLocation();
   const post = location.state ? location.state.post : null;
@@ -38,7 +47,6 @@ export default function AdminPostRegist() {
     if (window.confirm('저장하시겠습니까?')) {
       const info = {
         cate: selectCate,
-        subCate: Number(selectSubCate),
         id: Number(selectSubCate),
       };
       addPost.mutate(
@@ -67,11 +75,12 @@ export default function AdminPostRegist() {
           updateValue={updateValue}
           value={value}
           post={post}
+          adduiIdx={adduiIdx}
           updateImages={updateImages}
         />
       </section>
       <aside className={styles.content_info}>
-        <WriteFormList />
+        <WriteFormList addComponent={addComponent} />
         <ul className={styles.cate_selector}>
           <li className={styles.select_wrap}>
             <SelectCategory
