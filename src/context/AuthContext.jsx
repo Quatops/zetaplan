@@ -1,20 +1,26 @@
 import { createContext, useContext, useEffect, useState } from 'react';
+import { login, logout, onUserStateChange } from 'api/firebase';
 
 const AuthContext = createContext();
 export function AuthProvider({ children }) {
-  const [isAdmin, setIsAdmin] = useState(false);
-  const login = (id, password) => {
-    if (id === 'admin' && password === process.env.REACT_APP_ADMIN_PASSWORD) {
-      setIsAdmin(true);
-      return true;
-    }
-    return false;
-  };
+  const [user, setUser] = useState();
+
   useEffect(() => {
-    console.log('isAdmin은말이지', isAdmin);
-  }, [isAdmin]);
+    onUserStateChange((user) => setUser(user));
+    console.log('안녕', user);
+  }, []);
+
+  const user_login = (id, password) => {
+    const id_email = id + '@admin.com';
+    return login(id_email, password);
+  };
+
+  const user_logout = () => {
+    logout();
+  };
   return (
-    <AuthContext.Provider value={{ isAdmin, login }}>
+    <AuthContext.Provider
+      value={{ isAdmin: user ? user.isAdmin : false, user_login, user_logout }}>
       {children}
     </AuthContext.Provider>
   );

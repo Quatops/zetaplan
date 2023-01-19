@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { category } from 'constants/category';
 import { AuthProvider } from 'context/AuthContext';
@@ -13,38 +14,9 @@ import Loading from 'components/Loading';
 import MainPage from 'pages/MainPage';
 
 /* SubPage */
+const queryClient = new QueryClient();
 const SubPage = lazy(() => import('pages/SubPage'));
 
-/* CompanyIntro */
-const Greetings = lazy(() => import('pages/SubPage/ComapnyIntro/Greetings'));
-const ConsultingService = lazy(() =>
-  import('pages/SubPage/ComapnyIntro/ConsultingService'),
-);
-const ConsultingAbout = lazy(() =>
-  import('pages/SubPage/ComapnyIntro/ConsultingAbout'),
-);
-const MainArticle = lazy(() =>
-  import('pages/SubPage/ComapnyIntro/MainArticle'),
-);
-const CIGuide = lazy(() => import('pages/SubPage/ComapnyIntro/CIGuide'));
-const ZetaplanMarks = lazy(() =>
-  import('pages/SubPage/ComapnyIntro/ZetaplanMarks'),
-);
-const AffiliateNetwork = lazy(() =>
-  import('pages/SubPage/ComapnyIntro/AffiliateNetwork'),
-);
-
-/* Accelerating */
-const AcceleratingOverview = lazy(() => import('pages/SubPage/Accelerating'));
-
-/*InvestmentIr */
-const InvestmentBuisnessPlan = lazy(() =>
-  import('pages/SubPage/InvestmentIr/InvestmentBuisnessPlan'),
-);
-const InvestmentOverview = lazy(() =>
-  import('pages/SubPage/InvestmentIr/InvestmentOverview'),
-);
-const MnAOverview = lazy(() => import('pages/SubPage/MnA/MnAOverview'));
 /* admin page */
 const AdminPostRegist = lazy(() => import('pages/AdminPostRegist'));
 const AdminLogin = lazy(() => import('pages/AdminLogin'));
@@ -57,92 +29,51 @@ const router = createBrowserRouter([
     children: [
       { index: true, path: '/', element: <MainPage /> },
       {
-        path: 'company-intro',
+        path: 'company-intro/:path',
         element: <SubPage pageName={category[0].title} />,
-        children: [
-          { index: true, path: 'greetings', element: <Greetings /> },
-          {
-            path: 'zeta-plan-consulting-services-sector',
-            element: <ConsultingService />,
-          },
-          {
-            path: 'consultant-about',
-            element: <ConsultingAbout />,
-          },
-          {
-            path: 'the-main-economic-newspaper-article',
-            element: <MainArticle />,
-          },
-          { path: 'affiliate-network', element: <AffiliateNetwork /> },
-          {
-            path: 'ci-guide',
-            element: <CIGuide />,
-          },
-          {
-            path: 'zeta-plan-marks',
-            element: <ZetaplanMarks />,
-          },
-        ],
       },
       {
-        path: 'accelerating',
+        path: 'accelerating/:path',
         element: <SubPage pageName={category[1].title} />,
-        children: [
-          {
-            index: true,
-            path: 'accelerating-overview',
-            element: <AcceleratingOverview />,
-          },
-        ],
       },
       {
-        path: 'investment-ir',
+        path: 'investment-ir/:path',
         element: <SubPage pageName={category[2].title} />,
-        children: [
-          {
-            index: true,
-            path: 'investment-consulting-ir-overview',
-            element: <InvestmentOverview />,
-          },
-          {
-            path: 'investment-ir-business-plan',
-            element: <InvestmentBuisnessPlan />,
-          },
-        ],
       },
       {
-        path: 'mergers-and-acquisitions',
+        path: 'mergers-and-acquisitions/:path',
         element: <SubPage pageName={category[3].title} />,
-        children: [
-          {
-            index: true,
-            path: 'mergers-and-acquisitions-overview',
-            element: <MnAOverview />,
-          },
-        ],
+      },
+      {
+        path: 'overseas/:path',
+        element: <SubPage pageName={category[4].title} />,
+      },
+      {
+        path: 'technology-deals/:path',
+        element: <SubPage pageName={category[5].title} />,
       },
     ],
   },
   {
-    path: '/admin',
-    element: <AdminLogin />,
+    path: 'admin/write',
+    element: <AdminPostRegist />,
+    state: { post: null },
   },
   {
-    path: '/admin/write',
-    element: <AdminPostRegist />,
+    path: 'admin',
+    element: <AdminLogin />,
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <AuthProvider>
-    <Suspense fallback={<Loading />}>
-      <RouterProvider router={router} />
-    </Suspense>
-  </AuthProvider>,
+  <QueryClientProvider client={queryClient}>
+    <AuthProvider>
+      <Suspense fallback={<Loading />}>
+        <RouterProvider router={router} />
+      </Suspense>
+    </AuthProvider>
+  </QueryClientProvider>,
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

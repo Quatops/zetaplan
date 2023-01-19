@@ -237,26 +237,26 @@ export default function Main() {
         <section className={styles.left}>
           {/* banner */}
           <article className={styles.banner}>
-            {isAdmin && (
-              <EditButton
-                activeEdit={activeEdit}
-                updateActiveEdit={updateActiveEdit}
-                idx={1}
-              />
-            )}
+            {/*{isAdmin && (
+                <EditButton
+                  activeEdit={activeEdit}
+                  updateActiveEdit={updateActiveEdit}
+                  idx={1}
+                />
+              )}*/}
             <BannerCarousel bannerImages={banner} />
           </article>
 
           <article className={styles.main_intro}>
             <div className={styles.intro_wrapper}>
               <ul className={styles.intro_header}>
-                {isAdmin && (
-                  <EditButton
-                    activeEdit={activeEdit}
-                    updateActiveEdit={updateActiveEdit}
-                    idx={1}
-                  />
-                )}
+                {/*{isAdmin && (
+                <EditButton
+                  activeEdit={activeEdit}
+                  updateActiveEdit={updateActiveEdit}
+                  idx={1}
+                />
+              )}*/}
                 {intro_header.map((item, index) => (
                   <li
                     key={index}
@@ -293,13 +293,13 @@ export default function Main() {
             </div>
             <button className={styles.cosulting_apply_btn}>상담신청</button>
 
-            {isAdmin && (
-              <EditButton
-                activeEdit={activeEdit}
-                updateActiveEdit={updateActiveEdit}
-                idx={1}
-              />
-            )}
+            {/*{isAdmin && (
+                <EditButton
+                  activeEdit={activeEdit}
+                  updateActiveEdit={updateActiveEdit}
+                  idx={1}
+                />
+              )}*/}
           </section>
           <section className={styles.infos}>
             <div className={styles.company_ass}>
@@ -311,22 +311,22 @@ export default function Main() {
                   <p className={styles.ass_name}>{value.name}</p>
                 </button>
               ))}
-              {isAdmin && (
+              {/*{isAdmin && (
                 <EditButton
                   activeEdit={activeEdit}
                   updateActiveEdit={updateActiveEdit}
                   idx={1}
                 />
-              )}
+              )}*/}
             </div>
             <section className={styles.etc_info}>
-              {isAdmin && (
+              {/*{isAdmin && (
                 <EditButton
                   activeEdit={activeEdit}
                   updateActiveEdit={updateActiveEdit}
                   idx={1}
                 />
-              )}
+              )}*/}
               <div className={styles.etc_button_wrapper}>
                 <Button
                   name="기술사업화"

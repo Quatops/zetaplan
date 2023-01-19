@@ -1,10 +1,11 @@
 .subPage_wrap {
-  height: 100vh;
+  height: 100%;
   padding-top: 5rem;
   width: 100vw;
+  overflow-x: hidden;
 }
 .page_title {
-  height: 22%;
+  height: 200px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -14,10 +15,38 @@
   font-weight: 600;
 }
 .page_content {
-  height: 78%;
   background-color: var(--color-white);
   width: 100%;
+  min-height: calc(100vh - 200px - 5rem);
   padding: 50px 0;
   padding-left: 350px;
   padding-right: 16.66vw;
+}
+.btn_wrap {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.write_btn {
+  color: var(--color-white);
+  background-color: var(--color-black);
+}
+
+.delete_btn {
+  color: var(--color-white);
+  background-color: var(--color-red);
+}
+
+.btn {
+  height: 45px;
+  border-radius: 10px;
+  width: 150px;
+  margin: 0 10px;
+  transition: all 300ms ease;
+}
+
+.btn:hover {
+  filter: brightness(1.2);
+  transform: scale(1.015);
 }

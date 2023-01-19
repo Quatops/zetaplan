@@ -14,7 +14,6 @@ export default function GlobalNetwork() {
   const updateActiveNationIdx = (idx) => {
     setActiveNationIdx(idx);
     setActiveContinentIdx(nations[idx].continent);
-    console.log(nations[idx].continent);
   };
   const updateActiveContinentIdx = (idx) => {
     setActiveContinentIdx(idx);

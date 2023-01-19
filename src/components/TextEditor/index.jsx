@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { uploadImage } from 'api/uploader';
 
-export default function TextEditor({ images, updateImages, updateValue }) {
+export default function TextEditor({ updateValue, post }) {
   const editorRef = useRef(null);
   const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const content_style = `
@@ -10,13 +10,13 @@ export default function TextEditor({ images, updateImages, updateValue }) {
     padding: 1rem;
     width: 50%;
     margin: 0 auto;
-    -webkit-box-shadow: 4px 4px 14px 0px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 4px 4px 14px 0px rgba(0, 0, 0, 0.2);
-    box-shadow: 4px 4px 14px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px -3px 14px 0px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0px -3px 14px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px -3px 14px 0px rgba(0,0,0,0.15);
     height: 100%;
   }
   body {
-    font-family: 나눔고딕, 나눔스퀘어, 돋움, Helvetica, Arial, sans-serif;
+    font-family: pretendard,나눔고딕, 나눔스퀘어, 돋움, Helvetica, Arial, sans-serif;
     font-size: 14px;
     border: none;
   }
@@ -26,12 +26,6 @@ export default function TextEditor({ images, updateImages, updateValue }) {
   }
   
   `;
-
-  useEffect(() => {
-    if (editorRef.current) {
-      //console.log('출력해봐라', editorRef.current.getContent());
-    }
-  }, []);
 
   return (
     <>
@@ -49,6 +43,7 @@ export default function TextEditor({ images, updateImages, updateValue }) {
           editorRef.current = editor;
           editor.contentCSS.push(require('./style.css'));
         }}
+        initialValue={post ? post.content : ''}
         onEditorChange={(newValue, editor) => {
           updateValue(newValue);
         }}
@@ -73,14 +68,6 @@ export default function TextEditor({ images, updateImages, updateValue }) {
           image_advtab: true,
           image_caption: true,
           file_browser_callback_types: 'image',
-          // images_upload_handler: async function (blobInfo, success, failure) {
-          //   try {
-          //     uploadImage(blobInfo.blob()).then((url) => success(url));
-          //   } catch (error) {
-          //     console.log(error);
-          //     return;
-          //   }
-          // },
           images_upload_handler: async (blobInfo) => {
             return new Promise((resolve, reject) => {
               uploadImage(blobInfo.blob())
@@ -88,7 +75,6 @@ export default function TextEditor({ images, updateImages, updateValue }) {
                   resolve(url);
                 })
                 .catch((e) => {
-                  console.log(e);
                   reject(e);
                 });
             });
@@ -115,7 +101,7 @@ export default function TextEditor({ images, updateImages, updateValue }) {
           quickbars_selection_toolbar:
             'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
           font_family_formats:
-            '나눔고딕;나눔스퀘어;나눔바른고딕;고닥;돋움;돋움체;굴림;굴림체;궁서;궁서체;Arial=arial;Helvetica=helvetica,sans-serif; Courier New=courier new,courier,monospace; AkrutiKndPadmini=Akpdmi-n',
+            'pretendard;나눔고딕;나눔스퀘어;나눔바른고딕;고닥;돋움;돋움체;굴림;굴림체;궁서;궁서체;Arial=arial;Helvetica=helvetica,sans-serif; Courier New=courier new,courier,monospace; AkrutiKndPadmini=Akpdmi-n',
           skin: useDarkMode ? 'oxide-dark' : 'oxide',
         }}
       />

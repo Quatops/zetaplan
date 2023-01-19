@@ -4,7 +4,6 @@ import styles from './styles.module.css';
 export default function PortfolioCard({ portfolio }) {
   useEffect(() => {
     portfolio.사업분야.split(', ');
-    console.log(portfolio);
   }, [portfolio]);
   return (
     <div className={styles.portfolio_wrap}>
