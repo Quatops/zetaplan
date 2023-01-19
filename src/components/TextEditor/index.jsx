@@ -18,13 +18,12 @@ export default function TextEditor({ updateValue, post }) {
   body {
     font-family: pretendard,나눔고딕, 나눔스퀘어, 돋움, Helvetica, Arial, sans-serif;
     font-size: 14px;
-    border: none;
-  }
-  #tinymce{
     height: 100%;
-    overflow: scroll;
+    overflow:hidden
   }
-  
+  textarea{
+    background-color: red;
+  }
   `;
 
   return (
