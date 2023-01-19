@@ -10,7 +10,7 @@ import { category, subCategory } from 'constants/category';
 export default function AdminPostRegist() {
   const [images, setImages] = useState();
   const [value, setValue] = useState('');
-  const [selectSubCate, setSelectSubCate] = useState({});
+  const [selectSubCate, setSelectSubCate] = useState(0);
   const queryClient = useQueryClient();
   // const {
   //   state: { post },
@@ -39,14 +39,11 @@ export default function AdminPostRegist() {
   };
 
   const handleSubmit = () => {
-    const id = subCategory[category[selectCate]].find(
-      (v) => v.title === selectSubCate,
-    ).id;
     if (window.confirm('저장하시겠습니까?')) {
       const info = {
         cate: selectCate,
-        subCate: id,
-        id,
+        subCate: Number(selectSubCate),
+        id: Number(selectSubCate),
       };
       addPost.mutate(
         { value, info },
