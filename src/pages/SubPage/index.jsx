@@ -1,8 +1,8 @@
 import SubNavbar from 'components/SubNavbar';
 import React, { useState, useEffect } from 'react';
-import { subCategory } from 'constants/category';
+import { category, subCategory } from 'constants/category';
 import styles from './styles.module.css';
-import { Outlet, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import SubContentDetail from './SubContentDetail';
 import { useAuthContext } from 'context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -44,6 +44,8 @@ export default function SubPage({ pageName }) {
           <>
             <SubContentDetail
               pageName={pageName}
+              subCategory={subCategory[pageName]}
+              category={category}
               activeNavId={activeNavId}
               post={posts[activeNavId]}
             />
@@ -53,7 +55,7 @@ export default function SubPage({ pageName }) {
                   className={`${styles.write_btn} ${styles.btn}`}
                   onClick={() => {
                     navigate('/admin/write', {
-                      state: { post: posts.find((v) => v.id === activeNavId) },
+                      state: { post: posts[activeNavId] },
                       // 나중에 로직좀 바꿔야겠다.
                     });
                   }}>

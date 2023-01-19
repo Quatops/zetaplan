@@ -4,7 +4,7 @@ import TextEditor from 'components/TextEditor';
 import { useLocation } from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { addNewPost } from 'api/firebase';
-import SelectCategry from './SelectCategory';
+import SelectCategory from './SelectCategory';
 import { category, subCategory } from 'constants/category';
 
 export default function AdminPostRegist() {
@@ -30,7 +30,7 @@ export default function AdminPostRegist() {
     setValue(e);
   };
 
-  const [selectCate, setSelectCate] = useState('회사소개');
+  const [selectCate, setSelectCate] = useState(0);
   const updateSelectCate = (select) => {
     setSelectCate(select);
   };
@@ -39,13 +39,13 @@ export default function AdminPostRegist() {
   };
 
   const handleSubmit = () => {
-    const id = subCategory[selectCate].find(
+    const id = subCategory[category[selectCate]].find(
       (v) => v.title === selectSubCate,
     ).id;
     if (window.confirm('저장하시겠습니까?')) {
       const info = {
         cate: selectCate,
-        subCate: selectSubCate,
+        subCate: id,
         id,
       };
       addPost.mutate(
@@ -73,16 +73,16 @@ export default function AdminPostRegist() {
       <aside className={styles.content_info}>
         <ul className={styles.cate_selector}>
           <li className={styles.select_wrap}>
-            <SelectCategry
+            <SelectCategory
               label="카테고리"
               options={category}
               updateSelect={updateSelectCate}
             />
           </li>
           <li className={styles.select_wrap}>
-            <SelectCategry
+            <SelectCategory
               label="상세 카테고리"
-              options={subCategory[selectCate]}
+              options={subCategory[category[selectCate].title]}
               updateSelect={updateSelectSubCate}
             />
           </li>

@@ -10,7 +10,7 @@ export default function SelectCategry({ label, options, updateSelect }) {
       <label className={styles.label}>{label}</label>
       <select className={styles.select} onChange={handleChangeSelect}>
         {options.map((value) => (
-          <option value={value.title} key={value.id} className={styles.option}>
+          <option value={value.id} key={value.id} className={styles.option}>
             {value.title}
           </option>
         ))}
