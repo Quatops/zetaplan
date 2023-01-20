@@ -23,8 +23,8 @@ export const category = [
   },
 ];
 
-export const subCategory = {
-  회사소개: [
+export const subCategory = [
+  [
     { id: 0, title: '인사말', path: '/company-intro/greetings' },
     {
       id: 1,
@@ -40,7 +40,7 @@ export const subCategory = {
     { id: 4, title: '인증·수상', path: '/company-intro/affiliate-network' },
     { id: 5, title: 'CI 안내', path: '/company-intro/ci-guide' },
   ],
-  협력네트워크: [
+  [
     {
       id: 6,
       title: '기업지원기관',
@@ -67,7 +67,7 @@ export const subCategory = {
       path: '/notfound',
     },
   ],
-  'M&A': [
+  [
     {
       id: 11,
       title: 'M&A 개요',
@@ -94,7 +94,7 @@ export const subCategory = {
       path: '/notfound',
     },
   ],
-  IPO: [
+  [
     {
       id: 26,
       title: 'IPO 유형',
@@ -121,7 +121,7 @@ export const subCategory = {
       path: '/notfound',
     },
   ],
-  해외진출: [
+  [
     {
       id: 31,
       title: '해외진출 컨설팅',
@@ -148,7 +148,7 @@ export const subCategory = {
       path: '/notfound',
     },
   ],
-  기술거래: [
+  [
     {
       id: 36,
       title: '기술거래 목적',
@@ -175,4 +175,4 @@ export const subCategory = {
       path: '/technology-dealsxx/',
     },
   ],
-};
+];

@@ -37,8 +37,8 @@ export default function AdminPostRegist() {
   const [selectCate, setSelectCate] = useState(0);
   const updateSelectCate = (select) => {
     setSelectCate(select);
-    setSelectSubCate(subCategory[category[select].title][0].id);
-    console.log(subCategory[category[select].title][0].id);
+    setSelectSubCate(subCategory[category[select].id][0].id);
+    console.log(subCategory[category[select].id][0].id);
   };
   const updateSelectSubCate = (select) => {
     setSelectSubCate(select);
@@ -94,7 +94,7 @@ export default function AdminPostRegist() {
           <li className={styles.select_wrap}>
             <SelectCategory
               label="상세 카테고리"
-              options={subCategory[category[selectCate].title]}
+              options={subCategory[category[selectCate].id]}
               updateSelect={updateSelectSubCate}
             />
           </li>

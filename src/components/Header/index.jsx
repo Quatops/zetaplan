@@ -63,7 +63,7 @@ export default function Header({ isWhite }) {
               ) : (
                 <Link
                   to={value.path}
-                  state={{ id: subCategory[value.title][0].id }}
+                  state={{ id: subCategory[value.id][0].id }}
                   key={value.id}>
                   <li
                     className={`${styles.nav_item} ${

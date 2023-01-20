@@ -32,27 +32,27 @@ const router = createBrowserRouter([
       { index: true, path: '/', element: <MainPage /> },
       {
         path: 'company-intro/:path',
-        element: <SubPage pageName={category[0].title} />,
+        element: <SubPage pageName={0} />,
       },
       {
         path: 'accelerating/:path',
-        element: <SubPage pageName={category[1].title} />,
+        element: <SubPage pageName={1} />,
       },
       {
         path: 'investment-ir/:path',
-        element: <SubPage pageName={category[2].title} />,
+        element: <SubPage pageName={2} />,
       },
       {
         path: 'mergers-and-acquisitions/:path',
-        element: <SubPage pageName={category[3].title} />,
+        element: <SubPage pageName={3} />,
       },
       {
         path: 'overseas/:path',
-        element: <SubPage pageName={category[4].title} />,
+        element: <SubPage pageName={4} />,
       },
       {
         path: 'technology-deals/:path',
-        element: <SubPage pageName={category[5].title} />,
+        element: <SubPage pageName={5} />,
       },
     ],
   },

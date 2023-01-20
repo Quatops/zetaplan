@@ -16,7 +16,11 @@ export default function SubPage({ pageName }) {
     location.state ? location.state.id : 0,
   );
   const updateActiveNavId = (idx) => {
-    setActiveNavId((prev) => (prev = idx));
+    setActiveNavId(idx);
+    console.log(
+      '서브카테고리',
+      subCategory[pageName].find((v) => v.id === idx),
+    );
   };
 
   const [post, setPost] = useState(null);
@@ -35,20 +39,20 @@ export default function SubPage({ pageName }) {
   return (
     <div className={styles.subPage_wrap}>
       <section className={styles.page_title}>
-        <p>{pageName}</p>
+        <p>{category[pageName].title}</p>
       </section>
       <section className={styles.page_content}>
         <SubNavbar
           navItems={subCategory[pageName]}
-          navTitle={pageName}
+          navTitle={category[pageName].title}
           activeNavId={activeNavId}
           updateActiveNavId={updateActiveNavId}
         />
-        {post ? (
+        {post && post.id >= 0 ? (
           <>
             <SubContentDetail
               subCategory={subCategory[pageName]}
-              category={category}
+              category={category[post.cate].title}
               activeNavId={activeNavId}
               post={post}
             />
@@ -58,12 +62,11 @@ export default function SubPage({ pageName }) {
                   className={`${styles.write_btn} ${styles.btn}`}
                   onClick={() => {
                     navigate('/admin/write', {
-                      state: { post: post },
-                      // 나중에 로직좀 바꿔야겠다.
+                      state: { post },
                     });
                   }}>
                   수정
-                </button>{' '}
+                </button>
                 <button
                   className={`${styles.delete_btn} ${styles.btn}`}
                   onClick={() => {
