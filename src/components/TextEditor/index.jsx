@@ -15,7 +15,11 @@ export default function TextEditor({ updateValue, post }) {
       case 0:
         return ReactDOMServer.renderToStaticMarkup(
           <>
-            <ToggleUI>제목을 입력하세요.</ToggleUI>
+            <ToggleUI>
+              회색 박스 안에 내용을 넣어주세요. 내용을 업로드하면 회색 박스 안
+              내용이 토글로 적용됩니다. <br />
+              shift+enter를 하면 박스 안에서 줄바꿈을 할 수 있습니다.
+            </ToggleUI>
             <br />
           </>,
         );

@@ -4,6 +4,7 @@ export default function SubContentDetail({ post, subCategory, category }) {
   const contentRef = useRef();
   useEffect(() => {
     contentRef.current.innerHTML = post.content;
+    console.log('포스트임', category[post.cate]);
   }, [post]);
   return (
     <div className={styles.content_wrap}>

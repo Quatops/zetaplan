@@ -7,7 +7,6 @@ import SubContentDetail from './SubContentDetail';
 import { useAuthContext } from 'context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { getPost } from 'api/firebase';
-import { useQuery } from '@tanstack/react-query';
 
 export default function SubPage({ pageName }) {
   const location = useLocation();
@@ -20,13 +19,18 @@ export default function SubPage({ pageName }) {
     setActiveNavId((prev) => (prev = idx));
   };
 
+  const [post, setPost] = useState(null);
+
   useEffect(() => {
     if (location.state) updateActiveNavId(location.state.id);
   }, [location.state]);
-  const { data: posts } = useQuery([`posts`], getPost);
+  //const { data: post } = useQuery([`post`], () => getPost(activeNavId));
   useEffect(() => {
-    console.log('posts변경됐대!' + posts);
-  }, [posts]);
+    getPost(activeNavId).then((data) => {
+      setPost(data);
+      console.log(data);
+    });
+  }, [activeNavId]);
 
   return (
     <div className={styles.subPage_wrap}>
@@ -40,14 +44,13 @@ export default function SubPage({ pageName }) {
           activeNavId={activeNavId}
           updateActiveNavId={updateActiveNavId}
         />
-        {posts && posts.find((v) => v.id === activeNavId) ? (
+        {post ? (
           <>
             <SubContentDetail
-              pageName={pageName}
               subCategory={subCategory[pageName]}
               category={category}
               activeNavId={activeNavId}
-              post={posts[activeNavId]}
+              post={post}
             />
             {isAdmin && (
               <article className={styles.btn_wrap}>
@@ -55,7 +58,7 @@ export default function SubPage({ pageName }) {
                   className={`${styles.write_btn} ${styles.btn}`}
                   onClick={() => {
                     navigate('/admin/write', {
-                      state: { post: posts[activeNavId] },
+                      state: { post: post },
                       // 나중에 로직좀 바꿔야겠다.
                     });
                   }}>

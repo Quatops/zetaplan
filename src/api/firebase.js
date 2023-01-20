@@ -44,24 +44,24 @@ export async function addNewPost(content, info) {
   });
 }
 
-/*export async function getPost(id) {
+export async function getPost(id) {
   const dbRef = ref(getDatabase());
   return get(child(dbRef, `posts/` + id)).then((snapshot) => {
     if (snapshot.exists()) {
-      return Object.values(snapshot.val());
+      return snapshot.val();
     }
     return [];
   });
-}*/
+}
 
-export async function getPost() {
+/*export async function getPost() {
   return get(ref(database, `posts`)).then((snapshot) => {
     if (snapshot.exists()) {
       return Object.values(snapshot.val());
     }
     return [];
   });
-}
+}*/
 
 export async function updatePost(content, info) {
   const { cate, subCate, id } = info;

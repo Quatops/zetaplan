@@ -11,11 +11,7 @@ html {
 body {
   font-family: pretendard,나눔고딕, 나눔스퀘어, 돋움, Helvetica, Arial, sans-serif;
   font-size: 14px;
-  height: 100%;
-  overflow:hidden
-}
-textarea{
-  background-color: red;
+  overflow:hidden;
 }
 `;
 
@@ -24,11 +20,11 @@ export const toggleCSS = `
 .card_ui {
   width: 100%;
   display: flex;
-  flex-direction : column;
+  flex-direction: column;
   justify-content: center;
   position: relative;
 }
-.toggle_header{
+.toggle_label {
   display: flex;
   align-items: center;
 }
@@ -39,6 +35,9 @@ export const toggleCSS = `
   margin-right: 20px;
 }
 
+.toggle_checkbox{
+  display:none;
+}
 .toggle_prefix img {
   object-fit: contain;
   width: 100%;
@@ -49,16 +48,22 @@ export const toggleCSS = `
   font-size: 1.4rem;
 }
 
-
-.toggle_title::after {
+/*.toggle_title::after {
   content: '';
   position: absolute;
   width: 100%;
   top: 50%;
   height: 1px;
   background-color: var(--color-grey);
-}
-.toggle_content{
+}*/
+.toggle_content {
   font-family: pretendard;
+  padding: 1rem;
+  background-color: #f8f8f8;
+  border-radius: 10px;
 }
+.card_ui input[type='checkbox']:checked + .toggle_label + .toggle_content {
+  display: none;
+}
+
 `;

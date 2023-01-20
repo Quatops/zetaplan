@@ -7,7 +7,6 @@ import { addNewPost } from 'api/firebase';
 import SelectCategory from './SelectCategory';
 import { category, subCategory } from 'constants/category';
 import WriteFormList from './WriteFormList';
-import ToggleUI from 'components/PostUIs/ToggleUI';
 
 export default function AdminPostRegist() {
   const [images, setImages] = useState();
@@ -38,6 +37,8 @@ export default function AdminPostRegist() {
   const [selectCate, setSelectCate] = useState(0);
   const updateSelectCate = (select) => {
     setSelectCate(select);
+    setSelectSubCate(subCategory[category[select].title][0].id);
+    console.log(subCategory[category[select].title][0].id);
   };
   const updateSelectSubCate = (select) => {
     setSelectSubCate(select);
@@ -46,7 +47,8 @@ export default function AdminPostRegist() {
   const handleSubmit = () => {
     if (window.confirm('저장하시겠습니까?')) {
       const info = {
-        cate: selectCate,
+        subCate: Number(selectSubCate),
+        cate: Number(selectCate),
         id: Number(selectSubCate),
       };
       addPost.mutate(
