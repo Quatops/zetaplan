@@ -1,14 +1,11 @@
 import React from 'react';
-import CardUI from './CardUI';
 import styles from './styles.module.css';
 
 export default function PostUICard({ id }) {
   return (
     <div className={styles.card_wrap}>
       이것들은 ui 컴포넌트들입니다 {id}번입니다.
-      <div className={styles.content_wrap}>
-        <CardUI>안녕하세요</CardUI>
-      </div>
+      <div className={styles.content_wrap}></div>
     </div>
   );
 

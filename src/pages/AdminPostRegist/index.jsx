@@ -7,7 +7,7 @@ import { addNewPost } from 'api/firebase';
 import SelectCategory from './SelectCategory';
 import { category, subCategory } from 'constants/category';
 import WriteFormList from './WriteFormList';
-import ToggleUI from 'components/PostUICard/ToggleUI';
+import ToggleUI from 'components/PostUIs/ToggleUI';
 
 export default function AdminPostRegist() {
   const [images, setImages] = useState();
