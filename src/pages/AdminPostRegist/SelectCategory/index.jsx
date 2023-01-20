@@ -4,7 +4,6 @@ import styles from '../styles.module.css';
 export default function SelectCategry({ label, options, updateSelect }) {
   const handleChangeSelect = (e) => {
     updateSelect(e.target.value);
-    console.log(label + ' , ' + e.target.value);
   };
   return (
     <div className={styles.select_wrap}>

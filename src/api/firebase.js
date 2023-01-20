@@ -96,7 +96,6 @@ async function adminUser(user) {
   return get(ref(database, 'admin')).then((snapshot) => {
     if (snapshot.exists()) {
       const admin = snapshot.val();
-      console.log(admin);
       const isAdmin = admin.includes(user.uid);
       return { ...user, isAdmin };
     }
@@ -106,6 +105,5 @@ export function onUserStateChange(callback) {
   onAuthStateChanged(auth, async (user) => {
     const updatedUser = user ? await adminUser(user) : null;
     callback(updatedUser);
-    console.log('여기왔어, ', updatedUser);
   });
 }

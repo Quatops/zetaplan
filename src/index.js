@@ -35,15 +35,15 @@ const router = createBrowserRouter([
         element: <SubPage pageName={0} />,
       },
       {
-        path: 'accelerating/:path',
+        path: 'international-network/:path',
         element: <SubPage pageName={1} />,
       },
       {
-        path: 'investment-ir/:path',
+        path: 'ma/:path',
         element: <SubPage pageName={2} />,
       },
       {
-        path: 'mergers-and-acquisitions/:path',
+        path: 'ipo/:path',
         element: <SubPage pageName={3} />,
       },
       {

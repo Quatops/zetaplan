@@ -1,6 +1,5 @@
 export async function uploadImage(file) {
   const data = new FormData();
-  console.log('파일출력해볽[ ' + file);
   data.append('file', file);
   data.append('upload_preset', process.env.REACT_APP_CLOUDINARY_PRESET);
   return fetch(process.env.REACT_APP_CLOUDINARY_URL, {

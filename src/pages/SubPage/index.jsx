@@ -32,7 +32,6 @@ export default function SubPage({ pageName }) {
   useEffect(() => {
     getPost(activeNavId).then((data) => {
       setPost(data);
-      console.log(data);
     });
   }, [activeNavId]);
 

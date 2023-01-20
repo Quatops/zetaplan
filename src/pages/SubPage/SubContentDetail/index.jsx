@@ -10,7 +10,6 @@ export default function SubContentDetail({
   const subCateTitle = subCategory.find((v) => v.id === activeNavId)?.title;
   useEffect(() => {
     contentRef.current.innerHTML = post.content;
-    console.log('포스트임', category[post.cate]);
   }, [post]);
   return (
     <div className={styles.content_wrap}>

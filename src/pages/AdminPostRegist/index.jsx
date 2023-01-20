@@ -38,7 +38,6 @@ export default function AdminPostRegist() {
   const updateSelectCate = (select) => {
     setSelectCate(select);
     setSelectSubCate(subCategory[category[select].id][0].id);
-    console.log(subCategory[category[select].id][0].id);
   };
   const updateSelectSubCate = (select) => {
     setSelectSubCate(select);
