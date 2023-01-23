@@ -163,7 +163,6 @@ select {
 .photocard {
   border: 1px solid #eeeeee;
   border-radius: 10px;
-  background-color: red;
   height: 230px;
   overflow: hidden;
 }
@@ -175,7 +174,6 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: blue;
 }
 .photocard_img img {
   width: 100%;

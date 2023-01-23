@@ -6,7 +6,8 @@ import { useLocation } from 'react-router-dom';
 import SubContentDetail from './SubContentDetail';
 import { useAuthContext } from 'context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { getPost } from 'api/firebase';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { getPost, deletePost } from 'api/firebase';
 
 export default function SubPage({ pageName }) {
   const location = useLocation();
@@ -15,6 +16,10 @@ export default function SubPage({ pageName }) {
   const [activeNavId, setActiveNavId] = useState(
     location.state ? location.state.id : 0,
   );
+  const queryClient = useQueryClient();
+  const removePost = useMutation((id) => deletePost(id), {
+    onSuccess: () => queryClient.invalidateQueries('posts'),
+  });
   const updateActiveNavId = (idx) => {
     setActiveNavId(idx);
     console.log(
@@ -34,6 +39,17 @@ export default function SubPage({ pageName }) {
       setPost(data);
     });
   }, [activeNavId]);
+
+  const handleRemove = (idx) => {
+    removePost.mutate(idx, {
+      onSuccess: () => {
+        alert('성공적으로 삭제되었습니다.');
+      },
+      onError: (e) => {
+        alert(`에러가 발생했습니다. ${e}`);
+      },
+    });
+  };
 
   return (
     <div className={styles.subPage_wrap}>
@@ -65,6 +81,7 @@ export default function SubPage({ pageName }) {
                         post,
                         category: pageName,
                         subCategory: activeNavId,
+                        isNew: false,
                       },
                     });
                   }}>
@@ -72,9 +89,7 @@ export default function SubPage({ pageName }) {
                 </button>
                 <button
                   className={`${styles.delete_btn} ${styles.btn}`}
-                  onClick={() => {
-                    navigate('/admin/write', { state: { post: null } });
-                  }}>
+                  onClick={() => handleRemove(activeNavId)}>
                   삭제
                 </button>
               </article>
@@ -93,6 +108,7 @@ export default function SubPage({ pageName }) {
                         post: null,
                         category: pageName,
                         subCategory: activeNavId,
+                        isNew: true,
                       },
                     });
                   }}>
