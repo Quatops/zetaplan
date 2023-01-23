@@ -3,28 +3,28 @@ export const category = [
   {
     id: 1,
     title: '협력네트워크',
-    path: '/accelerating/accelerating-overview',
+    path: '/international-network/support-company',
   },
   {
     id: 2,
     title: 'M&A',
-    path: '/investment-ir/investment-consulting-ir-overview',
+    path: '/ma/ma-overview',
   },
   {
     id: 3,
     title: 'IPO',
-    path: '/mergers-and-acquisitions/mergers-and-acquisitions-overview',
+    path: '/ipo/ipo-type',
   },
-  { id: 4, title: '해외진출', path: '/overseas/about-overseas-business' },
+  { id: 4, title: '해외진출', path: '/overseas/consulting' },
   {
     id: 5,
     title: '기술거래',
-    path: '/technology-deals/technical-trading-overview',
+    path: '/technology-deals/purpose',
   },
 ];
 
-export const subCategory = {
-  회사소개: [
+export const subCategory = [
+  [
     { id: 0, title: '인사말', path: '/company-intro/greetings' },
     {
       id: 1,
@@ -40,139 +40,139 @@ export const subCategory = {
     { id: 4, title: '인증·수상', path: '/company-intro/affiliate-network' },
     { id: 5, title: 'CI 안내', path: '/company-intro/ci-guide' },
   ],
-  협력네트워크: [
+  [
     {
       id: 6,
       title: '기업지원기관',
-      path: '/accelerating/accelerating-overview',
+      path: '/international-network/support-company',
     },
     {
       id: 7,
       title: '투자협력기관',
-      path: '/accelerating/accelerating-wbusiness-plan',
+      path: '/international-network/invest-company',
     },
     {
       id: 8,
       title: '기술사업화기관',
-      path: '/notfound',
+      path: '/international-network/tech-business-company',
     },
     {
       id: 9,
       title: '기술평가기관',
-      path: '/notfound',
+      path: '/international-network/tech-asess-company',
     },
     {
       id: 10,
       title: '재무성장지원',
-      path: '/notfound',
+      path: '/international-network/support-financial-growth',
     },
   ],
-  'M&A': [
+  [
     {
       id: 11,
       title: 'M&A 개요',
-      path: '/investment-ir/investment-consulting-ir-overview',
+      path: '/ma/ma-overview',
     },
     {
       id: 12,
       title: 'M&A 유형',
-      path: '/investment-ir/investment-ir-business-plan',
+      path: '/ma/ma-type',
     },
     {
       id: 13,
       title: 'M&A 전략수집',
-      path: '/notfound',
+      path: '/ma/ma-strategy',
     },
     {
       id: 14,
       title: 'M&A 지원사업',
-      path: '/notfound',
+      path: '/ma/support-program',
     },
     {
       id: 15,
       title: 'M&A 협력기관',
-      path: '/notfound',
+      path: '/ma/partner-company',
     },
   ],
-  IPO: [
+  [
     {
       id: 26,
       title: 'IPO 유형',
-      path: '/mergers-and-acquisitions/mergers-and-acquisitions-overview',
+      path: '/ipo/ipo-type',
     },
     {
       id: 27,
       title: 'IPO 혜택',
-      path: '/notfound',
+      path: '/ipo/ipo-benefit',
     },
     {
       id: 28,
       title: 'IPO 성장특례',
-      path: '/notfound',
+      path: '/ipo/growth-special-case',
     },
     {
       id: 29,
       title: 'SPAC 합병성장',
-      path: '/notfound',
+      path: '/ipo/spac-merger-growth',
     },
     {
       id: 30,
       title: '해외시장 IPO',
-      path: '/notfound',
+      path: '/ipo/ipo-overseas',
     },
   ],
-  해외진출: [
+  [
     {
       id: 31,
       title: '해외진출 컨설팅',
-      path: '/overseas/about-overseas-business',
+      path: '/overseas/consulting',
     },
     {
       id: 32,
       title: '수출바우처사업',
-      path: '/notfound',
+      path: '/overseas/export-voucher-company',
     },
     {
       id: 33,
       title: '해외지사화사업',
-      path: '/notfound',
+      path: '/overseas/overseas-branching',
     },
     {
       id: 34,
       title: '해외투자유치자원',
-      path: '/notfound',
+      path: '/overseas/overseas-invest-resources',
     },
     {
       id: 35,
       title: '해외진출네트워크',
-      path: '/notfound',
+      path: '/overseas/overseas-network',
     },
   ],
-  기술거래: [
+  [
     {
       id: 36,
       title: '기술거래 목적',
-      path: '/technology-deals/technical-trading-overview',
+      path: '/technology-deals/purpose',
     },
     {
       id: 37,
       title: '기술거래 절차',
-      path: '/technology-deals/ss',
+      path: '/technology-deals/step',
     },
     {
       id: 38,
       title: '기술거래 리스트',
-      path: '/technology-deals/aa',
+      path: '/technology-deals/list',
     },
     {
       id: 39,
       title: '글로벌기술사업회',
-      path: '/technology-deals/ff',
+      path: '/technology-deals/global-tech-business',
     },
     {
       id: 40,
       title: '기술거래협력기관',
-      path: '/technology-dealsxx/',
+      path: '/technology-deals/cooperating-company',
     },
   ],
-};
+];

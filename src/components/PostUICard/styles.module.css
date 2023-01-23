@@ -1,0 +1,25 @@
+.card_wrap {
+  background-color: var(--color-white);
+  min-height: 50px;
+  width: 100%;
+  margin: 15px 0;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow-light);
+  box-shadow: 2px 2px 2px 1px rgba(126, 126, 126, 0.1);
+  -webkit-box-shadow: 2px 2px 2px 1px rgba(126, 126, 126, 0.1);
+  -moz-box-shadow: 2px 2px 2px 1px rgba(126, 126, 126, 0.1);
+  padding: 10px;
+  transition: all 300ms ease;
+  border: 0px solid var(--color-white);
+  cursor: pointer;
+}
+
+.card_wrap:hover {
+  transform: scale(1.03);
+  border: 1px solid var(--color-grey);
+}
+.content_wrap {
+  transform: scale(0.8);
+  width: 300px;
+  overflow: hidden;
+}

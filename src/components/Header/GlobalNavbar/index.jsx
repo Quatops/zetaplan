@@ -19,7 +19,7 @@ export default function GlobalNavigator({ categoryHover }) {
         <ul className={styles.right}>
           {category.map((big, index) => (
             <ul key={index} className={styles.cate_area}>
-              {subCategory[big.title].map((small) => (
+              {subCategory[big.id].map((small) => (
                 <NavLink
                   key={small.id}
                   to={small.path}

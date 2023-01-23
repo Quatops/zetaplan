@@ -28,18 +28,12 @@ const sectors = [
 
 export default function InvestmentPortfolio() {
   const [pageItems, setPageItems] = useState(portfolio);
-  const [limit, setLimit] = useState(8);
+  const limit = 8;
   const [page, setPage] = useState(1);
   const updatePage = (idx) => {
     setPage(idx);
   };
   const offset = (page - 1) * limit;
-  const postsData = (posts) => {
-    if (posts) {
-      let result = posts.slice(offset, offset + limit);
-      return result;
-    }
-  };
   return (
     <div className={styles.page_wrapper}>
       <div className={styles.contents_wrapper}>

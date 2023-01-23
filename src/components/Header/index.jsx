@@ -42,15 +42,15 @@ export default function Header({ isWhite }) {
             (isWhite || showCate) && styles.active_sub
           } flex_between`}>
           <ul>
-            <Link to="/">
-              <li className={styles.nav_logo}>
+            <li className={styles.nav_logo}>
+              <Link to="/">
                 {isWhite || showCate ? (
                   <img src={require('assets/LogoBlack.png')} alt="Logo" />
                 ) : (
                   <img src={require('assets/Logo.png')} alt="Logo" />
                 )}
-              </li>
-            </Link>
+              </Link>
+            </li>
           </ul>
           <ul className={styles.nav} onMouseEnter={() => updateShowCate(true)}>
             {category.map((value) =>
@@ -63,7 +63,7 @@ export default function Header({ isWhite }) {
               ) : (
                 <Link
                   to={value.path}
-                  state={{ id: subCategory[value.title][0].id }}
+                  state={{ id: subCategory[value.id][0].id }}
                   key={value.id}>
                   <li
                     className={`${styles.nav_item} ${

@@ -1,66 +1,104 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { uploadImage } from 'api/uploader';
-
+import ToggleUI from 'components/PostUIs/ToggleUI';
+import ReactDOMServer from 'react-dom/server';
+import { baseCSS, toggleCSS, photoCardCSS } from './componentCSS';
+import CardUI from 'components/PostUIs/CardUI';
+import WriteFormList from 'components/WriteFormList';
 export default function TextEditor({ updateValue, post }) {
   const editorRef = useRef(null);
+  const [isActiveModal, setIsActiveModal] = useState(false);
+  const updateIsActiveModal = (isActive) => {
+    setIsActiveModal(isActive);
+  };
   const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const content_style = `
-  html {
-    padding: 1rem;
-    width: 50%;
-    margin: 0 auto;
-    box-shadow: 0px -3px 14px 0px rgba(0,0,0,0.15);
-    -webkit-box-shadow: 0px -3px 14px 0px rgba(0,0,0,0.15);
-    -moz-box-shadow: 0px -3px 14px 0px rgba(0,0,0,0.15);
-    height: 100%;
-  }
-  body {
-    font-family: pretendard,나눔고딕, 나눔스퀘어, 돋움, Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    border: none;
-  }
-  #tinymce{
-    height: 100%;
-    overflow: scroll;
-  }
-  
-  `;
+  const content_style = baseCSS + toggleCSS + photoCardCSS;
+  const component = (idx) => {
+    switch (idx) {
+      case 0:
+        return ReactDOMServer.renderToStaticMarkup(
+          <>
+            <ToggleUI>
+              회색 박스 안에 내용을 넣어주세요. 내용을 업로드하면 회색 박스 안
+              내용이 토글로 적용됩니다. <br />
+              shift+enter를 하면 박스 안에서 줄바꿈을 할 수 있습니다. 말머리
+              이미지를 변경하고 싶다면, 이미지에 오른쪽클릭을 한 후
+              업로드해주세요. (이미지 규격 : 30 x 30)
+            </ToggleUI>
+            <br />
+          </>,
+        );
+      case 1:
+        return ReactDOMServer.renderToStaticMarkup(
+          <>
+            <CardUI>내용을 적어주세요.</CardUI>
+            <br />
+          </>,
+        );
+        break;
+    }
+  };
+
+  const insertComponent = (idx) => {
+    editorRef.current.insertContent(component(idx)); //console.log(idx);
+  };
 
   return (
     <>
-      <form>
-        <input
-          id="my-file"
-          type="file"
-          name="my-file"
-          style={{ display: 'none' }}
+      <input
+        id="my-file"
+        type="file"
+        name="my-file"
+        style={{ display: 'none' }}
+      />
+      {isActiveModal && (
+        <WriteFormList
+          insertComponent={insertComponent}
+          updateIsActiveModal={updateIsActiveModal}
         />
-      </form>
+      )}
 
       <Editor
         onInit={(evt, editor) => {
           editorRef.current = editor;
           editor.contentCSS.push(require('./style.css'));
+          /* 커스텀 버튼 넣기 */
         }}
-        initialValue={post ? post.content : ''}
+        initialValue={post ? post.content : component(1)}
         onEditorChange={(newValue, editor) => {
           updateValue(newValue);
         }}
         init={{
           /* 기본설정 */
+          setup: (editor) => {
+            editor.ui.registry.addButton('customInsertButton', {
+              text: '레이아웃 추가',
+              tooltip: '지정된 레이아웃을 추가하세요.',
+              onAction: function (_) {
+                setIsActiveModal(true);
+                // 여기서 어떻게 숫자를 받을 수 있는가? 여기서 받아야 하는것같은데.
+                // 여기서 받아야 의미가 있는건데, 근데 여기서 받을순 없잖아 ㅠ
+                //editor.insertContent(component(0));
+              },
+            });
+          },
           content_style,
-          content_css: useDarkMode ? 'dark' : 'default',
+          /* dark모드이면 css를 변경해라. */
+          // content_css: useDarkMode ? 'dark' : 'default',
+          content_css: 'default',
           language: 'ko_KR',
           selector: 'textarea',
           placeholder: '내용을 입력하세요.',
           statusbar: false,
           menubar: false,
+          /* 플러그인 */
           plugins:
             'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
           editimage_cors_hosts: ['picsum.photos'],
+          /* 툴바(상단 메뉴들) */
           toolbar:
-            'image media link emoticons charmap | bold italic underline strikethrough | blocks fontfamily fontsize | forecolor backcolor | alignleft alignCenter alignRight alignjustify | numlist bullist | print ',
+            'image media link emoticons charmap | bold italic underline strikethrough | blocks fontfamily fontsize | forecolor backcolor | alignleft alignCenter alignRight alignjustify | numlist bullist | print | customInsertButton',
 
           /*이미지 설정 */
           images_file_types: 'png,jpg,svg,webp',
@@ -103,8 +141,7 @@ export default function TextEditor({ updateValue, post }) {
           font_family_formats:
             'pretendard;나눔고딕;나눔스퀘어;나눔바른고딕;고닥;돋움;돋움체;굴림;굴림체;궁서;궁서체;Arial=arial;Helvetica=helvetica,sans-serif; Courier New=courier new,courier,monospace; AkrutiKndPadmini=Akpdmi-n',
           skin: useDarkMode ? 'oxide-dark' : 'oxide',
-        }}
-      />
+        }}></Editor>
     </>
   );
 }

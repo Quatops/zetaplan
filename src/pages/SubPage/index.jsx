@@ -7,7 +7,6 @@ import SubContentDetail from './SubContentDetail';
 import { useAuthContext } from 'context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { getPost } from 'api/firebase';
-import { useQuery } from '@tanstack/react-query';
 
 export default function SubPage({ pageName }) {
   const location = useLocation();
@@ -17,37 +16,44 @@ export default function SubPage({ pageName }) {
     location.state ? location.state.id : 0,
   );
   const updateActiveNavId = (idx) => {
-    setActiveNavId((prev) => (prev = idx));
+    setActiveNavId(idx);
+    console.log(
+      '서브카테고리',
+      subCategory[pageName].find((v) => v.id === idx),
+    );
   };
+
+  const [post, setPost] = useState(null);
 
   useEffect(() => {
     if (location.state) updateActiveNavId(location.state.id);
   }, [location.state]);
-  const { data: posts } = useQuery([`posts`], getPost);
+  //const { data: post } = useQuery([`post`], () => getPost(activeNavId));
   useEffect(() => {
-    console.log('posts변경됐대!' + posts);
-  }, [posts]);
+    getPost(activeNavId).then((data) => {
+      setPost(data);
+    });
+  }, [activeNavId]);
 
   return (
     <div className={styles.subPage_wrap}>
       <section className={styles.page_title}>
-        <p>{pageName}</p>
+        <p>{category[pageName].title}</p>
       </section>
       <section className={styles.page_content}>
         <SubNavbar
           navItems={subCategory[pageName]}
-          navTitle={pageName}
+          navTitle={category[pageName].title}
           activeNavId={activeNavId}
           updateActiveNavId={updateActiveNavId}
         />
-        {posts && posts.find((v) => v.id === activeNavId) ? (
+        {post && post.id >= 0 ? (
           <>
             <SubContentDetail
-              pageName={pageName}
               subCategory={subCategory[pageName]}
-              category={category}
+              category={category[post.cate].title}
               activeNavId={activeNavId}
-              post={posts[activeNavId]}
+              post={post}
             />
             {isAdmin && (
               <article className={styles.btn_wrap}>
@@ -55,12 +61,11 @@ export default function SubPage({ pageName }) {
                   className={`${styles.write_btn} ${styles.btn}`}
                   onClick={() => {
                     navigate('/admin/write', {
-                      state: { post: posts[activeNavId] },
-                      // 나중에 로직좀 바꿔야겠다.
+                      state: { post },
                     });
                   }}>
                   수정
-                </button>{' '}
+                </button>
                 <button
                   className={`${styles.delete_btn} ${styles.btn}`}
                   onClick={() => {

@@ -7,7 +7,6 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     onUserStateChange((user) => setUser(user));
-    console.log('안녕', user);
   }, []);
 
   const user_login = (id, password) => {
