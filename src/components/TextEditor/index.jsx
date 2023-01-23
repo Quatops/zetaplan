@@ -1,17 +1,21 @@
 import React, { useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import ReactDOMServer from 'react-dom/server';
+import { baseCSS, toggleCSS, photoCardCSS } from './componentCSS';
+
 import { Editor } from '@tinymce/tinymce-react';
 import { uploadImage } from 'api/uploader';
 import ToggleUI from 'components/PostUIs/ToggleUI';
-import ReactDOMServer from 'react-dom/server';
-import { baseCSS, toggleCSS, photoCardCSS } from './componentCSS';
 import CardUI from 'components/PostUIs/CardUI';
 import WriteFormList from 'components/WriteFormList';
+
 export default function TextEditor({ updateValue, post }) {
   const editorRef = useRef(null);
   const [isActiveModal, setIsActiveModal] = useState(false);
   const updateIsActiveModal = (isActive) => {
     setIsActiveModal(isActive);
   };
+
   const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const content_style = baseCSS + toggleCSS + photoCardCSS;
   const component = (idx) => {
@@ -65,7 +69,7 @@ export default function TextEditor({ updateValue, post }) {
           editor.contentCSS.push(require('./style.css'));
           /* 커스텀 버튼 넣기 */
         }}
-        initialValue={post ? post.content : component(1)}
+        initialValue={post ? post.content : ''}
         onEditorChange={(newValue, editor) => {
           updateValue(newValue);
         }}
@@ -77,14 +81,10 @@ export default function TextEditor({ updateValue, post }) {
               tooltip: '지정된 레이아웃을 추가하세요.',
               onAction: function (_) {
                 setIsActiveModal(true);
-                // 여기서 어떻게 숫자를 받을 수 있는가? 여기서 받아야 하는것같은데.
-                // 여기서 받아야 의미가 있는건데, 근데 여기서 받을순 없잖아 ㅠ
-                //editor.insertContent(component(0));
               },
             });
           },
           content_style,
-          /* dark모드이면 css를 변경해라. */
           // content_css: useDarkMode ? 'dark' : 'default',
           content_css: 'default',
           language: 'ko_KR',
@@ -92,15 +92,12 @@ export default function TextEditor({ updateValue, post }) {
           placeholder: '내용을 입력하세요.',
           statusbar: false,
           menubar: false,
-          /* 플러그인 */
           plugins:
             'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
           editimage_cors_hosts: ['picsum.photos'],
-          /* 툴바(상단 메뉴들) */
           toolbar:
             'image media link emoticons charmap | bold italic underline strikethrough | blocks fontfamily fontsize | forecolor backcolor | alignleft alignCenter alignRight alignjustify | numlist bullist | print | customInsertButton',
 
-          /*이미지 설정 */
           images_file_types: 'png,jpg,svg,webp',
           file_picker_types: 'file image media',
           image_advtab: true,
@@ -135,7 +132,6 @@ export default function TextEditor({ updateValue, post }) {
             }
           },
 
-          /* 폰트설정 */
           quickbars_selection_toolbar:
             'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
           font_family_formats:
