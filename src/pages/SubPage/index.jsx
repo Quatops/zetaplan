@@ -61,7 +61,11 @@ export default function SubPage({ pageName }) {
                   className={`${styles.write_btn} ${styles.btn}`}
                   onClick={() => {
                     navigate('/admin/write', {
-                      state: { post },
+                      state: {
+                        post,
+                        category: pageName,
+                        subCategory: activeNavId,
+                      },
                     });
                   }}>
                   수정
@@ -84,7 +88,13 @@ export default function SubPage({ pageName }) {
                 <button
                   className={styles.write_btn}
                   onClick={() => {
-                    navigate('/admin/write', { state: { post: null } });
+                    navigate('/admin/write', {
+                      state: {
+                        post: null,
+                        category: pageName,
+                        subCategory: activeNavId,
+                      },
+                    });
                   }}>
                   글쓰기
                 </button>

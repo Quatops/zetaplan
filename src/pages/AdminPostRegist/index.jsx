@@ -6,16 +6,20 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { addNewPost } from 'api/firebase';
 import SelectCategory from './SelectCategory';
 import { category, subCategory } from 'constants/category';
-import WriteFormList from '../../components/WriteFormList';
 
 export default function AdminPostRegist() {
-  const [images, setImages] = useState();
-  const [value, setValue] = useState('');
-  const [selectSubCate, setSelectSubCate] = useState(0);
-  const queryClient = useQueryClient();
-
   const location = useLocation();
   const post = location.state ? location.state.post : null;
+  const cate = location.state ? location.state.category : 0;
+  const subCate = location.state ? location.state.subCategory : 0;
+
+  console.log(cate + '가 카테고리고, ' + subCate + ' 가 서브카테야.');
+
+  const [images, setImages] = useState();
+  const [value, setValue] = useState('');
+  const [selectSubCate, setSelectSubCate] = useState(subCate);
+  const queryClient = useQueryClient();
+
   const addPost = useMutation(({ value, info }) => addNewPost(value, info), {
     onSuccess: () => queryClient.invalidateQueries('posts'),
   });
@@ -26,7 +30,7 @@ export default function AdminPostRegist() {
     setValue(e);
   };
 
-  const [selectCate, setSelectCate] = useState(0);
+  const [selectCate, setSelectCate] = useState(cate);
   const updateSelectCate = (select) => {
     setSelectCate(select);
     setSelectSubCate(subCategory[category[select].id][0].id);
@@ -78,6 +82,7 @@ export default function AdminPostRegist() {
               label="카테고리"
               options={category}
               updateSelect={updateSelectCate}
+              cate={cate}
             />
           </li>
           <li className={styles.select_wrap}>
@@ -85,6 +90,7 @@ export default function AdminPostRegist() {
               label="상세 카테고리"
               options={subCategory[category[selectCate].id]}
               updateSelect={updateSelectSubCate}
+              cate={subCate}
             />
           </li>
         </ul>
