@@ -42,29 +42,10 @@
   justify-content: space-between;
   top: 100px;
   padding: 1rem;
-  width: 350px;
+  width: 300px;
   background-color: #e4e6e9;
   height: calc(100vh - 100px);
 }
-.select_wrap {
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-.label {
-  font-weight: bold;
-  margin: 10px;
-  color: var(--color-black);
-}
-
-.select {
-  height: 40px;
-  width: 100%;
-  padding: 0 10px;
-  border-radius: 10px;
-}
-
 .submit_btn {
   color: var(--color-white);
   background-color: var(--color-black);

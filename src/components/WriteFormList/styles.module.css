@@ -1,0 +1,28 @@
+.radio_items {
+  width: 500px;
+  height: 100px;
+  cursor: pointer;
+  transition: all 300ms ease;
+  box-shadow: 4px 4px 6px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 4px 4px 6px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 4px 4px 6px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  border: 0px solid var(--color-lightgrey);
+}
+
+.radio_items img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.radio_index {
+  left: -20px;
+  width: 30px;
+  z-index: 10;
+  height: 30px;
+  position: absolute;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-radius: 30px;
+}

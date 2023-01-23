@@ -1,0 +1,28 @@
+.input_wrap {
+  transition: all 300ms ease;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 420px;
+  justify-content: space-around;
+  padding: 10px;
+  border: none;
+}
+.radio_label {
+  transition: all 300ms ease;
+}
+
+.radio_header {
+  font-weight: 800;
+  text-align: center;
+  font-size: 1.25rem;
+}
+.header_desc {
+  font-size: 0.8rem;
+  font-weight: 200;
+  padding: 5px 0;
+}
+
+.radio_label:hover {
+  transform: scale(1.02);
+}

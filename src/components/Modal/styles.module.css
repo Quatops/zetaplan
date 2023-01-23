@@ -6,6 +6,7 @@
   height: 100vh;
   z-index: 20;
   background-color: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
 }
 .back_area {
   position: inherit;
@@ -13,9 +14,8 @@
   height: 100%;
 }
 .modal_wrap {
-  width: 500px;
-  height: 300px;
-
+  width: 600px;
+  height: 500px;
   background-color: var(--color-white);
   border-radius: 10px;
   z-index: 21;

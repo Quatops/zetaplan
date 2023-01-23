@@ -1,7 +1,7 @@
 export const baseCSS = `
 html {
   padding: 1rem;
-  width: 50%;
+  width: 1000px;
   margin: 0 auto;
   box-shadow: 0px -3px 14px 0px rgba(0,0,0,0.15);
   -webkit-box-shadow: 0px -3px 14px 0px rgba(0,0,0,0.15);
@@ -64,6 +64,42 @@ export const toggleCSS = `
 }
 .card_ui input[type='checkbox']:checked + .toggle_label + .toggle_content {
   display: none;
+}
+
+`;
+export const photoCardCSS = `
+.photocard_ui {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+}
+
+.photocard {
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+  height: 230px;
+  overflow: hidden;
+}
+
+.photocard_img {
+  width: 100%;
+  object-fit: contain;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.photocard_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.photocard_caption {
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 `;

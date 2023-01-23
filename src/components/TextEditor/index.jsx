@@ -1,15 +1,19 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { uploadImage } from 'api/uploader';
 import ToggleUI from 'components/PostUIs/ToggleUI';
 import ReactDOMServer from 'react-dom/server';
-import { baseCSS, toggleCSS } from './componentCSS';
-
+import { baseCSS, toggleCSS, photoCardCSS } from './componentCSS';
+import CardUI from 'components/PostUIs/CardUI';
+import WriteFormList from 'components/WriteFormList';
 export default function TextEditor({ updateValue, post }) {
   const editorRef = useRef(null);
+  const [isActiveModal, setIsActiveModal] = useState(false);
+  const updateIsActiveModal = (isActive) => {
+    setIsActiveModal(isActive);
+  };
   const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const content_style = baseCSS + toggleCSS;
-
+  const content_style = baseCSS + toggleCSS + photoCardCSS;
   const component = (idx) => {
     switch (idx) {
       case 0:
@@ -18,42 +22,71 @@ export default function TextEditor({ updateValue, post }) {
             <ToggleUI>
               회색 박스 안에 내용을 넣어주세요. 내용을 업로드하면 회색 박스 안
               내용이 토글로 적용됩니다. <br />
-              shift+enter를 하면 박스 안에서 줄바꿈을 할 수 있습니다.
+              shift+enter를 하면 박스 안에서 줄바꿈을 할 수 있습니다. 말머리
+              이미지를 변경하고 싶다면, 이미지에 오른쪽클릭을 한 후
+              업로드해주세요. (이미지 규격 : 30 x 30)
             </ToggleUI>
             <br />
           </>,
         );
       case 1:
+        return ReactDOMServer.renderToStaticMarkup(
+          <>
+            <CardUI>내용을 적어주세요.</CardUI>
+            <br />
+          </>,
+        );
         break;
     }
   };
 
-  console.log(component(0));
+  const insertComponent = (idx) => {
+    editorRef.current.insertContent(component(idx)); //console.log(idx);
+  };
+
   return (
     <>
-      <form>
-        <input
-          id="my-file"
-          type="file"
-          name="my-file"
-          style={{ display: 'none' }}
+      <input
+        id="my-file"
+        type="file"
+        name="my-file"
+        style={{ display: 'none' }}
+      />
+      {isActiveModal && (
+        <WriteFormList
+          insertComponent={insertComponent}
+          updateIsActiveModal={updateIsActiveModal}
         />
-      </form>
+      )}
 
       <Editor
         onInit={(evt, editor) => {
           editorRef.current = editor;
           editor.contentCSS.push(require('./style.css'));
+          /* 커스텀 버튼 넣기 */
         }}
-        initialValue={post ? post.content : component(0)}
+        initialValue={post ? post.content : component(1)}
         onEditorChange={(newValue, editor) => {
           updateValue(newValue);
         }}
         init={{
           /* 기본설정 */
+          setup: (editor) => {
+            editor.ui.registry.addButton('customInsertButton', {
+              text: '레이아웃 추가',
+              tooltip: '지정된 레이아웃을 추가하세요.',
+              onAction: function (_) {
+                setIsActiveModal(true);
+                // 여기서 어떻게 숫자를 받을 수 있는가? 여기서 받아야 하는것같은데.
+                // 여기서 받아야 의미가 있는건데, 근데 여기서 받을순 없잖아 ㅠ
+                //editor.insertContent(component(0));
+              },
+            });
+          },
           content_style,
           /* dark모드이면 css를 변경해라. */
-          content_css: useDarkMode ? 'dark' : 'default',
+          // content_css: useDarkMode ? 'dark' : 'default',
+          content_css: 'default',
           language: 'ko_KR',
           selector: 'textarea',
           placeholder: '내용을 입력하세요.',
@@ -65,7 +98,7 @@ export default function TextEditor({ updateValue, post }) {
           editimage_cors_hosts: ['picsum.photos'],
           /* 툴바(상단 메뉴들) */
           toolbar:
-            'image media link emoticons charmap | bold italic underline strikethrough | blocks fontfamily fontsize | forecolor backcolor | alignleft alignCenter alignRight alignjustify | numlist bullist | print ',
+            'image media link emoticons charmap | bold italic underline strikethrough | blocks fontfamily fontsize | forecolor backcolor | alignleft alignCenter alignRight alignjustify | numlist bullist | print | customInsertButton',
 
           /*이미지 설정 */
           images_file_types: 'png,jpg,svg,webp',

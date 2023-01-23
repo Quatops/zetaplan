@@ -1,0 +1,18 @@
+.select_wrap {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.label {
+  font-weight: bold;
+  margin: 10px;
+  color: var(--color-black);
+}
+
+.select {
+  height: 40px;
+  width: 100%;
+  padding: 0 10px;
+  border-radius: 10px;
+}
