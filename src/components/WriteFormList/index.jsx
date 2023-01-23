@@ -37,7 +37,7 @@ export default function WriteFormList({
             </Radio>
           ))}
         </RadioGroup>
-        <Button widthSize="100%">제출</Button>
+        <Button widthSize="100%">추가하기</Button>
       </form>
     </Modal>
   );

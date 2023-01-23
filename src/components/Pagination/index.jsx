@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Pagination from 'react-js-pagination';
+import styles from './style.css';
 
 export default function Pagenation({ totalPosts, limit, page, updatePage }) {
   const handlePageChange = (page) => {
