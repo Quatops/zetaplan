@@ -17,7 +17,6 @@ export default function Radio({
       className={styles.radio_label}>
       <input
         id={id}
-        style={{ display: 'none' }}
         type="radio"
         value={value}
         name={name}

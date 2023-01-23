@@ -10,6 +10,11 @@
 }
 .radio_label {
   transition: all 300ms ease;
+  box-shadow: 4px 4px 6px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 4px 4px 6px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 4px 4px 6px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  border: 0px solid var(--color-lightgrey);
 }
 
 .radio_header {
@@ -25,4 +30,17 @@
 
 .radio_label:hover {
   transform: scale(1.02);
+}
+
+.radio_label input {
+  display: none;
+}
+
+.radio_label input + * {
+  filter: opacity(0.5) grayscale(100%);
+}
+
+.radio_label input:checked + *,
+.radio_label:hover input + * {
+  filter: opacity(1) grayscale(0%);
 }
