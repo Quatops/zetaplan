@@ -2,15 +2,10 @@ import React, { useState } from 'react';
 import styles from './styles.module.css';
 import { category, subCategory } from '../../../constants/category';
 import { NavLink } from 'react-router-dom';
-import EditButton from 'components/EditButton';
 import { useAuthContext } from 'context/AuthContext';
 
 export default function GlobalNavigator({ categoryHover }) {
   const { isAdmin } = useAuthContext();
-  const [activeEdit, setActiveEdit] = useState(0);
-  const updateActiveEdit = (idx) => {
-    setActiveEdit(idx);
-  };
 
   return (
     <nav className={styles.nav_wrapper}>
@@ -35,13 +30,6 @@ export default function GlobalNavigator({ categoryHover }) {
             </ul>
           ))}
         </ul>
-        {isAdmin && (
-          <EditButton
-            activeEdit={activeEdit}
-            updateActiveEdit={updateActiveEdit}
-            idx={1}
-          />
-        )}
       </div>
       <ul className={styles.space_search}>&nbsp;</ul>
       <ul className={styles.space_lang}>&nbsp;</ul>

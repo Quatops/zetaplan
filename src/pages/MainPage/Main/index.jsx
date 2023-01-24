@@ -224,12 +224,7 @@ const newsList = [
 
 export default function Main() {
   const { isAdmin } = useAuthContext();
-  const [activeEdit, setActiveEdit] = useState(0);
   const [activeTabIdx, setActiveTabIdx] = useState(0);
-
-  const updateActiveEdit = (idx) => {
-    setActiveEdit(idx);
-  };
 
   return (
     <div className={`${styles.page_wrapper} `}>
@@ -237,26 +232,12 @@ export default function Main() {
         <section className={styles.left}>
           {/* banner */}
           <article className={styles.banner}>
-            {/*{isAdmin && (
-                <EditButton
-                  activeEdit={activeEdit}
-                  updateActiveEdit={updateActiveEdit}
-                  idx={1}
-                />
-              )}*/}
             <BannerCarousel bannerImages={banner} />
           </article>
 
           <article className={styles.main_intro}>
             <div className={styles.intro_wrapper}>
               <ul className={styles.intro_header}>
-                {/*{isAdmin && (
-                <EditButton
-                  activeEdit={activeEdit}
-                  updateActiveEdit={updateActiveEdit}
-                  idx={1}
-                />
-              )}*/}
                 {intro_header.map((item, index) => (
                   <li
                     key={index}
@@ -292,14 +273,6 @@ export default function Main() {
               <span className={styles.email}>zetabiz @ zetaplan.com</span>
             </div>
             <button className={styles.cosulting_apply_btn}>상담신청</button>
-
-            {/*{isAdmin && (
-                <EditButton
-                  activeEdit={activeEdit}
-                  updateActiveEdit={updateActiveEdit}
-                  idx={1}
-                />
-              )}*/}
           </section>
           <section className={styles.infos}>
             <div className={styles.company_ass}>
@@ -311,22 +284,8 @@ export default function Main() {
                   <p className={styles.ass_name}>{value.name}</p>
                 </button>
               ))}
-              {/*{isAdmin && (
-                <EditButton
-                  activeEdit={activeEdit}
-                  updateActiveEdit={updateActiveEdit}
-                  idx={1}
-                />
-              )}*/}
             </div>
             <section className={styles.etc_info}>
-              {/*{isAdmin && (
-                <EditButton
-                  activeEdit={activeEdit}
-                  updateActiveEdit={updateActiveEdit}
-                  idx={1}
-                />
-              )}*/}
               <div className={styles.etc_button_wrapper}>
                 <Button
                   name="기술사업화"
