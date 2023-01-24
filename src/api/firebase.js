@@ -65,8 +65,8 @@ export async function getPost(id) {
 
 export async function updatePost(content, info) {
   const { cate, subCate, id } = info;
-  const update = {};
-  update['/posts/' + id] = {
+  const updateObj = {};
+  updateObj['/posts/' + id] = {
     content,
     id,
     cate,
@@ -74,7 +74,13 @@ export async function updatePost(content, info) {
     writer: 'admin',
     date: moment(new Date()).format('YYYY-MM-DD'),
   };
-  return update(ref(database), update);
+  return update(ref(database), updateObj);
+}
+
+export async function deletePost(id) {
+  const dbRef = ref(getDatabase());
+  remove(child(dbRef, 'posts/' + id));
+  window.location.reload();
 }
 
 export async function login(id, password) {

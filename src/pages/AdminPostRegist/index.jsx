@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './styles.module.css';
 import TextEditor from 'components/TextEditor';
 import { useLocation } from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { addNewPost } from 'api/firebase';
+import { addNewPost, updatePost } from 'api/firebase';
 import SelectCategory from './SelectCategory';
 import { category, subCategory } from 'constants/category';
 
-export default function AdminPostRegist() {
+export default function AdminPostRegist({}) {
   const location = useLocation();
+  const isNew = location.state ? location.state.isNew : null;
   const post = location.state ? location.state.post : null;
   const cate = location.state ? location.state.category : 0;
   const subCate = location.state ? location.state.subCategory : 0;
-
-  console.log(cate + '가 카테고리고, ' + subCate + ' 가 서브카테야.');
+  const purpose = isNew ? '저장' : '수정';
 
   const [images, setImages] = useState();
   const [value, setValue] = useState('');
@@ -21,6 +21,9 @@ export default function AdminPostRegist() {
   const queryClient = useQueryClient();
 
   const addPost = useMutation(({ value, info }) => addNewPost(value, info), {
+    onSuccess: () => queryClient.invalidateQueries('posts'),
+  });
+  const modifyPost = useMutation(({ value, info }) => updatePost(value, info), {
     onSuccess: () => queryClient.invalidateQueries('posts'),
   });
   const updateImages = (image) => {
@@ -40,23 +43,37 @@ export default function AdminPostRegist() {
   };
 
   const handleSubmit = () => {
-    if (window.confirm('저장하시겠습니까?')) {
+    if (window.confirm(`${purpose}하시겠습니까?`)) {
       const info = {
         subCate: Number(selectSubCate),
         cate: Number(selectCate),
         id: Number(selectSubCate),
       };
-      addPost.mutate(
-        { value, info },
-        {
-          onSuccess: () => {
-            alert('성공적으로 글이 등록되었습니다.');
+      if (isNew) {
+        addPost.mutate(
+          { value, info },
+          {
+            onSuccess: () => {
+              alert('성공적으로 글이 등록되었습니다.');
+            },
+            onError: (e) => {
+              alert(`에러가 발생했습니다. ${e}`);
+            },
           },
-          onError: (e) => {
-            alert(`에러가 발생했습니다. ${e}`);
+        );
+      } else {
+        modifyPost.mutate(
+          { value, info },
+          {
+            onSuccess: () => {
+              alert('성공적으로 글이 등록되었습니다.');
+            },
+            onError: (e) => {
+              alert(`에러가 발생했습니다. ${e}`);
+            },
           },
-        },
-      );
+        );
+      }
     }
   };
   return (
@@ -95,7 +112,7 @@ export default function AdminPostRegist() {
           </li>
         </ul>
         <button className={styles.submit_btn} onClick={() => handleSubmit()}>
-          저장하기
+          {purpose}하기
         </button>
       </aside>
     </div>

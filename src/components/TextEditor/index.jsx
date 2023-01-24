@@ -45,7 +45,7 @@ export default function TextEditor({ updateValue, post }) {
   };
 
   const insertComponent = (idx) => {
-    editorRef.current.insertContent(component(idx)); //console.log(idx);
+    editorRef.current.insertContent(component(idx));
   };
 
   return (
