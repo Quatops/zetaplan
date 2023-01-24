@@ -79,7 +79,8 @@ export async function updatePost(content, info) {
 
 export async function deletePost(id) {
   const dbRef = ref(getDatabase());
-  child(dbRef, `posts/` + id).remove();
+  remove(child(dbRef, 'posts/' + id));
+  window.location.reload();
 }
 
 export async function login(id, password) {
