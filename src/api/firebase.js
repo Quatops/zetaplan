@@ -32,6 +32,7 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
 
+// 게시글 관련
 export async function addNewPost(content, info) {
   const { cate, subCate, id } = info;
   return set(ref(database, `posts/${id}`), {
@@ -83,6 +84,7 @@ export async function deletePost(id) {
   window.location.reload();
 }
 
+// 유저 관련
 export async function login(id, password) {
   try {
     const user = await signInWithEmailAndPassword(auth, id, password);
@@ -112,4 +114,19 @@ export function onUserStateChange(callback) {
     const updatedUser = user ? await adminUser(user) : null;
     callback(updatedUser);
   });
+}
+
+// 관리자 메뉴 수정 관련
+export async function getMainMenu() {
+  return get(ref(database, `main_nav`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      return Object.values(snapshot.val());
+    }
+    return [];
+  });
+}
+export async function updateMainMenu(category) {
+  const updateObj = {};
+  updateObj['/main_nav'] = category;
+  return update(ref(database), updateObj);
 }

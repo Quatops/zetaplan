@@ -22,10 +22,6 @@ export default function SubPage({ pageName }) {
   });
   const updateActiveNavId = (idx) => {
     setActiveNavId(idx);
-    console.log(
-      '서브카테고리',
-      subCategory[pageName].find((v) => v.id === idx),
-    );
   };
 
   const [post, setPost] = useState(null);

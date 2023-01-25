@@ -3,9 +3,11 @@ import styles from './styles.module.css';
 import { category, subCategory } from '../../../constants/category';
 import { NavLink } from 'react-router-dom';
 import { useAuthContext } from 'context/AuthContext';
+import EditButton from 'components/EditButton';
 
 export default function GlobalNavigator({ categoryHover }) {
   const { isAdmin } = useAuthContext();
+  const [activeEditBtn, setActiveEditBtn] = useState(false);
 
   return (
     <nav className={styles.nav_wrapper}>
@@ -31,6 +33,8 @@ export default function GlobalNavigator({ categoryHover }) {
           ))}
         </ul>
       </div>
+
+      {isAdmin && activeEditBtn && <EditButton heightSize="300px"></EditButton>}
       <ul className={styles.space_search}>&nbsp;</ul>
       <ul className={styles.space_lang}>&nbsp;</ul>
     </nav>
