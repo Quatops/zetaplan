@@ -1,0 +1,26 @@
+.edit_items {
+  width: 100%;
+  background-color: var(--color-lightgrey);
+  height: 30px;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+}
+.form_wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.edit_wrap {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.edit_bigcate {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 5px;
+}

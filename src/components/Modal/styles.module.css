@@ -4,7 +4,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 20;
+  z-index: 50;
   background-color: rgba(0, 0, 0, 0.3);
   padding: 1rem;
 }
@@ -14,9 +14,25 @@
   height: 100%;
 }
 .modal_wrap {
-  width: 600px;
-  height: 500px;
+  width: 620px;
+  height: 520px;
+  padding: 20px;
   background-color: var(--color-white);
   border-radius: 10px;
-  z-index: 21;
+  flex-direction: column;
+  z-index: 51;
+  color: var(--color-black);
+  animation: slideFadeUp 400ms;
+}
+
+@keyframes slideFadeUp {
+  from {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

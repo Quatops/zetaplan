@@ -9,6 +9,7 @@
   border-radius: 4px;
   cursor: pointer;
   z-index: 5;
+  animation: slideFadeUp 600ms;
 }
 
 .submit_btn {
@@ -16,4 +17,16 @@
   padding: 5px 10px;
   border-radius: 5px;
   color: var(--color-white);
+}
+
+@keyframes slideFadeUp {
+  from {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

@@ -2,10 +2,15 @@ import React, { useState } from 'react';
 import styles from './styles.module.css';
 import { FaSearch } from 'react-icons/fa';
 import GlobalNav from './GlobalNavbar';
-import { category, subCategory } from 'constants/category';
 import { Link } from 'react-router-dom';
+
 import { useAuthContext } from 'context/AuthContext';
-import EditButton from 'components/EditButton';
+import useMenu from 'hooks/useMenu';
+
+import AdminHeader from './AdminHeader';
+import AdminEditHeader from './AdminEditHeader';
+import { useCategoryContext } from 'context/CategoryContext';
+
 /*
 showCate : 카테고리를 보여줄것인지에 대한 변수. 
 activeCateIdx : header nav-item중 활성화된 카테고리의 idx
@@ -14,29 +19,51 @@ isWhite : header 테마가 white인지 default인지에 대한 변수.
 export default function Header({ isWhite }) {
   const [activeCateIdx, setActiveCateIdx] = useState(null);
   const [showCate, setShowCate] = useState(false);
+  const [activeEditBtn, setActiveEditBtn] = useState(false);
+  const { isAdmin, user_logout } = useAuthContext();
+  const [menu, setMenu] = useState({});
+
+  const { category, subCategory } = useCategoryContext();
+  const { modifyMainMenu } = useMenu();
 
   const categoryHover = (bigCategoryId) => {
     setShowCate(true);
     setActiveCateIdx(bigCategoryId);
   };
-  const updateShowCate = (isActive) => {
-    setShowCate(isActive);
-  };
-  const { isAdmin, user_logout } = useAuthContext();
-  const [activeEdit, setActiveEdit] = useState(0);
-  const updateActiveEdit = (idx) => {
-    setActiveEdit(idx);
-  };
-
   const handleLogout = () => {
     if (window.confirm('로그아웃 하시겠습니까?')) user_logout();
+  };
+
+  const handleEditSubmit = () => {
+    category.map((v) => {
+      v.title = menu[v.id];
+    });
+    modifyMainMenu.mutate(category, {
+      onSuccess: () => {
+        alert('성공적으로 변경되었습니다.');
+      },
+      onError: (e) => {
+        alert(`에러가 발생했습니다. ${e}`);
+      },
+    });
+  };
+  const handleChange = (e, id) => {
+    setMenu((prev) => ({ ...prev, [id]: e }));
+  };
+
+  const updateMenu = (obj) => {
+    setMenu(obj);
   };
 
   return (
     <>
       <header
         className={styles.header}
-        onMouseLeave={() => updateShowCate(false)}>
+        onMouseLeave={() => {
+          setShowCate(false);
+          setActiveEditBtn(false);
+        }}>
+        {isAdmin && <AdminHeader handleLogout={handleLogout} />}
         <nav
           className={`${styles.nav_wrapper} ${
             (isWhite || showCate) && styles.active_sub
@@ -52,15 +79,15 @@ export default function Header({ isWhite }) {
               </Link>
             </li>
           </ul>
-          <ul className={styles.nav} onMouseEnter={() => updateShowCate(true)}>
-            {category.map((value) =>
-              activeEdit === 1 ? (
-                <input
-                  key={value.id}
-                  value={value.title}
-                  className={styles.input_header}
-                />
-              ) : (
+          {!category && !subCategory && <ul className={styles.space_nav}></ul>}
+          {category && subCategory && (
+            <ul
+              className={styles.nav}
+              onMouseEnter={() => {
+                setShowCate(true);
+                setActiveEditBtn(true);
+              }}>
+              {category.map((value) => (
                 <Link
                   to={value.path}
                   state={{ id: subCategory[value.id][0].id }}
@@ -72,16 +99,18 @@ export default function Header({ isWhite }) {
                     <p>{value.title}</p>
                   </li>
                 </Link>
-              ),
-            )}
-            {/* {isAdmin && (
-              <EditButton
-                activeEdit={activeEdit}
-                updateActiveEdit={updateActiveEdit}
-                idx={1}
-              />
-            )} */}
-          </ul>
+              ))}
+              {category && activeEditBtn && (
+                <AdminEditHeader
+                  handleChange={handleChange}
+                  handleEditSubmit={handleEditSubmit}
+                  category={category}
+                  menu={menu}
+                  updateMenu={updateMenu}
+                />
+              )}
+            </ul>
+          )}
 
           <li className={`${styles.search_wrapper} ${styles.nav_item}`}>
             <input
@@ -104,14 +133,14 @@ export default function Header({ isWhite }) {
             className={`${styles.line} ${
               (isWhite || showCate) && styles.active_sub
             }`}></div>
-
-          {isAdmin && (
-            <ul>
-              <button onClick={handleLogout}>로그아웃</button>
-            </ul>
-          )}
         </nav>
-        {showCate && <GlobalNav categoryHover={categoryHover} />}
+        {showCate && (
+          <GlobalNav
+            categoryHover={categoryHover}
+            category={category}
+            subCategory={subCategory}
+          />
+        )}
       </header>
     </>
   );

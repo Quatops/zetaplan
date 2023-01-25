@@ -5,10 +5,11 @@ import { useLocation } from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { addNewPost, updatePost } from 'api/firebase';
 import SelectCategory from './SelectCategory';
-import { category, subCategory } from 'constants/category';
+import { useCategoryContext } from 'context/CategoryContext';
 
 export default function AdminPostRegist({}) {
   const location = useLocation();
+  const { category, subCategory } = useCategoryContext();
   const isNew = location.state ? location.state.isNew : null;
   const post = location.state ? location.state.post : null;
   const cate = location.state ? location.state.category : 0;
