@@ -9,11 +9,11 @@ import {
 export default function useMenu() {
   const queryClient = useQueryClient();
   const mainMenuQuery = useQuery(['main_nav'], fetchMenu, {
-    staleTime: 1000 * 60,
+    staleTime: 1000 * 60 * 10,
   });
 
   const subMenuQuery = useQuery(['sub_nav'], fetchSubMenu, {
-    staleTime: 1000 * 60,
+    staleTime: 1000 * 60 * 10,
   });
 
   const modifyMainMenu = useMutation((category) => updateMainMenu(category), {

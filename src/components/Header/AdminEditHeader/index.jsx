@@ -21,7 +21,10 @@ export default function AdminEditHeader({
     });
   }, [category]);
   return (
-    <AdminEditContainer buttonHeight="200px" title="메인 메뉴 수정">
+    <AdminEditContainer
+      buttonHeight="200px"
+      title="메인 메뉴 수정"
+      position={{ bottom: 0 }}>
       <form
         autoComplete="off"
         className={styles.form_wrap}

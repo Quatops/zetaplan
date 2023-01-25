@@ -100,7 +100,7 @@ export default function Header({ isWhite }) {
                   </li>
                 </Link>
               ))}
-              {category && activeEditBtn && (
+              {isAdmin && category && activeEditBtn && (
                 <AdminEditHeader
                   handleChange={handleChange}
                   handleEditSubmit={handleEditSubmit}

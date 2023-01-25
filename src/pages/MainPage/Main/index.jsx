@@ -4,9 +4,11 @@ import BannerCarousel from 'components/BannerCarousel';
 import MainContents from 'pages/MainPage/Main/MainContents';
 
 import { useAuthContext } from 'context/AuthContext';
-//import EditButton from 'components/EditButton';
 import { FaAngleRight } from 'react-icons/fa';
 import { FiPlus } from 'react-icons/fi';
+import AdminEditBanner from 'pages/MainPage/Main/AdminEditBanner';
+import useMain from 'hooks/useMain';
+import AdminEditIntroTab from './AdminEditIntroTab';
 
 const Button = ({ name, img }) => {
   return (
@@ -22,19 +24,12 @@ const Button = ({ name, img }) => {
   );
 };
 
-const intro_header = [
-  { name: '인사이트', isPhoto: true },
-  { name: '뉴스', isPhoto: true },
-  { name: '지원사업', isPhoto: false },
-  { name: 'M&A · 투자IR', isPhoto: false },
-];
 const assess_button = [
   { name: '기업 · 기술 가치평가', icon: 'value_assess_icon' },
   { name: '경영전략 연구소', icon: 'management_strategy_icon' },
   { name: '시스템인증 기업인증', icon: 'certification_icon' },
   { name: 'ESG 평가 신용평가', icon: 'ESG_assess_icon' },
 ];
-const banner = ['banner_img', 'banner_img', 'banner_img'];
 const newsList = [
   [
     {
@@ -225,40 +220,75 @@ const newsList = [
 export default function Main() {
   const { isAdmin } = useAuthContext();
   const [activeTabIdx, setActiveTabIdx] = useState(0);
+  const [activeBannerEditBtn, setActiveBannerEditBtn] = useState(false);
+  const [activeIntroTabEditBtn, setActiveIntroTabEditBtn] = useState(false);
 
+  const {
+    BannerQuery: { data: banner },
+  } = useMain();
+  const {
+    IntroTabQuery: { data: intro_tab },
+  } = useMain();
+  const handleChange = (e) => {};
+  const handleEditSubmit = () => {};
   return (
     <div className={`${styles.page_wrapper} `}>
       <div className={styles.main_container}>
         <section className={styles.left}>
           {/* banner */}
-          <article className={styles.banner}>
-            <BannerCarousel bannerImages={banner} />
+          <article
+            className={styles.banner}
+            onMouseEnter={() => setActiveBannerEditBtn(true)}
+            onMouseLeave={() => setActiveBannerEditBtn(false)}>
+            {banner && (
+              <>
+                <BannerCarousel bannerImages={banner} isAdmin={isAdmin} />
+                {isAdmin && activeBannerEditBtn && (
+                  <AdminEditBanner
+                    handleChange={handleChange}
+                    baseImages={banner}
+                    handleEditSubmit={handleEditSubmit}
+                  />
+                )}
+              </>
+            )}
           </article>
 
           <article className={styles.main_intro}>
-            <div className={styles.intro_wrapper}>
-              <ul className={styles.intro_header}>
-                {intro_header.map((item, index) => (
-                  <li
-                    key={index}
-                    className={`${styles.header_item} ${
-                      activeTabIdx === index && styles.active
-                    }`}
-                    onClick={() => setActiveTabIdx(index)}>
-                    {item.name}
+            {intro_tab && (
+              <div className={styles.intro_wrapper}>
+                <ul
+                  className={styles.intro_header}
+                  onMouseEnter={() => setActiveIntroTabEditBtn(true)}
+                  onMouseLeave={() => setActiveIntroTabEditBtn(false)}>
+                  {intro_tab.map((item, index) => (
+                    <li
+                      key={index}
+                      className={`${styles.header_item} ${
+                        activeTabIdx === index && styles.active
+                      }`}
+                      onClick={() => setActiveTabIdx(index)}>
+                      {item.name}
+                    </li>
+                  ))}
+                  <li className={styles.header_item}>
+                    <FiPlus />
                   </li>
-                ))}
-                <li className={styles.header_item}>
-                  <FiPlus />
-                </li>
-              </ul>
-              <div className={styles.intro_contents}>
-                <MainContents
-                  newsList={newsList[activeTabIdx]}
-                  isPhoto={intro_header[activeTabIdx].isPhoto}
-                />
+                  {isAdmin && activeIntroTabEditBtn && (
+                    <AdminEditIntroTab
+                      handleChange={handleChange}
+                      handleEditSubmit={handleEditSubmit}
+                    />
+                  )}
+                </ul>
+                <div className={styles.intro_contents}>
+                  <MainContents
+                    newsList={newsList[activeTabIdx]}
+                    isPhoto={intro_tab[activeTabIdx].isPhoto}
+                  />
+                </div>
               </div>
-            </div>
+            )}
           </article>
         </section>
         <aside className={styles.right}>

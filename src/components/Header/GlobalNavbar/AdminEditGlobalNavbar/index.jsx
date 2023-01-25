@@ -20,7 +20,10 @@ export default function AdminEditGlobalNavbar({
     updateMenu(obj);
   }, []);
   return (
-    <AdminEditContainer buttonHeight="400px" title="서브 메뉴 수정">
+    <AdminEditContainer
+      buttonHeight="400px"
+      title="서브 메뉴 수정"
+      position={{ bottom: 0 }}>
       <form
         autoComplete="off"
         className={styles.form_wrap}

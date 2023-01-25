@@ -146,3 +146,22 @@ export async function updateSubMenu(category) {
   updateObj['/sub_nav'] = category;
   return update(ref(database), updateObj);
 }
+
+// 메인 배너 관련
+export async function getBannerImg() {
+  return get(ref(database, `banner`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      return Object.values(snapshot.val());
+    }
+    return [];
+  });
+}
+// 메인 intro_header 관련
+export async function getIntroTab() {
+  return get(ref(database, `intro_tab`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      return Object.values(snapshot.val());
+    }
+    return [];
+  });
+}
