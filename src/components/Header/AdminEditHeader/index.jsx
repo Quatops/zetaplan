@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styles from './styles.module.css';
-import EditButton from 'components/EditButton';
 import Button from 'components/SubmitButton';
+import AdminEditContainer from 'components/AdminEditContainer';
 
 export default function AdminEditHeader({
   handleChange,
@@ -21,33 +21,30 @@ export default function AdminEditHeader({
     });
   }, [category]);
   return (
-    <EditButton heightSize="200px">
-      <div className={styles.modal_wrap}>
-        <div className={styles.modal_title}>메인 메뉴 수정</div>
-        <form
-          autocomplete="off"
-          className={styles.form_wrap}
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleEditSubmit(e);
-          }}>
-          <div className={styles.edit_wrap}>
-            {category.map((value) => (
-              <input
-                key={value.id}
-                type="text"
-                className={styles.edit_items}
-                name="menu"
-                value={menu[value.id]}
-                onChange={(e) => handleChange(e.target.value, value.id)}
-              />
-            ))}
-          </div>
-          <Button widthSize="100%" handleSubmit={handleEditSubmit}>
-            변경하기
-          </Button>
-        </form>
-      </div>
-    </EditButton>
+    <AdminEditContainer buttonHeight="200px" title="메인 메뉴 수정">
+      <form
+        autoComplete="off"
+        className={styles.form_wrap}
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleEditSubmit(e);
+        }}>
+        <div className={styles.edit_wrap}>
+          {category.map((value) => (
+            <input
+              key={value.id}
+              type="text"
+              className={styles.edit_items}
+              name="menu"
+              value={menu[value.id]}
+              onChange={(e) => handleChange(e.target.value, value.id)}
+            />
+          ))}
+        </div>
+        <Button widthSize="100%" handleSubmit={handleEditSubmit}>
+          변경하기
+        </Button>
+      </form>
+    </AdminEditContainer>
   );
 }

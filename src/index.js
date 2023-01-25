@@ -6,9 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import { category } from 'constants/category';
 import { AuthProvider } from 'context/AuthContext';
 import Loading from 'components/Loading';
+import { CategoryProvider } from 'context/CategoryContext';
 
 /* MainPage */
 //import MainPage from 'pages/MainPage';
@@ -70,11 +70,13 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <Suspense fallback={<Loading />}>
-        <RouterProvider router={router} />
-      </Suspense>
-    </AuthProvider>
+    <CategoryProvider>
+      <AuthProvider>
+        <Suspense fallback={<Loading />}>
+          <RouterProvider router={router} />
+        </Suspense>
+      </AuthProvider>
+    </CategoryProvider>
   </QueryClientProvider>,
 );
 

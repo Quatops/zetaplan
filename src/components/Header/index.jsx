@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
 import { useAuthContext } from 'context/AuthContext';
 import useMenu from 'hooks/useMenu';
 
-import { subCategory } from 'constants/category';
 import AdminHeader from './AdminHeader';
 import AdminEditHeader from './AdminEditHeader';
+import { useCategoryContext } from 'context/CategoryContext';
 
 /*
 showCate : 카테고리를 보여줄것인지에 대한 변수. 
@@ -22,10 +22,9 @@ export default function Header({ isWhite }) {
   const [activeEditBtn, setActiveEditBtn] = useState(false);
   const { isAdmin, user_logout } = useAuthContext();
   const [menu, setMenu] = useState({});
-  const {
-    mainMenuQuery: { isLoading, error, data: category },
-  } = useMenu();
-  const { modifyMenu } = useMenu();
+
+  const { category, subCategory } = useCategoryContext();
+  const { modifyMainMenu } = useMenu();
 
   const categoryHover = (bigCategoryId) => {
     setShowCate(true);
@@ -35,21 +34,21 @@ export default function Header({ isWhite }) {
     if (window.confirm('로그아웃 하시겠습니까?')) user_logout();
   };
 
-  const handleEditSubmit = (e) => {
+  const handleEditSubmit = () => {
     category.map((v) => {
       v.title = menu[v.id];
     });
-    console.log(category);
-    modifyMenu.mutate(category, {
+    modifyMainMenu.mutate(category, {
       onSuccess: () => {
         alert('성공적으로 변경되었습니다.');
-        setActiveEditBtn(false);
+      },
+      onError: (e) => {
+        alert(`에러가 발생했습니다. ${e}`);
       },
     });
   };
   const handleChange = (e, id) => {
     setMenu((prev) => ({ ...prev, [id]: e }));
-    console.log(menu);
   };
 
   const updateMenu = (obj) => {
@@ -58,8 +57,6 @@ export default function Header({ isWhite }) {
 
   return (
     <>
-      {isLoading && <p>로딩중입니다.</p>}
-      {error && <p>에러가 발생했습니다.</p>}
       <header
         className={styles.header}
         onMouseLeave={() => {
@@ -82,7 +79,8 @@ export default function Header({ isWhite }) {
               </Link>
             </li>
           </ul>
-          {!error && !isLoading && (
+          {!category && !subCategory && <ul className={styles.space_nav}></ul>}
+          {category && subCategory && (
             <ul
               className={styles.nav}
               onMouseEnter={() => {
@@ -102,7 +100,7 @@ export default function Header({ isWhite }) {
                   </li>
                 </Link>
               ))}
-              {isAdmin && activeEditBtn && (
+              {category && activeEditBtn && (
                 <AdminEditHeader
                   handleChange={handleChange}
                   handleEditSubmit={handleEditSubmit}
@@ -136,7 +134,13 @@ export default function Header({ isWhite }) {
               (isWhite || showCate) && styles.active_sub
             }`}></div>
         </nav>
-        {showCate && <GlobalNav categoryHover={categoryHover} />}
+        {showCate && (
+          <GlobalNav
+            categoryHover={categoryHover}
+            category={category}
+            subCategory={subCategory}
+          />
+        )}
       </header>
     </>
   );

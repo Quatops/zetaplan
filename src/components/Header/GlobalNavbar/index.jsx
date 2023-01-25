@@ -1,13 +1,43 @@
 import React, { useState } from 'react';
 import styles from './styles.module.css';
-import { category, subCategory } from '../../../constants/category';
 import { NavLink } from 'react-router-dom';
 import { useAuthContext } from 'context/AuthContext';
-import EditButton from 'components/EditButton';
+import AdminEditGlobalNavbar from './AdminEditGlobalNavbar';
+import useMenu from 'hooks/useMenu';
 
-export default function GlobalNavigator({ categoryHover }) {
+export default function GlobalNavigator({
+  categoryHover,
+  category,
+  subCategory,
+}) {
+  const { modifySubMenu } = useMenu();
   const { isAdmin } = useAuthContext();
-  const [activeEditBtn, setActiveEditBtn] = useState(false);
+
+  const handleEditSubmit = () => {
+    subCategory.map((big, bId) => {
+      big.map((small, sId) => {
+        subCategory[bId][sId].title = menu[bId][sId];
+      });
+    });
+    modifySubMenu.mutate(subCategory, {
+      onSuccess: () => {
+        alert('성공적으로 변경되었습니다.');
+      },
+      onError: (e) => {
+        alert(`에러가 발생했습니다. ${e}`);
+      },
+    });
+  };
+  const handleChange = (e, bId, sId) => {
+    setMenu((prev) => [...prev, (prev[bId][sId] = e)]);
+  };
+
+  const [menu, setMenu] = useState(
+    Array.from(Array(6), () => Array(6).fill('')),
+  );
+  const updateMenu = (obj) => {
+    setMenu(obj);
+  };
 
   return (
     <nav className={styles.nav_wrapper}>
@@ -31,10 +61,16 @@ export default function GlobalNavigator({ categoryHover }) {
               ))}
             </ul>
           ))}
+          {isAdmin && subCategory && (
+            <AdminEditGlobalNavbar
+              menu={menu}
+              handleEditSubmit={handleEditSubmit}
+              subCategory={subCategory}
+              handleChange={handleChange}
+              updateMenu={updateMenu}></AdminEditGlobalNavbar>
+          )}
         </ul>
       </div>
-
-      {isAdmin && activeEditBtn && <EditButton heightSize="300px"></EditButton>}
       <ul className={styles.space_search}>&nbsp;</ul>
       <ul className={styles.space_lang}>&nbsp;</ul>
     </nav>

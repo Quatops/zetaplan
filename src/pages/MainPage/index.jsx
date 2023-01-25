@@ -69,19 +69,19 @@ export default function MainPage() {
     <div className={styles.main_wrapper} ref={mainWrapperRef}>
       <ScrollMenu pageIdx={pageIdx} updatePage={updatePage} />
 
-      <div className={styles.main_item}>
+      <section className={styles.main_item}>
         <Main />
-      </div>
-      <div className={styles.main_item}>
+      </section>
+      <section className={styles.main_item}>
         <AcceleratingProgram />
-      </div>
+      </section>
       <Suspense fallback={<div>Loading...</div>}>
-        <div className={styles.main_item}>
+        <section className={styles.main_item}>
           <InvestmentPortfolio />
-        </div>
-        <div className={styles.main_item}>
+        </section>
+        <section className={styles.main_item}>
           <GlobalNetwork />
-        </div>
+        </section>
       </Suspense>
     </div>
   );

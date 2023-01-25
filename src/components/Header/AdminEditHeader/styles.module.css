@@ -1,16 +1,3 @@
-/* 모달 */
-.modal_wrap {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  flex-direction: column;
-  justify-content: space-around;
-}
-.modal_title {
-  font-size: 1.25rem;
-  font-weight: 800;
-  text-align: center;
-}
 .form_wrap {
   width: 100%;
   height: 100px;
