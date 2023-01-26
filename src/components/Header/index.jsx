@@ -21,7 +21,6 @@ export default function Header({ isWhite }) {
   const [showCate, setShowCate] = useState(false);
   const [activeEditBtn, setActiveEditBtn] = useState(false);
   const { isAdmin, user_logout } = useAuthContext();
-  const [menu, setMenu] = useState({});
 
   const { category, subCategory } = useCategoryContext();
   const { modifyMainMenu } = useMenu();
@@ -34,7 +33,7 @@ export default function Header({ isWhite }) {
     if (window.confirm('로그아웃 하시겠습니까?')) user_logout();
   };
 
-  const handleEditSubmit = () => {
+  const handleEditSubmit = (menu) => {
     category.map((v) => {
       v.title = menu[v.id];
     });
@@ -46,13 +45,6 @@ export default function Header({ isWhite }) {
         alert(`에러가 발생했습니다. ${e}`);
       },
     });
-  };
-  const handleChange = (e, id) => {
-    setMenu((prev) => ({ ...prev, [id]: e }));
-  };
-
-  const updateMenu = (obj) => {
-    setMenu(obj);
   };
 
   return (
@@ -102,11 +94,8 @@ export default function Header({ isWhite }) {
               ))}
               {isAdmin && category && activeEditBtn && (
                 <AdminEditHeader
-                  handleChange={handleChange}
                   handleEditSubmit={handleEditSubmit}
                   category={category}
-                  menu={menu}
-                  updateMenu={updateMenu}
                 />
               )}
             </ul>

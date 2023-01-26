@@ -4,24 +4,13 @@ import BannerCarousel from 'components/BannerCarousel';
 import MainArticles from 'pages/MainPage/Main/MainArticles';
 
 import { useAuthContext } from 'context/AuthContext';
-import { FaAngleRight } from 'react-icons/fa';
 import AdminEditBanner from 'components/AdminEdits/AdminEditBanner';
 import useMain from 'hooks/useMain';
 import MainArticleTabs from './MainArticleTabs';
-
-const Button = ({ name, img }) => {
-  return (
-    <button className={styles.etc_btn}>
-      <div className="flex_center">
-        <div className={styles.etc_icon}>
-          <img src={require(`assets/${img}.png`)} alt="icon" />
-        </div>
-        {name}
-      </div>
-      <FaAngleRight />
-    </button>
-  );
-};
+import MainAsideBtn2 from './MainAsideBtn2';
+import MainContactUs from './MainContactUs';
+import MainAsideBtn1 from './MainAsideBtn1';
+import AdminEditAsideBtn1 from 'components/AdminEdits/AdminEditAsideBtn1';
 
 const assess_button = [
   { name: '기업 · 기술 가치평가', icon: 'value_assess_icon' },
@@ -223,7 +212,8 @@ export default function Main() {
 
   // 편집버튼 보이기 여부
   const [activeBannerEditBtn, setActiveBannerEditBtn] = useState(false);
-  const [activeIntroTabEditBtn, setActiveIntroTabEditBtn] = useState(false);
+  const [activeAsideBtn1, setActiveAsideBtn1] = useState(false);
+
   const [activeTabIdx, setActiveTabIdx] = useState(0);
 
   const updateActiveTabIdx = (idx) => {
@@ -236,6 +226,9 @@ export default function Main() {
   } = useMain();
   const {
     IntroTabQuery: { data: intro_tab },
+  } = useMain();
+  const {
+    AsideBtn1Query: { data: aside_btn1 },
   } = useMain();
 
   // 수정완료 다루기
@@ -263,6 +256,8 @@ export default function Main() {
       },
     });
   };
+
+  const handleAsideBtn1Submit = (btns) => {};
   return (
     <div className={`${styles.page_wrapper} `}>
       <div className={styles.main_container}>
@@ -308,39 +303,30 @@ export default function Main() {
         </section>
         <aside className={styles.right}>
           <section className={styles.call_info}>
-            <h1>CONTACT US</h1>
-            <div>
-              <p>09:00 - 18:00</p>
-              <span className={styles.call_number}>02&#41; 538-4801</span>
-              <p>
-                02&#41; 561 - 6698 | 070&#41; 8129 - 5884 | 070&#41; 8129 - 5885
-              </p>
-              <span className={styles.email}>zetabiz @ zetaplan.com</span>
-            </div>
-            <button className={styles.cosulting_apply_btn}>상담신청</button>
+            <MainContactUs />
           </section>
           <section className={styles.infos}>
-            <div className={styles.company_ass}>
-              {assess_button.map((value, index) => (
-                <button className={styles.ass_btn} key={index}>
-                  <div className={styles.ass_icon}>
-                    <img src={require(`assets/${value.icon}.png`)} alt="icon" />
-                  </div>
-                  <p className={styles.ass_name}>{value.name}</p>
-                </button>
-              ))}
-            </div>
-            <section className={styles.etc_info}>
-              <div className={styles.etc_button_wrapper}>
-                <Button
-                  name="기술사업화"
-                  img="technology_commercialization_icon"
-                />
-                <Button name="R&BD전략수집" img="cooperation_icon" />
-                <Button name="협력네트워크" img="cooperation_network_icon" />
-              </div>
-            </section>
-            <section className={styles.map_info}>
+            <article
+              className={styles.company_ass}
+              onMouseEnter={() => setActiveAsideBtn1(true)}
+              onMouseLeave={() => setActiveAsideBtn1(false)}>
+              {aside_btn1 && (
+                <>
+                  <MainAsideBtn1 aside_btn1={aside_btn1} />
+                  {isAdmin && activeAsideBtn1 && (
+                    <AdminEditAsideBtn1
+                      handleAsideBtn1Submit={handleAsideBtn1Submit}
+                      position={{ top: '10px', right: '10px' }}
+                      aside_btn1={aside_btn1}
+                    />
+                  )}
+                </>
+              )}
+            </article>
+            <article className={styles.etc_info}>
+              <MainAsideBtn2 />
+            </article>
+            <article className={styles.map_info}>
               <div>
                 <span>찾아오시는 길</span>
                 <p>오시는 길을 안내해 드립니다.</p>
@@ -348,7 +334,7 @@ export default function Main() {
               <div>
                 <img src={require('assets/map_icon.png')} alt="map_icon" />
               </div>
-            </section>
+            </article>
           </section>
         </aside>
       </div>

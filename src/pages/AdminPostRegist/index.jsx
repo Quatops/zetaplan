@@ -96,20 +96,24 @@ export default function AdminPostRegist({}) {
       <aside className={styles.content_info}>
         <ul className={styles.cate_selector}>
           <li className={styles.select_wrap}>
-            <SelectCategory
-              label="카테고리"
-              options={category}
-              updateSelect={updateSelectCate}
-              cate={cate}
-            />
+            {category && (
+              <SelectCategory
+                label="카테고리"
+                options={category}
+                updateSelect={updateSelectCate}
+                cate={cate}
+              />
+            )}
           </li>
           <li className={styles.select_wrap}>
-            <SelectCategory
-              label="상세 카테고리"
-              options={subCategory[category[selectCate].id]}
-              updateSelect={updateSelectSubCate}
-              cate={subCate}
-            />
+            {subCategory && (
+              <SelectCategory
+                label="상세 카테고리"
+                options={subCategory[category[selectCate].id]}
+                updateSelect={updateSelectSubCate}
+                cate={subCate}
+              />
+            )}
           </li>
         </ul>
         <button className={styles.submit_btn} onClick={() => handleSubmit()}>

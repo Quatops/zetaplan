@@ -116,38 +116,6 @@ export function onUserStateChange(callback) {
   });
 }
 
-// 관리자 메뉴 수정 관련
-// 메인 메뉴 관련
-export async function getMainMenu() {
-  return get(ref(database, `main_nav`)).then((snapshot) => {
-    if (snapshot.exists()) {
-      return Object.values(snapshot.val());
-    }
-    return [];
-  });
-}
-export async function updateMainMenu(category) {
-  const updateObj = {};
-  updateObj['/main_nav'] = category;
-  return update(ref(database), updateObj);
-}
-
-// 서브메뉴 관련
-export async function getSubMenu() {
-  return get(ref(database, `sub_nav`)).then((snapshot) => {
-    if (snapshot.exists()) {
-      return Object.values(snapshot.val());
-    }
-    return [];
-  });
-}
-export async function updateSubMenu(category) {
-  const updateObj = {};
-  updateObj['/sub_nav'] = category;
-  return update(ref(database), updateObj);
-}
-
-// 메인 배너 관련
 export async function getBannerImg() {
   return get(ref(database, `banner`)).then((snapshot) => {
     if (snapshot.exists()) {
@@ -156,12 +124,6 @@ export async function getBannerImg() {
     return [];
   });
 }
-export async function updateBannerImage(images) {
-  const updateObj = {};
-  updateObj['/banner'] = images;
-  return update(ref(database), updateObj);
-}
-
 // 메인 intro_header 관련
 export async function getIntroTab() {
   return get(ref(database, `intro_tab`)).then((snapshot) => {
@@ -172,8 +134,19 @@ export async function getIntroTab() {
   });
 }
 
-export async function updateIntroTab(tabs) {
+//Get
+export async function getItems(target) {
+  return get(ref(database, target)).then((snapshot) => {
+    if (snapshot.exists()) {
+      return Object.values(snapshot.val());
+    }
+    return [];
+  });
+}
+
+//Update
+export async function updateItems(target, items) {
   const updateObj = {};
-  updateObj['/intro_tab'] = tabs;
+  updateObj[target] = items;
   return update(ref(database), updateObj);
 }

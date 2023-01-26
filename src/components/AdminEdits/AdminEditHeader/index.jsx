@@ -1,25 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../styles.module.css';
 import Button from 'components/SubmitButton';
 import AdminEditContainer from 'components/AdminEditContainer';
 
-export default function AdminEditHeader({
-  handleChange,
-  handleEditSubmit,
-  category,
-  menu,
-  updateMenu,
-}) {
-  useEffect(() => {
-    updateMenu({
-      0: category[0].title,
-      1: category[1].title,
-      2: category[2].title,
-      3: category[3].title,
-      4: category[4].title,
-      5: category[5].title,
-    });
-  }, [category]);
+export default function AdminEditHeader({ handleEditSubmit, category }) {
+  const [menu, setMenu] = useState({
+    0: category[0].title,
+    1: category[1].title,
+    2: category[2].title,
+    3: category[3].title,
+    4: category[4].title,
+    5: category[5].title,
+  });
+  const handleChange = (e, id) => {
+    setMenu((prev) => ({ ...prev, [id]: e }));
+  };
   return (
     <AdminEditContainer
       buttonHeight="200px"
@@ -30,7 +25,7 @@ export default function AdminEditHeader({
         className={styles.form_wrap}
         onSubmit={(e) => {
           e.preventDefault();
-          handleEditSubmit(e);
+          handleEditSubmit(menu);
         }}>
         <div className={styles.edit_wrap}>
           {category.map((value) => (

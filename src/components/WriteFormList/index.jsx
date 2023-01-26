@@ -16,7 +16,7 @@ export default function WriteFormList({
     position: 'relative',
   };
   return (
-    <Modal updateIsActiveModal={updateIsActiveModal}>
+    <Modal updateActiveModal={updateIsActiveModal}>
       <form
         onSubmit={(e) => {
           e.preventDefault();
