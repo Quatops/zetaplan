@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import styles from './styles.module.css';
 import BannerCarousel from 'components/BannerCarousel';
-import MainContents from 'pages/MainPage/Main/MainContents';
+import MainArticles from 'pages/MainPage/Main/MainArticles';
 
 import { useAuthContext } from 'context/AuthContext';
 import { FaAngleRight } from 'react-icons/fa';
-import { FiPlus } from 'react-icons/fi';
-import AdminEditBanner from 'pages/MainPage/Main/AdminEditBanner';
+import AdminEditBanner from 'components/AdminEdits/AdminEditBanner';
 import useMain from 'hooks/useMain';
-import AdminEditIntroTab from './AdminEditIntroTab';
+import MainArticleTabs from './MainArticleTabs';
 
 const Button = ({ name, img }) => {
   return (
@@ -219,10 +218,12 @@ const newsList = [
 
 export default function Main() {
   const { isAdmin } = useAuthContext();
-  const [activeTabIdx, setActiveTabIdx] = useState(0);
   const [activeBannerEditBtn, setActiveBannerEditBtn] = useState(false);
-  const [activeIntroTabEditBtn, setActiveIntroTabEditBtn] = useState(false);
 
+  const [activeTabIdx, setActiveTabIdx] = useState(0);
+  const updateActiveTabIdx = (idx) => {
+    setActiveTabIdx(idx);
+  };
   const {
     BannerQuery: { data: banner },
   } = useMain();
@@ -248,6 +249,7 @@ export default function Main() {
                     handleChange={handleChange}
                     baseImages={banner}
                     handleEditSubmit={handleEditSubmit}
+                    position={{ top: '10px', right: '10px' }}
                   />
                 )}
               </>
@@ -257,32 +259,14 @@ export default function Main() {
           <article className={styles.main_intro}>
             {intro_tab && (
               <div className={styles.intro_wrapper}>
-                <ul
-                  className={styles.intro_header}
-                  onMouseEnter={() => setActiveIntroTabEditBtn(true)}
-                  onMouseLeave={() => setActiveIntroTabEditBtn(false)}>
-                  {intro_tab.map((item, index) => (
-                    <li
-                      key={index}
-                      className={`${styles.header_item} ${
-                        activeTabIdx === index && styles.active
-                      }`}
-                      onClick={() => setActiveTabIdx(index)}>
-                      {item.name}
-                    </li>
-                  ))}
-                  <li className={styles.header_item}>
-                    <FiPlus />
-                  </li>
-                  {isAdmin && activeIntroTabEditBtn && (
-                    <AdminEditIntroTab
-                      handleChange={handleChange}
-                      handleEditSubmit={handleEditSubmit}
-                    />
-                  )}
-                </ul>
+                <MainArticleTabs
+                  intro_tab={intro_tab}
+                  isAdmin={isAdmin}
+                  updateActiveTabIdx={updateActiveTabIdx}
+                  activeTabIdx={activeTabIdx}
+                />
                 <div className={styles.intro_contents}>
-                  <MainContents
+                  <MainArticles
                     newsList={newsList[activeTabIdx]}
                     isPhoto={intro_tab[activeTabIdx].isPhoto}
                   />

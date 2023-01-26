@@ -4,7 +4,11 @@ import styles from './styles.module.css';
 import Button from 'components/SubmitButton';
 import { FaTrashAlt } from 'react-icons/fa';
 
-export default function AdminEditBanner({ handleEditSubmit, baseImages }) {
+export default function AdminEditBanner({
+  handleEditSubmit,
+  baseImages,
+  position,
+}) {
   const [images, setImages] = useState(baseImages);
 
   const handleChange = (e) => {
@@ -23,7 +27,10 @@ export default function AdminEditBanner({ handleEditSubmit, baseImages }) {
     setImages(images.filter((_, index) => index !== id));
   };
   return (
-    <AdminEditContainer buttonHeight="400px" title="배너이미지 수정">
+    <AdminEditContainer
+      buttonHeight="400px"
+      title="배너이미지 수정"
+      position={position}>
       <div className={styles.images_wrap}>
         {images.map((images, index) => (
           <div className={styles.image} key={index}>

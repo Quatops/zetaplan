@@ -8,7 +8,7 @@ import { useAuthContext } from 'context/AuthContext';
 import useMenu from 'hooks/useMenu';
 
 import AdminHeader from './AdminHeader';
-import AdminEditHeader from './AdminEditHeader';
+import AdminEditHeader from '../AdminEdits/AdminEditHeader';
 import { useCategoryContext } from 'context/CategoryContext';
 
 /*

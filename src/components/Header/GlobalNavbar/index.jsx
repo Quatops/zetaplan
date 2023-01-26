@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './styles.module.css';
 import { NavLink } from 'react-router-dom';
 import { useAuthContext } from 'context/AuthContext';
-import AdminEditGlobalNavbar from './AdminEditGlobalNavbar';
+import AdminEditGlobalNavbar from '../../AdminEdits/AdminEditGlobalNavbar';
 import useMenu from 'hooks/useMenu';
 
 export default function GlobalNavigator({
