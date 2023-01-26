@@ -2,6 +2,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   getBannerImg as fetchBanner,
   getIntroTab as fetchIntroTab,
+  updateBannerImage,
 } from 'api/firebase';
 
 export default function useMain() {
@@ -12,11 +13,11 @@ export default function useMain() {
   const IntroTabQuery = useQuery(['intro_tab'], fetchIntroTab, {
     staleTime: 1000 * 60 * 10,
   });
-  /*const modifyBanner = useMutation(
-    (bannerImage) => updateMainMenu(bannerImage),
+  const modifyBanner = useMutation(
+    (bannerImage) => updateBannerImage(bannerImage),
     {
-      onSuccess: () => queryClient.invalidateQueries(['main_nav']),
+      onSuccess: () => queryClient.invalidateQueries(['banner']),
     },
-  );*/
-  return { BannerQuery, IntroTabQuery };
+  );
+  return { BannerQuery, IntroTabQuery, modifyBanner };
 }

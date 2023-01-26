@@ -12,6 +12,7 @@
   width: 200px;
   height: 100px;
   position: relative;
+  margin: 5px;
 }
 .image img {
   width: 100%;
@@ -23,4 +24,13 @@
   position: absolute;
   top: 0;
   right: 0;
+  background-color: var(--color-red);
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 0.7rem;
 }

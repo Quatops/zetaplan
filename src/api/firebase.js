@@ -156,6 +156,12 @@ export async function getBannerImg() {
     return [];
   });
 }
+export async function updateBannerImage(images) {
+  const updateObj = {};
+  updateObj['/banner'] = images;
+  return update(ref(database), updateObj);
+}
+
 // 메인 intro_header 관련
 export async function getIntroTab() {
   return get(ref(database, `intro_tab`)).then((snapshot) => {

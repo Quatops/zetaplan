@@ -221,6 +221,8 @@ export default function Main() {
   const [activeBannerEditBtn, setActiveBannerEditBtn] = useState(false);
 
   const [activeTabIdx, setActiveTabIdx] = useState(0);
+
+  const { modifyBanner } = useMain();
   const updateActiveTabIdx = (idx) => {
     setActiveTabIdx(idx);
   };
@@ -231,7 +233,16 @@ export default function Main() {
     IntroTabQuery: { data: intro_tab },
   } = useMain();
   const handleChange = (e) => {};
-  const handleEditSubmit = () => {};
+  const handleBannerSubmit = (images) => {
+    modifyBanner.mutate(images, {
+      onSuccess: () => {
+        alert('성공적으로 변경되었습니다.');
+      },
+      onError: (e) => {
+        alert(`에러가 발생했습니다. ${e}`);
+      },
+    });
+  };
   return (
     <div className={`${styles.page_wrapper} `}>
       <div className={styles.main_container}>
@@ -248,8 +259,8 @@ export default function Main() {
                   <AdminEditBanner
                     handleChange={handleChange}
                     baseImages={banner}
-                    handleEditSubmit={handleEditSubmit}
                     position={{ top: '10px', right: '10px' }}
+                    handleBannerSubmit={handleBannerSubmit}
                   />
                 )}
               </>

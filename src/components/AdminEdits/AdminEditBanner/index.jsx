@@ -1,13 +1,14 @@
 import AdminEditContainer from 'components/AdminEditContainer';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles.module.css';
 import Button from 'components/SubmitButton';
 import { FaTrashAlt } from 'react-icons/fa';
+import { uploadImage } from 'api/uploader';
 
 export default function AdminEditBanner({
-  handleEditSubmit,
   baseImages,
   position,
+  handleBannerSubmit,
 }) {
   const [images, setImages] = useState(baseImages);
 
@@ -15,17 +16,23 @@ export default function AdminEditBanner({
     const { files } = e.target;
     const nowImageURLList = [...images];
     for (let i = 0; i < files.length; ++i) {
-      const nowImageUrl = URL.createObjectURL(files[i]);
-      nowImageURLList.push(nowImageUrl);
+      uploadImage(files[i]).then((url) => {
+        nowImageURLList.push(url);
+      });
     }
-    if (nowImageURLList.length > 10) {
-      nowImageURLList = nowImageURLList.slice(0, 10);
+    if (nowImageURLList.length > 15) {
+      alert('배너이미지는 15개까지만 가능합니다.');
+      nowImageURLList = nowImageURLList.slice(0, 15);
     }
     setImages(nowImageURLList);
   };
   const handleDeleteImage = (id) => {
     setImages(images.filter((_, index) => index !== id));
   };
+
+  useEffect(() => {
+    console.log('이미지 잘 오고있나 출력해봄', images);
+  }, [images]);
   return (
     <AdminEditContainer
       buttonHeight="400px"
@@ -48,7 +55,7 @@ export default function AdminEditBanner({
         className={styles.form_wrap}
         onSubmit={(e) => {
           e.preventDefault();
-          handleEditSubmit(e);
+          handleBannerSubmit(images);
         }}>
         <input
           type="file"
@@ -58,9 +65,7 @@ export default function AdminEditBanner({
           onChange={handleChange}
         />
 
-        <Button widthSize="100%" handleSubmit={handleEditSubmit}>
-          변경하기
-        </Button>
+        <Button widthSize="100%">변경하기</Button>
       </form>
     </AdminEditContainer>
   );
