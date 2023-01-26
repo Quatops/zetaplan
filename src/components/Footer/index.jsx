@@ -1,10 +1,13 @@
+import SlickSlider from 'components/Slider';
 import React from 'react';
 import styles from './styles.module.css';
 
 export default function Footer() {
   return (
     <footer className={styles.footer_wrap}>
-      <section className={styles.logo_wrap}></section>
+      <section className={`${styles.logo_wrap} flex_center`}>
+        <SlickSlider />
+      </section>
       <section className={styles.footer}>
         <article className={styles.footer_left}>
           <p style={{ fontWeight: '600' }}>Zeta Plan Investment Co., Ltd. </p>
