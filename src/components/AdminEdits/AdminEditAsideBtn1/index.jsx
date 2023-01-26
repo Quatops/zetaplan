@@ -23,13 +23,14 @@ export default function AdminEditAsideBtn1({
   };
   const handleChangeImage = (e, id) => {
     const { files } = e.target;
-    const array = [...btns];
     if (files) {
       uploadImage(files[0]).then((url) => {
-        for (let i = 0; i < array.length; ++i) if (i === id) array[i].src = url;
+        setBtns((prev) => {
+          prev[id]['src'] = url;
+          return [...prev];
+        });
       });
     }
-    setBtns(array);
   };
 
   useEffect(() => {

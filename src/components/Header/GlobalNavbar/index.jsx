@@ -13,7 +13,7 @@ export default function GlobalNavigator({
   const { modifySubMenu } = useMenu();
   const { isAdmin } = useAuthContext();
 
-  const handleEditSubmit = () => {
+  const handleEditSubmit = (menu) => {
     subCategory.map((big, bId) => {
       big.map((small, sId) => {
         subCategory[bId][sId].title = menu[bId][sId];
@@ -27,16 +27,6 @@ export default function GlobalNavigator({
         alert(`에러가 발생했습니다. ${e}`);
       },
     });
-  };
-  const handleChange = (e, bId, sId) => {
-    setMenu((prev) => [...prev, (prev[bId][sId] = e)]);
-  };
-
-  const [menu, setMenu] = useState(
-    Array.from(Array(6), () => Array(6).fill('')),
-  );
-  const updateMenu = (obj) => {
-    setMenu(obj);
   };
 
   return (
@@ -63,11 +53,8 @@ export default function GlobalNavigator({
           ))}
           {isAdmin && subCategory && (
             <AdminEditGlobalNavbar
-              menu={menu}
               handleEditSubmit={handleEditSubmit}
-              subCategory={subCategory}
-              handleChange={handleChange}
-              updateMenu={updateMenu}></AdminEditGlobalNavbar>
+              subCategory={subCategory}></AdminEditGlobalNavbar>
           )}
         </ul>
       </div>
