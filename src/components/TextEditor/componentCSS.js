@@ -1,18 +1,37 @@
 export const baseCSS = `
 html {
   padding: 1rem;
-  width: 1000px;
-  margin: 0 auto;
-  box-shadow: 0px -3px 14px 0px rgba(0,0,0,0.15);
-  -webkit-box-shadow: 0px -3px 14px 0px rgba(0,0,0,0.15);
-  -moz-box-shadow: 0px -3px 14px 0px rgba(0,0,0,0.15);
-  height: 100%;
 }
 body {
   font-family: pretendard,나눔고딕, 나눔스퀘어, 돋움, Helvetica, Arial, sans-serif;
   font-size: 14px;
-  overflow:hidden;
+  height: calc(100vh - 80px);
+  overflow:scroll;
+  padding: 0;
+  margin: 0;
 }
+
+::-webkit-scrollbar {
+  border-radius: 10px;
+  height: 7px;
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  border: 1px solid rgb(231, 231, 231);
+  border-radius: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #cccccc;
+  border: 0;
+  border-radius: 7px;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: #727272;
+}
+
 `;
 
 export const toggleCSS = ` 

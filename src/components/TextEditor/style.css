@@ -1,43 +1,30 @@
 .tox-tinymce {
   border: none;
 }
-
 .tox-toolbar__primary {
   width: 100%;
 }
 .tox:not(.tox-tinymce-inline) .tox-editor-header {
   border-bottom: 1px solid var(--color-grey);
 }
-
-.tox-sidebar-wrap {
-  height: 100%;
+#text-area {
+  height: calc(100vh - 50px);
 }
-
+.tox-sidebar-wrap {
+  width: 1000px !important;
+  box-shadow: 0px -3px 14px 0px rgba(0, 0, 0, 0.15) !important ;
+  -webkit-box-shadow: 0px -3px 14px 0px rgba(0, 0, 0, 0.15) !important;
+  -moz-box-shadow: 0px -3px 14px 0px rgba(0, 0, 0, 0.15) !important;
+  margin: 0 auto !important;
+}
 .tox-tinymce {
-  height: 100vh !important;
+  height: calc(100vh - 50px) !important;
   overflow: hidden;
 }
 
 iframe {
   overflow: hidden;
 }
-
-::-webkit-scrollbar {
-  border-radius: 10px;
-  width: 7px;
-}
-
-::-webkit-scrollbar-track {
-  border: 1px solid rgb(231, 231, 231);
-  border-radius: 7px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--color-grey);
-  border: 0;
-  border-radius: 7px;
-}
-
-::-webkit-scrollbar-thumb:active {
-  background-color: var(--color-darkgrey);
+.tox .tox-edit-area__iframe {
+  overflow: scroll;
 }
