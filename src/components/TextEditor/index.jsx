@@ -131,7 +131,6 @@ export default function TextEditor({ updateValue, post }) {
               };
             }
           },
-
           quickbars_selection_toolbar:
             'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
           font_family_formats:

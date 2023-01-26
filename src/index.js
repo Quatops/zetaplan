@@ -11,8 +11,6 @@ import Loading from 'components/Loading';
 import { CategoryProvider } from 'context/CategoryContext';
 
 /* MainPage */
-//import MainPage from 'pages/MainPage';
-
 const MainPage = lazy(() => import('pages/MainPage'));
 
 /* SubPage */

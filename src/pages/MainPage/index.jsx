@@ -11,7 +11,7 @@ const InvestmentPortfolio = React.lazy(() => import('./InvestmentPortfolio'));
 
 export default function MainPage() {
   const [pageIdx, setPageIdx] = useState(1);
-  const updateActiveNav = useOutletContext();
+  const updateisWhite = useOutletContext();
   const mainWrapperRef = useRef();
   const updatePage = (idx, top, left, behavior) => {
     mainWrapperRef.current.scrollTo({
@@ -20,7 +20,7 @@ export default function MainPage() {
       behavior,
     });
     setPageIdx(idx);
-    idx === 4 || idx === 3 ? updateActiveNav(true) : updateActiveNav(false);
+    idx === 4 || idx === 3 ? updateisWhite(true) : updateisWhite(false);
   };
   useEffect(() => {
     const wheelHandler = (e) => {

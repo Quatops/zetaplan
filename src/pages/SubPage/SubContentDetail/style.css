@@ -1,47 +1,12 @@
-export const baseCSS = `
-html {
-  padding: 1rem;
-}
-body {
-  font-family: pretendard,나눔고딕, 나눔스퀘어, 돋움, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  height: calc(100vh - 80px);
-  overflow:scroll;
-  padding: 0;
-  margin: 0;
-}
-
-::-webkit-scrollbar {
-  border-radius: 10px;
-  height: 7px;
-  width: 7px;
-}
-
-::-webkit-scrollbar-track {
-  border: 1px solid rgb(231, 231, 231);
-  border-radius: 7px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #cccccc;
-  border: 0;
-  border-radius: 7px;
-}
-
-::-webkit-scrollbar-thumb:active {
-  background-color: #727272;
-}
-
-`;
-
-export const toggleCSS = ` 
 /* toggle ui css*/
-.card_ui {
+.toggle_ui {
   width: 100%;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
+  margin: 10px 0;
 }
 .toggle_label {
   display: flex;
@@ -51,11 +16,12 @@ export const toggleCSS = `
 .toggle_prefix {
   width: 30px;
   height: 30px;
+  cursor: pointer;
   margin-right: 20px;
 }
 
-.toggle_checkbox{
-  display:none;
+.toggle_checkbox {
+  display: none;
 }
 .toggle_prefix img {
   object-fit: contain;
@@ -66,27 +32,23 @@ export const toggleCSS = `
   font-weight: 600;
   font-size: 1.4rem;
 }
-
-/*.toggle_title::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  height: 1px;
-  background-color: var(--color-grey);
-}*/
 .toggle_content {
-  font-family: pretendard;
+  -webkit-transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
   padding: 1rem;
+  flex-direction: column;
+  align-items: flex-start;
   background-color: #f8f8f8;
   border-radius: 10px;
+  margin-top: 20px;
+  animation: slideUp 300ms;
 }
-.card_ui input[type='checkbox']:checked + .toggle_label + .toggle_content {
+
+.toggle_ui input[type='checkbox']:checked + .toggle_label + .toggle_content {
   display: none;
 }
 
-`;
-export const photoCardCSS = `
+/* photocard ui css*/
 .photocard_ui {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -121,4 +83,12 @@ export const photoCardCSS = `
   align-items: center;
 }
 
-`;
+@keyframes slideUp {
+  from {
+    transform: scaleY(0);
+  }
+
+  to {
+    transform: scaleY(100%);
+  }
+}

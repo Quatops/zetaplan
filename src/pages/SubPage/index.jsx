@@ -1,19 +1,23 @@
 import SubNavbar from 'components/SubNavbar';
 import React, { useState, useEffect } from 'react';
-import styles from './styles.module.css';
+
 import { useLocation } from 'react-router-dom';
-import SubContentDetail from './SubContentDetail';
+import { useOutletContext } from 'react-router-dom';
 import { useAuthContext } from 'context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { getPost, deletePost } from 'api/firebase';
 import { useCategoryContext } from 'context/CategoryContext';
 
+import styles from './styles.module.css';
+import SubContentDetail from './SubContentDetail';
+
 export default function SubPage({ pageName }) {
   const location = useLocation();
   const navigate = useNavigate();
   const { category, subCategory } = useCategoryContext();
   const { isAdmin } = useAuthContext();
+  const updateisWhite = useOutletContext();
   const [activeNavId, setActiveNavId] = useState(
     location.state ? location.state.id : 0,
   );
@@ -28,9 +32,22 @@ export default function SubPage({ pageName }) {
   const [post, setPost] = useState(null);
 
   useEffect(() => {
-    if (location.state) updateActiveNavId(location.state.id);
+    updateisWhite(false);
+  }, []);
+  useEffect(() => {
+    if (subCategory)
+      subCategory.map((big, bid) => {
+        big.map((small, sid) => {
+          if (small.path === location.pathname) {
+            setActiveNavId(small.id);
+          }
+        });
+      });
+  }, [subCategory]);
+  useEffect(() => {
+    if (location.state) setActiveNavId(location.state.id);
   }, [location.state]);
-  //const { data: post } = useQuery([`post`], () => getPost(activeNavId));
+
   useEffect(() => {
     getPost(activeNavId).then((data) => {
       setPost(data);
