@@ -38,7 +38,7 @@ const NewsDetail = ({ news }) => {
   );
 };
 
-export default function MainContents({ newsList, isPhoto }) {
+export default function MainArticles({ newsList, isPhoto }) {
   const [activeNews, setActiveNews] = useState(0);
   const updateActiveNews = (idx) => {
     setActiveNews(idx);

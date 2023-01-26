@@ -1,0 +1,55 @@
+.form_wrap {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn_wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 60%;
+}
+
+.btn_wrap section {
+  height: 55px;
+  width: 400px;
+  border-radius: 10px;
+  border: 1px solid var(--color-lightgrey);
+  display: flex;
+  padding: 0 25px;
+  align-items: center;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+}
+.img_input {
+  display: none;
+}
+.upload_icon {
+  cursor: pointer;
+  margin: 10px;
+}
+.text {
+  background-color: var(--color-lightgrey);
+  height: 30px;
+  margin: 0 10px;
+  border-radius: 5px;
+  padding: 0 5px;
+}
+.icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.desc {
+  font-size: 0.8rem;
+  color: var(--color-grey);
+}

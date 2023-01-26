@@ -1,40 +1,19 @@
 import React, { useState } from 'react';
 import styles from './styles.module.css';
 import BannerCarousel from 'components/BannerCarousel';
-import MainContents from 'pages/MainPage/Main/MainContents';
+import MainArticles from 'pages/MainPage/Main/MainArticles';
 
 import { useAuthContext } from 'context/AuthContext';
-//import EditButton from 'components/EditButton';
-import { FaAngleRight } from 'react-icons/fa';
-import { FiPlus } from 'react-icons/fi';
+import AdminEditBanner from 'components/AdminEdits/AdminEditBanner';
+import useMain from 'hooks/useMain';
+import MainArticleTabs from './MainArticleTabs';
+import MainAsideBtn2 from './MainAsideBtn2';
+import MainContactUs from './MainContactUs';
+import MainAsideBtn1 from './MainAsideBtn1';
+import AdminEditAsideBtn1 from 'components/AdminEdits/AdminEditAsideBtn1';
+import AdminEditAsideBtn2 from 'components/AdminEdits/AdminEditAsideBtn2';
+import AdminEditArticles from 'components/AdminEdits/AdminEditArticles';
 
-const Button = ({ name, img }) => {
-  return (
-    <button className={styles.etc_btn}>
-      <div className="flex_center">
-        <div className={styles.etc_icon}>
-          <img src={require(`assets/${img}.png`)} alt="icon" />
-        </div>
-        {name}
-      </div>
-      <FaAngleRight />
-    </button>
-  );
-};
-
-const intro_header = [
-  { name: '인사이트', isPhoto: true },
-  { name: '뉴스', isPhoto: true },
-  { name: '지원사업', isPhoto: false },
-  { name: 'M&A · 투자IR', isPhoto: false },
-];
-const assess_button = [
-  { name: '기업 · 기술 가치평가', icon: 'value_assess_icon' },
-  { name: '경영전략 연구소', icon: 'management_strategy_icon' },
-  { name: '시스템인증 기업인증', icon: 'certification_icon' },
-  { name: 'ESG 평가 신용평가', icon: 'ESG_assess_icon' },
-];
-const banner = ['banner_img', 'banner_img', 'banner_img'];
 const newsList = [
   [
     {
@@ -224,78 +203,175 @@ const newsList = [
 
 export default function Main() {
   const { isAdmin } = useAuthContext();
+
+  const { modifyBanner, modifyIntroTab, modifyAsideBtn1, modifyAsideBtn2 } =
+    useMain();
+
+  // 편집버튼 보이기 여부
+  const [activeBannerEditBtn, setActiveBannerEditBtn] = useState(false);
+  const [activeArticleEditBtn, setActiveArticleEditBtn] = useState(false);
+  const [activeAsideBtn1, setActiveAsideBtn1] = useState(false);
+  const [activeAsideBtn2, setActiveAsideBtn2] = useState(false);
+
   const [activeTabIdx, setActiveTabIdx] = useState(0);
 
+  const updateActiveTabIdx = (idx) => {
+    setActiveTabIdx(idx);
+  };
+
+  // 데이터 불러오기
+  const {
+    BannerQuery: { data: banner },
+  } = useMain();
+  const {
+    IntroTabQuery: { data: intro_tab },
+  } = useMain();
+  const {
+    AsideBtn1Query: { data: aside_btn1 },
+  } = useMain();
+  const {
+    AsideBtn2Query: { data: aside_btn2 },
+  } = useMain();
+
+  // 수정완료 다루기
+  const handleBannerSubmit = (images) => {
+    modifyBanner.mutate(images, {
+      onSuccess: () => {
+        alert('성공적으로 변경되었습니다.');
+      },
+      onError: (e) => {
+        alert(`에러가 발생했습니다. ${e}`);
+      },
+    });
+  };
+
+  const handleIntroTabSubmit = (tabs) => {
+    intro_tab.map((v, index) => {
+      v.name = tabs[index];
+    });
+    modifyIntroTab.mutate(intro_tab, {
+      onSuccess: () => {
+        alert('성공적으로 변경되었습니다.');
+      },
+      onError: (e) => {
+        alert(`에러가 발생했습니다. ${e}`);
+      },
+    });
+  };
+
+  const handleAsideBtn1Submit = (btns) => {
+    modifyAsideBtn1.mutate(btns, {
+      onSuccess: () => {
+        alert('성공적으로 변경되었습니다.');
+      },
+      onError: (e) => {
+        alert(`에러가 발생했습니다. ${e}`);
+      },
+    });
+  };
+
+  const handleAsideBtn2Submit = (btns) => {
+    modifyAsideBtn2.mutate(btns, {
+      onSuccess: () => {
+        alert('성공적으로 변경되었습니다.');
+      },
+      onError: (e) => {
+        alert(`에러가 발생했습니다. ${e}`);
+      },
+    });
+  };
   return (
     <div className={`${styles.page_wrapper} `}>
       <div className={styles.main_container}>
         <section className={styles.left}>
           {/* banner */}
-          <article className={styles.banner}>
-            <BannerCarousel bannerImages={banner} />
+          <article
+            className={styles.banner}
+            onMouseEnter={() => setActiveBannerEditBtn(true)}
+            onMouseLeave={() => setActiveBannerEditBtn(false)}>
+            {banner && (
+              <>
+                <BannerCarousel bannerImages={banner} isAdmin={isAdmin} />
+                {isAdmin && activeBannerEditBtn && (
+                  <AdminEditBanner
+                    baseImages={banner}
+                    position={{ top: '10px', right: '10px' }}
+                    handleBannerSubmit={handleBannerSubmit}
+                  />
+                )}
+              </>
+            )}
           </article>
 
           <article className={styles.main_intro}>
-            <div className={styles.intro_wrapper}>
-              <ul className={styles.intro_header}>
-                {intro_header.map((item, index) => (
-                  <li
-                    key={index}
-                    className={`${styles.header_item} ${
-                      activeTabIdx === index && styles.active
-                    }`}
-                    onClick={() => setActiveTabIdx(index)}>
-                    {item.name}
-                  </li>
-                ))}
-                <li className={styles.header_item}>
-                  <FiPlus />
-                </li>
-              </ul>
-              <div className={styles.intro_contents}>
-                <MainContents
-                  newsList={newsList[activeTabIdx]}
-                  isPhoto={intro_header[activeTabIdx].isPhoto}
+            {intro_tab && (
+              <div className={styles.intro_wrapper}>
+                <MainArticleTabs
+                  intro_tab={intro_tab}
+                  isAdmin={isAdmin}
+                  updateActiveTabIdx={updateActiveTabIdx}
+                  activeTabIdx={activeTabIdx}
+                  handleIntroTabSubmit={handleIntroTabSubmit}
                 />
+                <div
+                  className={styles.intro_contents}
+                  onMouseEnter={() => setActiveArticleEditBtn(true)}
+                  onMouseLeave={() => setActiveArticleEditBtn(false)}>
+                  {isAdmin && activeArticleEditBtn && (
+                    <AdminEditArticles
+                      position={{ top: '10px', right: '10px' }}
+                      handleBannerSubmit={handleBannerSubmit}
+                    />
+                  )}
+                  <MainArticles
+                    newsList={newsList[activeTabIdx]}
+                    isPhoto={intro_tab[activeTabIdx].isPhoto}
+                  />
+                </div>
               </div>
-            </div>
+            )}
           </article>
         </section>
         <aside className={styles.right}>
           <section className={styles.call_info}>
-            <h1>CONTACT US</h1>
-            <div>
-              <p>09:00 - 18:00</p>
-              <span className={styles.call_number}>02&#41; 538-4801</span>
-              <p>
-                02&#41; 561 - 6698 | 070&#41; 8129 - 5884 | 070&#41; 8129 - 5885
-              </p>
-              <span className={styles.email}>zetabiz @ zetaplan.com</span>
-            </div>
-            <button className={styles.cosulting_apply_btn}>상담신청</button>
+            <MainContactUs />
           </section>
           <section className={styles.infos}>
-            <div className={styles.company_ass}>
-              {assess_button.map((value, index) => (
-                <button className={styles.ass_btn} key={index}>
-                  <div className={styles.ass_icon}>
-                    <img src={require(`assets/${value.icon}.png`)} alt="icon" />
-                  </div>
-                  <p className={styles.ass_name}>{value.name}</p>
-                </button>
-              ))}
-            </div>
-            <section className={styles.etc_info}>
-              <div className={styles.etc_button_wrapper}>
-                <Button
-                  name="기술사업화"
-                  img="technology_commercialization_icon"
-                />
-                <Button name="R&BD전략수집" img="cooperation_icon" />
-                <Button name="협력네트워크" img="cooperation_network_icon" />
-              </div>
-            </section>
-            <section className={styles.map_info}>
+            <article
+              className={styles.company_ass}
+              onMouseEnter={() => setActiveAsideBtn1(true)}
+              onMouseLeave={() => setActiveAsideBtn1(false)}>
+              {aside_btn1 && (
+                <>
+                  <MainAsideBtn1 aside_btn1={aside_btn1} />
+                  {isAdmin && activeAsideBtn1 && (
+                    <AdminEditAsideBtn1
+                      handleAsideBtn1Submit={handleAsideBtn1Submit}
+                      position={{ top: '10px', right: '10px' }}
+                      aside_btn1={aside_btn1}
+                    />
+                  )}
+                </>
+              )}
+            </article>
+            <article
+              className={styles.etc_info}
+              onMouseEnter={() => setActiveAsideBtn2(true)}
+              onMouseLeave={() => setActiveAsideBtn2(false)}>
+              {aside_btn2 && (
+                <>
+                  <MainAsideBtn2 aside_btn2={aside_btn2} />
+                  {isAdmin && activeAsideBtn2 && (
+                    <AdminEditAsideBtn2
+                      handleAsideBtn2Submit={handleAsideBtn2Submit}
+                      position={{ top: '10px', right: '10px' }}
+                      aside_btn2={aside_btn2}
+                    />
+                  )}
+                </>
+              )}
+            </article>
+            <article className={styles.map_info}>
               <div>
                 <span>찾아오시는 길</span>
                 <p>오시는 길을 안내해 드립니다.</p>
@@ -303,7 +379,7 @@ export default function Main() {
               <div>
                 <img src={require('assets/map_icon.png')} alt="map_icon" />
               </div>
-            </section>
+            </article>
           </section>
         </aside>
       </div>

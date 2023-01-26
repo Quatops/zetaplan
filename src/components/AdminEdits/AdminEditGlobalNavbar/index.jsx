@@ -1,32 +1,39 @@
 import AdminEditContainer from 'components/AdminEditContainer';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles.module.css';
 import Button from 'components/SubmitButton';
 
 export default function AdminEditGlobalNavbar({
-  menu,
   handleEditSubmit,
-  handleChange,
   subCategory,
-  updateMenu,
 }) {
-  useEffect(() => {
-    const obj = Array.from(Array(6), () => Array(6).fill(''));
-    subCategory.map((big, bId) => {
-      big.map((small, sId) => {
-        obj[bId][sId] = small.title;
+  const [menu, setMenu] = useState(
+    Array.from(Array(6), (_, i) => {
+      const obj = new Array(6);
+      subCategory[i].map((small, sId) => {
+        obj[sId] = small.title;
       });
+      return obj;
+    }),
+  );
+
+  const handleChange = (e, bId, sId) => {
+    setMenu((prev) => {
+      prev[bId][sId] = e;
+      return [...prev];
     });
-    updateMenu(obj);
-  }, []);
+  };
   return (
-    <AdminEditContainer buttonHeight="400px" title="서브 메뉴 수정">
+    <AdminEditContainer
+      modalSize={{ height: '400px' }}
+      title="서브 메뉴 수정"
+      position={{ bottom: 0 }}>
       <form
         autoComplete="off"
         className={styles.form_wrap}
         onSubmit={(e) => {
           e.preventDefault();
-          handleEditSubmit(e);
+          handleEditSubmit(menu);
         }}>
         {menu && (
           <div className={styles.edit_wrap}>
