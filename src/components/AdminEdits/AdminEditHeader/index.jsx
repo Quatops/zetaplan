@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import styles from './styles.module.css';
+import styles from '../styles.module.css';
 import Button from 'components/SubmitButton';
 import AdminEditContainer from 'components/AdminEditContainer';
 

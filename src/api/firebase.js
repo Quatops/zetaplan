@@ -171,3 +171,9 @@ export async function getIntroTab() {
     return [];
   });
 }
+
+export async function updateIntroTab(tabs) {
+  const updateObj = {};
+  updateObj['/intro_tab'] = tabs;
+  return update(ref(database), updateObj);
+}

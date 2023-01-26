@@ -29,10 +29,6 @@ export default function AdminEditBanner({
       setImages(images.filter((_, index) => index !== id));
     }
   };
-  useEffect(() => {
-    console.log('이미지출력하는겨', images);
-  }, [images]);
-
   return (
     <AdminEditContainer
       buttonHeight="400px"

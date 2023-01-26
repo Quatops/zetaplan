@@ -218,23 +218,43 @@ const newsList = [
 
 export default function Main() {
   const { isAdmin } = useAuthContext();
-  const [activeBannerEditBtn, setActiveBannerEditBtn] = useState(false);
 
+  const { modifyBanner, modifyIntroTab } = useMain();
+
+  // 편집버튼 보이기 여부
+  const [activeBannerEditBtn, setActiveBannerEditBtn] = useState(false);
+  const [activeIntroTabEditBtn, setActiveIntroTabEditBtn] = useState(false);
   const [activeTabIdx, setActiveTabIdx] = useState(0);
 
-  const { modifyBanner } = useMain();
   const updateActiveTabIdx = (idx) => {
     setActiveTabIdx(idx);
   };
+
+  // 데이터 불러오기
   const {
     BannerQuery: { data: banner },
   } = useMain();
   const {
     IntroTabQuery: { data: intro_tab },
   } = useMain();
-  const handleChange = (e) => {};
+
+  // 수정완료 다루기
   const handleBannerSubmit = (images) => {
     modifyBanner.mutate(images, {
+      onSuccess: () => {
+        alert('성공적으로 변경되었습니다.');
+      },
+      onError: (e) => {
+        alert(`에러가 발생했습니다. ${e}`);
+      },
+    });
+  };
+
+  const handleIntroTabSubmit = (tabs) => {
+    intro_tab.map((v, index) => {
+      v.name = tabs[index];
+    });
+    modifyIntroTab.mutate(intro_tab, {
       onSuccess: () => {
         alert('성공적으로 변경되었습니다.');
       },
@@ -257,7 +277,6 @@ export default function Main() {
                 <BannerCarousel bannerImages={banner} isAdmin={isAdmin} />
                 {isAdmin && activeBannerEditBtn && (
                   <AdminEditBanner
-                    handleChange={handleChange}
                     baseImages={banner}
                     position={{ top: '10px', right: '10px' }}
                     handleBannerSubmit={handleBannerSubmit}
@@ -275,6 +294,7 @@ export default function Main() {
                   isAdmin={isAdmin}
                   updateActiveTabIdx={updateActiveTabIdx}
                   activeTabIdx={activeTabIdx}
+                  handleIntroTabSubmit={handleIntroTabSubmit}
                 />
                 <div className={styles.intro_contents}>
                   <MainArticles

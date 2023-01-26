@@ -3,6 +3,7 @@ import {
   getBannerImg as fetchBanner,
   getIntroTab as fetchIntroTab,
   updateBannerImage,
+  updateIntroTab,
 } from 'api/firebase';
 
 export default function useMain() {
@@ -19,5 +20,8 @@ export default function useMain() {
       onSuccess: () => queryClient.invalidateQueries(['banner']),
     },
   );
-  return { BannerQuery, IntroTabQuery, modifyBanner };
+  const modifyIntroTab = useMutation((tabs) => updateIntroTab(tabs), {
+    onSuccess: () => queryClient.invalidateQueries(['intro_tab']),
+  });
+  return { BannerQuery, IntroTabQuery, modifyBanner, modifyIntroTab };
 }

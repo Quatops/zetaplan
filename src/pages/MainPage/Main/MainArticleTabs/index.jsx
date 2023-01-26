@@ -9,11 +9,9 @@ export default function MainArticleTabs({
   isAdmin,
   updateActiveTabIdx,
   activeTabIdx,
+  handleIntroTabSubmit,
 }) {
   const [activeIntroTabEditBtn, setActiveIntroTabEditBtn] = useState(false);
-
-  const handleChange = (e) => {};
-  const handleEditSubmit = () => {};
   return (
     <ul
       className={styles.intro_header}
@@ -34,8 +32,9 @@ export default function MainArticleTabs({
       </li>
       {isAdmin && activeIntroTabEditBtn && (
         <AdminEditIntroTab
-          handleChange={handleChange}
-          handleEditSubmit={handleEditSubmit}
+          intro_tab={intro_tab}
+          handleEditSubmit={handleIntroTabSubmit}
+          position={{ top: '5px', right: '5px' }}
         />
       )}
     </ul>
