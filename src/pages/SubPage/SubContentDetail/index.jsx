@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.css';
+import './style.css';
 export default function SubContentDetail({
   category,
   subCategory,

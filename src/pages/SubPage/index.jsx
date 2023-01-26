@@ -35,9 +35,19 @@ export default function SubPage({ pageName }) {
     updateisWhite(false);
   }, []);
   useEffect(() => {
-    if (location.state) updateActiveNavId(location.state.id);
+    if (subCategory)
+      subCategory.map((big, bid) => {
+        big.map((small, sid) => {
+          if (small.path === location.pathname) {
+            setActiveNavId(small.id);
+          }
+        });
+      });
+  }, [subCategory]);
+  useEffect(() => {
+    if (location.state) setActiveNavId(location.state.id);
   }, [location.state]);
-  //const { data: post } = useQuery([`post`], () => getPost(activeNavId));
+
   useEffect(() => {
     getPost(activeNavId).then((data) => {
       setPost(data);
