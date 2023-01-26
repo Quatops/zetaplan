@@ -17,7 +17,7 @@ export default function AdminEditHeader({ handleEditSubmit, category }) {
   };
   return (
     <AdminEditContainer
-      buttonHeight="200px"
+      modalSize={{ height: '200px' }}
       title="메인 메뉴 수정"
       position={{ bottom: 0 }}>
       <form

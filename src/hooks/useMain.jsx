@@ -16,6 +16,13 @@ export default function useMain() {
       staleTime: 1000 * 60 * 10,
     },
   );
+  const AsideBtn2Query = useQuery(
+    ['aside_tab2'],
+    () => fetchItems('aside_tab2'),
+    {
+      staleTime: 1000 * 60 * 10,
+    },
+  );
 
   const modifyBanner = useMutation(
     (bannerImage) => updateItems('banner', bannerImage),
@@ -32,12 +39,20 @@ export default function useMain() {
       onSuccess: () => queryClient.invalidateQueries(['aside_tab1']),
     },
   );
+  const modifyAsideBtn2 = useMutation(
+    (btns) => updateItems('aside_tab2', btns),
+    {
+      onSuccess: () => queryClient.invalidateQueries(['aside_tab2']),
+    },
+  );
   return {
     BannerQuery,
     IntroTabQuery,
     AsideBtn1Query,
+    AsideBtn2Query,
     modifyBanner,
     modifyIntroTab,
     modifyAsideBtn1,
+    modifyAsideBtn2,
   };
 }

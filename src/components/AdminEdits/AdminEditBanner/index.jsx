@@ -31,7 +31,7 @@ export default function AdminEditBanner({
   };
   return (
     <AdminEditContainer
-      buttonHeight="400px"
+      modalSize={{ height: '600px', width: '1000px' }}
       title="배너이미지 수정"
       position={position}>
       <div className={styles.images_wrap}>

@@ -3,7 +3,7 @@ import styles from './styles.module.css';
 import { FaEdit } from 'react-icons/fa';
 import Modal from 'components/Modal';
 
-export default function EditButton({ children, heightSize, position }) {
+export default function EditButton({ children, modalSize, position }) {
   const [activeModal, setActiveModal] = useState(false);
   const updateActiveModal = (isActive) => {
     setActiveModal(isActive);
@@ -17,7 +17,7 @@ export default function EditButton({ children, heightSize, position }) {
         <FaEdit></FaEdit>
       </button>
       {activeModal && (
-        <Modal updateActiveModal={updateActiveModal} heightSize={heightSize}>
+        <Modal updateActiveModal={updateActiveModal} modalSize={modalSize}>
           {children}
         </Modal>
       )}

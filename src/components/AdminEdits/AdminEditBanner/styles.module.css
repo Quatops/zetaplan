@@ -6,10 +6,14 @@
   justify-content: space-between;
 }
 .images_wrap {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
 }
 .image {
-  width: 200px;
+  width: 300px;
   height: 100px;
   position: relative;
   margin: 5px;

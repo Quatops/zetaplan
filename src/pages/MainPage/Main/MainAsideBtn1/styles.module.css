@@ -13,3 +13,14 @@
   word-break: keep-all;
   max-width: 85px;
 }
+
+.ass_icon {
+  width: 51px;
+  height: 51px;
+}
+
+.ass_btn img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}

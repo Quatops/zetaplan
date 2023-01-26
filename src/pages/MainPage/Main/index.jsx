@@ -11,13 +11,9 @@ import MainAsideBtn2 from './MainAsideBtn2';
 import MainContactUs from './MainContactUs';
 import MainAsideBtn1 from './MainAsideBtn1';
 import AdminEditAsideBtn1 from 'components/AdminEdits/AdminEditAsideBtn1';
+import AdminEditAsideBtn2 from 'components/AdminEdits/AdminEditAsideBtn2';
+import AdminEditArticles from 'components/AdminEdits/AdminEditArticles';
 
-const assess_button = [
-  { name: '기업 · 기술 가치평가', icon: 'value_assess_icon' },
-  { name: '경영전략 연구소', icon: 'management_strategy_icon' },
-  { name: '시스템인증 기업인증', icon: 'certification_icon' },
-  { name: 'ESG 평가 신용평가', icon: 'ESG_assess_icon' },
-];
 const newsList = [
   [
     {
@@ -208,11 +204,14 @@ const newsList = [
 export default function Main() {
   const { isAdmin } = useAuthContext();
 
-  const { modifyBanner, modifyIntroTab } = useMain();
+  const { modifyBanner, modifyIntroTab, modifyAsideBtn1, modifyAsideBtn2 } =
+    useMain();
 
   // 편집버튼 보이기 여부
   const [activeBannerEditBtn, setActiveBannerEditBtn] = useState(false);
+  const [activeArticleEditBtn, setActiveArticleEditBtn] = useState(false);
   const [activeAsideBtn1, setActiveAsideBtn1] = useState(false);
+  const [activeAsideBtn2, setActiveAsideBtn2] = useState(false);
 
   const [activeTabIdx, setActiveTabIdx] = useState(0);
 
@@ -229,6 +228,9 @@ export default function Main() {
   } = useMain();
   const {
     AsideBtn1Query: { data: aside_btn1 },
+  } = useMain();
+  const {
+    AsideBtn2Query: { data: aside_btn2 },
   } = useMain();
 
   // 수정완료 다루기
@@ -257,7 +259,27 @@ export default function Main() {
     });
   };
 
-  const handleAsideBtn1Submit = (btns) => {};
+  const handleAsideBtn1Submit = (btns) => {
+    modifyAsideBtn1.mutate(btns, {
+      onSuccess: () => {
+        alert('성공적으로 변경되었습니다.');
+      },
+      onError: (e) => {
+        alert(`에러가 발생했습니다. ${e}`);
+      },
+    });
+  };
+
+  const handleAsideBtn2Submit = (btns) => {
+    modifyAsideBtn2.mutate(btns, {
+      onSuccess: () => {
+        alert('성공적으로 변경되었습니다.');
+      },
+      onError: (e) => {
+        alert(`에러가 발생했습니다. ${e}`);
+      },
+    });
+  };
   return (
     <div className={`${styles.page_wrapper} `}>
       <div className={styles.main_container}>
@@ -291,7 +313,16 @@ export default function Main() {
                   activeTabIdx={activeTabIdx}
                   handleIntroTabSubmit={handleIntroTabSubmit}
                 />
-                <div className={styles.intro_contents}>
+                <div
+                  className={styles.intro_contents}
+                  onMouseEnter={() => setActiveArticleEditBtn(true)}
+                  onMouseLeave={() => setActiveArticleEditBtn(false)}>
+                  {isAdmin && activeArticleEditBtn && (
+                    <AdminEditArticles
+                      position={{ top: '10px', right: '10px' }}
+                      handleBannerSubmit={handleBannerSubmit}
+                    />
+                  )}
                   <MainArticles
                     newsList={newsList[activeTabIdx]}
                     isPhoto={intro_tab[activeTabIdx].isPhoto}
@@ -323,8 +354,22 @@ export default function Main() {
                 </>
               )}
             </article>
-            <article className={styles.etc_info}>
-              <MainAsideBtn2 />
+            <article
+              className={styles.etc_info}
+              onMouseEnter={() => setActiveAsideBtn2(true)}
+              onMouseLeave={() => setActiveAsideBtn2(false)}>
+              {aside_btn2 && (
+                <>
+                  <MainAsideBtn2 aside_btn2={aside_btn2} />
+                  {isAdmin && activeAsideBtn2 && (
+                    <AdminEditAsideBtn2
+                      handleAsideBtn2Submit={handleAsideBtn2Submit}
+                      position={{ top: '10px', right: '10px' }}
+                      aside_btn2={aside_btn2}
+                    />
+                  )}
+                </>
+              )}
             </article>
             <article className={styles.map_info}>
               <div>

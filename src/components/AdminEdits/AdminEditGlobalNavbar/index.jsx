@@ -25,7 +25,7 @@ export default function AdminEditGlobalNavbar({
   };
   return (
     <AdminEditContainer
-      buttonHeight="400px"
+      modalSize={{ height: '400px' }}
       title="서브 메뉴 수정"
       position={{ bottom: 0 }}>
       <form

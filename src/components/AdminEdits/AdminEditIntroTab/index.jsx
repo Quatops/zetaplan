@@ -13,13 +13,14 @@ export default function AdminEditIntroTab({
     1: intro_tab[1].name,
     2: intro_tab[2].name,
     3: intro_tab[3].name,
+    4: intro_tab[4].name,
   });
   const handleChange = (e, id) => {
     setTabs((prev) => ({ ...prev, [id]: e }));
   };
   return (
     <AdminEditContainer
-      buttonHeight="200px"
+      modalSize={{ height: '200px' }}
       title="탭 수정"
       position={position}>
       <form
