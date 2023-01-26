@@ -16,8 +16,8 @@ export default function AdminPostRegist({}) {
   const subCate = location.state ? location.state.subCategory : 0;
   const purpose = isNew ? '저장' : '수정';
 
-  const [images, setImages] = useState();
   const [value, setValue] = useState('');
+  const [title, setTitle] = useState('');
   const [selectSubCate, setSelectSubCate] = useState(subCate);
   const queryClient = useQueryClient();
 
@@ -27,9 +27,6 @@ export default function AdminPostRegist({}) {
   const modifyPost = useMutation(({ value, info }) => updatePost(value, info), {
     onSuccess: () => queryClient.invalidateQueries('posts'),
   });
-  const updateImages = (image) => {
-    setImages(image);
-  };
   const updateValue = (e) => {
     setValue(e);
   };
@@ -41,6 +38,10 @@ export default function AdminPostRegist({}) {
   };
   const updateSelectSubCate = (select) => {
     setSelectSubCate(select);
+  };
+
+  const handleChange = (e) => {
+    setTitle(e.target.value);
   };
 
   const handleSubmit = () => {
@@ -84,13 +85,23 @@ export default function AdminPostRegist({}) {
           <img src={require('assets/LogoBlack.png')} />
         </div>
       </header>
+      <section className={`${styles.title_area} flex_center`}>
+        <label htmlFor="title" className={styles.label}>
+          제목
+        </label>
+        <input
+          id="title"
+          type="text"
+          value={title}
+          onChange={handleChange}
+          placeholder="제목을 입력해주세요."
+        />
+      </section>
       <section className={styles.text_area} id="text-area">
         <TextEditor
-          images={images}
           updateValue={updateValue}
-          value={value}
           post={post}
-          updateImages={updateImages}
+          selectSubCate={selectCate}
         />
       </section>
       <aside className={styles.content_info}>

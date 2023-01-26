@@ -8,7 +8,7 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 const settings = {
   dots: false,
   infinite: true,
-  speed: 2000,
+  speed: 1500,
   autoplay: true,
   slidesToShow: 5,
   slidesToScroll: 1,

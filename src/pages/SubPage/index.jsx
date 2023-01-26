@@ -11,6 +11,7 @@ import { useCategoryContext } from 'context/CategoryContext';
 
 import styles from './styles.module.css';
 import SubContentDetail from './SubContentDetail';
+import Footer from 'components/Footer';
 
 export default function SubPage({ pageName }) {
   const location = useLocation();
@@ -137,6 +138,7 @@ export default function SubPage({ pageName }) {
               </div>
             )}
           </section>
+          <Footer />
         </div>
       )}
     </>

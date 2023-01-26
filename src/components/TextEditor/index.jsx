@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import ReactDOMServer from 'react-dom/server';
 import { baseCSS, toggleCSS, photoCardCSS } from './componentCSS';
 
@@ -9,7 +8,7 @@ import ToggleUI from 'components/PostUIs/ToggleUI';
 import CardUI from 'components/PostUIs/CardUI';
 import WriteFormList from 'components/WriteFormList';
 
-export default function TextEditor({ updateValue, post }) {
+export default function TextEditor({ updateValue, post, selectCate }) {
   const editorRef = useRef(null);
   const [isActiveModal, setIsActiveModal] = useState(false);
   const updateIsActiveModal = (isActive) => {
@@ -62,7 +61,6 @@ export default function TextEditor({ updateValue, post }) {
           updateIsActiveModal={updateIsActiveModal}
         />
       )}
-
       <Editor
         onInit={(evt, editor) => {
           editorRef.current = editor;
