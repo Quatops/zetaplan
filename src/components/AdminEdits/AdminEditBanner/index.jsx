@@ -14,25 +14,25 @@ export default function AdminEditBanner({
 
   const handleChange = (e) => {
     const { files } = e.target;
-    const nowImageURLList = [...images];
+    if (files.length > 10) {
+      alert('배너이미지는 10개까지만 가능합니다.');
+      files = files.slice(0, 10);
+    }
     for (let i = 0; i < files.length; ++i) {
       uploadImage(files[i]).then((url) => {
-        nowImageURLList.push(url);
+        setImages((prev) => [...prev, url]);
       });
     }
-    if (nowImageURLList.length > 15) {
-      alert('배너이미지는 15개까지만 가능합니다.');
-      nowImageURLList = nowImageURLList.slice(0, 15);
-    }
-    setImages(nowImageURLList);
   };
   const handleDeleteImage = (id) => {
-    setImages(images.filter((_, index) => index !== id));
+    if (window.confirm('삭제하시겠습니까?')) {
+      setImages(images.filter((_, index) => index !== id));
+    }
   };
-
   useEffect(() => {
-    console.log('이미지 잘 오고있나 출력해봄', images);
+    console.log('이미지출력하는겨', images);
   }, [images]);
+
   return (
     <AdminEditContainer
       buttonHeight="400px"

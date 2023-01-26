@@ -33,4 +33,10 @@
   align-items: center;
   color: white;
   font-size: 0.7rem;
+  transition: all 300ms ease;
+  cursor: pointer;
+}
+
+.delete_icon:hover {
+  transform: scale(1.2);
 }
