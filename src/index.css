@@ -27,7 +27,7 @@ body {
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url(./assets/Background.webp);
+  background-image: url('https://res.cloudinary.com/dprbw1pa0/image/upload/v1674714968/iskan9xlmkm8lbbco7lb.png');
 }
 * {
   box-sizing: border-box;
