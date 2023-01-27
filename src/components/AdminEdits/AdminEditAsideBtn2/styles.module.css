@@ -36,6 +36,7 @@
 .upload_icon {
   cursor: pointer;
   margin: 10px;
+  color: var(--color-black);
 }
 .text {
   background-color: var(--color-lightgrey);
