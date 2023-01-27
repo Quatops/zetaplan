@@ -6,6 +6,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { addNewPost, updatePost } from 'api/firebase';
 import SelectCategory from './SelectCategory';
 import { useCategoryContext } from 'context/CategoryContext';
+import { uploadImage } from 'api/uploader';
 
 export default function AdminPostRegist({}) {
   const location = useLocation();
@@ -18,6 +19,7 @@ export default function AdminPostRegist({}) {
 
   const [value, setValue] = useState('');
   const [title, setTitle] = useState('');
+  const [thumb, setThumb] = useState('');
   const [selectSubCate, setSelectSubCate] = useState(subCate);
   const queryClient = useQueryClient();
 
@@ -42,6 +44,15 @@ export default function AdminPostRegist({}) {
 
   const handleChange = (e) => {
     setTitle(e.target.value);
+  };
+
+  const handleThumbChange = (e) => {
+    const { files } = e.target;
+    if (files) {
+      uploadImage(files[0]).then((url) => {
+        setThumb(url);
+      });
+    }
   };
 
   const handleSubmit = () => {
@@ -109,22 +120,44 @@ export default function AdminPostRegist({}) {
           <li className={styles.select_wrap}>
             {category && (
               <SelectCategory
-                label="카테고리"
                 options={category}
                 updateSelect={updateSelectCate}
-                cate={cate}
-              />
+                cate={cate}>
+                <label className={styles.label}>카테고리</label>
+              </SelectCategory>
             )}
           </li>
           <li className={styles.select_wrap}>
             {subCategory && (
               <SelectCategory
-                label="상세 카테고리"
                 options={subCategory[category[selectCate].id]}
                 updateSelect={updateSelectSubCate}
-                cate={subCate}
-              />
+                cate={subCate}>
+                <label className={styles.label}>상세 카테고리</label>
+              </SelectCategory>
             )}
+          </li>
+          <li className={styles.thumb_wrap}>
+            <label htmlFor="thumb" className={styles.label}>
+              썸네일
+            </label>
+            <div className={`${styles.thumb} flex_center`}>
+              {thumb ? (
+                <img src={thumb} alt="썸네일 이미지 미리보기" />
+              ) : (
+                <p>
+                  썸네일을 추가해주세요.
+                  <br />
+                  표준 규격은 ___ 입니다.
+                </p>
+              )}
+            </div>
+            <input
+              id="thumb"
+              type="file"
+              name="thumb"
+              onChange={handleThumbChange}
+            />
           </li>
         </ul>
         <button className={styles.submit_btn} onClick={() => handleSubmit()}>

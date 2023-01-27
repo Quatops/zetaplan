@@ -72,6 +72,29 @@
   background-color: #e4e6e9;
   height: calc(100vh - 120px - 39px - 39px);
 }
+
+.label {
+  font-weight: bold;
+  margin: 10px;
+  color: var(--color-black);
+}
+.thumb_wrap {
+  height: 300px;
+}
+
+.thumb {
+  width: 270px;
+  height: 150px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: var(--color-grey);
+  margin: 10px 0;
+  color: var(--color-white);
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+}
 .submit_btn {
   color: var(--color-white);
   background-color: var(--color-black);

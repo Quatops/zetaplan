@@ -122,7 +122,6 @@ export default function TextEditor({ updateValue, post, selectCate }) {
                 let file = input?.files[0];
                 let reader = new FileReader();
                 reader.onload = (e) => {
-                  console.log('결과를 찍어봐라', e);
                   callback(e.target.result, {
                     alt: file.name,
                   });

@@ -1,13 +1,18 @@
 import React from 'react';
 import styles from './styles.module.css';
 
-export default function SelectCategry({ label, options, updateSelect, cate }) {
+export default function SelectCategry({
+  options,
+  updateSelect,
+  cate,
+  children,
+}) {
   const handleChangeSelect = (e) => {
     updateSelect(e.target.value);
   };
   return (
     <div className={styles.select_wrap}>
-      <label className={styles.label}>{label}</label>
+      {children}
       <select className={styles.select} onChange={handleChangeSelect}>
         {options.map((value) => (
           <option

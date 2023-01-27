@@ -45,36 +45,40 @@ export default function MainArticles({ newsList, isPhoto }) {
   };
   return (
     <>
-      {isPhoto ? (
-        <div className={`${styles.contents_wrapper} flex_between`}>
-          <div className={styles.contents_left}>
-            <NewsDetail news={newsList[activeNews]} />
-          </div>
-          <div className={styles.boundary}></div>
-          <div className={styles.contents_right}>
-            {newsList.map((news, index) => (
-              <News
-                isPhoto={isPhoto}
-                key={news.id}
-                news={news}
-                isActive={activeNews === index}
-                updateActiveNews={updateActiveNews}
-              />
-            ))}
-          </div>
-        </div>
-      ) : (
+      {newsList && (
         <>
-          <div className={styles.news_list}>
-            {newsList.map((news, index) => (
-              <News
-                key={news.id}
-                news={news}
-                isActive={activeNews === index}
-                updateActiveNews={updateActiveNews}
-              />
-            ))}
-          </div>
+          {isPhoto ? (
+            <div className={`${styles.contents_wrapper} flex_between`}>
+              <div className={styles.contents_left}>
+                <NewsDetail news={newsList[activeNews]} />
+              </div>
+              <div className={styles.boundary}></div>
+              <div className={styles.contents_right}>
+                {newsList.map((news, index) => (
+                  <News
+                    isPhoto={isPhoto}
+                    key={news.id}
+                    news={news}
+                    isActive={activeNews === index}
+                    updateActiveNews={updateActiveNews}
+                  />
+                ))}
+              </div>
+            </div>
+          ) : (
+            <>
+              <div className={styles.news_list}>
+                {newsList.map((news, index) => (
+                  <News
+                    key={news.id}
+                    news={news}
+                    isActive={activeNews === index}
+                    updateActiveNews={updateActiveNews}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </>
       )}
     </>
