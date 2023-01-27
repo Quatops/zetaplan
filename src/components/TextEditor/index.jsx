@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import ReactDOMServer from 'react-dom/server';
 import { baseCSS, toggleCSS, photoCardCSS } from './componentCSS';
 
@@ -9,7 +8,7 @@ import ToggleUI from 'components/PostUIs/ToggleUI';
 import CardUI from 'components/PostUIs/CardUI';
 import WriteFormList from 'components/WriteFormList';
 
-export default function TextEditor({ updateValue, post }) {
+export default function TextEditor({ updateValue, post, fileRef }) {
   const editorRef = useRef(null);
   const [isActiveModal, setIsActiveModal] = useState(false);
   const updateIsActiveModal = (isActive) => {
@@ -62,7 +61,6 @@ export default function TextEditor({ updateValue, post }) {
           updateIsActiveModal={updateIsActiveModal}
         />
       )}
-
       <Editor
         onInit={(evt, editor) => {
           editorRef.current = editor;
@@ -91,7 +89,7 @@ export default function TextEditor({ updateValue, post }) {
           selector: 'textarea',
           placeholder: '내용을 입력하세요.',
           statusbar: false,
-          menubar: false,
+          menubar: true,
           plugins:
             'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
           editimage_cors_hosts: ['picsum.photos'],
@@ -99,7 +97,7 @@ export default function TextEditor({ updateValue, post }) {
             'image media link emoticons charmap | bold italic underline strikethrough | blocks fontfamily fontsize | forecolor backcolor | alignleft alignCenter alignRight alignjustify | numlist bullist | print | customInsertButton',
 
           images_file_types: 'png,jpg,svg,webp',
-          file_picker_types: 'file image media',
+          file_picker_types: 'image',
           image_advtab: true,
           image_caption: true,
           file_browser_callback_types: 'image',
@@ -118,6 +116,7 @@ export default function TextEditor({ updateValue, post }) {
             if (meta.filetype === 'image') {
               const input = document.getElementById('my-file');
               if (!input) return;
+              input.accept = 'image/gif, image/jpeg, image/png';
               input.click();
               input.onchange = function () {
                 let file = input?.files[0];

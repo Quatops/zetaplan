@@ -1,5 +1,5 @@
 import AdminEditContainer from 'components/AdminEditContainer';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import Button from 'components/SubmitButton';
 import styles from '../styles.module.css';
 
@@ -15,9 +15,12 @@ export default function AdminEditIntroTab({
     3: intro_tab[3].name,
     4: intro_tab[4].name,
   });
-  const handleChange = (e, id) => {
-    setTabs((prev) => ({ ...prev, [id]: e }));
-  };
+  const handleChange = useCallback(
+    (e, id) => {
+      setTabs((prev) => ({ ...prev, [id]: e }));
+    },
+    [tabs],
+  );
   return (
     <AdminEditContainer
       modalSize={{ height: '200px' }}

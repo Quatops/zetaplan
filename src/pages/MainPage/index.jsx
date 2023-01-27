@@ -44,7 +44,6 @@ export default function MainPage() {
         } else if (scrollTop >= pageHeight * 3 && scrollTop < pageHeight * 4) {
           // 현재 4페이지
           updatePage(5, pageHeight * 4, 0, 'smooth');
-          console.log(scrollTop);
         }
       } else {
         // 스크롤 올릴때

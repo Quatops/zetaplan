@@ -7009,6 +7009,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"file-saver@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "file-saver@npm:2.0.5"
+  checksum: c62d96e5cebc58b4bdf3ae8a60d5cf9607ad82f75f798c33a4ee63435ac2203002584d5256a2a780eda7feb5e19dc3b6351c2212e58b3f529e63d265a7cc79f7
+  languageName: node
+  linkType: hard
+
 "filelist@npm:^1.0.1":
   version: 1.0.4
   resolution: "filelist@npm:1.0.4"
@@ -14489,6 +14496,7 @@ __metadata:
     "@testing-library/user-event": ^13.5.0
     "@tinymce/tinymce-react": ^4.2.0
     eslint-config-react-app: ^7.0.1
+    file-saver: ^2.0.5
     firebase: ^9.15.0
     moment: ^2.29.4
     react: ^18.2.0

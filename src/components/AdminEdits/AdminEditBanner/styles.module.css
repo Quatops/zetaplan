@@ -44,3 +44,8 @@
 .delete_icon:hover {
   transform: scale(1.2);
 }
+
+.desc {
+  font-size: 0.8rem;
+  color: var(--color-grey);
+}

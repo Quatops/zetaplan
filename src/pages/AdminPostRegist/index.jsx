@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styles from './styles.module.css';
 import TextEditor from 'components/TextEditor';
 import { useLocation } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { addNewPost, updatePost } from 'api/firebase';
 import SelectCategory from './SelectCategory';
 import { useCategoryContext } from 'context/CategoryContext';
+import { uploadImage } from 'api/uploader';
 
 export default function AdminPostRegist({}) {
   const location = useLocation();
@@ -16,10 +17,12 @@ export default function AdminPostRegist({}) {
   const subCate = location.state ? location.state.subCategory : 0;
   const purpose = isNew ? '저장' : '수정';
 
-  const [images, setImages] = useState();
   const [value, setValue] = useState('');
+  const [title, setTitle] = useState('');
+  const [thumb, setThumb] = useState('');
   const [selectSubCate, setSelectSubCate] = useState(subCate);
   const queryClient = useQueryClient();
+  const fileRef = useRef();
 
   const addPost = useMutation(({ value, info }) => addNewPost(value, info), {
     onSuccess: () => queryClient.invalidateQueries('posts'),
@@ -27,9 +30,6 @@ export default function AdminPostRegist({}) {
   const modifyPost = useMutation(({ value, info }) => updatePost(value, info), {
     onSuccess: () => queryClient.invalidateQueries('posts'),
   });
-  const updateImages = (image) => {
-    setImages(image);
-  };
   const updateValue = (e) => {
     setValue(e);
   };
@@ -41,6 +41,19 @@ export default function AdminPostRegist({}) {
   };
   const updateSelectSubCate = (select) => {
     setSelectSubCate(select);
+  };
+
+  const handleChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleThumbChange = (e) => {
+    const { files } = e.target;
+    if (files) {
+      uploadImage(files[0]).then((url) => {
+        setThumb(url);
+      });
+    }
   };
 
   const handleSubmit = () => {
@@ -84,13 +97,24 @@ export default function AdminPostRegist({}) {
           <img src={require('assets/LogoBlack.png')} />
         </div>
       </header>
+      <section className={`${styles.title_area} flex_center`}>
+        <label htmlFor="title" className={styles.label}>
+          제목
+        </label>
+        <input
+          id="title"
+          type="text"
+          value={title}
+          onChange={handleChange}
+          placeholder="제목을 입력해주세요."
+        />
+      </section>
       <section className={styles.text_area} id="text-area">
         <TextEditor
-          images={images}
           updateValue={updateValue}
-          value={value}
           post={post}
-          updateImages={updateImages}
+          fileRef={fileRef}
+          selectSubCate={selectCate}
         />
       </section>
       <aside className={styles.content_info}>
@@ -98,22 +122,47 @@ export default function AdminPostRegist({}) {
           <li className={styles.select_wrap}>
             {category && (
               <SelectCategory
-                label="카테고리"
                 options={category}
                 updateSelect={updateSelectCate}
-                cate={cate}
-              />
+                cate={cate}>
+                <label className={styles.label}>카테고리</label>
+              </SelectCategory>
             )}
           </li>
           <li className={styles.select_wrap}>
             {subCategory && (
               <SelectCategory
-                label="상세 카테고리"
                 options={subCategory[category[selectCate].id]}
                 updateSelect={updateSelectSubCate}
-                cate={subCate}
-              />
+                cate={subCate}>
+                <label className={styles.label}>상세 카테고리</label>
+              </SelectCategory>
             )}
+          </li>
+          <li className={styles.thumb_wrap}>
+            <label htmlFor="thumb" className={styles.label}>
+              썸네일
+            </label>
+            <div className={`${styles.thumb} flex_center`}>
+              {thumb ? (
+                <img src={thumb} alt="썸네일 이미지 미리보기" />
+              ) : (
+                <p>
+                  썸네일을 추가해주세요.
+                  <br />
+                  표준 규격은 ___ 입니다.
+                </p>
+              )}
+            </div>
+            <input
+              id="thumb"
+              type="file"
+              name="thumb"
+              onChange={handleThumbChange}
+            />
+          </li>
+          <li>
+            <input type="file" ref={fileRef} />
           </li>
         </ul>
         <button className={styles.submit_btn} onClick={() => handleSubmit()}>
