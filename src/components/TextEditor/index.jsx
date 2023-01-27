@@ -8,7 +8,7 @@ import ToggleUI from 'components/PostUIs/ToggleUI';
 import CardUI from 'components/PostUIs/CardUI';
 import WriteFormList from 'components/WriteFormList';
 
-export default function TextEditor({ updateValue, post, selectCate }) {
+export default function TextEditor({ updateValue, post, fileRef }) {
   const editorRef = useRef(null);
   const [isActiveModal, setIsActiveModal] = useState(false);
   const updateIsActiveModal = (isActive) => {
@@ -97,10 +97,10 @@ export default function TextEditor({ updateValue, post, selectCate }) {
             'image media link emoticons charmap | bold italic underline strikethrough | blocks fontfamily fontsize | forecolor backcolor | alignleft alignCenter alignRight alignjustify | numlist bullist | print | customInsertButton',
 
           images_file_types: 'png,jpg,svg,webp',
-          file_picker_types: 'file image media',
+          file_picker_types: 'image',
           image_advtab: true,
           image_caption: true,
-          file_browser_callback_types: 'image, file',
+          file_browser_callback_types: 'image',
           images_upload_handler: async (blobInfo) => {
             return new Promise((resolve, reject) => {
               uploadImage(blobInfo.blob())
@@ -125,20 +125,6 @@ export default function TextEditor({ updateValue, post, selectCate }) {
                   callback(e.target.result, {
                     alt: file.name,
                   });
-                };
-                reader.readAsDataURL(file);
-              };
-            }
-            if (meta.filetype === 'file') {
-              const input = document.getElementById('my-file');
-              input.accept = '*';
-              if (!input) return;
-              input.click();
-              input.onchange = function () {
-                let file = input?.files[0];
-                let reader = new FileReader();
-                reader.onload = (e) => {
-                  callback(e.target.result, { text: file.name });
                 };
                 reader.readAsDataURL(file);
               };

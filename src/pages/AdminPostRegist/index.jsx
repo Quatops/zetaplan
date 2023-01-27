@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styles from './styles.module.css';
 import TextEditor from 'components/TextEditor';
 import { useLocation } from 'react-router-dom';
@@ -22,6 +22,7 @@ export default function AdminPostRegist({}) {
   const [thumb, setThumb] = useState('');
   const [selectSubCate, setSelectSubCate] = useState(subCate);
   const queryClient = useQueryClient();
+  const fileRef = useRef();
 
   const addPost = useMutation(({ value, info }) => addNewPost(value, info), {
     onSuccess: () => queryClient.invalidateQueries('posts'),
@@ -112,6 +113,7 @@ export default function AdminPostRegist({}) {
         <TextEditor
           updateValue={updateValue}
           post={post}
+          fileRef={fileRef}
           selectSubCate={selectCate}
         />
       </section>
@@ -158,6 +160,9 @@ export default function AdminPostRegist({}) {
               name="thumb"
               onChange={handleThumbChange}
             />
+          </li>
+          <li>
+            <input type="file" ref={fileRef} />
           </li>
         </ul>
         <button className={styles.submit_btn} onClick={() => handleSubmit()}>
