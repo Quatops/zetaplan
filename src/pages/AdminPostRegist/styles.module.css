@@ -24,8 +24,12 @@
   font-weight: bold;
   color: var(--color-black);
   border: 1px solid var(--color-lightgrey);
-
   border-radius: 10px;
+}
+
+.title_area input::placeholder {
+  color: var(--color-grey);
+  font-weight: 500;
 }
 .text_area {
   width: 100%;
@@ -62,11 +66,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  top: calc(120px + 39px);
+  top: calc(120px + 39px + 39px);
   padding: 1rem;
   width: 300px;
   background-color: #e4e6e9;
-  height: calc(100vh - 120px - 39px);
+  height: calc(100vh - 120px - 39px - 39px);
 }
 .submit_btn {
   color: var(--color-white);

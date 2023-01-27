@@ -22,7 +22,7 @@ export default function SlickSlider() {
     <>
       <Slider {...settings}>
         {new Array(6).fill('').map((_, i) => (
-          <div className="slider_img">
+          <div className="slider_img" key={i}>
             <img src={require(`assets/logo${i}.png`)} />
           </div>
         ))}

@@ -1,5 +1,5 @@
 import AdminEditContainer from 'components/AdminEditContainer';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './styles.module.css';
 import Button from 'components/SubmitButton';
 import { FaTrashAlt } from 'react-icons/fa';
@@ -61,6 +61,10 @@ export default function AdminEditBanner({
           onChange={handleChange}
         />
 
+        <p className={styles.desc}>
+          파일선택 버튼을 이용하여 배너 이미지를 업로드해주세요. 표준 규격은
+          870x220입니다. 이미지는 9개로 제한됩니다.
+        </p>
         <Button widthSize="100%">변경하기</Button>
       </form>
     </AdminEditContainer>

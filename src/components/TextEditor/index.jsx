@@ -89,7 +89,7 @@ export default function TextEditor({ updateValue, post, selectCate }) {
           selector: 'textarea',
           placeholder: '내용을 입력하세요.',
           statusbar: false,
-          menubar: false,
+          menubar: true,
           plugins:
             'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
           editimage_cors_hosts: ['picsum.photos'],
@@ -100,7 +100,7 @@ export default function TextEditor({ updateValue, post, selectCate }) {
           file_picker_types: 'file image media',
           image_advtab: true,
           image_caption: true,
-          file_browser_callback_types: 'image',
+          file_browser_callback_types: 'image, file',
           images_upload_handler: async (blobInfo) => {
             return new Promise((resolve, reject) => {
               uploadImage(blobInfo.blob())
@@ -116,14 +116,30 @@ export default function TextEditor({ updateValue, post, selectCate }) {
             if (meta.filetype === 'image') {
               const input = document.getElementById('my-file');
               if (!input) return;
+              input.accept = 'image/gif, image/jpeg, image/png';
               input.click();
               input.onchange = function () {
                 let file = input?.files[0];
                 let reader = new FileReader();
                 reader.onload = (e) => {
+                  console.log('결과를 찍어봐라', e);
                   callback(e.target.result, {
                     alt: file.name,
                   });
+                };
+                reader.readAsDataURL(file);
+              };
+            }
+            if (meta.filetype === 'file') {
+              const input = document.getElementById('my-file');
+              input.accept = '*';
+              if (!input) return;
+              input.click();
+              input.onchange = function () {
+                let file = input?.files[0];
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                  callback(e.target.result, { text: file.name });
                 };
                 reader.readAsDataURL(file);
               };

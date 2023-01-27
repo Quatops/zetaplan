@@ -32,6 +32,10 @@
   font-weight: 600;
   font-size: 1.4rem;
 }
+p a {
+  color: #2f97db;
+  border-bottom: 1px solid #2f97db;
+}
 .toggle_content {
   -webkit-transform-origin: 50% 0%;
   transform-origin: 50% 0%;
