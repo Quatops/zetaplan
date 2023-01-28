@@ -45,25 +45,38 @@
 .sector {
   display: flex;
 }
+
+.sector > p {
+  width: 100px;
+}
+.sector_wrap {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
 .sector_btn {
-  min-width: 96px;
+  min-width: 93px;
   max-width: 112px;
-  font-size: 0.938rem;
+  font-size: 0.9rem;
   font-weight: 700;
   height: 30px;
-  margin: 3px;
   border-radius: 7px;
   background-color: #eeeeee;
   transition: all 200ms ease;
 }
 
-.sector_btn:hover {
+.sector_btn:hover,
+.sector_btn.active {
   background-color: var(--color-red);
   color: var(--color-white);
   transform: scale(1.02);
 }
 
 .portfolio_wrap {
+  width: 1250px;
+  height: 560px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);

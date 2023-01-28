@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css';
 import portfolio from 'constants/portfolio.json';
 import PortfolioCard from 'components/PorfolioCard';
@@ -15,7 +15,7 @@ const sectors = [
   '드론/항공',
   '뷰티',
   '생활/가전',
-  'AI/Big data',
+  'AI/BIG DATA',
   '보안',
   '핀테크',
   '블록체인',
@@ -29,11 +29,39 @@ const sectors = [
 export default function InvestmentPortfolio() {
   const [pageItems, setPageItems] = useState(portfolio);
   const limit = 8;
+  const [activeSector, setActiveSector] = useState(0);
   const [page, setPage] = useState(1);
+  const [keyword, setKeyword] = useState('');
+  const offset = (page - 1) * limit;
+  const handleChange = (e) => {
+    setKeyword(e.target.value);
+  };
+  const handleSubmit = () => {};
   const updatePage = (idx) => {
     setPage(idx);
   };
-  const offset = (page - 1) * limit;
+  useEffect(() => {
+    const array = portfolio.filter((port, i) => {
+      if (
+        activeSector === 0 ||
+        port.사업분야.indexOf(sectors[activeSector]) >= 0
+      ) {
+        return port;
+      }
+    });
+    setPage(1);
+    setPageItems(array);
+  }, [activeSector]);
+
+  useEffect(() => {
+    const array = portfolio.filter((port, i) => {
+      if (keyword === '' || port.투자업체명.indexOf(keyword) >= 0) {
+        return port;
+      }
+    });
+    setPage(1);
+    setPageItems(array);
+  }, [keyword]);
   return (
     <div className={styles.page_wrapper}>
       <div className={styles.contents_wrapper}>
@@ -41,14 +69,23 @@ export default function InvestmentPortfolio() {
           <input
             placeholder="검색을 해보세요."
             className={styles.search_input}
+            value={keyword}
+            onChange={handleChange}
           />
-          <button className={styles.search_btn}>Search</button>
+          <button className={styles.search_btn} onSubmit={handleSubmit}>
+            Search
+          </button>
         </section>
         <section className={styles.sector}>
           <p>sector</p>
-          <div>
+          <div className={styles.sector_wrap}>
             {sectors.map((value, index) => (
-              <button key={index} className={styles.sector_btn}>
+              <button
+                key={index}
+                className={`${styles.sector_btn} ${
+                  activeSector === index && styles.active
+                }`}
+                onClick={() => setActiveSector(index)}>
                 {value}
               </button>
             ))}
@@ -56,9 +93,9 @@ export default function InvestmentPortfolio() {
         </section>
         <section className={styles.content}>
           <article className={styles.portfolio_wrap}>
-            {pageItems.slice(offset, offset + limit).map((portfolio, index) => (
-              <PortfolioCard portfolio={portfolio} key={index} />
-            ))}
+            {pageItems.slice(offset, offset + limit).map((port, index) => {
+              return <PortfolioCard portfolio={port} key={index} />;
+            })}
           </article>
         </section>
         <footer className="flex_center">
