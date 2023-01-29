@@ -7,6 +7,7 @@ import { uploadImage } from 'api/uploader';
 import ToggleUI from 'components/PostUIs/ToggleUI';
 import CardUI from 'components/PostUIs/CardUI';
 import WriteFormList from 'components/WriteFormList';
+import CardWrapUI from 'components/PostUIs/CardWrapUI';
 
 export default function TextEditor({ updateValue, post, fileRef }) {
   const editorRef = useRef(null);
@@ -17,7 +18,7 @@ export default function TextEditor({ updateValue, post, fileRef }) {
 
   const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const content_style = baseCSS + toggleCSS + photoCardCSS;
-  const component = (idx) => {
+  const component = (idx, count) => {
     switch (idx) {
       case 0:
         return ReactDOMServer.renderToStaticMarkup(
@@ -25,8 +26,7 @@ export default function TextEditor({ updateValue, post, fileRef }) {
             <ToggleUI>
               회색 박스 안에 내용을 넣어주세요. 내용을 업로드하면 회색 박스 안
               내용이 토글로 적용됩니다. <br />
-              shift+enter를 하면 박스 안에서 줄바꿈을 할 수 있습니다. 말머리
-              이미지를 변경하고 싶다면, 이미지에 오른쪽클릭을 한 후
+              말머리 이미지를 변경하고 싶다면, 이미지에 오른쪽클릭을 한 후
               업로드해주세요. (이미지 규격 : 30 x 30)
             </ToggleUI>
             <br />
@@ -36,15 +36,19 @@ export default function TextEditor({ updateValue, post, fileRef }) {
         return ReactDOMServer.renderToStaticMarkup(
           <>
             <CardUI>내용을 적어주세요.</CardUI>
-            <br />
           </>,
         );
         break;
     }
   };
 
-  const insertComponent = (idx) => {
-    editorRef.current.insertContent(component(idx));
+  const insertComponent = (idx, count) => {
+    if (count) {
+      for (let i = 0; i < count; ++i)
+        editorRef.current.insertContent(component(idx, count));
+    } else {
+      editorRef.current.insertContent(component(idx));
+    }
   };
 
   return (
