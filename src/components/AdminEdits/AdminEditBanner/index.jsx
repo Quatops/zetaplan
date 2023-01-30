@@ -14,12 +14,8 @@ export default function AdminEditBanner({
 
   const handleChange = (e) => {
     const { files } = e.target;
-    if (files.length > 10) {
-      alert('배너이미지는 10개까지만 가능합니다.');
-      files = files.slice(0, 10);
-    }
-    for (let i = 0; i < files.length; ++i) {
-      uploadImage(files[i]).then((url) => {
+    if (files) {
+      uploadImage(files[0]).then((url) => {
         setImages((prev) => [...prev, url]);
       });
     }
@@ -63,7 +59,11 @@ export default function AdminEditBanner({
 
         <p className={styles.desc}>
           파일선택 버튼을 이용하여 배너 이미지를 업로드해주세요. 표준 규격은
-          870x220입니다. 이미지는 9개로 제한됩니다.
+          870x220입니다.
+          <br />{' '}
+          <span style={{ fontWeight: 'bold', color: 'red' }}>
+            이미지 파일은 하나씩 올려주세요!
+          </span>
         </p>
         <Button widthSize="100%">변경하기</Button>
       </form>
