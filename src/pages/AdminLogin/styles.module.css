@@ -25,6 +25,7 @@
   font-weight: 600;
   transition: all 300ms ease;
   font-family: pretendard, sans-serif;
+  margin-left: 10px;
 }
 .input::placeholder {
   color: rgba(255, 255, 255, 0.3);
@@ -37,10 +38,10 @@
 }
  {
 }
-label {
+.input_wrap label {
   color: rgba(255, 255, 255, 0.3);
-  margin-right: 10px;
 }
+
 .input_wrap {
   margin: 7px 0;
 }
@@ -52,7 +53,19 @@ label {
   background-color: var(--color-black);
   color: var(--color-white);
 }
+.password_label {
+  position: relative;
+}
 
+.isVisible {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.isVisible span {
+  cursor: pointer;
+}
 .error {
   color: var(--color-red);
   margin: 10px 0;

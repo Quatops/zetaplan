@@ -2,17 +2,28 @@ import React from 'react';
 import { useState } from 'react';
 import { FaExclamationTriangle } from 'react-icons/fa';
 import styles from './styles.module.css';
-import { FaUser, FaLock, FaBackward } from 'react-icons/fa';
+import { FaUser, FaLock, FaBackward, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useAuthContext } from 'context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 export default function AdminLogin() {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordType, setPasswordType] = useState({
+    type: 'password',
+    visible: false,
+  });
   const [isCorrect, setIsCorrect] = useState(true);
   const { user_login } = useAuthContext();
   const navigate = useNavigate();
-
+  const handlePasswordType = (e) => {
+    setPasswordType(() => {
+      if (!passwordType.visible) {
+        return { type: 'text', visible: true };
+      }
+      return { type: 'password', visible: false };
+    });
+  };
   const onEmailHandler = (e) => {
     setId(e.currentTarget.value);
   };
@@ -22,9 +33,13 @@ export default function AdminLogin() {
 
   const onLoginHandler = (e) => {
     e.preventDefault();
-    if (user_login(id, password)) {
-      navigate('/');
-    } else setIsCorrect(false);
+    user_login(id, password).then((isLogin) => {
+      if (isLogin) {
+        navigate('/');
+      } else {
+        setIsCorrect(false);
+      }
+    });
   };
 
   return (
@@ -36,30 +51,41 @@ export default function AdminLogin() {
         <div className={styles.input_wrap}>
           <label htmlFor={styles.id}>
             <FaUser />
+            <input
+              id={styles.id}
+              className={styles.input}
+              type="text"
+              placeholder="아이디를 입력하세요."
+              value={id}
+              onChange={onEmailHandler}
+              required
+            />
           </label>
-          <input
-            id={styles.id}
-            className={styles.input}
-            type="text"
-            placeholder="아이디를 입력하세요."
-            value={id}
-            onChange={onEmailHandler}
-            required
-          />
         </div>
         <div className={styles.input_wrap}>
-          <label htmlFor="password">
+          <label htmlFor="password" className={styles.password_label}>
             <FaLock />
+            <input
+              id="password"
+              className={styles.input}
+              type={passwordType.type}
+              placeholder="비밀번호를 입력하세요."
+              value={password}
+              onChange={onPasswordHandler}
+              required
+            />{' '}
+            <span className={styles.isVisible} onClick={handlePasswordType}>
+              {passwordType.visible ? (
+                <span>
+                  <FaEyeSlash />
+                </span>
+              ) : (
+                <span>
+                  <FaEye />
+                </span>
+              )}
+            </span>{' '}
           </label>
-          <input
-            id="password"
-            className={styles.input}
-            type="password"
-            placeholder="비밀번호를 입력하세요."
-            value={password}
-            onChange={onPasswordHandler}
-            required
-          />
         </div>
         <span className={styles.error}>
           {!isCorrect && (
@@ -68,10 +94,10 @@ export default function AdminLogin() {
             </>
           )}
         </span>
-
         <button className={styles.login_btn}>로그인</button>
-
-        <div className={`${styles.back_btn} flex_center`}>
+        <div
+          className={`${styles.back_btn} flex_center`}
+          onClick={() => navigate('/')}>
           <FaBackward /> &nbsp;&nbsp;제타플랜 돌아가기
         </div>
       </form>
