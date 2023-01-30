@@ -98,7 +98,9 @@ export default function MainPage() {
 
   return (
     <div className={styles.main_wrapper} ref={mainWrapperRef}>
-      <ScrollMenu pageIdx={pageIdx} updatePage={updatePage} />
+      {pageIdx !== 6 && (
+        <ScrollMenu pageIdx={pageIdx} updatePage={updatePage} />
+      )}
 
       <section className={styles.main_item}>
         <Main />
