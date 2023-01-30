@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles.module.css';
 
 // import optional tippy styles for tooltip support
@@ -8,7 +8,7 @@ import Globe from 'components/Globe';
 
 import { nations } from 'constants/nations';
 
-export default function GlobalNetwork() {
+export default function GlobalNetwork({ disableScroll, enableScroll }) {
   const [activeContinentIdx, setActiveContinentIdx] = useState(0);
   const [activeNationIdx, setActiveNationIdx] = useState(0);
   const updateActiveNationIdx = (idx) => {
@@ -94,7 +94,10 @@ export default function GlobalNetwork() {
               <div></div>
             )}
           </header>
-          <article className={styles.network_list}>
+          <article
+            className={styles.network_list}
+            onMouseEnter={disableScroll}
+            onMouseLeave={enableScroll}>
             {nations[activeNationIdx].networks.map((network, index) => (
               <NetworkCard key={index} network={network} />
             ))}
