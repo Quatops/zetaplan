@@ -9,26 +9,28 @@ export default function WriteFormList({
   updateIsActiveModal,
   insertComponent,
 }) {
+  const [validNum, setValidNum] = useState(false);
+  const [activeIdx, setActiveIdx] = useState(null);
+  const [row, setRow] = useState(0);
+  const [col, setCol] = useState(0);
   const radio_style = {
     display: 'block',
     width: '500px',
     position: 'relative',
   };
-  const handleChange = (e) => {
+  const handleChange = (e, isRow) => {
     if (e.target.value < 1) {
       setValidNum(true);
     } else {
       setValidNum(false);
     }
-    setCount(e.target.value);
+    isRow && setRow(e.target.value);
+    !isRow && setCol(e.target.value);
   };
   const handleChecked = (id) => {
     console.log(typeof id);
     setActiveIdx(Number(id));
   };
-  const [validNum, setValidNum] = useState(false);
-  const [activeIdx, setActiveIdx] = useState(null);
-  const [count, setCount] = useState(0);
   return (
     <Modal
       updateActiveModal={updateIsActiveModal}
@@ -38,7 +40,8 @@ export default function WriteFormList({
           e.preventDefault();
           insertComponent(
             Number(e.target.selectUI.value),
-            activeIdx === 1 && count,
+            activeIdx === 1 && row,
+            activeIdx === 1 && col,
           );
           updateIsActiveModal(false);
         }}
@@ -63,14 +66,24 @@ export default function WriteFormList({
               {index === 1 && activeIdx === 1 && (
                 <div className={styles.count_wrap}>
                   <label htmlFor="count" min="0" max="20">
-                    카드 수 :&nbsp;{' '}
+                    행 :&nbsp;{' '}
                   </label>
                   <input
-                    id="count"
+                    id="row"
                     type="number"
-                    value={count}
+                    value={row}
                     className={styles.count}
-                    onChange={handleChange}
+                    onChange={(e) => handleChange(e, true)}
+                  />
+                  <label htmlFor="row" min="0" max="20">
+                    열 :&nbsp;
+                  </label>
+                  <input
+                    id="col"
+                    type="number"
+                    value={col}
+                    className={styles.count}
+                    onChange={(e) => handleChange(e, false)}
                   />
                   {validNum && <p>1이상 입력해야합니다!</p>}
                 </div>

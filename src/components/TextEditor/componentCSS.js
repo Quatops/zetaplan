@@ -86,12 +86,12 @@ export const photoCardCSS = `
   border: 1px solid #eeeeee;
   border-radius: 10px;
   min-height: 230px;
-  width: 220px;
+  
   overflow: hidden;
 }
 
 .photocard_img {
-  max-width: 220px;
+  width: auto;
   height: 190px;
   display: flex;
   align-items: center;

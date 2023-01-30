@@ -1,5 +1,8 @@
 import React, { useRef, useState } from 'react';
 import ReactDOMServer from 'react-dom/server';
+import { createRoot } from 'react-dom/client';
+import { flushSync } from 'react-dom';
+
 import { baseCSS, toggleCSS, photoCardCSS } from './componentCSS';
 
 import { Editor } from '@tinymce/tinymce-react';
@@ -7,7 +10,6 @@ import { uploadImage } from 'api/uploader';
 import ToggleUI from 'components/PostUIs/ToggleUI';
 import CardUI from 'components/PostUIs/CardUI';
 import WriteFormList from 'components/WriteFormList';
-import CardWrapUI from 'components/PostUIs/CardWrapUI';
 
 export default function TextEditor({ updateValue, post, fileRef }) {
   const editorRef = useRef(null);
@@ -18,10 +20,10 @@ export default function TextEditor({ updateValue, post, fileRef }) {
 
   const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const content_style = baseCSS + toggleCSS + photoCardCSS;
-  const component = (idx, count) => {
+  const component = (idx, row, col) => {
     switch (idx) {
       case 0:
-        return ReactDOMServer.renderToStaticMarkup(
+        return ReactDOMServer.renderToString(
           <>
             <ToggleUI>
               회색 박스 안에 내용을 넣어주세요. 내용을 업로드하면 회색 박스 안
@@ -35,20 +37,18 @@ export default function TextEditor({ updateValue, post, fileRef }) {
       case 1:
         return ReactDOMServer.renderToStaticMarkup(
           <>
-            <CardUI>내용을 적어주세요.</CardUI>
+            <CardUI row={row} col={col}>
+              내용을 적어주세요.
+            </CardUI>
+            <br />
           </>,
         );
         break;
     }
   };
 
-  const insertComponent = (idx, count) => {
-    if (count) {
-      for (let i = 0; i < count; ++i)
-        editorRef.current.insertContent(component(idx, count));
-    } else {
-      editorRef.current.insertContent(component(idx));
-    }
+  const insertComponent = (idx, row, col) => {
+    editorRef.current.insertContent(component(idx, row && row, col && col));
   };
 
   return (
