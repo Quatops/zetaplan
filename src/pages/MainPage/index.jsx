@@ -61,7 +61,7 @@ export default function MainPage() {
       } else if (scrollTop >= pageHeight * 2 && scrollTop < pageHeight * 3) {
         // 현재 3페이지
         updatePage(2, pageHeight, 0, 'smooth');
-      } else if (scrollTop >= pageHeight * 3 && scrollTop < pageHeight * 3) {
+      } else if (scrollTop >= pageHeight * 3 && scrollTop < pageHeight * 4) {
         updatePage(3, pageHeight * 2, 0, 'smooth');
       } else if (
         scrollTop >= pageHeight * 4 &&
