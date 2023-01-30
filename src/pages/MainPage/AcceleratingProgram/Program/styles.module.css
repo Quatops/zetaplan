@@ -1,9 +1,8 @@
 .cards_wrap {
   margin-top: 30px;
-  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
-  grid-column-gap: 39px;
+  grid-column-gap: 50px;
   grid-row-gap: 0px;
 }

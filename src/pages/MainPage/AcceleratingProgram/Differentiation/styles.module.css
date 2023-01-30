@@ -1,8 +1,12 @@
+.contents_wrap {
+  height: 750px;
+}
 .logo_border {
   width: 500px;
   height: 500px;
   background-color: var(--color-lightgrey);
   border-radius: 500px;
+  position: relative;
 }
 
 .center_logo {
@@ -18,4 +22,106 @@
   width: 154px;
   height: 42px;
   object-fit: contain;
+}
+
+.icons {
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  position: absolute;
+}
+.icons:nth-child(1) {
+  right: 5%;
+  top: -5%;
+}
+.info_title {
+  font-weight: bold;
+  max-width: 350px;
+
+  font-size: 1.1rem;
+}
+.icons:nth-child(2) {
+  right: -15%;
+}
+.icons:nth-child(3) {
+  right: 5%;
+  bottom: -5%;
+}
+.icons:nth-child(4) {
+  left: 5%;
+  bottom: -5%;
+}
+.icons:nth-child(5) {
+  left: -15%;
+}
+.icons:nth-child(6) {
+  left: 5%;
+  top: -5%;
+}
+.info {
+  position: absolute;
+}
+
+.boundary {
+  width: 100%;
+  height: 1px;
+  background-color: inherit;
+  color: inherit;
+  position: relative;
+  margin: 10px 0;
+}
+.boundary.right {
+  transform: translateX(-30px);
+}
+.boundary.right:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateY(-50%);
+  border-radius: 5px;
+  width: 5px;
+  height: 5px;
+  background-color: inherit;
+}
+.boundary.left {
+  width: 110%;
+  transform: translateX(10px);
+}
+.boundary.left:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateY(-50%);
+  border-radius: 5px;
+  width: 5px;
+  height: 5px;
+  background-color: inherit;
+}
+
+.info.right {
+  left: 170px;
+}
+
+.info.left {
+  right: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.info.left .info_title {
+  text-align: right;
+}
+
+.info header {
+  min-width: 330px;
+}
+
+.desc {
+  padding: 10px;
+}
+.desc li {
+  list-style: disc;
+  font-size: 0.9rem;
 }
