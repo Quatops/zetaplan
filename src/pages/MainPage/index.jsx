@@ -21,57 +21,75 @@ export default function MainPage() {
       behavior,
     });
     setPageIdx(idx);
+    /* 페이지마다 header 색깔도 조정해줘야 한다. */
     idx === 4 || idx === 3 ? updateisWhite(true) : updateisWhite(false);
+    if (idx === 4) disableScroll();
+  };
+  const wheelHandler = (e) => {
+    e.preventDefault();
+    const { deltaY } = e;
+    const { scrollTop } = mainWrapperRef.current;
+    const { scrollBottom } = mainWrapperRef.current;
+    const pageHeight = window.innerHeight;
+    if (deltaY > 0) {
+      // 스크롤을 내릴 때
+      if (scrollTop >= 0 && scrollTop < pageHeight) {
+        // 현재 1페이지
+        updatePage(2, pageHeight, 0, 'smooth');
+      } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 2) {
+        // 현재 2페이지
+        updatePage(3, pageHeight * 2, 0, 'smooth');
+      } else if (scrollTop >= pageHeight * 2 && scrollTop < pageHeight * 3) {
+        // 현재 3페이지
+        updatePage(4, pageHeight * 3, 0, 'smooth');
+      } else if (scrollTop >= pageHeight * 3 && scrollTop < pageHeight * 4) {
+        // 현재 4페이지
+        updatePage(5, pageHeight * 4, 0, 'smooth');
+      }
+    } else {
+      // 스크롤 올릴때
+      if (
+        (scrollTop >= 0 && scrollTop < pageHeight) ||
+        (scrollTop >= pageHeight && scrollTop < pageHeight * 2)
+      ) {
+        //현재 1페이지이거나 2페이지
+        updatePage(1, 0, 0, 'smooth');
+      } else if (scrollTop >= pageHeight * 2 && scrollTop < pageHeight * 3) {
+        // 현재 3페이지
+        updatePage(2, pageHeight, 0, 'smooth');
+      } else if (
+        scrollTop >= pageHeight * 3 &&
+        scrollTop < pageHeight * 3 + 500
+      ) {
+        updatePage(3, pageHeight * 2, 0, 'smooth');
+      } else {
+        updatePage(4, pageHeight * 3, 0, 'smooth');
+      }
+    }
   };
   useEffect(() => {
-    const wheelHandler = (e) => {
-      e.preventDefault();
-      const { deltaY } = e;
-      const { scrollTop } = mainWrapperRef.current;
-      const { scrollBottom } = mainWrapperRef.current;
-      const pageHeight = window.innerHeight;
-      if (deltaY > 0) {
-        // 스크롤을 내릴 때
-        if (scrollTop >= 0 && scrollTop < pageHeight) {
-          // 현재 1페이지
-          updatePage(2, pageHeight, 0, 'smooth');
-        } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 2) {
-          // 현재 2페이지
-          updatePage(3, pageHeight * 2, 0, 'smooth');
-        } else if (scrollTop >= pageHeight * 2 && scrollTop < pageHeight * 3) {
-          // 현재 3페이지
-          updatePage(4, pageHeight * 3, 0, 'smooth');
-        } else if (scrollTop >= pageHeight * 3 && scrollTop < pageHeight * 4) {
-          // 현재 4페이지
-          updatePage(5, pageHeight * 4, 0, 'smooth');
-        }
-      } else {
-        // 스크롤 올릴때
-        if (
-          (scrollTop >= 0 && scrollTop < pageHeight) ||
-          (scrollTop >= pageHeight && scrollTop < pageHeight * 2)
-        ) {
-          //현재 1페이지이거나 2페이지
-          updatePage(1, 0, 0, 'smooth');
-        } else if (scrollTop >= pageHeight * 2 && scrollTop < pageHeight * 3) {
-          // 현재 3페이지
-          updatePage(2, pageHeight, 0, 'smooth');
-        } else if (
-          scrollTop >= pageHeight * 3 &&
-          scrollTop < pageHeight * 3 + 500
-        ) {
-          updatePage(3, pageHeight * 2, 0, 'smooth');
-        } else {
-          updatePage(4, pageHeight * 3, 0, 'smooth');
-        }
-      }
-    };
     const wrapperRefCurrent = mainWrapperRef.current;
     wrapperRefCurrent.addEventListener('wheel', wheelHandler);
     return () => {
       wrapperRefCurrent.removeEventListener('wheel', wheelHandler);
     };
   });
+  const handleMousePosition = () => {};
+  function preventDefault(e) {
+    e.preventDefault();
+  }
+  // call this to Disable
+  function disableScroll() {
+    const wrapperRefCurrent = mainWrapperRef.current;
+    wrapperRefCurrent.removeEventListener('wheel', wheelHandler);
+  }
+
+  // call this to Enable
+  function enableScroll() {
+    const wrapperRefCurrent = mainWrapperRef.current;
+    wrapperRefCurrent.addEventListener('wheel', wheelHandler);
+  }
+
   return (
     <div className={styles.main_wrapper} ref={mainWrapperRef}>
       <ScrollMenu pageIdx={pageIdx} updatePage={updatePage} />
@@ -87,7 +105,10 @@ export default function MainPage() {
           <InvestmentPortfolio />
         </section>
         <section className={styles.main_item}>
-          <GlobalNetwork />
+          <GlobalNetwork
+            disableScroll={disableScroll}
+            enableScroll={enableScroll}
+          />
         </section>
         <Footer />
       </Suspense>
