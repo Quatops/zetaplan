@@ -32,14 +32,17 @@ export default function AdminPostRegist({}) {
   });
   const updateValue = (e) => {
     setValue(e);
+    console.log(e);
   };
 
   const [selectCate, setSelectCate] = useState(cate);
   const updateSelectCate = (select) => {
+    console.log('카테고리바뀜.ㅋㅋ');
     setSelectCate(select);
     setSelectSubCate(subCategory[category[select].id][0].id);
   };
   const updateSelectSubCate = (select) => {
+    console.log('서브카테고리바뀜..ㅋㅋ', select);
     setSelectSubCate(select);
   };
 

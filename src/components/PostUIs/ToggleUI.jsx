@@ -11,7 +11,9 @@ export default function ToggleUI({ children }) {
         </label>
         <p className="toggle_title">title</p>
       </div>
-      <p className="toggle_content flex_center">{children}</p>
+      <div className="toggle_content">
+        <p>{children}</p>
+      </div>
     </div>
   );
 }

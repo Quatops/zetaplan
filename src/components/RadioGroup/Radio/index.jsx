@@ -8,6 +8,7 @@ export default function Radio({
   name,
   defaultChecked,
   disabled,
+  handleChecked,
 }) {
   const id = uuid();
   return (
@@ -22,6 +23,7 @@ export default function Radio({
         name={name}
         defaultChecked={defaultChecked}
         disabled={disabled}
+        onChange={(e) => handleChecked(e.target.value)}
       />
       {children}
     </label>

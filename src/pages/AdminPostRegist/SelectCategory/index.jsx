@@ -13,13 +13,12 @@ export default function SelectCategry({
   return (
     <div className={styles.select_wrap}>
       {children}
-      <select className={styles.select} onChange={handleChangeSelect}>
+      <select
+        className={styles.select}
+        onChange={handleChangeSelect}
+        defaultValue={cate}>
         {options.map((value) => (
-          <option
-            value={cate}
-            key={value.id}
-            className={styles.option}
-            selected={value.id === cate}>
+          <option value={value.id} key={value.id} className={styles.option}>
             {value.title}
           </option>
         ))}
