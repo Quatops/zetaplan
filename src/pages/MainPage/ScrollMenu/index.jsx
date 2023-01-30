@@ -10,7 +10,7 @@ const Menu = ({ num, pageIdx, pageName, updatePage }) => {
       }>
       <div
         className={`${styles.name} ${
-          pageIdx >= 3 ? styles.black : styles.white
+          pageIdx >= 2 ? styles.black : styles.white
         }`}>
         {pageName}
         {pageIdx === num && <div className={styles.line}></div>}
