@@ -1,15 +1,16 @@
 import React, { useState, useRef } from 'react';
 import styles from './styles.module.css';
 import TextEditor from 'components/TextEditor';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { addNewPost, updatePost } from 'api/firebase';
 import SelectCategory from './SelectCategory';
 import { useCategoryContext } from 'context/CategoryContext';
 import { uploadImage } from 'api/uploader';
 
-export default function AdminPostRegist({}) {
+export default function AdminPostRegist() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { category, subCategory } = useCategoryContext();
   const isNew = location.state ? location.state.isNew : null;
   const post = location.state ? location.state.post : null;
@@ -37,12 +38,10 @@ export default function AdminPostRegist({}) {
 
   const [selectCate, setSelectCate] = useState(cate);
   const updateSelectCate = (select) => {
-    console.log('카테고리바뀜.ㅋㅋ');
     setSelectCate(select);
     setSelectSubCate(subCategory[category[select].id][0].id);
   };
   const updateSelectSubCate = (select) => {
-    console.log('서브카테고리바뀜..ㅋㅋ', select);
     setSelectSubCate(select);
   };
 
@@ -72,6 +71,8 @@ export default function AdminPostRegist({}) {
           {
             onSuccess: () => {
               alert('성공적으로 글이 등록되었습니다.');
+              // 이전으로 돌아가기.
+              navigate(-1);
             },
             onError: (e) => {
               alert(`에러가 발생했습니다. ${e}`);
@@ -84,6 +85,7 @@ export default function AdminPostRegist({}) {
           {
             onSuccess: () => {
               alert('성공적으로 글이 등록되었습니다.');
+              navigate(-1);
             },
             onError: (e) => {
               alert(`에러가 발생했습니다. ${e}`);
