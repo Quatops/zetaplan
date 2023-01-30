@@ -6,7 +6,10 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    onUserStateChange((user) => setUser(user));
+    onUserStateChange((user) => {
+      console.log(user);
+      setUser(user);
+    });
   }, []);
 
   const user_login = (id, password) => {
@@ -19,7 +22,11 @@ export function AuthProvider({ children }) {
   };
   return (
     <AuthContext.Provider
-      value={{ isAdmin: user ? user.isAdmin : false, user_login, user_logout }}>
+      value={{
+        isAdmin: user && user.isAdmin,
+        user_login,
+        user_logout,
+      }}>
       {children}
     </AuthContext.Provider>
   );

@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider } from 'context/AuthContext';
 import Loading from 'components/Loading';
 import { CategoryProvider } from 'context/CategoryContext';
+import ProtectedRoute from 'pages/ProtectedRoute';
 
 /* MainPage */
 const MainPage = lazy(() => import('pages/MainPage'));
@@ -56,7 +57,11 @@ const router = createBrowserRouter([
   },
   {
     path: 'admin/write',
-    element: <AdminPostRegist />,
+    element: (
+      <ProtectedRoute requireAdmin>
+        <AdminPostRegist />
+      </ProtectedRoute>
+    ),
     state: { post: null },
   },
   {

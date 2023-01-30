@@ -53,31 +53,21 @@ p a {
 }
 
 /* photocard ui css*/
-.photocard_ui {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: 15px;
-  grid-row-gap: 15px;
-}
 
 .photocard {
   border: 1px solid #eeeeee;
   border-radius: 10px;
-  height: 230px;
+  min-height: 230px;
   overflow: hidden;
 }
 
 .photocard_img {
-  width: 100%;
-  object-fit: contain;
+  width: auto;
   height: 190px;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 .photocard_img img {
-  width: 100%;
-  height: 100%;
   object-fit: contain;
 }
 .photocard_caption {
@@ -86,7 +76,13 @@ p a {
   justify-content: center;
   align-items: center;
 }
-
+.postcard_text {
+  resize: both;
+  overflow: auto;
+}
+.photocard_textwrap {
+  padding: 1rem;
+}
 @keyframes slideUp {
   from {
     transform: scaleY(0);

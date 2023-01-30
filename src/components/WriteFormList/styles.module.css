@@ -34,6 +34,10 @@
   align-items: center;
   margin: 5px 0;
 }
+.count_wrap label {
+  color: var(--color-black);
+  margin-left: 5px;
+}
 .count {
   background-color: var(--color-lightgrey);
   width: 50px;
