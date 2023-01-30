@@ -24,7 +24,9 @@ export default function CardUI({ children, col, row, space }) {
               alt="image"
             />
           </article>
-          <div className="photocard_text">{children}</div>
+          <article className="photocard_textwrap">
+            <div className="photocard_text">{children}</div>
+          </article>
         </div>
       ))}
     </div>

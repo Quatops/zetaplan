@@ -109,4 +109,7 @@ export const photoCardCSS = `
   resize: both;
   overflow: auto;
 }
+.photocard_textwrap{
+  padding: 1rem;
+}
 `;
