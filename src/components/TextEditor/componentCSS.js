@@ -36,8 +36,9 @@ body {
 
 export const toggleCSS = ` 
 /* toggle ui css*/
-.card_ui {
+.toggle_ui {
   width: 100%;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -67,17 +68,11 @@ export const toggleCSS = `
   font-size: 1.4rem;
 }
 
-/*.toggle_title::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  height: 1px;
-  background-color: var(--color-grey);
-}*/
 .toggle_content {
   font-family: pretendard;
   padding: 1rem;
+  resize: both;
+  overflow: auto;
   background-color: #f8f8f8;
   border-radius: 10px;
 }
@@ -87,31 +82,21 @@ export const toggleCSS = `
 
 `;
 export const photoCardCSS = `
-.photocard_ui {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: 15px;
-  grid-row-gap: 15px;
-}
-
 .photocard {
   border: 1px solid #eeeeee;
   border-radius: 10px;
-  height: 230px;
+  min-height: 230px;
+  
   overflow: hidden;
 }
 
 .photocard_img {
-  width: 100%;
-  object-fit: contain;
+  width: auto;
   height: 190px;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 .photocard_img img {
-  width: 100%;
-  height: 100%;
   object-fit: contain;
 }
 .photocard_caption {
@@ -120,5 +105,8 @@ export const photoCardCSS = `
   justify-content: center;
   align-items: center;
 }
-
+.postcard_text{
+  resize: both;
+  overflow: auto;
+}
 `;
