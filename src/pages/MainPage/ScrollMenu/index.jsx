@@ -20,7 +20,7 @@ const Menu = ({ num, pageIdx, pageName, updatePage }) => {
 };
 const scrollMenu = [
   'MAIN',
-  '액설러레이팅 프로그램',
+  '액설러레이팅',
   '투자 포트폴리오',
   '글로벌 네트워크',
 ];
