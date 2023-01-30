@@ -8,8 +8,8 @@ export default function AdminEditGlobalNavbar({
   subCategory,
 }) {
   const [menu, setMenu] = useState(
-    Array.from(Array(6), (_, i) => {
-      const obj = new Array(6);
+    Array.from(Array(subCategory.length), (_, i) => {
+      const obj = new Array(7).fill('');
       subCategory[i].map((small, sId) => {
         obj[sId] = small.title;
       });
@@ -22,6 +22,7 @@ export default function AdminEditGlobalNavbar({
       prev[bId][sId] = e;
       return [...prev];
     });
+    console.log(menu);
   };
   return (
     <AdminEditContainer

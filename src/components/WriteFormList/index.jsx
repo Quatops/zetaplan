@@ -60,7 +60,10 @@ export default function WriteFormList({
                 styles={radio_style}
                 handleChecked={handleChecked}>
                 <div className={`${styles.post_ui}`}>
-                  <img src={require(`assets/postUI${index + 1}.png`)} />
+                  <img
+                    src={require(`assets/postUI${index + 1}.png`)}
+                    alt="레이아웃"
+                  />
                 </div>
                 <div className={`${styles.radio_index} flex_center`}>
                   {index + 1}

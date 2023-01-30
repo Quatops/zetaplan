@@ -13,18 +13,22 @@ export default function SubNavbar({
     <div className={styles.nav_wrap}>
       <div className={styles.nav_title}>{navTitle}</div>
       <ul className={styles.nav}>
-        {navItems.map((value) => (
-          <NavLink
-            key={value.id}
-            className="subnav_nav_items"
-            onClick={() => updateActiveNavId(value.id)}
-            to={value.path}>
-            <p>{value.title}</p>
-            <p className="subnav_rightbtn">
-              <FaAngleRight />
-            </p>
-          </NavLink>
-        ))}
+        {navItems.map((value) => {
+          // title이 있을 경우에만 출력한다.
+          if (value.title.length > 0)
+            return (
+              <NavLink
+                key={value.id}
+                className="subnav_nav_items"
+                onClick={() => updateActiveNavId(value.id)}
+                to={value.path}>
+                <p>{value.title}</p>
+                <p className="subnav_rightbtn">
+                  <FaAngleRight />
+                </p>
+              </NavLink>
+            );
+        })}
       </ul>
     </div>
   );

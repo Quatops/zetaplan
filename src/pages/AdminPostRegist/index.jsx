@@ -99,7 +99,7 @@ export default function AdminPostRegist() {
     <div className={`${styles.admin_wrap} flex_center`}>
       <header className={styles.header_temp}>
         <div className={styles.logo}>
-          <img src={require('assets/LogoBlack.png')} />
+          <img src={require('assets/LogoBlack.png')} alt="logo" />
         </div>
       </header>
       <section className={`${styles.title_area} flex_center`}>
