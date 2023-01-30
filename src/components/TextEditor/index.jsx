@@ -20,7 +20,7 @@ export default function TextEditor({ updateValue, post, fileRef }) {
 
   const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const content_style = baseCSS + toggleCSS + photoCardCSS;
-  const component = (idx, row, col) => {
+  const component = (idx, row, col, space) => {
     switch (idx) {
       case 0:
         return ReactDOMServer.renderToString(
@@ -37,7 +37,7 @@ export default function TextEditor({ updateValue, post, fileRef }) {
       case 1:
         return ReactDOMServer.renderToStaticMarkup(
           <>
-            <CardUI row={row} col={col}>
+            <CardUI row={row} col={col} space={space}>
               내용을 적어주세요.
             </CardUI>
             <br />
@@ -47,8 +47,10 @@ export default function TextEditor({ updateValue, post, fileRef }) {
     }
   };
 
-  const insertComponent = (idx, row, col) => {
-    editorRef.current.insertContent(component(idx, row && row, col && col));
+  const insertComponent = (idx, row, col, space) => {
+    editorRef.current.insertContent(
+      component(idx, row && row, col && col, space && space),
+    );
   };
 
   return (

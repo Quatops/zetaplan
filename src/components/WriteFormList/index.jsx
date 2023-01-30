@@ -13,6 +13,7 @@ export default function WriteFormList({
   const [activeIdx, setActiveIdx] = useState(null);
   const [row, setRow] = useState(0);
   const [col, setCol] = useState(0);
+  const [space, setSpace] = useState(20);
   const radio_style = {
     display: 'block',
     width: '500px',
@@ -24,8 +25,9 @@ export default function WriteFormList({
     } else {
       setValidNum(false);
     }
-    isRow && setRow(e.target.value);
-    !isRow && setCol(e.target.value);
+    isRow === 0 && setRow(e.target.value);
+    isRow === 1 && setCol(e.target.value);
+    isRow === 2 && setSpace(e.target.value);
   };
   const handleChecked = (id) => {
     console.log(typeof id);
@@ -42,6 +44,7 @@ export default function WriteFormList({
             Number(e.target.selectUI.value),
             activeIdx === 1 && row,
             activeIdx === 1 && col,
+            activeIdx === 1 && space,
           );
           updateIsActiveModal(false);
         }}
@@ -73,7 +76,7 @@ export default function WriteFormList({
                     type="number"
                     value={row}
                     className={styles.count}
-                    onChange={(e) => handleChange(e, true)}
+                    onChange={(e) => handleChange(e, 0)}
                   />
                   <label htmlFor="row" min="0" max="20">
                     열 :&nbsp;
@@ -83,7 +86,17 @@ export default function WriteFormList({
                     type="number"
                     value={col}
                     className={styles.count}
-                    onChange={(e) => handleChange(e, false)}
+                    onChange={(e) => handleChange(e, 1)}
+                  />
+                  <label htmlFor="space" min="0" max="20">
+                    간격 :&nbsp;
+                  </label>
+                  <input
+                    id="space"
+                    type="number"
+                    value={space}
+                    className={styles.count}
+                    onChange={(e) => handleChange(e, 2)}
                   />
                   {validNum && <p>1이상 입력해야합니다!</p>}
                 </div>
