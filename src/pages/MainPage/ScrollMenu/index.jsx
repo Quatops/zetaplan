@@ -1,10 +1,11 @@
 import styles from './styles.module.css';
 import React from 'react';
 
-const Menu = ({ num, pageIdx, pageName, updatePage }) => {
+const Menu = ({ num, pageIdx, pageName, isActive, updatePage, hidden }) => {
   return (
     <div
-      className={`${styles.scroll} ${pageIdx === num && styles.active} `}
+      className={`${styles.scroll} ${isActive && styles.active}`}
+      style={{ display: hidden ? 'none' : 'visible' }}
       onClick={() =>
         updatePage(num, window.innerHeight * (num - 1), 0, 'smooth')
       }>
@@ -22,6 +23,7 @@ const scrollMenu = [
   'MAIN',
   '액설러레이팅',
   '투자 포트폴리오',
+  '',
   '글로벌 네트워크',
 ];
 
@@ -35,7 +37,11 @@ const ScrollMenu = ({ pageIdx, updatePage }) => {
             num={index + 1}
             pageIdx={pageIdx}
             pageName={title}
+            isActive={
+              pageIdx === index + 1 || (index + 1 === 3 && pageIdx === 4)
+            }
             updatePage={updatePage}
+            hidden={index === 3}
           />
         ))}
       </div>

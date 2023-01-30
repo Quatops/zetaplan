@@ -23,3 +23,7 @@
   grid-column-gap: 50px;
   grid-row-gap: 0px;
 }
+
+.wrap {
+  height: 750px;
+}

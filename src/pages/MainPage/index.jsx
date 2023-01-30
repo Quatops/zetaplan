@@ -6,6 +6,7 @@ import Main from './Main';
 import AcceleratingProgram from './AcceleratingProgram';
 import ScrollMenu from './ScrollMenu';
 import Footer from 'components/Footer';
+import InvestmentLogo from './InvestmentPortfolio/InvestmentLogo';
 
 const GlobalNetwork = React.lazy(() => import('./GlobalNetwork'));
 const InvestmentPortfolio = React.lazy(() => import('./InvestmentPortfolio'));
@@ -45,6 +46,9 @@ export default function MainPage() {
       } else if (scrollTop >= pageHeight * 3 && scrollTop < pageHeight * 4) {
         // 현재 4페이지
         updatePage(5, pageHeight * 4, 0, 'smooth');
+      } else if (scrollTop >= pageHeight * 4 && scrollTop < pageHeight * 5) {
+        //현재 5페이지
+        updatePage(6, pageHeight * 5, 0, 'smooth');
       }
     } else {
       // 스크롤 올릴때
@@ -57,13 +61,15 @@ export default function MainPage() {
       } else if (scrollTop >= pageHeight * 2 && scrollTop < pageHeight * 3) {
         // 현재 3페이지
         updatePage(2, pageHeight, 0, 'smooth');
-      } else if (
-        scrollTop >= pageHeight * 3 &&
-        scrollTop < pageHeight * 3 + 500
-      ) {
+      } else if (scrollTop >= pageHeight * 3 && scrollTop < pageHeight * 3) {
         updatePage(3, pageHeight * 2, 0, 'smooth');
-      } else {
+      } else if (
+        scrollTop >= pageHeight * 4 &&
+        scrollTop < pageHeight * 4 + 500
+      ) {
         updatePage(4, pageHeight * 3, 0, 'smooth');
+      } else {
+        updatePage(5, pageHeight * 4, 0, 'smooth');
       }
     }
   };
@@ -103,6 +109,9 @@ export default function MainPage() {
       <Suspense fallback={<div>Loading...</div>}>
         <section className={styles.main_item}>
           <InvestmentPortfolio />
+        </section>
+        <section className={styles.main_item}>
+          <InvestmentLogo />
         </section>
         <section className={styles.main_item}>
           <GlobalNetwork

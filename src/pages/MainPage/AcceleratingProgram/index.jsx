@@ -31,9 +31,11 @@ export default function AcceleratingProgram() {
             ))}
           </div>
         </header>
-        {activeTab === 0 && <Program />}
-        {activeTab === 1 && <Differentiation />}
-        {activeTab === 2 && <Portfolio />}
+        <div className={`${styles.wrap} flex_center`}>
+          {activeTab === 0 && <Program />}
+          {activeTab === 1 && <Differentiation />}
+          {activeTab === 2 && <Portfolio />}
+        </div>
       </div>
     </div>
   );
