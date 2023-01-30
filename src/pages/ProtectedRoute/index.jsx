@@ -6,6 +6,7 @@ export default function ProtectedRoute({ children, requireAdmin }) {
   const { isAdmin } = useAuthContext();
 
   if (requireAdmin && !isAdmin) {
+    console.log('어드민이냐?', isAdmin);
     return <Navigate to="/" replace />;
   }
 
