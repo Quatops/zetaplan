@@ -22,7 +22,7 @@ export default function MainPage() {
     });
     setPageIdx(idx);
     /* 페이지마다 header 색깔도 조정해줘야 한다. */
-    idx === 4 || idx === 3 ? updateisWhite(true) : updateisWhite(false);
+    idx !== 1 ? updateisWhite(true) : updateisWhite(false);
     if (idx === 4) disableScroll();
   };
   const wheelHandler = (e) => {

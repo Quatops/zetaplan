@@ -8,7 +8,7 @@ export default function PortfolioCard({ portfolio }) {
   return (
     <div className={styles.portfolio_wrap}>
       <article className={`${styles.logo} flex_center`}>
-        <img src={require(`assets/${portfolio.logo}.png`)} alt="port_logo" />
+        <img src={portfolio.logo} alt="port_logo" />
       </article>
       <article className={styles.invest_info}>
         <div className={styles.invest_name}>
