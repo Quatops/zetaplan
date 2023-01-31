@@ -30,7 +30,6 @@ export default function MainPage() {
     e.preventDefault();
     const { deltaY } = e;
     const { scrollTop } = mainWrapperRef.current;
-    const { scrollBottom } = mainWrapperRef.current;
     const pageHeight = window.innerHeight;
     if (deltaY > 0) {
       // 스크롤을 내릴 때
@@ -113,7 +112,10 @@ export default function MainPage() {
           <InvestmentPortfolio />
         </section>
         <section className={styles.main_item}>
-          <InvestmentLogo />
+          <InvestmentLogo
+            disableScroll={disableScroll}
+            enableScroll={enableScroll}
+          />
         </section>
         <section className={styles.main_item}>
           <GlobalNetwork

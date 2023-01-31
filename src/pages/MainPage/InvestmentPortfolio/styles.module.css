@@ -83,11 +83,3 @@
   grid-column-gap: 20px;
   grid-row-gap: 20px;
 }
-.logo_header {
-  height: 50px;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: var(--color-black);
-  text-align: center;
-}
