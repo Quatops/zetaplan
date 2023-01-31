@@ -10,6 +10,20 @@ export default function useAccelerating() {
       staleTime: 1000 * 60 * 10,
     },
   );
+  const AcceleDifferentQuery = useQuery(
+    ['accelerating_differentiation'],
+    () => fetchItems('accelerating_differentiation'),
+    {
+      staleTime: 1000 * 60 * 10,
+    },
+  );
+  const AcceleProgramQuery = useQuery(
+    ['accelerating_program'],
+    () => fetchItems('accelerating_program'),
+    {
+      staleTime: 1000 * 60 * 10,
+    },
+  );
   const modifyAccelePort = useMutation(
     (image) => updateItems('accelerating_portfolio', image),
     {
@@ -17,6 +31,18 @@ export default function useAccelerating() {
         queryClient.invalidateQueries(['accelerating_portfolio']),
     },
   );
-
-  return { AccelePortQuery, modifyAccelePort };
+  const modifyAcceleDifferent = useMutation(
+    (content) => updateItems('accelerating_differentiation', content),
+    {
+      onSuccess: () =>
+        queryClient.invalidateQueries(['accelerating_differentiation']),
+    },
+  );
+  return {
+    AccelePortQuery,
+    AcceleDifferentQuery,
+    AcceleProgramQuery,
+    modifyAccelePort,
+    modifyAcceleDifferent,
+  };
 }

@@ -39,9 +39,7 @@ export default function AdminEditHeader({ handleEditSubmit, category }) {
             />
           ))}
         </div>
-        <Button widthSize="100%" handleSubmit={handleEditSubmit}>
-          변경하기
-        </Button>
+        <Button widthSize="100%">변경하기</Button>
       </form>
     </AdminEditContainer>
   );

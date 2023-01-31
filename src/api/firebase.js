@@ -17,6 +17,7 @@ import {
   update,
   remove,
 } from 'firebase/database';
+import { v4 as uuid } from 'uuid';
 var moment = require('moment');
 
 const firebaseConfig = {
@@ -132,11 +133,16 @@ export async function updateItems(target, items) {
   updateObj[target] = items;
   return update(ref(database), updateObj);
 }
+export async function updateItemsById(target, items) {
+  const updateObj = {};
+  updateObj[target] = items;
+  return update(ref(database), updateObj);
+}
 
 // 카테고리 추가하기
 export async function addNewSubCate(nav) {
   const { path, title, cate } = nav;
-  const id = 0;
+  const id = uuid();
   return set(ref(database, `sub_nav/${cate}/${id}`), {
     id,
     path,
