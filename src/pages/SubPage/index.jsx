@@ -12,6 +12,11 @@ import { useCategoryContext } from 'context/CategoryContext';
 import styles from './styles.module.css';
 import SubContentDetail from './SubContentDetail';
 import Footer from 'components/Footer';
+import Consulting from './Consulting';
+
+const custom_nav = {
+  '상담 신청': [{ title: '상담 신청' }],
+};
 
 export default function SubPage({ pageName }) {
   const location = useLocation();
@@ -93,16 +98,32 @@ export default function SubPage({ pageName }) {
       {category && subCategory && (
         <div className={styles.subPage_wrap} ref={subPageWrapperRef}>
           <section className={styles.page_title}>
-            <p>{category[pageName].title}</p>
+            <p>
+              {typeof pageName === 'string'
+                ? pageName
+                : category[pageName].title}
+            </p>
           </section>
           <section className={styles.page_content}>
             <SubNavbar
-              navItems={subCategory[pageName]}
-              navTitle={category[pageName].title}
+              navItems={
+                typeof pageName === 'string'
+                  ? custom_nav[pageName]
+                  : subCategory[pageName]
+              }
+              navTitle={
+                typeof pageName === 'string'
+                  ? pageName
+                  : category[pageName].title
+              }
               activeNavId={activeNavId}
               updateActiveNavId={updateActiveNavId}
             />
-            {post && post.id >= 0 ? (
+            {typeof pageName === 'string' ? (
+              <>
+                {pageName === '상담 신청' && <Consulting pageName={pageName} />}
+              </>
+            ) : post && post.id >= 0 ? (
               <>
                 <SubContentDetail
                   subCategory={subCategory[pageName]}

@@ -3,18 +3,12 @@ import { NavLink } from 'react-router-dom';
 import styles from './styles.module.css';
 import { FaAngleRight } from 'react-icons/fa';
 
-export default function SubNavbar({
-  navItems,
-  navTitle,
-  updateActiveNavId,
-  activeNavId,
-}) {
+export default function SubNavbar({ navItems, navTitle, updateActiveNavId }) {
   return (
     <div className={styles.nav_wrap}>
       <div className={styles.nav_title}>{navTitle}</div>
       <ul className={styles.nav}>
         {navItems.map((value) => {
-          // title이 있을 경우에만 출력한다.
           if (value.title.length > 0)
             return (
               <NavLink

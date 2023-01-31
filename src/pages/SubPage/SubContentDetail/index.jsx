@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.css';
 import './style.css';
+import SubPageHeader from 'components/SubPageHeader';
 export default function SubContentDetail({
   category,
   subCategory,
@@ -15,12 +16,7 @@ export default function SubContentDetail({
   return (
     <div className={styles.content_wrap}>
       <div>
-        <div
-          className={
-            styles.route_url
-          }>{`HOME > ${category} > ${subCateTitle}`}</div>
-        <h1 className={styles.sub_title}>{subCateTitle}</h1>
-        <div className={styles.line}></div>
+        <SubPageHeader category={category} subCateTitle={subCateTitle} />
       </div>
       <div className={styles.content} ref={contentRef}></div>
     </div>
