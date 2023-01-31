@@ -1,6 +1,29 @@
 .page_wrapper {
-  padding: 3rem;
   overflow: hidden;
+  background-color: var(--color-white);
   display: flex;
-  justify-content: center;
+  padding-top: 8rem;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+.accelerating_wrap {
+  width: 1300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.header {
+  width: 950px;
+}
+.tab_wrap {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 50px;
+  grid-row-gap: 0px;
+}
+
+.wrap {
+  height: 750px;
 }

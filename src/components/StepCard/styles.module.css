@@ -1,0 +1,42 @@
+.card_wrap {
+  width: 350px;
+  height: 720px;
+  padding: 30px;
+  box-shadow: -10px 10px 20px -4px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow: -10px 10px 20px -4px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: -10px 10px 20px -4px rgba(0, 0, 0, 0.22);
+  border-radius: 20px;
+  position: relative;
+}
+
+.title {
+  width: 350px;
+  height: 100px;
+  transform: translateX(-70px);
+  position: relative;
+  border-radius: 0px 20px 20px 0px;
+  box-shadow: -1px 6px 4px -1px rgba(0, 0, 0, 0.21);
+  -webkit-box-shadow: -1px 6px 4px -1px rgba(0, 0, 0, 0.21);
+  -moz-box-shadow: -1px 6px 4px -1px rgba(0, 0, 0, 0.21);
+  color: var(--color-white);
+  font-size: 1.875rem;
+  font-weight: bold;
+}
+.title_desc {
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  font-weight: 200;
+}
+.title_desc > span {
+  font-weight: bold;
+}
+
+.title:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red;
+  width: 100px;
+  height: 100px;
+}

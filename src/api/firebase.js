@@ -116,24 +116,6 @@ export function onUserStateChange(callback) {
   });
 }
 
-export async function getBannerImg() {
-  return get(ref(database, `banner`)).then((snapshot) => {
-    if (snapshot.exists()) {
-      return Object.values(snapshot.val());
-    }
-    return [];
-  });
-}
-// 메인 intro_header 관련
-export async function getIntroTab() {
-  return get(ref(database, `intro_tab`)).then((snapshot) => {
-    if (snapshot.exists()) {
-      return Object.values(snapshot.val());
-    }
-    return [];
-  });
-}
-
 //Get
 export async function getItems(target) {
   return get(ref(database, target)).then((snapshot) => {
@@ -149,4 +131,15 @@ export async function updateItems(target, items) {
   const updateObj = {};
   updateObj[target] = items;
   return update(ref(database), updateObj);
+}
+
+// 카테고리 추가하기
+export async function addNewSubCate(nav) {
+  const { path, title, cate } = nav;
+  const id = 0;
+  return set(ref(database, `sub_nav/${cate}/${id}`), {
+    id,
+    path,
+    title,
+  });
 }

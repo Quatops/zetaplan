@@ -52,6 +52,17 @@ export const nations = [
         logo: 'https://res.cloudinary.com/dprbw1pa0/image/upload/v1674107570/assets/china1_klkdub.png',
       },
       {
+        name: '중국(SIPA/상해지식산권거래소)',
+        detail:
+          'China National Intellectual Property Administration Shanghai Service Center',
+        logo: 'https://res.cloudinary.com/dprbw1pa0/image/upload/v1674107570/assets/china1_klkdub.png',
+      },
+      {
+        name: '중국(STDZP/절강학기술청)',
+        detail: 'Science and Technology Department of Zhejiang Provice',
+        logo: 'https://res.cloudinary.com/dprbw1pa0/image/upload/v1674107570/assets/china1_klkdub.png',
+      },
+      {
         name: '베이징기술교역촉진중심',
         detail:
           'BTEC : Beijing Technology Transfer & Exchange, Promotion Center',
@@ -146,6 +157,11 @@ export const nations = [
       {
         name: '싱가포르 특허청 (IPOS)',
         detail: 'Beijing Technology Transfer & Exchange, ...',
+        logo: 'https://res.cloudinary.com/dprbw1pa0/image/upload/v1674107573/assets/singapore2_e7xa2a.png',
+      },
+      {
+        name: '싱가포르(Origgin Ventures)',
+        detail: 'Origgin Ventures Pte Ltd',
         logo: 'https://res.cloudinary.com/dprbw1pa0/image/upload/v1674107573/assets/singapore2_e7xa2a.png',
       },
     ],

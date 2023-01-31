@@ -15,13 +15,13 @@ import { useCategoryContext } from 'context/CategoryContext';
 showCate : 카테고리를 보여줄것인지에 대한 변수. 
 activeCateIdx : header nav-item중 활성화된 카테고리의 idx
 isWhite : header 테마가 white인지 default인지에 대한 변수.
+scrollPosition: 스크롤 이동 위치값
 */
 export default function Header({ isWhite }) {
   const [activeCateIdx, setActiveCateIdx] = useState(null);
   const [showCate, setShowCate] = useState(false);
   const [activeEditBtn, setActiveEditBtn] = useState(false);
   const { isAdmin, user_logout } = useAuthContext();
-
   const { category, subCategory } = useCategoryContext();
   const { modifyMainMenu } = useMenu();
 
