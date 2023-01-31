@@ -46,9 +46,6 @@ export default function Header({ isWhite }) {
       },
     });
   };
-  const updateScroll = () => {
-    setScrollPosition(window.scrollY || document.documentElement.scrollTop);
-  };
 
   return (
     <>

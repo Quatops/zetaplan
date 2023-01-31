@@ -1,5 +1,5 @@
 import SubNavbar from 'components/SubNavbar';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import { useLocation } from 'react-router-dom';
 import { useOutletContext } from 'react-router-dom';
@@ -19,6 +19,7 @@ export default function SubPage({ pageName }) {
   const { category, subCategory } = useCategoryContext();
   const { isAdmin } = useAuthContext();
   const updateisWhite = useOutletContext();
+  const [scrollPosition, setScrollPosition] = useState(0);
   const [activeNavId, setActiveNavId] = useState(
     location.state ? location.state.id : 0,
   );
@@ -26,11 +27,11 @@ export default function SubPage({ pageName }) {
   const removePost = useMutation((id) => deletePost(id), {
     onSuccess: () => queryClient.invalidateQueries('posts'),
   });
+  const [post, setPost] = useState(null);
+  const subPageWrapperRef = useRef();
   const updateActiveNavId = (idx) => {
     setActiveNavId(idx);
   };
-
-  const [post, setPost] = useState(null);
 
   useEffect(() => {
     updateisWhite(false);
@@ -54,6 +55,25 @@ export default function SubPage({ pageName }) {
       setPost(data);
     });
   }, [activeNavId]);
+  const updateScroll = () => {
+    if (subPageWrapperRef.current) {
+      const wrapperRefCurrent = subPageWrapperRef.current;
+      setScrollPosition(
+        wrapperRefCurrent.scrollY || wrapperRefCurrent.scrollTop,
+      );
+    }
+  };
+  useEffect(() => {
+    console.log('발생!');
+    if (subPageWrapperRef.current) {
+      const wrapperRefCurrent = subPageWrapperRef.current;
+      wrapperRefCurrent.addEventListener('scroll', updateScroll);
+    }
+  });
+  useEffect(() => {
+    console.log(scrollPosition);
+    scrollPosition > 100 ? updateisWhite(true) : updateisWhite(false);
+  }, [scrollPosition]);
 
   const handleRemove = (idx) => {
     if (window.confirm('삭제하시겠습니까?')) {
@@ -71,7 +91,7 @@ export default function SubPage({ pageName }) {
   return (
     <>
       {category && subCategory && (
-        <div className={styles.subPage_wrap}>
+        <div className={styles.subPage_wrap} ref={subPageWrapperRef}>
           <section className={styles.page_title}>
             <p>{category[pageName].title}</p>
           </section>
