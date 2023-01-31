@@ -1,0 +1,9 @@
+.slider_banner_wrapper {
+  width: auto;
+  height: 220px;
+  position: relative;
+}
+.slider_banner_img {
+  max-width: 100%;
+  height: 100%;
+}

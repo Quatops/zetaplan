@@ -5,7 +5,7 @@ import MainArticles from 'pages/MainPage/Main/MainArticles';
 
 import { useAuthContext } from 'context/AuthContext';
 import AdminEditBanner from 'components/AdminEdits/AdminEditBanner';
-import useMain from 'hooks/useMain';
+import { useMain } from 'hooks/useItems';
 import MainArticleTabs from './MainArticleTabs';
 import MainAsideBtn2 from './MainAsideBtn2';
 import MainContactUs from './MainContactUs';

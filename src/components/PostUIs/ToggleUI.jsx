@@ -8,7 +8,7 @@ export default function ToggleUI({ children }) {
       <div className="toggle_label">
         <label className="toggle_prefix" htmlFor={id}>
           <img
-            src="https://res.cloudinary.com/dprbw1pa0/image/upload/v1674286158/h1gbf4ly2wrbivuaoctq.png"
+            src="https://res.cloudinary.com/detylqu5a/image/upload/v1675142613/write-form/tq10rld1mplsi0v3yf1h_tumanh.png"
             alt="prefix_image"
           />
         </label>

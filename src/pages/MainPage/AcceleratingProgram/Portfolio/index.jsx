@@ -20,17 +20,15 @@ export default function Portfolio({ logo_images }) {
             )}, 1fr)`,
           }}>
           {logo_images.map((image, index) => (
-            <>
-              <div
-                className={`${styles.logo_img} flex_center`}
-                key={index}
-                style={{
-                  width: `100%`,
-                  height: `100%`,
-                }}>
-                <img src={image} alt="엑설러레이팅 포트폴리오" />
-              </div>
-            </>
+            <div
+              className={`${styles.logo_img} flex_center`}
+              key={index}
+              style={{
+                width: `100%`,
+                height: `100%`,
+              }}>
+              <img src={image} alt="엑설러레이팅 포트폴리오" />
+            </div>
           ))}
         </div>
       </>
