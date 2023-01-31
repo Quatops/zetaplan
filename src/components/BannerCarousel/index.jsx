@@ -1,27 +1,26 @@
 import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
-
-import styles from './styles.module.css';
-import 'swiper/css';
-import 'swiper/css/navigation';
-
+import Slider from 'react-slick';
+import './style.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+const settings = {
+  dots: false,
+  infinite: true,
+  speed: 700,
+  autoplay: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
 export default function BannerCarousel({ bannerImages }) {
   return (
     <>
-      <Swiper
-        navigation={true}
-        modules={[Navigation]}
-        className={styles.banner_swiper}>
+      <Slider {...settings}>
         {bannerImages.map((value, index) => (
-          <SwiperSlide key={index}>
-            <div className={styles.banner_wrapper}>
-              <img src={value} alt="배너이미지" className={styles.banner_img} />
-              <p className="legend">{value}</p>
-            </div>
-          </SwiperSlide>
+          <div className="slider_banner_wrapper flex_center" key={index}>
+            <img src={value} alt="배너이미지" className="slider_banner_img" />
+          </div>
         ))}
-      </Swiper>
+      </Slider>
     </>
   );
 }

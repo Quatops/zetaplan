@@ -30,11 +30,11 @@ export default function StepCard({
       </header>
       <section>
         {program.map((v, index) => (
-          <div className={styles.contents}>
+          <div className={styles.contents} key={index}>
             <p className={styles.content_title}>{v.title}</p>
             <ul className={styles.content}>
               {v.content.map((c, i) => (
-                <li>{c}</li>
+                <li key={i}>{c}</li>
               ))}
             </ul>
           </div>

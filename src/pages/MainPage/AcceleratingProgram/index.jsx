@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 import Program from './Program';
 import Differentiation from './Differentiation';
 import Portfolio from './Portfolio';
-import useAccelerating from 'hooks/useAccelerating';
+import { useAccelerating } from 'hooks/useItems';
 
 const header_items = [
   '액설러레이팅 프로그램',

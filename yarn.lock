@@ -5089,13 +5089,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:^1.1.1":
-  version: 1.2.1
-  resolution: "clsx@npm:1.2.1"
-  checksum: 30befca8019b2eb7dbad38cff6266cf543091dae2825c856a62a8ccf2c3ab9c2907c4d12b288b73101196767f66812365400a227581484a05f968b0307cfaf12
-  languageName: node
-  linkType: hard
-
 "co@npm:^4.6.0":
   version: 4.6.0
   resolution: "co@npm:4.6.0"
@@ -5248,6 +5241,13 @@ __metadata:
     safe-buffer: 5.1.2
     vary: ~1.1.2
   checksum: 35c0f2eb1f28418978615dc1bc02075b34b1568f7f56c62d60f4214d4b7cc00d0f6d282b5f8a954f59872396bd770b6b15ffd8aa94c67d4bce9b8887b906999b
+  languageName: node
+  linkType: hard
+
+"compute-scroll-into-view@npm:^1.0.20":
+  version: 1.0.20
+  resolution: "compute-scroll-into-view@npm:1.0.20"
+  checksum: f15fab29221953620735393ac1866541aab0d27d28078bedbba071a291ee9c8cc1a72bee302cf0bc06ed83c5e55afb74ebcbd634a63671ba33cf1fb1c51d3308
   languageName: node
   linkType: hard
 
@@ -6108,15 +6108,6 @@ __metadata:
     domhandler: ^4.2.0
     entities: ^2.0.0
   checksum: fbb0b01f87a8a2d18e6e5a388ad0f7ec4a5c05c06d219377da1abc7bb0f674d804f4a8a94e3f71ff15f6cb7dcfc75704a54b261db672b9b3ab03da6b758b0b22
-  languageName: node
-  linkType: hard
-
-"dom7@npm:^4.0.4":
-  version: 4.0.4
-  resolution: "dom7@npm:4.0.4"
-  dependencies:
-    ssr-window: ^4.0.0
-  checksum: b38604f74e915b4d05b6634f9ff239a708c468180f498a28ff67f2a61233697d9bd7192703b788a24541c3591e7f1a6e83a2cbf70bc871a85e033f82e19abc31
   languageName: node
   linkType: hard
 
@@ -9449,13 +9440,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.isequal@npm:^4.0.0":
-  version: 4.5.0
-  resolution: "lodash.isequal@npm:4.5.0"
-  checksum: da27515dc5230eb1140ba65ff8de3613649620e8656b19a6270afe4866b7bd461d9ba2ac8a48dcc57f7adac4ee80e1de9f965d89d4d81a0ad52bb3eec2609644
-  languageName: node
-  linkType: hard
-
 "lodash.memoize@npm:^4.1.2":
   version: 4.1.2
   resolution: "lodash.memoize@npm:4.1.2"
@@ -11464,7 +11448,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:15.x, prop-types@npm:15.x.x - 16.x.x, prop-types@npm:^15.6.2, prop-types@npm:^15.8, prop-types@npm:^15.8.1":
+"prop-types@npm:15.x.x - 16.x.x, prop-types@npm:^15.6.2, prop-types@npm:^15.8, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -11675,19 +11659,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-draggable@npm:^4.0.0, react-draggable@npm:^4.0.3":
-  version: 4.4.5
-  resolution: "react-draggable@npm:4.4.5"
-  dependencies:
-    clsx: ^1.1.1
-    prop-types: ^15.8.1
-  peerDependencies:
-    react: ">= 16.3.0"
-    react-dom: ">= 16.3.0"
-  checksum: 21c3775db086e13020967627c20acd41d1ddbc7c7d7fca51491a5bbb54a0aa7e1730a4bc9af17141eb50a4954e547a5e25b2368f5f54b70db6f2686a897bacf2
-  languageName: node
-  linkType: hard
-
 "react-error-overlay@npm:^6.0.11":
   version: 6.0.11
   resolution: "react-error-overlay@npm:6.0.11"
@@ -11708,19 +11679,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-grid-layout@npm:^1.3.4":
-  version: 1.3.4
-  resolution: "react-grid-layout@npm:1.3.4"
+"react-horizontal-scrolling-menu@npm:^3.2.3":
+  version: 3.2.3
+  resolution: "react-horizontal-scrolling-menu@npm:3.2.3"
   dependencies:
-    clsx: ^1.1.1
-    lodash.isequal: ^4.0.0
-    prop-types: ^15.8.1
-    react-draggable: ^4.0.0
-    react-resizable: ^3.0.4
+    smooth-scroll-into-view-if-needed: ^1.1.32
   peerDependencies:
-    react: ">= 16.3.0"
-    react-dom: ">= 16.3.0"
-  checksum: f56c8c452acd9588edf1dc6996a4ea14d9f669d77f6b2ebd50146eaeeb9325c83f5ca44b66bac2b8c24f9cb2ec7ed49396350435991255c3b31e21b8a2e3d243
+    react: ">=16.8"
+  checksum: 4898c689a5afc128a22b406aba96c664a3639d94b4b810de547bf2ac708b56bff6aa608af9de7e57c4454a7da93ff0cc75b451c9fb469234e6ea958257840863
   languageName: node
   linkType: hard
 
@@ -11784,18 +11750,6 @@ __metadata:
   version: 0.11.0
   resolution: "react-refresh@npm:0.11.0"
   checksum: 112178a05b1e0ffeaf5d9fb4e56b4410a34a73adeb04dbf13abdc50d9ac9df2ada83e81485156cca0b3fa296aa3612751b3d6cd13be4464642a43679b819cbc7
-  languageName: node
-  linkType: hard
-
-"react-resizable@npm:^3.0.4":
-  version: 3.0.4
-  resolution: "react-resizable@npm:3.0.4"
-  dependencies:
-    prop-types: 15.x
-    react-draggable: ^4.0.3
-  peerDependencies:
-    react: ">= 16.3"
-  checksum: cbf86ad04be0f073102489ad25a2ba101779f0f00e580d48e1be73c4057c36a4e8ee8308b020ad3dd91555bb24082ceeef674d5035a38d33a2d43aed192db7fa
   languageName: node
   linkType: hard
 
@@ -12450,6 +12404,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"scroll-into-view-if-needed@npm:^2.2.28":
+  version: 2.2.31
+  resolution: "scroll-into-view-if-needed@npm:2.2.31"
+  dependencies:
+    compute-scroll-into-view: ^1.0.20
+  checksum: 93b28f3723a462245b40d4120c40c542c8449473e2b157a5f8e18f04d95d66cd35249d96c625e8a440a56891f7d8905b1d026c690bdda07fcfb4f1a48d643ad1
+  languageName: node
+  linkType: hard
+
 "select-hose@npm:^2.0.0":
   version: 2.0.0
   resolution: "select-hose@npm:2.0.0"
@@ -12658,6 +12621,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"smooth-scroll-into-view-if-needed@npm:^1.1.32":
+  version: 1.1.33
+  resolution: "smooth-scroll-into-view-if-needed@npm:1.1.33"
+  dependencies:
+    scroll-into-view-if-needed: ^2.2.28
+  checksum: feb4c58fd18a5372121beb9d6b6711092fe8766fce5622f454036066e9f14735cc45dddc1d0f09a9437fdc186083c095c569066671db0f1365adbff02da0cd43
+  languageName: node
+  linkType: hard
+
 "sockjs@npm:^0.3.24":
   version: 0.3.24
   resolution: "sockjs@npm:0.3.24"
@@ -12788,13 +12760,6 @@ __metadata:
   version: 1.0.3
   resolution: "sprintf-js@npm:1.0.3"
   checksum: 19d79aec211f09b99ec3099b5b2ae2f6e9cdefe50bc91ac4c69144b6d3928a640bb6ae5b3def70c2e85a2c3d9f5ec2719921e3a59d3ca3ef4b2fd1a4656a0df3
-  languageName: node
-  linkType: hard
-
-"ssr-window@npm:^4.0.0, ssr-window@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "ssr-window@npm:4.0.2"
-  checksum: df182600927f4f3225224cf8c02338ea637c9750519505bbfb9a9236741a2a7ec088386fb948bca7b447b8303d9109e7dc7672e3de041c79ac2a0e03665af7d2
   languageName: node
   linkType: hard
 
@@ -13127,16 +13092,6 @@ __metadata:
   bin:
     svgo: bin/svgo
   checksum: b92f71a8541468ffd0b81b8cdb36b1e242eea320bf3c1a9b2c8809945853e9d8c80c19744267eb91cabf06ae9d5fff3592d677df85a31be4ed59ff78534fa420
-  languageName: node
-  linkType: hard
-
-"swiper@npm:^8.4.5":
-  version: 8.4.5
-  resolution: "swiper@npm:8.4.5"
-  dependencies:
-    dom7: ^4.0.4
-    ssr-window: ^4.0.2
-  checksum: 7b790b897c4aeb616cae02517a1137dc3f8d552bcc3ecb2942ddf8e4ae75f2efeb28816d3d4e648248c3a24eb3611f2700f555372c15f7163cc2434da3ef8317
   languageName: node
   linkType: hard
 
@@ -14557,14 +14512,13 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     react-globe.gl: ^2.22.10
-    react-grid-layout: ^1.3.4
+    react-horizontal-scrolling-menu: ^3.2.3
     react-icons: ^4.7.1
     react-js-pagination: ^3.0.3
     react-router-dom: ^6.6.1
     react-scripts: 5.0.1
     react-slick: ^0.29.0
     slick-carousel: ^1.8.1
-    swiper: ^8.4.5
     three: ^0.148.0
     uuid: ^9.0.0
     web-vitals: ^2.1.4
