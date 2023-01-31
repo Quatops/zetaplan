@@ -28,7 +28,7 @@ export default function InvestmentLogo({ disableScroll, enableScroll }) {
     }
   }
   // 세로 줄 갯수
-  const COUNT = 4;
+  const COUNT = 5;
   return (
     <div className={styles.page_wrapper}>
       <>
