@@ -5,9 +5,9 @@ export default function SubPageHeader({ category, subCateTitle }) {
   return (
     <>
       <div className={styles.route_url}>
-        {subCateTitle
+        {category
           ? `HOME > ${category} > ${subCateTitle}`
-          : ` HOME > ${category}`}
+          : ` HOME > ${subCateTitle}`}
       </div>
       <h1 className={styles.sub_title}>{subCateTitle}</h1>
       <div className={styles.line}></div>

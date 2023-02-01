@@ -92,7 +92,7 @@ export default function Consulting({ pageName }) {
 
   return (
     <div className={styles.content_wrap}>
-      <SubPageHeader category={pageName} subCateTitle={pageName} />
+      <SubPageHeader subCateTitle={pageName} />
       <div className={styles.contents}>
         <section>
           <article className={styles.title}>신청자 정보</article>

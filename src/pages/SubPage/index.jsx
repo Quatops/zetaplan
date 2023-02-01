@@ -13,9 +13,11 @@ import styles from './styles.module.css';
 import SubContentDetail from './SubContentDetail';
 import Footer from 'components/Footer';
 import Consulting from './Consulting';
+import Location from './Location';
 
 const custom_nav = {
   '상담 신청': [{ title: '상담 신청' }],
+  '오시는 길': [{ title: '오시는 길' }],
 };
 
 export default function SubPage({ pageName }) {
@@ -69,14 +71,12 @@ export default function SubPage({ pageName }) {
     }
   };
   useEffect(() => {
-    console.log('발생!');
     if (subPageWrapperRef.current) {
       const wrapperRefCurrent = subPageWrapperRef.current;
       wrapperRefCurrent.addEventListener('scroll', updateScroll);
     }
   });
   useEffect(() => {
-    console.log(scrollPosition);
     scrollPosition > 100 ? updateisWhite(true) : updateisWhite(false);
   }, [scrollPosition]);
 
@@ -122,6 +122,7 @@ export default function SubPage({ pageName }) {
             {typeof pageName === 'string' ? (
               <>
                 {pageName === '상담 신청' && <Consulting pageName={pageName} />}
+                {pageName === '오시는 길' && <Location pageName={pageName} />}
               </>
             ) : post && post.id >= 0 ? (
               <>

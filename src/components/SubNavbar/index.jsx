@@ -8,11 +8,11 @@ export default function SubNavbar({ navItems, navTitle, updateActiveNavId }) {
     <div className={styles.nav_wrap}>
       <div className={styles.nav_title}>{navTitle}</div>
       <ul className={styles.nav}>
-        {navItems.map((value) => {
+        {navItems.map((value, index) => {
           if (value.title.length > 0)
             return (
               <NavLink
-                key={value.id}
+                key={index}
                 className="subnav_nav_items"
                 onClick={() => updateActiveNavId(value.id)}
                 to={value.path}>

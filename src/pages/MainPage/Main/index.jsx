@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styles from './styles.module.css';
-import BannerCarousel from 'components/BannerCarousel';
-import MainArticles from 'pages/MainPage/Main/MainArticles';
+import { useNavigate } from 'react-router-dom';
 
 import { useAuthContext } from 'context/AuthContext';
 import AdminEditBanner from 'components/AdminEdits/AdminEditBanner';
@@ -10,6 +9,8 @@ import MainArticleTabs from './MainArticleTabs';
 import MainAsideBtn2 from './MainAsideBtn2';
 import MainContactUs from './MainContactUs';
 import MainAsideBtn1 from './MainAsideBtn1';
+import BannerCarousel from 'components/BannerCarousel';
+import MainArticles from 'pages/MainPage/Main/MainArticles';
 import AdminEditAsideBtn1 from 'components/AdminEdits/AdminEditAsideBtn1';
 import AdminEditAsideBtn2 from 'components/AdminEdits/AdminEditAsideBtn2';
 import AdminEditArticles from 'components/AdminEdits/AdminEditArticles';
@@ -203,6 +204,7 @@ const newsList = [
 
 export default function Main() {
   const { isAdmin } = useAuthContext();
+  const navigate = useNavigate();
 
   const { modifyBanner, modifyIntroTab, modifyAsideBtn1, modifyAsideBtn2 } =
     useMain();
@@ -371,7 +373,9 @@ export default function Main() {
                 </>
               )}
             </article>
-            <article className={styles.map_info}>
+            <article
+              className={styles.map_info}
+              onClick={() => navigate('/location')}>
               <div>
                 <span>찾아오시는 길</span>
                 <p>오시는 길을 안내해 드립니다.</p>
