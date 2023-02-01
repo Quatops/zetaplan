@@ -10,7 +10,7 @@ export default function Differentiation({ differentiations }) {
         <div
           className={`${styles.icons} flex_center`}
           style={{ backgroundColor: `#${colorArray[index]}` }}>
-          <img src={require(`assets/accelerating_icon.png`)} alt="icon" />
+          <img src={require(`assets/diffrence_${index}.png`)} alt="icon" />
           <div
             className={`${styles.info} ${
               index < 3 ? styles.right : styles.left
