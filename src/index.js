@@ -61,6 +61,14 @@ const router = createBrowserRouter([
         path: 'location',
         element: <SubPage pageName="오시는 길" />,
       },
+      {
+        path: 'assess/:path',
+        element: <SubPage pageName={6} />,
+      },
+      {
+        path: 'voucher/:path',
+        element: <SubPage pageName={7} />,
+      },
     ],
   },
   {

@@ -14,6 +14,7 @@ import SubContentDetail from './SubContentDetail';
 import Footer from 'components/Footer';
 import Consulting from './Consulting';
 import Location from './Location';
+import { useMain } from 'hooks/useItems';
 
 const custom_nav = {
   '상담 신청': [{ title: '상담 신청' }],
@@ -39,7 +40,9 @@ export default function SubPage({ pageName }) {
   const updateActiveNavId = (idx) => {
     setActiveNavId(idx);
   };
-
+  const {
+    AsideBtn1Query: { data: aside_btn1 },
+  } = useMain();
   useEffect(() => {
     updateisWhite(false);
   }, []);
