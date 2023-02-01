@@ -51,12 +51,14 @@ export default function WriteFormList({
         className={styles.form_wrap}>
         <RadioGroup
           label="레이아웃"
-          label_dec="지정된 레이아웃을 선택해보세요.">
+          label_dec="지정된 레이아웃을 선택해보세요."
+          className={styles.input_wrap}>
           {new Array(3).fill(0).map((_, index) => (
             <div key={index}>
               <Radio
                 name="selectUI"
                 value={index}
+                className={styles.radio_label}
                 styles={radio_style}
                 handleChecked={handleChecked}>
                 <div className={`${styles.post_ui}`}>

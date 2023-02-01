@@ -9,13 +9,11 @@ export default function Radio({
   defaultChecked,
   disabled,
   handleChecked,
+  className,
 }) {
   const id = uuid();
   return (
-    <label
-      htmlFor={id}
-      style={{ position: 'relative' }}
-      className={styles.radio_label}>
+    <label htmlFor={id} style={{ position: 'relative' }} className={className}>
       <input
         id={id}
         type="radio"
