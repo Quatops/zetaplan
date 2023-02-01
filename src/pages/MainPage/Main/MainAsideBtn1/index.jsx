@@ -11,7 +11,7 @@ export default function MainAsideBtn1({ aside_btn1 }) {
         <button
           className={styles.ass_btn}
           key={index}
-          onClick={() => navigate(`/assess/${value.path}`)}>
+          onClick={() => navigate(value.path)}>
           <div className={styles.ass_icon}>
             <img src={value.src} alt="icon" />
           </div>

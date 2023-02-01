@@ -7,26 +7,33 @@ export default function AdminEditGlobalNavbar({
   handleEditSubmit,
   subCategory,
 }) {
-  const [menu, setMenu] = useState(
-    Array.from(Array(subCategory.length), (_, i) => {
-      const obj = new Array(7).fill('');
-      subCategory[i].map((small, sId) => {
-        obj[sId] = small.title;
-      });
-      return obj;
-    }),
-  );
+  // const [menu, setMenu] = useState(
+  //   Array.from(Array(subCategory.length), (_, i) => {
+  //     const obj = new Array(7).fill('');
+  //     subCategory[i].map((small, sId) => {
+  //       obj[sId] = small.title;
+  //     });
+  //     return obj;
+  //   }),
+  // );
+
+  const [menuItem, setMenuItem] = useState();
+  const [activeIdx, setActiveIdx] = useState(0);
 
   const handleChange = (e, bId, sId) => {
-    setMenu((prev) => {
+    setMenuItem((prev) => {
       prev[bId][sId] = e;
       return [...prev];
     });
-    console.log(menu);
+    console.log(menuItem);
+  };
+
+  const handleonClick = (obj) => {
+    console.log(obj);
   };
   return (
     <AdminEditContainer
-      modalSize={{ height: '400px' }}
+      modalSize={{ height: '320px', width: '850px' }}
       title="서브 메뉴 수정"
       position={{ bottom: 0 }}>
       <form
@@ -34,26 +41,22 @@ export default function AdminEditGlobalNavbar({
         className={styles.form_wrap}
         onSubmit={(e) => {
           e.preventDefault();
-          handleEditSubmit(menu);
         }}>
-        {menu && (
-          <div className={styles.edit_wrap}>
-            {subCategory.map((big, bIdx) => (
-              <div className={styles.edit_bigcate} key={bIdx}>
-                {big.map((small, sIdx) => (
-                  <input
-                    key={small.id}
-                    type="text"
-                    className={styles.edit_items}
-                    name="menu"
-                    value={menu[bIdx][sIdx]}
-                    onChange={(e) => handleChange(e.target.value, bIdx, sIdx)}
-                  />
-                ))}
-              </div>
-            ))}
-          </div>
-        )}
+        <div className={styles.edit_wrap}>
+          {subCategory.slice(0, 6).map((big, bIdx) => (
+            <div className={styles.edit_bigcate} key={bIdx}>
+              {big.map((small, sIdx) => (
+                <div
+                  key={sIdx}
+                  className={`${styles.subnav_btn} flex_center`}
+                  onClick={() => handleonClick(small)}>
+                  {small.title}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+        <input />
         <Button widthSize="100%">변경하기</Button>
       </form>
     </AdminEditContainer>

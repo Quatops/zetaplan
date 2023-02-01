@@ -11,14 +11,14 @@ export default function AdminEditAsideBtn1({
   aside_btn1,
 }) {
   const [btns, setBtns] = useState([
-    { name: aside_btn1[0].name, src: aside_btn1[0].src },
-    { name: aside_btn1[1].name, src: aside_btn1[1].src },
-    { name: aside_btn1[2].name, src: aside_btn1[2].src },
-    { name: aside_btn1[3].name, src: aside_btn1[3].src },
+    { title: aside_btn1[0].title, src: aside_btn1[0].src },
+    { title: aside_btn1[1].title, src: aside_btn1[1].src },
+    { title: aside_btn1[2].title, src: aside_btn1[2].src },
+    { title: aside_btn1[3].title, src: aside_btn1[3].src },
   ]);
   const handleChangeText = (e, id) => {
     setBtns((prev) => {
-      prev[id]['name'] = e;
+      prev[id]['title'] = e;
       return [...prev];
     });
   };
@@ -66,7 +66,7 @@ export default function AdminEditAsideBtn1({
                 />
               </div>
               <input
-                value={btn.name}
+                value={btn.title}
                 type="text"
                 className={styles.edit_items}
                 onChange={(e) => handleChangeText(e.target.value, index)}

@@ -54,20 +54,44 @@ const router = createBrowserRouter([
         element: <SubPage pageName={5} />,
       },
       {
+        path: 'corporate-technique-valuation/:path',
+        element: <SubPage pageName={6} />,
+      },
+      {
+        path: 'strategic-center/:path',
+        element: <SubPage pageName={7} />,
+      },
+      {
+        path: 'system-business-certification/:path',
+        element: <SubPage pageName={8} />,
+      },
+      {
+        path: 'credit-rating/:path',
+        element: <SubPage pageName={9} />,
+      },
+      {
+        path: 'manufacturing-innovation-voucher/:path',
+        element: <SubPage pageName={10} />,
+      },
+      {
+        path: 'export-voucher/:path',
+        element: <SubPage pageName={11} />,
+      },
+      {
+        path: 'r-db-support/:path',
+        element: <SubPage pageName={12} />,
+      },
+      {
+        path: 'partners-network/:path',
+        element: <SubPage pageName={13} />,
+      },
+      {
         path: 'consulting',
         element: <SubPage pageName="상담 신청" />,
       },
       {
         path: 'location',
         element: <SubPage pageName="오시는 길" />,
-      },
-      {
-        path: 'assess/:path',
-        element: <SubPage pageName={6} />,
-      },
-      {
-        path: 'voucher/:path',
-        element: <SubPage pageName={7} />,
       },
     ],
   },
