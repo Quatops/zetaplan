@@ -4,7 +4,7 @@ import SubPageHeader from 'components/SubPageHeader';
 import React, { useState } from 'react';
 import styles from './styles.module.css';
 
-const Input = ({ id, value, label }) => {
+const Input = ({ id, value, label, setValue }) => {
   return (
     <div className={styles.input_wrap}>
       <label htmlFor={id}>{label}</label>
@@ -13,15 +13,21 @@ const Input = ({ id, value, label }) => {
         value={value}
         className={styles.input}
         placeholder={`${label}을(를) 입력해주세요.`}
+        onChange={(e) => handleChange(e.target.value, setValue, id)}
       />
     </div>
   );
 };
 
-const ArrayInput = ({ idArray, value, labelArray }) => {
-  console.log('id', idArray);
+const ArrayInput = ({ idArray, value, labelArray, setValue }) => {
   return idArray.map((id, i) => (
-    <Input id={id} value={value[id]} label={labelArray[i]} />
+    <Input
+      key={i}
+      id={id}
+      value={value[id]}
+      label={labelArray[i]}
+      setValue={setValue}
+    />
   ));
 };
 
@@ -53,6 +59,9 @@ const filed = [
   '기타분야',
 ];
 
+const handleChange = (e, setValue, id) => {
+  setValue((prev) => ({ ...prev, [id]: e }));
+};
 export default function Consulting({ pageName }) {
   const [applicant, setApplicant] = useState({
     name: '',
@@ -65,7 +74,22 @@ export default function Consulting({ pageName }) {
     year: '',
     website: '',
     employees: '',
+    businessArea: '',
+    companyAddress: '',
+    totalAssets: '',
+    totalLiabilities: '',
+    salesRevenue: '',
+    operatingProfit: '',
   });
+  const [applyContent, setApplyContent] = useState('');
+  const [applyField, setApplyField] = useState(0);
+  const handleTextChange = (e) => {
+    setApplyContent(e);
+  };
+  const handleChecked = (e) => {
+    setApplyField(e);
+  };
+
   return (
     <div className={styles.content_wrap}>
       <SubPageHeader category={pageName} subCateTitle={pageName} />
@@ -76,6 +100,7 @@ export default function Consulting({ pageName }) {
             <ArrayInput
               idArray={['name', 'email', 'position', 'phoneNum']}
               value={applicant}
+              setValue={setApplicant}
               labelArray={[
                 '신청자 이름',
                 '신청자 이메일',
@@ -91,20 +116,37 @@ export default function Consulting({ pageName }) {
           <article className={styles.applicant_company}>
             <div className={`${styles.top} ${styles.grid_four}`}>
               <ArrayInput
-                idArray={['name', 'email', 'position', 'phoneNum']}
-                value={applicant}
+                idArray={['name', 'year', 'website', 'employees']}
+                value={company}
                 labelArray={['회사명', '설립년도', '웹사이트', '종원원수']}
+                setValue={setCompany}
               />
             </div>
             <div className={`${styles.mid} ${styles.grid_two}`}>
-              <Input id="field" value="field" label="사업분야" />
-              <Input id="address" value="address" label="회사주소" />
+              <Input
+                id="businessArea"
+                value={company.businessArea}
+                label="사업분야"
+                setValue={setCompany}
+              />
+              <Input
+                id="companyAddress"
+                value={company.companyAddress}
+                label="회사주소"
+                setValue={setCompany}
+              />
             </div>
             <div className={`${styles.bottom} ${styles.grid_four}`}>
               <ArrayInput
-                idArray={['name', 'email', 'position', 'phoneNum']}
+                idArray={[
+                  'totalAssets',
+                  'totalLiabilities',
+                  'salesRevenue',
+                  'operatingProfit',
+                ]}
                 value={applicant}
                 labelArray={['자산총계', '부채총계', '매출액', '영업이익']}
+                setValue={setCompany}
               />
             </div>
           </article>
@@ -114,7 +156,12 @@ export default function Consulting({ pageName }) {
           <article className={styles.title}>상담분야</article>
           <RadioGroup className={styles.radio_wrap}>
             {filed.map((f, i) => (
-              <Radio name="field" value={i} className={styles.radio}>
+              <Radio
+                key={i}
+                name="field"
+                value={i}
+                className={styles.radio}
+                handleChecked={handleChecked}>
                 {f}
               </Radio>
             ))}
@@ -127,6 +174,8 @@ export default function Consulting({ pageName }) {
             <textarea
               className={styles.apply_text}
               placeholder="상담신청 내용을 입력해주세요."
+              value={applyContent}
+              onChange={(e) => handleTextChange(e.target.value)}
             />
           </div>
         </section>
