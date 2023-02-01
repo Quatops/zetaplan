@@ -18,6 +18,18 @@ import Location from './Location';
 const custom_nav = {
   '상담 신청': [{ title: '상담 신청' }],
   '오시는 길': [{ title: '오시는 길' }],
+  '신용 평가': [
+    { title: '기업.기술 가치평가' },
+    { title: '경영전략 연구소' },
+    { title: '시스템 인증 기업 인증' },
+    { title: 'ESG 평가 산용평가' },
+  ],
+  '바우처 산업': [
+    { title: '기업.기술 가치평가' },
+    { title: '경영전략 연구소' },
+    { title: '시스템 인증 기업 인증' },
+    { title: 'ESG 평가 산용평가' },
+  ],
 };
 
 export default function SubPage({ pageName }) {
