@@ -2,17 +2,18 @@ import React from 'react';
 import styles from './styles.module.css';
 import { useNavigate } from 'react-router-dom';
 
-export default function MainContactUs() {
+export default function MainContactUs({ contact_us }) {
   const navigate = useNavigate();
+  console.log(contact_us);
 
   return (
     <>
       <h1 className={styles.title}>CONTACT US</h1>
       <div className={styles.info}>
-        <p>09:00 - 18:00</p>
-        <span className={styles.call_number}>02&#41; 538-4801</span>
-        <p>02&#41; 561 - 6698 | 070&#41; 8129 - 5884 | 070&#41; 8129 - 5885</p>
-        <span className={styles.email}>zetabiz @ zetaplan.com</span>
+        <p>{contact_us[3]}</p>
+        <span className={styles.call_number}>{contact_us[1]}</span>
+        <p>{contact_us[2]}</p>
+        <span className={styles.email}>{contact_us[0]}</span>
       </div>
       <button
         className={styles.cosulting_apply_btn}

@@ -36,6 +36,8 @@
   cursor: pointer;
   user-select: none;
   margin: 0 5px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
 }
 .nation:hover,
 .nation.active {

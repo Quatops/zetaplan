@@ -9,6 +9,13 @@ export function useMain() {
   const IntroTabQuery = useQuery(['intro_tab'], () => fetchItems('intro_tab'), {
     staleTime: 1000 * 60 * 10,
   });
+  const ContactUsQuery = useQuery(
+    ['contact_us'],
+    () => fetchItems('contact_us'),
+    {
+      staleTime: 1000 * 60 * 100,
+    },
+  );
   const AsideBtn1Query = useQuery(
     ['aside_tab1'],
     () => fetchItems('aside_tab1'),
@@ -50,6 +57,7 @@ export function useMain() {
     IntroTabQuery,
     AsideBtn1Query,
     AsideBtn2Query,
+    ContactUsQuery,
     modifyBanner,
     modifyIntroTab,
     modifyAsideBtn1,

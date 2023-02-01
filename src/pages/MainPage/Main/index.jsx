@@ -15,6 +15,8 @@ import AdminEditAsideBtn1 from 'components/AdminEdits/AdminEditAsideBtn1';
 import AdminEditAsideBtn2 from 'components/AdminEdits/AdminEditAsideBtn2';
 import AdminEditArticles from 'components/AdminEdits/AdminEditArticles';
 
+import { useCategoryContext } from 'context/CategoryContext';
+
 const newsList = [
   [
     {
@@ -206,6 +208,8 @@ export default function Main() {
   const { isAdmin } = useAuthContext();
   const navigate = useNavigate();
 
+  const { category, subCategory } = useCategoryContext();
+
   const { modifyBanner, modifyIntroTab, modifyAsideBtn1, modifyAsideBtn2 } =
     useMain();
 
@@ -233,6 +237,10 @@ export default function Main() {
   } = useMain();
   const {
     AsideBtn2Query: { data: aside_btn2 },
+  } = useMain();
+
+  const {
+    ContactUsQuery: { data: contact_us },
   } = useMain();
 
   // 수정완료 다루기
@@ -336,7 +344,7 @@ export default function Main() {
         </section>
         <aside className={styles.right}>
           <section className={styles.call_info}>
-            <MainContactUs />
+            {contact_us && <MainContactUs contact_us={contact_us} />}
           </section>
           <section className={styles.infos}>
             <article
@@ -345,7 +353,10 @@ export default function Main() {
               onMouseLeave={() => setActiveAsideBtn1(false)}>
               {aside_btn1 && (
                 <>
-                  <MainAsideBtn1 aside_btn1={aside_btn1} />
+                  <MainAsideBtn1
+                    aside_btn1={aside_btn1}
+                    category={category.slice(6, 10)}
+                  />
                   {isAdmin && activeAsideBtn1 && (
                     <AdminEditAsideBtn1
                       handleAsideBtn1Submit={handleAsideBtn1Submit}
@@ -362,7 +373,10 @@ export default function Main() {
               onMouseLeave={() => setActiveAsideBtn2(false)}>
               {aside_btn2 && (
                 <>
-                  <MainAsideBtn2 aside_btn2={aside_btn2} />
+                  <MainAsideBtn2
+                    aside_btn2={aside_btn2}
+                    category={category.slice(10, 14)}
+                  />
                   {isAdmin && activeAsideBtn2 && (
                     <AdminEditAsideBtn2
                       handleAsideBtn2Submit={handleAsideBtn2Submit}

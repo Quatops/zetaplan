@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './styles.module.css';
 import { useNavigate } from 'react-router-dom';
 
-export default function MainAsideBtn1({ aside_btn1 }) {
+export default function MainAsideBtn1({ aside_btn1, category }) {
   const navigate = useNavigate();
 
   return (
@@ -11,7 +11,7 @@ export default function MainAsideBtn1({ aside_btn1 }) {
         <button
           className={styles.ass_btn}
           key={index}
-          onClick={() => navigate(value.path)}>
+          onClick={() => navigate(category[index].path)}>
           <div className={styles.ass_icon}>
             <img src={value.src} alt="icon" />
           </div>

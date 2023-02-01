@@ -56,7 +56,7 @@ export default function GlobalNetwork({ disableScroll, enableScroll }) {
                         activeNationIdx === nation.id && styles.active
                       }`}
                       onClick={() => setActiveNationIdx(nation.id)}>
-                      {nation.name_kor}
+                      {nation.name_eng}
                     </p>
                   ),
               )}
