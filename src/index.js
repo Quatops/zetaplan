@@ -57,6 +57,10 @@ const router = createBrowserRouter([
         path: 'consulting',
         element: <SubPage pageName="상담 신청" />,
       },
+      {
+        path: 'location',
+        element: <SubPage pageName="오시는 길" />,
+      },
     ],
   },
   {
