@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './styles.module.css';
 
-import { FiPlus } from 'react-icons/fi';
+import { RxDoubleArrowRight } from 'react-icons/rx';
 import AdminEditIntroTab from '../../../../components/AdminEdits/AdminEditIntroTab';
 
 export default function MainArticleTabs({
@@ -28,7 +28,7 @@ export default function MainArticleTabs({
         </li>
       ))}
       <li className={styles.header_item}>
-        <FiPlus />
+        <RxDoubleArrowRight />
       </li>
       {isAdmin && activeIntroTabEditBtn && (
         <AdminEditIntroTab
