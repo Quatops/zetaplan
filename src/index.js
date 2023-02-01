@@ -53,6 +53,10 @@ const router = createBrowserRouter([
         path: 'technology-deals/:path',
         element: <SubPage pageName={5} />,
       },
+      {
+        path: 'consulting',
+        element: <SubPage pageName="상담 신청" />,
+      },
     ],
   },
   {

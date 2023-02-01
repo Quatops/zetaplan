@@ -1,6 +1,10 @@
 import React from 'react';
 import styles from './styles.module.css';
+import { useNavigate } from 'react-router-dom';
+
 export default function MainContactUs() {
+  const navigate = useNavigate();
+
   return (
     <>
       <h1 className={styles.title}>CONTACT US</h1>
@@ -10,7 +14,11 @@ export default function MainContactUs() {
         <p>02&#41; 561 - 6698 | 070&#41; 8129 - 5884 | 070&#41; 8129 - 5885</p>
         <span className={styles.email}>zetabiz @ zetaplan.com</span>
       </div>
-      <button className={styles.cosulting_apply_btn}>상담신청</button>
+      <button
+        className={styles.cosulting_apply_btn}
+        onClick={() => navigate('/consulting')}>
+        상담신청
+      </button>
     </>
   );
 }

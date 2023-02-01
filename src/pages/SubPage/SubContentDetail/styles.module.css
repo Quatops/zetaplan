@@ -6,17 +6,3 @@
   padding: 1.5rem;
   min-height: 450px;
 }
-.sub_title {
-  font-size: 2.25rem;
-  padding: 20px 0;
-}
-.route_url {
-  font-size: 0.875rem;
-  font-weight: 200;
-}
-
-.line {
-  height: 1px;
-  width: 100%;
-  background-color: var(--color-black);
-}

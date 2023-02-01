@@ -1,0 +1,84 @@
+.content_wrap {
+  width: 100%;
+}
+
+.contents {
+  width: 80%;
+  padding-top: 2rem;
+  margin: 0 auto;
+}
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.grid_four {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 50px;
+  grid-row-gap: 25px;
+}
+.input_wrap {
+  display: flex;
+  align-items: center;
+}
+.input_wrap label {
+  display: block;
+  min-width: 100px;
+  font-weight: 600;
+}
+.boundary {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-grey);
+  margin: 30px 0 50px 0;
+}
+.input {
+  background-color: var(--color-lightgrey);
+  border: 1px solid var(--color-grey);
+  margin-left: 20px;
+  border-radius: 7px;
+  padding: 0 10px;
+  height: 35px;
+  width: 100%;
+}
+.input::placeholder {
+  color: var(--color-grey);
+}
+
+.grid_two {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-row-gap: 25px;
+}
+.radio_wrap {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  border: none;
+}
+
+.radio {
+  width: 150px;
+  height: 30px;
+}
+.text_wrap {
+  padding: 30px 0;
+}
+.apply_text {
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--color-lightgrey);
+  height: 200px;
+  border: 1px solid var(--color-grey);
+  padding: 1rem;
+  font-family: pretendard;
+  resize: none;
+}
+.apply_text:focus {
+  outline: none;
+}
