@@ -12,12 +12,12 @@ export default function MainAsideBtn2({ aside_btn2 }) {
         <button
           className={styles.etc_btn}
           key={index}
-          onClick={() => navigate(`/voucher/${btn.path}`)}>
+          onClick={() => navigate(btn.path)}>
           <div className="flex_center">
             <div className={styles.etc_icon}>
               <img src={btn.src} alt="icon" />
             </div>
-            {btn.name}
+            {btn.title}
           </div>
           <FaAngleRight />
         </button>

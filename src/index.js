@@ -63,11 +63,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'assess/:path',
-        element: <SubPage pageName="신용 평가" />,
+        element: <SubPage pageName={6} />,
       },
       {
         path: 'voucher/:path',
-        element: <SubPage pageName="바우처 산업" />,
+        element: <SubPage pageName={7} />,
       },
     ],
   },

@@ -15,7 +15,7 @@ export default function MainAsideBtn1({ aside_btn1 }) {
           <div className={styles.ass_icon}>
             <img src={value.src} alt="icon" />
           </div>
-          <p className={styles.ass_name}>{value.name}</p>
+          <p className={styles.ass_name}>{value.title}</p>
         </button>
       ))}
     </>

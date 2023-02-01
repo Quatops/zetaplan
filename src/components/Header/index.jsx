@@ -79,7 +79,7 @@ export default function Header({ isWhite }) {
                 setShowCate(true);
                 setActiveEditBtn(true);
               }}>
-              {category.map((value) => (
+              {category.slice(0, 6).map((value) => (
                 <Link
                   to={value.path}
                   state={{ id: subCategory[value.id][0].id }}
