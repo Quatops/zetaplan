@@ -15,7 +15,7 @@ export default function Program({ programs }) {
       <StepCard
         title_eng="Pre A - Series B"
         title_desc="투자유치 지원, 기업 - 투자자 네트워킹"
-        title="벨류 단계"
+        title="벨류업 단계"
         bg_color="#517CB1"
         program={programs[1]}
       />

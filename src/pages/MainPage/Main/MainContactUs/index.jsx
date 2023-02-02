@@ -7,12 +7,14 @@ export default function MainContactUs({ contact_us }) {
 
   return (
     <>
-      <h1 className={styles.title}>CONTACT US</h1>
-      <div className={styles.info}>
-        <p>{contact_us[3]}</p>
-        <span className={styles.call_number}>{contact_us[1]}</span>
-        <p>{contact_us[2]}</p>
-        <span className={styles.email}>{contact_us[0]}</span>
+      <div className={styles.contents}>
+        <h1 className={styles.title}>CONTACT US</h1>
+        <div className={styles.info}>
+          <p>{contact_us[3]}</p>
+          <span className={styles.call_number}>{contact_us[1]}</span>
+          <p>{contact_us[2]}</p>
+          <span className={styles.email}>{contact_us[0]}</span>
+        </div>
       </div>
       <button
         className={styles.cosulting_apply_btn}

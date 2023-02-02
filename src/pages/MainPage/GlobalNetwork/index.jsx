@@ -8,8 +8,8 @@ import Globe from 'components/Globe';
 import { nations } from 'constants/nations';
 
 export default function GlobalNetwork({ disableScroll, enableScroll }) {
-  const [activeContinentIdx, setActiveContinentIdx] = useState(0);
-  const [activeNationIdx, setActiveNationIdx] = useState(0);
+  const [activeContinentIdx, setActiveContinentIdx] = useState(1);
+  const [activeNationIdx, setActiveNationIdx] = useState(1);
   const updateActiveNationIdx = (idx) => {
     setActiveNationIdx(idx);
     setActiveContinentIdx(nations[idx].continent);
@@ -19,7 +19,7 @@ export default function GlobalNetwork({ disableScroll, enableScroll }) {
   };
   const contimentBtns = () => {
     const result = [];
-    const continents = ['유럽', '아시아', '아메리카'];
+    const continents = ['Europe', 'Asia', 'America'];
     for (let i = 0; i < continents.length; ++i) {
       result.push(
         <button
@@ -55,7 +55,7 @@ export default function GlobalNetwork({ disableScroll, enableScroll }) {
                         activeNationIdx === nation.id && styles.active
                       }`}
                       onClick={() => setActiveNationIdx(nation.id)}>
-                      {nation.name_eng}
+                      {nation.name_kor}
                     </p>
                   ),
               )}
