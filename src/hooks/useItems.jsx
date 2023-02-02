@@ -89,7 +89,7 @@ export function useAccelerating() {
     },
   );
   const modifyAccelePort = useMutation(
-    (image) => updateItems('accelerating_portfolio', image),
+    (images) => updateItems('accelerating_portfolio', images),
     {
       onSuccess: () =>
         queryClient.invalidateQueries(['accelerating_portfolio']),
@@ -120,7 +120,14 @@ export function useInverstPortfolio() {
       staleTime: 1000 * 60 * 10,
     },
   );
+  const modifyInvestmentLogo = useMutation(
+    (content) => updateItems('investment_portfolio', content),
+    {
+      onSuccess: () => queryClient.invalidateQueries(['investment_portfolio']),
+    },
+  );
   return {
     InvestmentLogoQuery,
+    modifyInvestmentLogo,
   };
 }

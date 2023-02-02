@@ -5,7 +5,6 @@ import styles from './styles.module.css';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import NetworkCard from 'components/NetworkdCard';
 import Globe from 'components/Globe';
-
 import { nations } from 'constants/nations';
 
 export default function GlobalNetwork({ disableScroll, enableScroll }) {

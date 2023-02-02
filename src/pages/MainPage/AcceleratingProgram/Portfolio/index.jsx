@@ -4,9 +4,11 @@ import { CiSquarePlus } from 'react-icons/ci';
 import { FaTrashAlt } from 'react-icons/fa';
 import SubmitButton from 'components/SubmitButton';
 import { uploadImage } from 'api/uploader';
+import { useAccelerating } from 'hooks/useItems';
 
 export default function Portfolio({ logo_images, isAdmin }) {
   const [logoItems, setLogoItems] = useState(logo_images);
+  const { modifyAccelePort } = useAccelerating();
   const inputRef = useRef();
   const [edit, setEdit] = useState(false);
   const handleChange = (e) => {
@@ -21,19 +23,30 @@ export default function Portfolio({ logo_images, isAdmin }) {
     inputRef.current.click();
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    modifyAccelePort.mutate(logoItems, {
+      onSuccess: () => {
+        alert('성공적으로 변경되었습니다.');
+      },
+      onError: (e) => {
+        alert(`에러가 발생했습니다. ${e}`);
+      },
+    });
+    setEdit(false);
+  };
   return (
     <div className={styles.porttab_wrap}>
       <div
         className={styles.logo_wrap}
         style={{
           display: 'grid',
-          gridTemplateRows: `repeat(${Math.floor(
-            Math.sqrt(logo_images.length),
-          )}, 1fr)`,
-          gridTemplateColumns: `repeat(${Math.floor(
-            Math.sqrt(logo_images.length),
-          )}, 1fr)`,
+          gridTemplateRows: `repeat(${
+            Math.floor(Math.sqrt(logo_images.length)) + 1
+          }, 1fr)`,
+          gridTemplateColumns: `repeat(${
+            Math.floor(Math.sqrt(logo_images.length)) + 1
+          }, 1fr)`,
+          placeItems: 'center',
         }}>
         {logoItems.map((image, index) => (
           <div
@@ -72,7 +85,9 @@ export default function Portfolio({ logo_images, isAdmin }) {
                   ref={inputRef}
                 />
               </button>
-              <SubmitButton widthSize="400px" onClick={() => handleSubmit()}>
+              <SubmitButton
+                widthSize="400px"
+                handleClick={() => handleSubmit()}>
                 완료하기
               </SubmitButton>
             </>
