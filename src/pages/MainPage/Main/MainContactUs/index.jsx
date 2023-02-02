@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 export default function MainContactUs({ contact_us }) {
   const navigate = useNavigate();
-  console.log(contact_us);
 
   return (
     <>

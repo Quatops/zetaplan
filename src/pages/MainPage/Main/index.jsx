@@ -344,7 +344,9 @@ export default function Main() {
         </section>
         <aside className={styles.right}>
           <section className={styles.call_info}>
-            {contact_us && <MainContactUs contact_us={contact_us} />}
+            <div className={styles.call_wrap}>
+              {contact_us && <MainContactUs contact_us={contact_us} />}
+            </div>
           </section>
           <section className={styles.infos}>
             <article

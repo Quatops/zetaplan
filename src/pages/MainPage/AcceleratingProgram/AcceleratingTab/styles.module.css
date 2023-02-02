@@ -1,6 +1,7 @@
 .accelerating_btn {
   width: 280px;
-  height: 45px;
+  height: 4.6vh;
+  min-height: 30px;
   border-radius: 25px;
   background-color: var(--color-white);
   color: var(--color-black);

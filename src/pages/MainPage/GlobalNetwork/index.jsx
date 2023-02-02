@@ -3,7 +3,7 @@ import styles from './styles.module.css';
 
 // import optional tippy styles for tooltip support
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import NetworkCard from 'components/NetworkdCard';
+import NetworkCard from 'components/NetworkCard';
 import Globe from 'components/Globe';
 import { nations } from 'constants/nations';
 
