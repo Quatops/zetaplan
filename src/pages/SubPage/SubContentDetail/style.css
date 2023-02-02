@@ -8,20 +8,23 @@
   position: relative;
   margin: 10px 0;
 }
-.toggle_label {
-  display: flex;
-  align-items: center;
-}
-
 .toggle_prefix {
   width: 30px;
   height: 30px;
-  cursor: pointer;
   margin-right: 20px;
 }
+.toggle_plus {
+  width: 30px;
+  height: 30px;
+}
+.toggle_label {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
 
-.toggle_checkbox {
-  display: none;
+.toggle_label * {
+  cursor: pointer;
 }
 .toggle_prefix img {
   object-fit: contain;
@@ -31,6 +34,21 @@
 .toggle_title {
   font-weight: 600;
   font-size: 1.4rem;
+}
+
+.toggle_content {
+  font-family: pretendard;
+  padding: 1rem;
+  overflow: auto;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+}
+.toggle_checkbox {
+  display: none;
+}
+
+.toggle_checkbox:checked + .toggle_label + .toggle_content {
+  display: none;
 }
 p a {
   color: #2f97db;
@@ -46,10 +64,6 @@ p a {
   border-radius: 10px;
   margin-top: 20px;
   animation: slideUp 300ms;
-}
-
-.toggle_ui input[type='checkbox']:checked + .toggle_label + .toggle_content {
-  display: none;
 }
 
 /* photocard ui css*/
@@ -77,7 +91,6 @@ p a {
   align-items: center;
 }
 .postcard_text {
-  resize: both;
   overflow: auto;
 }
 .photocard_textwrap {

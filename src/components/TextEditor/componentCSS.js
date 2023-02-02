@@ -38,15 +38,10 @@ export const toggleCSS = `
 /* toggle ui css*/
 .toggle_ui {
   width: 100%;
-  min-height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
-}
-.toggle_label {
-  display: flex;
-  align-items: center;
 }
 
 .toggle_prefix {
@@ -54,7 +49,17 @@ export const toggleCSS = `
   height: 30px;
   margin-right: 20px;
 }
+.toggle_plus {
+  width: 30px;
+  height: 30px;
 
+}
+
+.toggle_label{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
 .toggle_checkbox{
   display:none;
 }
@@ -75,9 +80,6 @@ export const toggleCSS = `
   overflow: auto;
   background-color: #f8f8f8;
   border-radius: 10px;
-}
-.card_ui input[type='checkbox']:checked + .toggle_label + .toggle_content {
-  display: none;
 }
 
 `;
