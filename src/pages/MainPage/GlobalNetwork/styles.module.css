@@ -2,7 +2,7 @@
   overflow: hidden;
   background-color: var(--color-white);
   display: flex;
-  padding-top: 8rem;
+  padding-top: calc(5rem + 4.96vh);
   justify-content: center;
   height: 100%;
 }

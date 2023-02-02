@@ -59,7 +59,6 @@
   border: 1px solid var(--color-grey);
   color: var(--color-white);
   padding: 1rem;
-  overflow-y: scroll;
   position: relative;
 }
 
