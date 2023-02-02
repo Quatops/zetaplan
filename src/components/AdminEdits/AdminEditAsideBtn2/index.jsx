@@ -11,15 +11,15 @@ export default function AdminEditAsideBtn2({
   aside_btn2,
 }) {
   const [btns, setBtns] = useState([
-    { name: aside_btn2[0].name, src: aside_btn2[0].src },
-    { name: aside_btn2[1].name, src: aside_btn2[1].src },
-    { name: aside_btn2[2].name, src: aside_btn2[2].src },
-    { name: aside_btn2[3].name, src: aside_btn2[3].src },
+    { title: aside_btn2[0].title, src: aside_btn2[0].src },
+    { title: aside_btn2[1].title, src: aside_btn2[1].src },
+    { title: aside_btn2[2].title, src: aside_btn2[2].src },
+    { title: aside_btn2[3].title, src: aside_btn2[3].src },
   ]);
 
   const handleChangeText = (e, id) => {
     setBtns((prev) => {
-      prev[id]['name'] = e;
+      prev[id]['title'] = e;
       return [...prev];
     });
   };
@@ -66,7 +66,7 @@ export default function AdminEditAsideBtn2({
               />
               <input
                 className={styles.text}
-                value={btn.name}
+                value={btn.title}
                 onChange={(e) => handleChangeText(e.target.value, index)}
               />
             </section>

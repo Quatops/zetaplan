@@ -5,6 +5,7 @@ import Program from './Program';
 import Differentiation from './Differentiation';
 import Portfolio from './Portfolio';
 import { useAccelerating } from 'hooks/useItems';
+import { useAuthContext } from 'context/AuthContext';
 
 const header_items = [
   '액설러레이팅 프로그램',
@@ -13,10 +14,11 @@ const header_items = [
 ];
 export default function AcceleratingProgram() {
   const [activeTab, setActiveTab] = useState(0);
+  const { isAdmin } = useAuthContext();
   const updateActiveTab = (idx) => {
     setActiveTab(idx);
   };
-  const { AccelePortQuery, AcceleDifferentQuery } = useAccelerating();
+
   const {
     AccelePortQuery: { data: logo_images },
   } = useAccelerating();
@@ -49,7 +51,7 @@ export default function AcceleratingProgram() {
             <Differentiation differentiations={differentiations} />
           )}
           {activeTab === 2 && logo_images && (
-            <Portfolio logo_images={logo_images} />
+            <Portfolio logo_images={logo_images} isAdmin={isAdmin} />
           )}
         </div>
       </div>

@@ -1,18 +1,43 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styles from './styles.module.css';
 import { useInverstPortfolio } from 'hooks/useItems';
-import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
+import { ScrollMenu } from 'react-horizontal-scrolling-menu';
 import { LeftArrow, RightArrow } from './Arrow';
+import { CiSquarePlus } from 'react-icons/ci';
+import { FaTrashAlt } from 'react-icons/fa';
+import SubmitButton from 'components/SubmitButton';
+import { uploadImage } from 'api/uploader';
+import { useAccelerating } from 'hooks/useItems';
 
 // NOTE: embrace power of CSS flexbox!
 import './hideScrollbar.css';
 
-export default function InvestmentLogo({ disableScroll, enableScroll }) {
+export default function InvestmentLogo({
+  disableScroll,
+  enableScroll,
+  isAdmin,
+}) {
   const {
     InvestmentLogoQuery: { data: logo_images },
   } = useInverstPortfolio();
-  const logoWrapRef = useRef();
 
+  const { modifyInvestmentLogo } = useInverstPortfolio();
+  const [logoItems, setLogoItems] = useState(logo_images);
+  const logoWrapRef = useRef();
+  const [edit, setEdit] = useState(false);
+  const inputRef = useRef();
+  const handleClickBtn = () => {
+    inputRef.current.click();
+  };
+  const handleChange = (e) => {
+    const { files } = e.target;
+    if (files) {
+      uploadImage(files[0]).then((url) => {
+        setLogoItems((prev) => [...prev, url]);
+      });
+    }
+  };
+  const handleSubmit = () => {};
   function onWheel(apiObj, ev) {
     const isThouchpad = Math.abs(ev.deltaX) !== 0 || Math.abs(ev.deltaY) < 15;
 
@@ -27,6 +52,7 @@ export default function InvestmentLogo({ disableScroll, enableScroll }) {
       apiObj.scrollPrev();
     }
   }
+
   // 세로 줄 갯수
   const COUNT = 5;
   return (
@@ -63,6 +89,37 @@ export default function InvestmentLogo({ disableScroll, enableScroll }) {
                   ))}
               </ScrollMenu>
             </div>
+            {isAdmin && (
+              <>
+                {edit ? (
+                  <>
+                    <button
+                      className={styles.plus_btn}
+                      onClick={handleClickBtn}>
+                      <CiSquarePlus /> <p>&nbsp;&nbsp;추가하기</p>
+                      <input
+                        type="file"
+                        name="logo"
+                        onChange={handleChange}
+                        style={{ display: 'none' }}
+                        ref={inputRef}
+                      />
+                    </button>
+                    <SubmitButton
+                      widthSize="400px"
+                      onClick={() => handleSubmit()}>
+                      완료하기
+                    </SubmitButton>
+                  </>
+                ) : (
+                  <SubmitButton
+                    handleClick={() => setEdit(true)}
+                    widthSize="400px">
+                    수정하기
+                  </SubmitButton>
+                )}
+              </>
+            )}
           </div>
         )}
       </>

@@ -34,7 +34,7 @@ export default function Header({ isWhite }) {
   };
 
   const handleEditSubmit = (menu) => {
-    category.map((v) => {
+    category.slice(0, 6).map((v) => {
       v.title = menu[v.id];
     });
     modifyMainMenu.mutate(category, {

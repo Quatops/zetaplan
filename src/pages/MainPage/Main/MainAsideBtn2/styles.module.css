@@ -6,7 +6,8 @@
 }
 .etc_btn {
   padding: 1% 5%;
-  height: 53px;
+  height: 5.48vh;
+  min-height: 1.25rem;
   width: 100%;
   display: flex;
   justify-content: space-between;

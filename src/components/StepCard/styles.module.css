@@ -1,7 +1,7 @@
 .card_wrap {
   width: 350px;
-  height: 720px;
-  padding: 30px;
+  height: 69vh;
+  padding: 2.7vh;
   box-shadow: -10px 10px 20px -4px rgba(0, 0, 0, 0.22);
   -webkit-box-shadow: -10px 10px 20px -4px rgba(0, 0, 0, 0.22);
   -moz-box-shadow: -10px 10px 20px -4px rgba(0, 0, 0, 0.22);
@@ -11,7 +11,7 @@
 
 .title {
   width: 350px;
-  height: 100px;
+  height: 9.25vh;
   transform: translateX(-70px);
   position: relative;
   border-radius: 0px 20px 20px 0px;
@@ -19,11 +19,11 @@
   -webkit-box-shadow: -1px 6px 4px -1px rgba(0, 0, 0, 0.21);
   -moz-box-shadow: -1px 6px 4px -1px rgba(0, 0, 0, 0.21);
   color: var(--color-white);
-  font-size: 1.875rem;
+  font-size: 3.1vh;
   font-weight: bold;
 }
 .title_desc {
-  height: 70px;
+  height: 6.48vh;
   display: flex;
   flex-direction: column;
   font-weight: 200;
@@ -47,8 +47,8 @@
 
 .contents {
   width: 100%;
-  height: 120px;
-  padding: 20px 0;
+  min-height: 11.1vh;
+  margin: 10px 0;
 }
 .content_title {
   font-weight: 800;
@@ -59,5 +59,4 @@
 .content li {
   list-style: disc;
   font-size: 0.875rem;
-  line-height: 1.2rem;
 }

@@ -43,9 +43,13 @@ export default function SubPage({ pageName }) {
   const {
     AsideBtn1Query: { data: aside_btn1 },
   } = useMain();
+
+  // white인상태로 서브페이지를 왔을 떄 white가 남아있는 경우가 있음.
   useEffect(() => {
     updateisWhite(false);
   }, []);
+
+  // 새로고침하면 데이터가 변함. path에 따라 activeId 를 고정시켜줘야함.
   useEffect(() => {
     if (subCategory)
       subCategory.map((big, bid) => {
@@ -56,10 +60,12 @@ export default function SubPage({ pageName }) {
         });
       });
   }, [subCategory]);
+
   useEffect(() => {
     if (location.state) setActiveNavId(location.state.id);
   }, [location.state]);
 
+  // 게시글 데이터를 받아옴.
   useEffect(() => {
     getPost(activeNavId).then((data) => {
       setPost(data);

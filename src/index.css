@@ -139,3 +139,10 @@ select {
 ::-webkit-scrollbar-thumb:active {
   background-color: var(--color-darkgrey);
 }
+
+.scene-container {
+  height: 98vh !important;
+}
+.scene-tooltip{
+  
+}

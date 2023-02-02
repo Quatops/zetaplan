@@ -28,7 +28,7 @@ export default function AdminEditHeader({ handleEditSubmit, category }) {
           handleEditSubmit(menu);
         }}>
         <div className={styles.edit_wrap}>
-          {category.map((value) => (
+          {category.slice(0, 6).map((value) => (
             <input
               key={value.id}
               type="text"

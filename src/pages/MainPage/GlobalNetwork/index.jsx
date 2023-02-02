@@ -3,9 +3,8 @@ import styles from './styles.module.css';
 
 // import optional tippy styles for tooltip support
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import NetworkCard from 'components/NetworkdCard';
+import NetworkCard from 'components/NetworkCard';
 import Globe from 'components/Globe';
-
 import { nations } from 'constants/nations';
 
 export default function GlobalNetwork({ disableScroll, enableScroll }) {
@@ -56,7 +55,7 @@ export default function GlobalNetwork({ disableScroll, enableScroll }) {
                         activeNationIdx === nation.id && styles.active
                       }`}
                       onClick={() => setActiveNationIdx(nation.id)}>
-                      {nation.name_kor}
+                      {nation.name_eng}
                     </p>
                   ),
               )}
