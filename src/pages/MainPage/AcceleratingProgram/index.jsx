@@ -8,9 +8,9 @@ import { useAccelerating } from 'hooks/useItems';
 import { useAuthContext } from 'context/AuthContext';
 
 const header_items = [
-  '액설러레이팅 프로그램',
-  '액설러레이팅 차별성',
-  '액설러레이팅 포트폴리오',
+  '엑셀러레이팅 프로그램',
+  '엑셀러레이팅 차별성',
+  '엑셀러레이팅 포트폴리오',
 ];
 export default function AcceleratingProgram() {
   const [activeTab, setActiveTab] = useState(0);

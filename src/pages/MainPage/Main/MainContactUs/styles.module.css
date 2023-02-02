@@ -1,14 +1,17 @@
+.contents {
+  height: 80%;
+}
 .title {
   font-weight: 800;
-  font-size: 1.25rem;
+  font-size: 1.25em;
 }
 .info p {
   font-weight: 200;
   padding: 0.2rem 0;
-  font-size: 0.875rem;
+  font-size: 0.875em;
 }
 .call_number {
-  font-size: 1.875rem;
+  font-size: 1.875em;
   font-weight: 300;
 }
 .email {

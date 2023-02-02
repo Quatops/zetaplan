@@ -16,7 +16,7 @@ export default function BannerCarousel({ bannerImages }) {
     <>
       <Slider {...settings}>
         {bannerImages.map((value, index) => (
-          <div className="slider_banner_wrapper flex_center" key={index}>
+          <div className="slider_banner_wrapper" key={index}>
             <img src={value} alt="배너이미지" className="slider_banner_img" />
           </div>
         ))}

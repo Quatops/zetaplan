@@ -16,7 +16,7 @@
 
 .thumb {
   width: 245px;
-  height: 240px;
+  height: 25vh;
 }
 .thumb > img {
   object-fit: contain;
@@ -65,7 +65,7 @@
 }
 
 .news_title {
-  font-size: 1.125rem;
+  font-size: 1.125em;
   font-weight: 800;
   /*두줄까지만 허용*/
   white-space: normal;
