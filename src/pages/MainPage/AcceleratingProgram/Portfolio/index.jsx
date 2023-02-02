@@ -41,10 +41,10 @@ export default function Portfolio({ logo_images, isAdmin }) {
         style={{
           display: 'grid',
           gridTemplateRows: `repeat(${
-            Math.floor(Math.sqrt(logo_images.length)) + 1
+            Math.floor(Math.sqrt(logo_images.length + 1)) + 1
           }, 1fr)`,
           gridTemplateColumns: `repeat(${
-            Math.floor(Math.sqrt(logo_images.length)) + 1
+            Math.floor(Math.sqrt(logo_images.length + 1)) + 1
           }, 1fr)`,
           placeItems: 'center',
         }}>
