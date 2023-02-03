@@ -19,6 +19,9 @@ import { useMain } from 'hooks/useItems';
 const custom_nav = {
   '상담 신청': [{ title: '상담 신청' }],
   '오시는 길': [{ title: '오시는 길' }],
+  KR: [{ title: 'KR' }],
+  EN: [{ title: 'EN' }],
+  CN: [{ title: 'CN' }],
 };
 
 export default function SubPage({ pageName }) {
