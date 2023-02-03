@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef, Suspense } from 'react';
 import styles from './styles.module.css';
 import { useOutletContext } from 'react-router-dom';
+import { useInverstPortfolio } from 'hooks/useItems';
+import { useMediaQuery } from 'react-responsive';
 
 import Main from './Main';
 import AcceleratingProgram from './AcceleratingProgram';
@@ -15,6 +17,10 @@ export default function MainPage() {
   const [pageIdx, setPageIdx] = useState(1);
   const updateisWhite = useOutletContext();
   const mainWrapperRef = useRef();
+  const {
+    InvestmentLogoQuery: { data: logo_images },
+  } = useInverstPortfolio();
+  const { modifyInvestmentLogo } = useInverstPortfolio();
   const updatePage = (idx, top, left, behavior) => {
     mainWrapperRef.current.scrollTo({
       top,
@@ -95,10 +101,17 @@ export default function MainPage() {
     wrapperRefCurrent.addEventListener('wheel', wheelHandler);
   }
 
+  // media query
+  const isBigScreen = useMediaQuery({ query: '(min-width: 1600px)' });
+
   return (
     <div className={styles.main_wrapper} ref={mainWrapperRef}>
       {pageIdx !== 6 && (
-        <ScrollMenu pageIdx={pageIdx} updatePage={updatePage} />
+        <ScrollMenu
+          pageIdx={pageIdx}
+          updatePage={updatePage}
+          isBigScreen={isBigScreen}
+        />
       )}
 
       <section className={styles.main_item}>
@@ -112,10 +125,14 @@ export default function MainPage() {
           <InvestmentPortfolio />
         </section>
         <section className={styles.main_item}>
-          <InvestmentLogo
-            disableScroll={disableScroll}
-            enableScroll={enableScroll}
-          />
+          {logo_images && (
+            <InvestmentLogo
+              disableScroll={disableScroll}
+              enableScroll={enableScroll}
+              modifyInvestmentLogo={modifyInvestmentLogo}
+              logoImages={logo_images}
+            />
+          )}
         </section>
         <section className={styles.main_item}>
           <GlobalNetwork

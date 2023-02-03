@@ -13,7 +13,6 @@ import {
   set,
   get,
   child,
-  push,
   update,
   remove,
 } from 'firebase/database';
@@ -47,6 +46,7 @@ export async function addNewPost(content, info) {
 }
 
 export async function getPost(id) {
+  console.log('여기서출력', id);
   const dbRef = ref(getDatabase());
   return get(child(dbRef, `posts/` + id)).then((snapshot) => {
     if (snapshot.exists()) {
@@ -129,22 +129,28 @@ export async function getItems(target) {
 
 //Update
 export async function updateItems(target, items) {
+  console.log('여기오나?');
   const updateObj = {};
   updateObj[target] = items;
   return update(ref(database), updateObj);
 }
-export async function updateItemsById(target, items) {
+export async function updateSubCate(target, items) {
+  const menu = {
+    title: items.title,
+    path: items.path,
+    id: items.id,
+  };
   const updateObj = {};
-  updateObj[target] = items;
+  updateObj[target + `/${items.cate}/${items.subCate}`] = menu;
   return update(ref(database), updateObj);
 }
 
 // 카테고리 추가하기
-export async function addNewSubCate(nav) {
-  const { path, title, cate } = nav;
-  const id = uuid();
+export async function addNewSubCate(item) {
+  const { path, title, cate, id } = item;
+  const now = uuid();
   return set(ref(database, `sub_nav/${cate}/${id}`), {
-    id,
+    id: now,
     path,
     title,
   });

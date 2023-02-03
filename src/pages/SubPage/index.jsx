@@ -68,6 +68,7 @@ export default function SubPage({ pageName }) {
   // 게시글 데이터를 받아옴.
   useEffect(() => {
     getPost(activeNavId).then((data) => {
+      console.log('안왔나', data);
       setPost(data);
     });
   }, [activeNavId]);
@@ -133,7 +134,7 @@ export default function SubPage({ pageName }) {
                 {pageName === '상담 신청' && <Consulting pageName={pageName} />}
                 {pageName === '오시는 길' && <Location pageName={pageName} />}
               </>
-            ) : post && post.id >= 0 ? (
+            ) : (post && post.id >= 0) || typeof post.id === 'string' ? (
               <>
                 <SubContentDetail
                   subCategory={subCategory[pageName]}

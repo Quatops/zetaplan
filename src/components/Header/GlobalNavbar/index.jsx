@@ -54,7 +54,8 @@ export default function GlobalNavigator({
           {isAdmin && subCategory && (
             <AdminEditGlobalNavbar
               handleEditSubmit={handleEditSubmit}
-              subCategory={subCategory}></AdminEditGlobalNavbar>
+              subCategory={subCategory}
+              category={category}></AdminEditGlobalNavbar>
           )}
         </ul>
       </div>
