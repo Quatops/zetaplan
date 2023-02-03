@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, Suspense } from 'react';
 import styles from './styles.module.css';
 import { useOutletContext } from 'react-router-dom';
 import { useInverstPortfolio } from 'hooks/useItems';
+import { useMediaQuery } from 'react-responsive';
 
 import Main from './Main';
 import AcceleratingProgram from './AcceleratingProgram';
@@ -100,10 +101,17 @@ export default function MainPage() {
     wrapperRefCurrent.addEventListener('wheel', wheelHandler);
   }
 
+  // media query
+  const isBigScreen = useMediaQuery({ query: '(min-width: 1600px)' });
+
   return (
     <div className={styles.main_wrapper} ref={mainWrapperRef}>
       {pageIdx !== 6 && (
-        <ScrollMenu pageIdx={pageIdx} updatePage={updatePage} />
+        <ScrollMenu
+          pageIdx={pageIdx}
+          updatePage={updatePage}
+          isBigScreen={isBigScreen}
+        />
       )}
 
       <section className={styles.main_item}>
