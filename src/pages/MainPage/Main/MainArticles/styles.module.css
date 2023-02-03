@@ -26,9 +26,11 @@
 .content {
   font-size: 0.75rem;
   white-space: normal;
+  min-height: 35px;
   /*세줄까지만 허용*/
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-height: 0.75rem;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -67,6 +69,7 @@
 .news_title {
   font-size: 1.125em;
   font-weight: 800;
+  min-height: 42px;
   /*두줄까지만 허용*/
   white-space: normal;
   display: -webkit-box;
