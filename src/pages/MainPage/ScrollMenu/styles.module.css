@@ -42,10 +42,9 @@
 
 .menu_list {
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
   height: 165px;
-  align-items: center;
+  justify-content: space-between;
   user-select: none;
 }
 .menu_dot {
