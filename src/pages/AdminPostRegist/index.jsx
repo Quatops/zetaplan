@@ -61,9 +61,9 @@ export default function AdminPostRegist() {
   const handleSubmit = () => {
     if (window.confirm(`${purpose}하시겠습니까?`)) {
       const info = {
-        subCate: Number(selectSubCate),
+        subCate: selectSubCate,
         cate: Number(selectCate),
-        id: Number(selectSubCate),
+        id: selectSubCate,
       };
       if (isNew) {
         addPost.mutate(

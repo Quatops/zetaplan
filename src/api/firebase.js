@@ -46,6 +46,7 @@ export async function addNewPost(content, info) {
 }
 
 export async function getPost(id) {
+  console.log('여기서출력', id);
   const dbRef = ref(getDatabase());
   return get(child(dbRef, `posts/` + id)).then((snapshot) => {
     if (snapshot.exists()) {
