@@ -109,6 +109,7 @@ export default function AdminEditGlobalNavbar({
               <input
                 type="text"
                 value={menuItem.path}
+                readOnly={!activeAdd}
                 onChange={(e) => handleChange(e.target.value, 'path')}
               />
               {activeAdd && (

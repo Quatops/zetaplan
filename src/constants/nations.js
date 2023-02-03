@@ -55,12 +55,12 @@ export const nations = [
         name: '중국(SIPA/상해지식산권거래소)',
         detail:
           'China National Intellectual Property Administration Shanghai Service Center',
-        logo: 'https://res.cloudinary.com/dprbw1pa0/image/upload/v1674107570/assets/china1_klkdub.png',
+        logo: 'https://res.cloudinary.com/detylqu5a/image/upload/v1675406908/global-network/index-logo_annomw.png',
       },
       {
         name: '중국(STDZP/절강학기술청)',
         detail: 'Science and Technology Department of Zhejiang Provice',
-        logo: 'https://res.cloudinary.com/dprbw1pa0/image/upload/v1674107570/assets/china1_klkdub.png',
+        logo: 'https://res.cloudinary.com/detylqu5a/image/upload/v1675406951/global-network/2109301006243428074_ftwlk2.png',
       },
       {
         name: '베이징기술교역촉진중심',
@@ -162,7 +162,7 @@ export const nations = [
       {
         name: '싱가포르(Origgin Ventures)',
         detail: 'Origgin Ventures Pte Ltd',
-        logo: 'https://res.cloudinary.com/dprbw1pa0/image/upload/v1674107573/assets/singapore2_e7xa2a.png',
+        logo: 'https://res.cloudinary.com/detylqu5a/image/upload/v1675406951/global-network/logo-dark_eizixt.png',
       },
     ],
   },
