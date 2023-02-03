@@ -134,7 +134,7 @@ export default function SubPage({ pageName }) {
                 {pageName === '상담 신청' && <Consulting pageName={pageName} />}
                 {pageName === '오시는 길' && <Location pageName={pageName} />}
               </>
-            ) : (post && post.id >= 0) || typeof post.id === 'string' ? (
+            ) : post && (post.id >= 0 || typeof post.id === 'string') ? (
               <>
                 <SubContentDetail
                   subCategory={subCategory[pageName]}
