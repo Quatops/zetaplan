@@ -128,6 +128,7 @@ export async function getItems(target) {
 
 //Update
 export async function updateItems(target, items) {
+  console.log('여기오나?');
   const updateObj = {};
   updateObj[target] = items;
   return update(ref(database), updateObj);
