@@ -13,7 +13,6 @@ import {
   set,
   get,
   child,
-  push,
   update,
   remove,
 } from 'firebase/database';
@@ -134,8 +133,13 @@ export async function updateItems(target, items) {
   return update(ref(database), updateObj);
 }
 export async function updateItemsById(target, items) {
+  const menu = {
+    title: items.title,
+    path: items.path,
+    id: items.id,
+  };
   const updateObj = {};
-  updateObj[target] = items;
+  updateObj[target + `/${items.bId}/${items.sId}`] = menu;
   return update(ref(database), updateObj);
 }
 
