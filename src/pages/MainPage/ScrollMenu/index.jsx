@@ -45,7 +45,7 @@ const scrollMenu = [
 const ScrollMenu = ({ pageIdx, updatePage, isBigScreen }) => {
   return (
     <div className={styles.menu_wrapper}>
-      <div className={`${styles.menu_list} ${isBigScreen && styles.menu_dot}`}>
+      <div className={`${styles.menu_list} ${!isBigScreen && styles.menu_dot}`}>
         {scrollMenu.map((title, index) => (
           <Menu
             key={index}
