@@ -38,14 +38,14 @@
 .footer_right {
   width: 940px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  grid-template-columns: 140px 1fr;
-  grid-column-gap: 17px;
   grid-row-gap: 17px;
 }
 .footer_right * {
   color: var(--color-white);
+}
+.content_row {
+  display: flex;
 }
 
 .footer_right span {

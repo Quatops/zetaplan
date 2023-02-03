@@ -17,10 +17,10 @@ export default function AdminHeader({ handleLogout }) {
           환영합니다
         </div>
       </ul>
-      <ul className="flex_between" style={{ width: '230px' }}>
+      <ul className="flex_between" style={{ width: '150px' }}>
         <li>
           <button
-            className={styles.admin_btn}
+            className={`${styles.admin_btn} flex_center`}
             onClick={() => {
               navigate('/admin/write', {
                 state: {
@@ -31,12 +31,7 @@ export default function AdminHeader({ handleLogout }) {
                 },
               });
             }}>
-            글쓰기
-          </button>
-        </li>
-        <li>
-          <button className={`${styles.admin_btn} flex_center`}>
-            사용자 정의 &nbsp;
+            글쓰기&nbsp;&nbsp;
             <FaPen />
           </button>
         </li>

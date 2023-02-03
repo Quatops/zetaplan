@@ -131,3 +131,12 @@ export function useInverstPortfolio() {
     modifyInvestmentLogo,
   };
 }
+
+export function useFooter() {
+  const FooterQuery = useQuery(['footer'], () => fetchItems('footer'), {
+    staleTime: 1000 * 60 * 10,
+  });
+  return {
+    FooterQuery,
+  };
+}

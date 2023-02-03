@@ -21,7 +21,7 @@ const Menu = ({ num, pageIdx, pageName, isActive, updatePage, hidden }) => {
 };
 const scrollMenu = [
   'MAIN',
-  '액설러레이팅',
+  '액셀러레이팅',
   '투자 포트폴리오',
   '',
   '글로벌 네트워크',
