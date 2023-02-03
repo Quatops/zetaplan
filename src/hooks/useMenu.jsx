@@ -2,7 +2,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   getItems as fetchItems,
   updateItems,
-  updateItemsById,
+  updateSubCate,
   addNewSubCate,
 } from 'api/firebase';
 
@@ -23,10 +23,19 @@ export default function useMenu() {
     },
   );
   const modifySubMenu = useMutation(
-    (menuItem) => updateItemsById('sub_nav', menuItem),
+    (menuItem) => updateSubCate('sub_nav', menuItem),
     {
       onSuccess: () => queryClient.invalidateQueries(['sub_nav']),
     },
   );
-  return { mainMenuQuery, subMenuQuery, modifyMainMenu, modifySubMenu };
+  const addSubMenu = useMutation((menuItem) => addNewSubCate(menuItem), {
+    onSuccess: () => queryClient.invalidateQueries(['sub_nav']),
+  });
+  return {
+    mainMenuQuery,
+    subMenuQuery,
+    modifyMainMenu,
+    modifySubMenu,
+    addSubMenu,
+  };
 }

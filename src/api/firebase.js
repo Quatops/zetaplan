@@ -132,23 +132,23 @@ export async function updateItems(target, items) {
   updateObj[target] = items;
   return update(ref(database), updateObj);
 }
-export async function updateItemsById(target, items) {
+export async function updateSubCate(target, items) {
   const menu = {
     title: items.title,
     path: items.path,
     id: items.id,
   };
   const updateObj = {};
-  updateObj[target + `/${items.bId}/${items.sId}`] = menu;
+  updateObj[target + `/${items.cate}/${items.subCate}`] = menu;
   return update(ref(database), updateObj);
 }
 
 // 카테고리 추가하기
-export async function addNewSubCate(nav) {
-  const { path, title, cate } = nav;
-  const id = uuid();
+export async function addNewSubCate(item) {
+  const { path, title, cate, id } = item;
+  const now = uuid();
   return set(ref(database, `sub_nav/${cate}/${id}`), {
-    id,
+    id: now,
     path,
     title,
   });
