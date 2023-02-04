@@ -10,31 +10,14 @@ export default function GlobalNavigator({
   category,
   subCategory,
 }) {
-  const { modifySubMenu } = useMenu();
   const { isAdmin } = useAuthContext();
-
-  const handleEditSubmit = (menu) => {
-    subCategory.map((big, bId) => {
-      big.map((small, sId) => {
-        subCategory[bId][sId].title = menu[bId][sId];
-      });
-    });
-    modifySubMenu.mutate(subCategory, {
-      onSuccess: () => {
-        alert('성공적으로 변경되었습니다.');
-      },
-      onError: (e) => {
-        alert(`에러가 발생했습니다. ${e}`);
-      },
-    });
-  };
 
   return (
     <nav className={styles.nav_wrapper}>
       <ul className={styles.left}>&nbsp;</ul>
       <div className={styles.nav}>
         <ul className={styles.right}>
-          {category.map((big, index) => (
+          {category.slice(0, 6).map((big, index) => (
             <ul key={index} className={styles.cate_area}>
               {subCategory[big.id].map((small) => (
                 <NavLink
@@ -53,7 +36,6 @@ export default function GlobalNavigator({
           ))}
           {isAdmin && subCategory && (
             <AdminEditGlobalNavbar
-              handleEditSubmit={handleEditSubmit}
               subCategory={subCategory}
               category={category}></AdminEditGlobalNavbar>
           )}
