@@ -36,31 +36,36 @@
   },
   {
     "id": 7,
+    "title": "경영전략 연구소",
+    "eng_title": "Strategic Center"
+  },
+  {
+    "id": 8,
     "title": "시스템 인증 · 기업인증",
     "eng_title": "System Certification ·  Corporate Certification"
   },
   {
-    "id": 8,
+    "id": 9,
     "title": "ESG 평가 · 신용평가",
     "eng_title": "Corporate Tech Valuation"
   },
   {
-    "id": 9,
+    "id": 10,
     "title": "제조혁신바우처사업",
     "eng_title": "영어를 입력해주세요."
   },
   {
-    "id": 10,
+    "id": 11,
     "title": "수출바우처사업",
     "eng_title": "영어를 입력해주세요."
   },
   {
-    "id": 11,
+    "id": 12,
     "title": "R&BD 지원사업",
     "eng_title": "영어를 입력해주세요."
   },
   {
-    "id": 12,
+    "id": 13,
     "title": "협력 네트워크",
     "eng_title": "Cooperation Network"
   }

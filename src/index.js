@@ -54,7 +54,7 @@ const router = createBrowserRouter([
         element: <SubPage pageName={5} />,
       },
       {
-        path: 'corporate-technique-valuation/:path',
+        path: 'technique-corporate-valuation/:path',
         element: <SubPage pageName={6} />,
       },
       {
@@ -62,11 +62,11 @@ const router = createBrowserRouter([
         element: <SubPage pageName={7} />,
       },
       {
-        path: 'system-business-certification/:path',
+        path: 'system-corporate-certification/:path',
         element: <SubPage pageName={8} />,
       },
       {
-        path: 'credit-rating/:path',
+        path: 'esg-credit-assess/:path',
         element: <SubPage pageName={9} />,
       },
       {
