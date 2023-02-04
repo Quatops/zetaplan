@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 
 import { useNavigate } from 'react-router-dom';
 
-export default function MainAsideBtn2({ aside_btn2 }) {
+export default function MainAsideBtn2({ aside_btn2, subCategory, category }) {
   const navigate = useNavigate();
   return (
     <div className={styles.etc_button_wrapper}>
@@ -12,7 +12,9 @@ export default function MainAsideBtn2({ aside_btn2 }) {
         <button
           className={styles.etc_btn}
           key={index}
-          onClick={() => navigate('/')}>
+          onClick={() =>
+            navigate(subCategory[category[10 + index].id][0].path)
+          }>
           <div className="flex_center">
             <div className={styles.etc_icon}>
               <img src={btn.src} alt="icon" />
