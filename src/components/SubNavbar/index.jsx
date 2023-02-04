@@ -4,7 +4,6 @@ import styles from './styles.module.css';
 import { FaAngleRight } from 'react-icons/fa';
 
 export default function SubNavbar({ navItems, navTitle, updateActiveNavId }) {
-  console.log(navItems);
   return (
     <div className={styles.nav_wrap}>
       <div className={styles.nav_title}>{navTitle}</div>
