@@ -82,7 +82,7 @@ export default function InvestmentLogo({
                           <div
                             className={`${styles.logo_img} flex_center`}
                             key={index}>
-                            <img src={image} alt="엑설러레이팅 포트폴리오" />
+                            <img src={image} alt="투자포트폴리오" />
                           </div>
                         ))}
                     </div>
