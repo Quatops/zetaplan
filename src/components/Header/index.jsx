@@ -83,7 +83,7 @@ export default function Header({ isWhite }) {
               }}>
               {category.slice(0, 6).map((value) => (
                 <Link
-                  to={value.path}
+                  to={subCategory[value.id][0].path}
                   state={{ id: subCategory[value.id][0].id }}
                   key={value.id}>
                   <li

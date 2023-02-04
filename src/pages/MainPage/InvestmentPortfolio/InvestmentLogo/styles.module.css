@@ -8,10 +8,16 @@
   justify-content: center;
 }
 
+.investport_logo_wrap {
+  width: 80%;
+  margin: 0 auto;
+}
+
 .logo_header {
   height: 50px;
   font-size: 2rem;
   font-weight: bold;
+  width: 100%;
   margin-bottom: 20px;
   color: var(--color-black);
   text-align: center;

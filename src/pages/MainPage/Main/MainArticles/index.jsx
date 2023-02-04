@@ -16,7 +16,7 @@ const News = ({ isPhoto, news, isActive, updateActiveNews }) => {
         </div>
       ) : (
         <div className={styles.news_horizon}>
-          <div className={styles.news_title}>· {news.title}</div>
+          <div className={styles.news_title_one}>· {news.title}</div>
           <div className={styles.news_date}>
             {moment(news.date).format('YYYY년 MM월 DD일')}
           </div>
