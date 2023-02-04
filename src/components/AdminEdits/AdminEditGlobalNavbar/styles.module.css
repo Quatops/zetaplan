@@ -39,3 +39,23 @@
   background-color: var(--color-lightgrey);
   font-weight: bold;
 }
+
+.input_wrapper input {
+  background-color: var(--color-lightgrey);
+  border-radius: 10px;
+  height: 30px;
+  padding: 0 10px;
+}
+
+.plus_icon {
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  transition: all 200ms ease;
+}
+
+.plus_icon:hover {
+  font-weight: bolder;
+}

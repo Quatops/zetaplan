@@ -34,7 +34,7 @@ export default function GlobalNavigator({
       <ul className={styles.left}>&nbsp;</ul>
       <div className={styles.nav}>
         <ul className={styles.right}>
-          {category.slice(0, 6).map((big, index) => (
+          {category.map((big, index) => (
             <ul key={index} className={styles.cate_area}>
               {subCategory[big.id].map((small) => (
                 <NavLink
@@ -54,7 +54,8 @@ export default function GlobalNavigator({
           {isAdmin && subCategory && (
             <AdminEditGlobalNavbar
               handleEditSubmit={handleEditSubmit}
-              subCategory={subCategory}></AdminEditGlobalNavbar>
+              subCategory={subCategory}
+              category={category}></AdminEditGlobalNavbar>
           )}
         </ul>
       </div>

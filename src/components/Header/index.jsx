@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 import { useAuthContext } from 'context/AuthContext';
 import useMenu from 'hooks/useMenu';
+import { useNavigate } from 'react-router-dom';
 
 import AdminHeader from './AdminHeader';
 import AdminEditHeader from '../AdminEdits/AdminEditHeader';
@@ -24,6 +25,7 @@ export default function Header({ isWhite }) {
   const { isAdmin, user_logout } = useAuthContext();
   const { category, subCategory } = useCategoryContext();
   const { modifyMainMenu } = useMenu();
+  const navigate = useNavigate();
 
   const categoryHover = (bigCategoryId) => {
     setShowCate(true);
@@ -81,7 +83,7 @@ export default function Header({ isWhite }) {
               }}>
               {category.slice(0, 6).map((value) => (
                 <Link
-                  to={value.path}
+                  to={subCategory[value.id][0].path}
                   state={{ id: subCategory[value.id][0].id }}
                   key={value.id}>
                   <li
@@ -112,11 +114,17 @@ export default function Header({ isWhite }) {
             className={`${styles.language_wrapper} ${
               (isWhite || showCate) && styles.active_sub
             }`}>
-            <p className={styles.language}>KR</p>
+            <p className={styles.language} onClick={() => navigate('kr')}>
+              KR
+            </p>
             <span className={styles.boundary}>|</span>
-            <p className={styles.language}>EN</p>
+            <p className={styles.language} onClick={() => navigate('en')}>
+              EN
+            </p>
             <span className={styles.boundary}>|</span>
-            <p className={styles.language}>CN</p>
+            <p className={styles.language} onClick={() => navigate('cn')}>
+              CN
+            </p>
           </li>
           <div
             className={`${styles.line} ${

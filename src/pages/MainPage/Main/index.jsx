@@ -355,10 +355,7 @@ export default function Main() {
               onMouseLeave={() => setActiveAsideBtn1(false)}>
               {aside_btn1 && (
                 <>
-                  <MainAsideBtn1
-                    aside_btn1={aside_btn1}
-                    category={category.slice(6, 10)}
-                  />
+                  <MainAsideBtn1 aside_btn1={aside_btn1} />
                   {isAdmin && activeAsideBtn1 && (
                     <AdminEditAsideBtn1
                       handleAsideBtn1Submit={handleAsideBtn1Submit}
@@ -375,10 +372,7 @@ export default function Main() {
               onMouseLeave={() => setActiveAsideBtn2(false)}>
               {aside_btn2 && (
                 <>
-                  <MainAsideBtn2
-                    aside_btn2={aside_btn2}
-                    category={category.slice(10, 14)}
-                  />
+                  <MainAsideBtn2 aside_btn2={aside_btn2} />
                   {isAdmin && activeAsideBtn2 && (
                     <AdminEditAsideBtn2
                       handleAsideBtn2Submit={handleAsideBtn2Submit}

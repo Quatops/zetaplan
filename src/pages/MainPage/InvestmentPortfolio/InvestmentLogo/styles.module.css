@@ -5,6 +5,7 @@
   padding-top: 3rem;
   align-items: center;
   height: 100%;
+  justify-content: center;
 }
 
 .investport_logo_wrap {
@@ -21,7 +22,12 @@
   color: var(--color-black);
   text-align: center;
 }
-
+.investport_logo_wrap {
+  width: 1300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .logo_wrap {
   display: flex;
   flex-direction: column;
@@ -38,9 +44,40 @@
   width: 240px;
   height: 5.68vh;
   margin: 10px 30px;
+  position: relative;
 }
 .logo_img img {
   max-width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.plus_btn {
+  color: var(--color-grey);
+  display: flex;
+  align-items: center;
+  transition: all 100ms ease;
+  margin: 10px 0;
+}
+
+.plus_btn svg {
+  font-size: 3rem;
+}
+
+.plus_btn:hover {
+  color: var(--color-darkgrey);
+  transform: scale(1.03);
+}
+
+.trash {
+  position: absolute;
+  right: 0;
+  top: 0px;
+  color: var(--color-red);
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.trash:hover {
+  font-size: 1.1rem;
 }

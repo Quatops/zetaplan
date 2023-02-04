@@ -93,6 +93,18 @@ const router = createBrowserRouter([
         path: 'location',
         element: <SubPage pageName="오시는 길" />,
       },
+      {
+        path: 'kr',
+        element: <SubPage pageName="KR" />,
+      },
+      {
+        path: 'en',
+        element: <SubPage pageName="EN" />,
+      },
+      {
+        path: 'cn',
+        element: <SubPage pageName="CN" />,
+      },
     ],
   },
   {
