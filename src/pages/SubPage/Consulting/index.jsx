@@ -1,5 +1,3 @@
-import RadioGroup from 'components/RadioGroup';
-import Radio from 'components/RadioGroup/Radio';
 import SubPageHeader from 'components/SubPageHeader';
 import React, { useState } from 'react';
 import styles from './styles.module.css';
@@ -154,18 +152,16 @@ export default function Consulting({ pageName }) {
         <div className={styles.boundary}></div>
         <section>
           <article className={styles.title}>상담분야</article>
-          <RadioGroup className={styles.radio_wrap}>
+          <div className={styles.checkbox_wrap} W>
             {filed.map((f, i) => (
-              <Radio
-                key={i}
-                name="field"
-                value={i}
-                className={styles.radio}
-                handleChecked={handleChecked}>
-                {f}
-              </Radio>
+              <div className={styles.checkbox}>
+                <input type="checkbox" name="field" id={i} key={i} />
+                <label htmlFor={i} className={styles.label}>
+                  {f}
+                </label>
+              </div>
             ))}
-          </RadioGroup>
+          </div>
         </section>
         <div className={styles.boundary}></div>
         <section>
