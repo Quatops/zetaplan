@@ -1,9 +1,7 @@
 .nav_wrap {
-  position: absolute;
-  left: 0;
-  top: -80px;
   height: auto;
   width: 100%;
+  transform: translateY(-70px);
   max-width: 19.375rem;
 }
 .nav_title {
@@ -23,5 +21,22 @@
   flex-direction: column;
   padding-left: 3.125rem;
   align-items: flex-end;
+  background-color: var(--color-white);
   padding-top: 1.875rem;
+}
+
+.subnav_sub {
+  width: 80%;
+  animation: slideUp 500ms var(--ease-out-quint);
+  transform-origin: 50% 0;
+}
+
+@keyframes slideUp {
+  from {
+    transform: scaleY(0);
+  }
+
+  to {
+    transform: scaleY(100%);
+  }
 }

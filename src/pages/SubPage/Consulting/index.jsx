@@ -80,12 +80,8 @@ export default function Consulting({ pageName }) {
     operatingProfit: '',
   });
   const [applyContent, setApplyContent] = useState('');
-  const [applyField, setApplyField] = useState(0);
   const handleTextChange = (e) => {
     setApplyContent(e);
-  };
-  const handleChecked = (e) => {
-    setApplyField(e);
   };
 
   return (

@@ -104,10 +104,9 @@ select {
 }
 
 .subnav_small {
-  height: 2.5rem;
+  height: 3rem;
   font-size: 0.9rem;
   justify-content: space-end;
-  width: 90%;
 }
 .subnav_nav_items:hover,
 .subnav_nav_items.active {
@@ -118,7 +117,7 @@ select {
 
 .subnav_small:hover,
 .subnav_small.active {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
 }
 
 .subnav_rightbtn {
@@ -152,6 +151,4 @@ select {
 
 .scene-container {
   height: 98vh !important;
-}
-.scene-tooltip {
 }

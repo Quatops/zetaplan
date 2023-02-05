@@ -67,7 +67,8 @@ export default function InvestmentLogo({
       {logoItems && (
         <div className={styles.investport_logo_wrap}>
           <header className={styles.logo_header}>
-            투자연계 {logoImages.length}건 (총 1,672억)
+            <p className={styles.count}>투자연계 {logoImages.length}건</p>
+            <p>총 1,672억</p>
           </header>
           <div
             className={styles.logo_wrap}
