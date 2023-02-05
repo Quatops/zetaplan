@@ -42,7 +42,7 @@ export default function AdminEditGlobalNavbar({ subCategory, category }) {
   const handleSubmit = () => {
     if (activeAdd) {
       menuItem.id = subCategory[menuItem.cate].length;
-
+      menuItem.path = category[menuItem.cate].path + menuItem.path;
       addSubMenu.mutate(menuItem, {
         onSuccess: () => {
           alert('성공적으로 추가되었습니다.');
@@ -111,7 +111,7 @@ export default function AdminEditGlobalNavbar({ subCategory, category }) {
                 <>
                   <label>&nbsp;&nbsp; 카테고리 : &nbsp;&nbsp; </label>
                   <select onChange={handleSelectChange}>
-                    {category.map((value) => (
+                    {category.slice(0, 6).map((value) => (
                       <option
                         value={value.id}
                         key={value.id}
