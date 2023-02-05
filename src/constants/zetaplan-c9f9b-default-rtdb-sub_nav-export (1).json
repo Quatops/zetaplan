@@ -115,6 +115,11 @@
       "id": 30,
       "path": "/ipo/ipo-overseas",
       "title": "해외시장 IPO"
+    },
+    {
+      "id": "12da3931-6608-4761-8de6-6b2efc8f5e17",
+      "path": "ipo/hello",
+      "title": ""
     }
   ],
   [
@@ -174,19 +179,73 @@
   [
     {
       "id": 41,
-      "path": "/technique-corporate-valuation/corporate-purpose",
+      "path": "/technique-corporate-valuation/corporate",
+      "sub": [
+        {
+          "id": "c407a07a-1249-48fb-87c7-8c653f276b0e",
+          "path": "purpose",
+          "title": " 기업가치평가 목적"
+        },
+        {
+          "id": "f28a266e-9e89-42eb-aa6b-9d915dd46e0a",
+          "path": "procedure",
+          "title": "기업가치평가 절차"
+        },
+        {
+          "id": "a17c7a9d-8be4-4304-b2c7-c96a4f9a518b",
+          "path": "methodology",
+          "title": "기업가치평가 방법론"
+        },
+        {
+          "id": "0826c64f-d72c-4695-bbc4-3677e8fae2ee",
+          "path": "support",
+          "title": "기업가치평가 지원사업"
+        },
+        {
+          "id": "de76910b-0d51-41cf-b55a-d005b64df11e",
+          "path": "cooperative-institution",
+          "title": "기업가치평가 협력기관"
+        }
+      ],
       "title": "기업가치평가"
     },
     {
       "id": 42,
       "path": "/technique-corporate-valuation/technique-purpose",
+      "sub": [
+        {
+          "id": "a91fc0cb-30fe-4584-aa54-9564162da9bb",
+          "path": "purpose",
+          "title": "기술가치평가 목적"
+        },
+        {
+          "id": "54555b02-cfac-49c2-b7ea-011deff521ac",
+          "path": "procedure",
+          "title": "기술가치평가 절차"
+        },
+        {
+          "id": "e5acfe94-c52c-4e2e-b269-e3de0720b85c",
+          "path": "methodology",
+          "title": "기술가치평가 방법론"
+        },
+        {
+          "id": "478cc83e-dfe0-49e8-9a59-2a07493942ba",
+          "path": "support",
+          "title": "기술가치평가 지원사업"
+        },
+        {
+          "id": "44e484b7-f80a-4f50-84ee-7f7d6dfd068b",
+          "path": "cooperative-institution",
+          "title": "기술가치평가 협력기관"
+        }
+      ],
       "title": "기술가치평가"
     }
   ],
   [
     {
       "id": 43,
-      "path": "strategic-center/1",
+      "path": "/strategic-center/1",
       "title": "경영전략"
     }
   ],
@@ -194,11 +253,65 @@
     {
       "id": 44,
       "path": "/system-corporate-certification/corporate-certification",
+      "sub": [
+        {
+          "id": "00c78781-3881-4f9d-a7c3-06dbd6bac6cd",
+          "path": "bancher-corporation",
+          "title": "밴처기업"
+        },
+        {
+          "id": "720438bd-9fef-49a1-a82c-dff5e143350d",
+          "path": "INNOBIZ-corporation",
+          "title": "이노비즈기업"
+        },
+        {
+          "id": "9f2cfec6-24d8-485c-855c-f6a4945de1c9",
+          "path": "MAINBiz-corporation",
+          "title": "메인비즈기업"
+        },
+        {
+          "id": "a9fa5af4-f4df-4553-95ef-2518633c324e",
+          "path": "corporate-affiliated-research-institute",
+          "title": "기업부설연구소"
+        },
+        {
+          "id": "6698ce6c-8a87-4491-b6ab-48a7d8f03764",
+          "path": "green-certification",
+          "title": "녹색인증"
+        },
+        {
+          "id": "4d278457-86e6-4076-a27a-f706841c03eb",
+          "path": "material-equipment-company",
+          "title": "소재부품장비전문기업"
+        },
+        {
+          "id": "a0a1209c-94fd-422c-a85d-4fafc2a96aef",
+          "path": "world-class-corporation",
+          "title": "월드클래스기업"
+        }
+      ],
       "title": "기업인증"
     },
     {
       "id": 45,
       "path": "/system-corporate-certification/system-certification",
+      "sub": [
+        {
+          "id": "5aa4fcaf-17d7-471e-a103-9b40a26c3bdb",
+          "path": "esg-management",
+          "title": "ESG경영"
+        },
+        {
+          "id": "ba146cb7-6495-4226-b353-64f67885ebe6",
+          "path": "esg-management-iso",
+          "title": "ESG경영과 ISO"
+        },
+        {
+          "id": "0c95b9fd-70dd-450d-ae3a-d0cb69b34f26",
+          "path": "iso-system",
+          "title": "ISO시스템"
+        }
+      ],
       "title": "시스템인증"
     }
   ],
@@ -206,11 +319,50 @@
     {
       "id": 46,
       "path": "/esg-credit-assess/esg-assess",
+      "sub": [
+        {
+          "id": "457f3c2b-e531-4000-9e73-26001fe6f999",
+          "path": "esg-management",
+          "title": "ESG경영"
+        },
+        {
+          "id": "62ad82bd-71a5-4f76-9264-3699e6e217c3",
+          "path": "esg-assess-purpose",
+          "title": "ESG평가목적"
+        },
+        {
+          "id": "a4d1e3af-17a3-4905-b830-ead048f40367",
+          "path": "esg-assess-procedure",
+          "title": "ESG평가절차"
+        },
+        {
+          "id": "1dad783f-056c-4cb2-8aa4-45e29ae0b360",
+          "path": "esg-assess-grade",
+          "title": "ESG평가등급"
+        }
+      ],
       "title": "ESG평가"
     },
     {
       "id": 47,
       "path": "/esg-credit-assess/credit-assess",
+      "sub": [
+        {
+          "id": "cf9a037a-9d65-4688-8044-abe72fb4482e",
+          "path": "public-institution-bidding",
+          "title": "공공기관 입찰용"
+        },
+        {
+          "id": "eb3155a5-5032-4cca-9c36-a2e8baaa4c12",
+          "path": "private-institutions-submission",
+          "title": "민간기관 제출용"
+        },
+        {
+          "id": "ad036bf2-8257-439e-82c9-d4f56f9948e6",
+          "path": "TCB-Technology-credit-rating",
+          "title": "TCB기술 신용평가"
+        }
+      ],
       "title": "신용평가"
     }
   ],
@@ -218,6 +370,23 @@
     {
       "id": 48,
       "path": "/manufacturing-innovation-voucher/medium-size-company",
+      "sub": [
+        {
+          "id": "2fde5f6c-7330-4c8c-b844-b7cf746123b0",
+          "path": "general-voucher-business",
+          "title": "일반바우처 사업"
+        },
+        {
+          "id": "44cc71f3-588e-45af-bb9e-3908fa8d55d5",
+          "path": "carbon-neutral-management-innovation-voucher",
+          "title": "탄소중립 경영혁신 바우처 사업"
+        },
+        {
+          "id": "3f149564-1495-4378-af91-49ada1e77ab4",
+          "path": "revitalization-consulting-voucher",
+          "title": "재기 컨설팅 바우처사업"
+        }
+      ],
       "title": "중소기업 혁신바우처"
     },
     {

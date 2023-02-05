@@ -30,59 +30,60 @@ const router = createBrowserRouter([
     children: [
       { index: true, path: '/', element: <MainPage /> },
       {
-        path: 'company-intro/:path',
+        path: 'company-intro/*',
         element: <SubPage pageName={0} />,
       },
       {
-        path: 'international-network/:path',
+        path: 'international-network/*',
         element: <SubPage pageName={1} />,
       },
       {
-        path: 'ma/:path',
+        path: 'ma/*',
         element: <SubPage pageName={2} />,
       },
       {
-        path: 'ipo/:path',
+        path: 'ipo/*',
         element: <SubPage pageName={3} />,
       },
       {
-        path: 'overseas/:path',
+        path: 'overseas/*',
+
         element: <SubPage pageName={4} />,
       },
       {
-        path: 'technology-deals/:path',
+        path: 'technology-deals/*',
         element: <SubPage pageName={5} />,
       },
       {
-        path: 'technique-corporate-valuation/:path',
+        path: 'technique-corporate-valuation/*',
         element: <SubPage pageName={6} />,
       },
       {
-        path: 'strategic-center/:path',
+        path: 'strategic-center/*',
         element: <SubPage pageName={7} />,
       },
       {
-        path: 'system-corporate-certification/:path',
+        path: 'system-corporate-certification/*',
         element: <SubPage pageName={8} />,
       },
       {
-        path: 'esg-credit-assess/:path',
+        path: 'esg-credit-assess/*',
         element: <SubPage pageName={9} />,
       },
       {
-        path: 'manufacturing-innovation-voucher/:path',
+        path: 'manufacturing-innovation-voucher/*',
         element: <SubPage pageName={10} />,
       },
       {
-        path: 'export-voucher/:path',
+        path: 'export-voucher/*',
         element: <SubPage pageName={11} />,
       },
       {
-        path: 'r-db-support/:path',
+        path: 'r-db-support/*',
         element: <SubPage pageName={12} />,
       },
       {
-        path: 'partners-network/:path',
+        path: 'partners-network/*',
         element: <SubPage pageName={13} />,
       },
       {

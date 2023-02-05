@@ -2,7 +2,7 @@
   position: absolute;
   left: 0;
   top: -80px;
-  height: 38.75rem;
+  height: auto;
   width: 100%;
   max-width: 19.375rem;
 }
@@ -22,5 +22,6 @@
   display: flex;
   flex-direction: column;
   padding-left: 3.125rem;
+  align-items: flex-end;
   padding-top: 1.875rem;
 }

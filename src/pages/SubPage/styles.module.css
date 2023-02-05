@@ -8,11 +8,16 @@
   height: 200px;
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   color: var(--color-white);
   font-size: 2.25rem;
   font-weight: 600;
+}
+.eng_title {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.5);
 }
 .page_content {
   position: relative;

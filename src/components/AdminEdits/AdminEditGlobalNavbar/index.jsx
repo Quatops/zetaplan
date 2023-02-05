@@ -1,15 +1,11 @@
 import AdminEditContainer from 'components/AdminEditContainer';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './styles.module.css';
 import Button from 'components/SubmitButton';
 import { BsPlusCircle } from 'react-icons/bs';
 import useMenu from 'hooks/useMenu';
 
-export default function AdminEditGlobalNavbar({
-  handleEditSubmit,
-  subCategory,
-  category,
-}) {
+export default function AdminEditGlobalNavbar({ subCategory, category }) {
   const { modifySubMenu, addSubMenu } = useMenu();
   const [menuItem, setMenuItem] = useState(null);
   const [activeAdd, setActiveAdd] = useState(false);

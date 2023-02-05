@@ -256,7 +256,7 @@ export default function Main() {
   };
 
   const handleIntroTabSubmit = (tabs) => {
-    intro_tab.map((v, index) => {
+    intro_tab.forEach((v, index) => {
       v.name = tabs[index];
     });
     modifyIntroTab.mutate(intro_tab, {

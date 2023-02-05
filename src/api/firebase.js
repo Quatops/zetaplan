@@ -89,6 +89,7 @@ export async function deletePost(id) {
 export async function login(id, password) {
   try {
     const user = await signInWithEmailAndPassword(auth, id, password);
+    console.log(user);
     return true;
   } catch (error) {
     console.log(error);

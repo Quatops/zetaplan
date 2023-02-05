@@ -85,10 +85,6 @@ export default function MainPage() {
       wrapperRefCurrent.removeEventListener('wheel', wheelHandler);
     };
   });
-  const handleMousePosition = () => {};
-  function preventDefault(e) {
-    e.preventDefault();
-  }
   // call this to Disable
   function disableScroll() {
     const wrapperRefCurrent = mainWrapperRef.current;
