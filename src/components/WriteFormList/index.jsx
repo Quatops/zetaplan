@@ -30,7 +30,6 @@ export default function WriteFormList({
     isRow === 2 && setSpace(e.target.value);
   };
   const handleChecked = (id) => {
-    console.log(typeof id);
     setActiveIdx(Number(id));
   };
   return (

@@ -34,7 +34,6 @@ export default function InvestmentLogo({
     }
   };
   const handleSubmit = () => {
-    console.log('여긴올텐데');
     modifyInvestmentLogo.mutate(logoItems, {
       onSuccess: () => {
         alert('성공적으로 변경되었습니다.');
