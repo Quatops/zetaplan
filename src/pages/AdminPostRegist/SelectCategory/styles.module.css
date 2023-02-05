@@ -1,8 +1,8 @@
 .select_wrap {
-  height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin: 10px 0;
 }
 
 .select {
@@ -10,4 +10,11 @@
   width: 100%;
   padding: 0 10px;
   border-radius: 10px;
+}
+.option {
+  font-weight: 600;
+  color: var(--color-black);
+}
+.sub_option {
+  color: var(--color-darkgrey);
 }

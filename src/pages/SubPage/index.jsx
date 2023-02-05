@@ -51,10 +51,28 @@ export default function SubPage({ pageName }) {
   // 새로고침하면 데이터가 변함. path에 따라 activeId 를 고정시켜줘야함.
   useEffect(() => {
     if (subCategory)
-      subCategory.forEach((big) => {
+      subCategory.forEach((big, index) => {
+        const mainpath = category[index].path;
         big.forEach((small) => {
           if (small.path === location.pathname) {
             setActiveNavId(small.id);
+            return;
+          }
+          if (small.sub) {
+            small.sub.forEach((sub) => {
+              if (mainpath + sub.path === location.pathname) {
+                setActiveNavId(sub.id);
+                return;
+              }
+              if (sub.sub) {
+                sub.sub.forEach((s) => {
+                  if (mainpath + s.path === location.pathname) {
+                    setActiveNavId(s.id);
+                    return;
+                  }
+                });
+              }
+            });
           }
         });
       });
