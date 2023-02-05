@@ -36,7 +36,7 @@ export default function WriteFormList({
   return (
     <Modal
       updateActiveModal={updateIsActiveModal}
-      modalSize={{ width: '700px', height: '700px' }}>
+      modalSize={{ width: '700px', height: 'auto' }}>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -53,7 +53,7 @@ export default function WriteFormList({
           label="레이아웃"
           label_dec="지정된 레이아웃을 선택해보세요."
           className={styles.input_wrap}>
-          {new Array(3).fill(0).map((_, index) => (
+          {new Array(2).fill(0).map((_, index) => (
             <div key={index}>
               <Radio
                 name="selectUI"

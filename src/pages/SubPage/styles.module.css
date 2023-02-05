@@ -16,6 +16,7 @@
   font-weight: 600;
 }
 .eng_title {
+  margin-top: 5px;
   font-size: 1.4rem;
   color: rgba(255, 255, 255, 0.5);
 }

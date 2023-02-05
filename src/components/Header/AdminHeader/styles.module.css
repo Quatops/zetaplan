@@ -21,6 +21,7 @@
 }
 .admin_logo {
   width: 100px;
+  cursor: pointer;
 }
 .admin_logo img {
   width: 100%;
