@@ -103,11 +103,6 @@ select {
   width: 100%;
 }
 
-.subnav_small {
-  height: 3rem;
-  font-size: 0.9rem;
-  justify-content: space-end;
-}
 .subnav_nav_items:hover,
 .subnav_nav_items.active {
   color: var(--color-red);
@@ -115,9 +110,22 @@ select {
   font-size: 1.15rem;
 }
 
+.subnav_small {
+  height: 3rem;
+  font-size: 0.9rem;
+  justify-content: space-end;
+}
+.subnav_small_sub {
+  height: 2.5rem;
+  font-size: 0.87rem;
+}
 .subnav_small:hover,
 .subnav_small.active {
   font-size: 0.92rem;
+}
+.subnav_small_sub:hover,
+.subnav_small_sub.active {
+  font-size: 0.9rem;
 }
 
 .subnav_rightbtn {

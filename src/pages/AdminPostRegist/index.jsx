@@ -21,7 +21,6 @@ export default function AdminPostRegist() {
   const [value, setValue] = useState('');
   const [title, setTitle] = useState('');
   const [thumb, setThumb] = useState('');
-  const [selectSubCate, setSelectSubCate] = useState(subCate);
   const queryClient = useQueryClient();
   const fileRef = useRef();
 
@@ -36,6 +35,7 @@ export default function AdminPostRegist() {
     console.log(e);
   };
 
+  const [selectSubCate, setSelectSubCate] = useState(subCate);
   const [selectCate, setSelectCate] = useState(cate);
   const updateSelectCate = (select) => {
     setSelectCate(select);
@@ -134,16 +134,19 @@ export default function AdminPostRegist() {
               </SelectCategory>
             )}
           </li>
-          <li className={styles.select_wrap}>
-            {subCategory && (
-              <SelectCategory
-                options={subCategory[category[selectCate].id]}
-                updateSelect={updateSelectSubCate}
-                cate={subCate}>
-                <label className={styles.label}>상세 카테고리</label>
-              </SelectCategory>
-            )}
-          </li>
+          {subCategory && (
+            <>
+              <li className={styles.select_wrap}>
+                <SelectCategory
+                  options={subCategory[category[selectCate].id]}
+                  updateSelect={updateSelectSubCate}
+                  cate={subCate}>
+                  <label className={styles.label}>상세 카테고리</label>
+                </SelectCategory>
+              </li>
+            </>
+          )}
+
           <li className={styles.thumb_wrap}>
             <label htmlFor="thumb" className={styles.label}>
               썸네일
