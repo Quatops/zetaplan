@@ -65,16 +65,16 @@ export default function MainPage() {
         updatePage(1, 0, 0, 'smooth');
       } else if (scrollTop >= pageHeight * 2 && scrollTop < pageHeight * 3) {
         // 현재 3페이지
-        updatePage(2, pageHeight, 0, 'smooth');
+        updatePage(2, pageHeight + DIVIDER_HEIGHT, 0, 'smooth');
       } else if (scrollTop >= pageHeight * 3 && scrollTop < pageHeight * 4) {
-        updatePage(3, pageHeight * 2, 0, 'smooth');
+        updatePage(3, pageHeight * 2 + DIVIDER_HEIGHT * 2, 0, 'smooth');
       } else if (
         scrollTop >= pageHeight * 4 &&
         scrollTop < pageHeight * 4 + 500
       ) {
-        updatePage(4, pageHeight * 3, 0, 'smooth');
+        updatePage(4, pageHeight * 3 + DIVIDER_HEIGHT * 3, 0, 'smooth');
       } else {
-        updatePage(5, pageHeight * 4, 0, 'smooth');
+        updatePage(5, pageHeight * 4 + DIVIDER_HEIGHT * 4, 0, 'smooth');
       }
     }
   };
