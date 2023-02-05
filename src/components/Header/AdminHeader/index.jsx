@@ -9,7 +9,11 @@ export default function AdminHeader({ handleLogout }) {
     <nav className={styles.admin_header}>
       <ul className="flex_between" style={{ width: '450px' }}>
         <li className={styles.admin_logo}>
-          <img src={require('assets/LogoBlack.png')} alt="Logo" />
+          <img
+            src={require('assets/LogoBlack.png')}
+            alt="Logo"
+            onClick={() => navigate('/')}
+          />
         </li>
         <div className={styles.admin_intro}>
           <p style={{ color: '#D7000D' }}>Zeta &nbsp;</p>

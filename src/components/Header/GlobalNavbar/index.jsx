@@ -13,7 +13,7 @@ export default function GlobalNavigator({
 
   return (
     <nav className={styles.nav_wrapper}>
-      <ul className={styles.left}>&nbsp;</ul>
+      <ul className={styles.left}></ul>
       <div className={styles.nav}>
         <ul className={styles.right}>
           {category.slice(0, 6).map((big, index) => (
@@ -40,8 +40,8 @@ export default function GlobalNavigator({
           )}
         </ul>
       </div>
-      <ul className={styles.space_search}>&nbsp;</ul>
-      <ul className={styles.space_lang}>&nbsp;</ul>
+      <ul className={styles.space_search}></ul>
+      <ul className={styles.space_lang}></ul>
     </nav>
   );
 }

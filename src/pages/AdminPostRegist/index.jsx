@@ -98,7 +98,7 @@ export default function AdminPostRegist() {
   return (
     <div className={`${styles.admin_wrap} flex_center`}>
       <header className={styles.header_temp}>
-        <div className={styles.logo}>
+        <div className={styles.logo} onClick={() => navigate('/')}>
           <img src={require('assets/LogoBlack.png')} alt="logo" />
         </div>
       </header>
