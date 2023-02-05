@@ -21,13 +21,16 @@
   color: rgba(255, 255, 255, 0.5);
 }
 .page_content {
+  display: flex;
   position: relative;
-  background-color: var(--color-white);
   width: 100%;
+  background-color: var(--color-white);
   min-height: calc(100vh - 200px - 5rem);
-  padding: 50px 0;
-  padding-left: 350px;
-  padding-right: 16.66vw;
+}
+
+.content {
+  width: 70%;
+  padding: 30px;
 }
 .btn_wrap {
   width: 100%;

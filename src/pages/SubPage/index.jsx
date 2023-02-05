@@ -138,7 +138,7 @@ export default function SubPage({ pageName }) {
                 {pageName === '오시는 길' && <Location pageName={pageName} />}
               </>
             ) : post && (post.id >= 0 || typeof post.id === 'string') ? (
-              <>
+              <div className={styles.content}>
                 <SubContentDetail
                   subCategory={subCategory[pageName]}
                   category={category[post.cate].title}
@@ -168,9 +168,9 @@ export default function SubPage({ pageName }) {
                     </button>
                   </article>
                 )}
-              </>
+              </div>
             ) : (
-              <div>
+              <div className={styles.content}>
                 <p>페이지를 찾을 수 없습니다.</p>
                 {isAdmin && (
                   <article className={styles.btn_wrap}>
