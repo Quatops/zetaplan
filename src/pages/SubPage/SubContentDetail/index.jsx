@@ -16,7 +16,6 @@ export default function SubContentDetail({
   useEffect(() => {
     subCategory.forEach((one) => {
       if (one.id === activeNavId) {
-        console.log('오나ㅒ?');
         setSubTitle(one.title);
         return;
       } else {

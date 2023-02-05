@@ -43,7 +43,6 @@ export default function AdminEditGlobalNavbar({ subCategory, category }) {
     if (activeAdd) {
       menuItem.id = subCategory[menuItem.cate].length;
 
-      console.log('찍어봄', subCategory[menuItem.cate]);
       addSubMenu.mutate(menuItem, {
         onSuccess: () => {
           alert('성공적으로 추가되었습니다.');

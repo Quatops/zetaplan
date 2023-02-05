@@ -32,7 +32,6 @@ export default function AdminPostRegist() {
   });
   const updateValue = (e) => {
     setValue(e);
-    console.log(e);
   };
 
   const [selectSubCate, setSelectSubCate] = useState(subCate);
