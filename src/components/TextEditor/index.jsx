@@ -1,7 +1,5 @@
 import React, { useRef, useState } from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { createRoot } from 'react-dom/client';
-import { flushSync } from 'react-dom';
 
 import { baseCSS, toggleCSS, photoCardCSS } from './componentCSS';
 

@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext } from 'react';
 import useMenu from 'hooks/useMenu';
 const CategoryContext = createContext();
 export function CategoryProvider({ children }) {

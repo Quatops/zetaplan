@@ -1,6 +1,6 @@
 import SlickSlider from 'components/Slider';
 import { useFooter } from 'hooks/useItems';
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './styles.module.css';
 
 export default function Footer() {

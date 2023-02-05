@@ -21,7 +21,7 @@ export default function CardUI({ children, col, row, space }) {
           <article className="photocard_img flex_center">
             <img
               src="https://res.cloudinary.com/dprbw1pa0/image/upload/v1674303942/orxuzuq9jiojbsrnvrg7.png"
-              alt="image"
+              alt="이미지 삽입"
             />
           </article>
           <article className="photocard_textwrap">

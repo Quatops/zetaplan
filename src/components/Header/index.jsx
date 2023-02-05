@@ -36,7 +36,7 @@ export default function Header({ isWhite }) {
   };
 
   const handleEditSubmit = (menu) => {
-    category.slice(0, 6).map((v) => {
+    category.slice(0, 6).forEach((v) => {
       v.title = menu[v.id];
     });
     modifyMainMenu.mutate(category, {

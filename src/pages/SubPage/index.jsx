@@ -14,7 +14,6 @@ import SubContentDetail from './SubContentDetail';
 import Footer from 'components/Footer';
 import Consulting from './Consulting';
 import Location from './Location';
-import { useMain } from 'hooks/useItems';
 
 const custom_nav = {
   '상담 신청': [{ title: '상담 신청' }],
@@ -43,26 +42,23 @@ export default function SubPage({ pageName }) {
   const updateActiveNavId = (idx) => {
     setActiveNavId(idx);
   };
-  const {
-    AsideBtn1Query: { data: aside_btn1 },
-  } = useMain();
 
   // white인상태로 서브페이지를 왔을 떄 white가 남아있는 경우가 있음.
   useEffect(() => {
     updateisWhite(false);
-  }, []);
+  });
 
   // 새로고침하면 데이터가 변함. path에 따라 activeId 를 고정시켜줘야함.
   useEffect(() => {
     if (subCategory)
-      subCategory.map((big, bid) => {
-        big.map((small, sid) => {
+      subCategory.forEach((big) => {
+        big.forEach((small) => {
           if (small.path === location.pathname) {
             setActiveNavId(small.id);
           }
         });
       });
-  }, [subCategory]);
+  }, [subCategory, location.pathname]);
 
   useEffect(() => {
     if (location.state) setActiveNavId(location.state.id);
@@ -71,7 +67,6 @@ export default function SubPage({ pageName }) {
   // 게시글 데이터를 받아옴.
   useEffect(() => {
     getPost(activeNavId).then((data) => {
-      console.log('안왔나', data);
       setPost(data);
     });
   }, [activeNavId]);
@@ -111,11 +106,16 @@ export default function SubPage({ pageName }) {
       {category && subCategory && (
         <div className={styles.subPage_wrap} ref={subPageWrapperRef}>
           <section className={styles.page_title}>
-            <p>
+            <div>
               {typeof pageName === 'string'
                 ? pageName
                 : category[pageName].title}
-            </p>
+            </div>
+            {typeof pageName !== 'string' && (
+              <div className={styles.eng_title}>
+                {category[pageName].eng_title}
+              </div>
+            )}
           </section>
           <section className={styles.page_content}>
             <SubNavbar

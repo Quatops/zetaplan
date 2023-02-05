@@ -21,7 +21,10 @@ export default function ToggleUI({ children }) {
         </div>
         <div className="toggle_plus">
           <label htmlFor={id}>
-            <img src="https://res.cloudinary.com/detylqu5a/image/upload/v1675327743/plus-104-32_v469ho.png" />
+            <img
+              src="https://res.cloudinary.com/detylqu5a/image/upload/v1675327743/plus-104-32_v469ho.png"
+              alt="추가 이미지"
+            />
           </label>
         </div>
       </div>

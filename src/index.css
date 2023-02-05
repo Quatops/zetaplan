@@ -88,6 +88,7 @@ select {
   color: var(--color-red);
   font-weight: bold;
 }
+
 .subnav_nav_items {
   color: var(--color-black);
   height: 3.438rem;
@@ -99,16 +100,25 @@ select {
   font-weight: 600;
   font-size: 1.125rem;
   transition: all 200ms ease-in;
+  width: 100%;
 }
-.subnav_nav_items:hover {
-  color: var(--color-red);
-  border-bottom: 1px solid var(--color-red);
-  font-size: 1.15rem;
+
+.subnav_small {
+  height: 2.5rem;
+  font-size: 0.9rem;
+  justify-content: space-end;
+  width: 90%;
 }
+.subnav_nav_items:hover,
 .subnav_nav_items.active {
   color: var(--color-red);
   border-bottom: 1px solid var(--color-red);
   font-size: 1.15rem;
+}
+
+.subnav_small:hover,
+.subnav_small.active {
+  font-size: 0.95rem;
 }
 
 .subnav_rightbtn {
@@ -143,6 +153,5 @@ select {
 .scene-container {
   height: 98vh !important;
 }
-.scene-tooltip{
-  
+.scene-tooltip {
 }
