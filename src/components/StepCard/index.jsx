@@ -28,7 +28,7 @@ export default function StepCard({
           {title}
         </div>
       </header>
-      <section style={{ overflow: 'auto' }}>
+      <section style={{ overflow: 'auto', marginTop: '2.5vh' }}>
         {program.map((v, index) => (
           <div className={styles.contents} key={index}>
             <p className={styles.content_title}>{v.title}</p>

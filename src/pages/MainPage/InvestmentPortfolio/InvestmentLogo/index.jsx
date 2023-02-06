@@ -77,7 +77,8 @@ export default function InvestmentLogo({
               wheel={true} // wheel 이 false 면 작동하지 않습니다
               onWheel={onWheel}
               LeftArrow={LeftArrow}
-              RightArrow={RightArrow}>
+              RightArrow={RightArrow}
+              transitionDuration="1000">
               {new Array(Math.floor(logoItems.length / COUNT) + 1)
                 .fill('')
                 .map((_, i) => (

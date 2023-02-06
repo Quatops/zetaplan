@@ -67,6 +67,7 @@ export default function Globe({ activeIdx, updateActiveIdx }) {
           if (activeIdx === d.id) el.innerHTML = info_modal(d);
           el.innerHTML += markerSvg;
           el.style.color = '#d7000e';
+          el.style.zIndex = '0';
           el.style.width = '30px';
           el.style['pointer-events'] = 'auto';
           el.style.cursor = 'pointer';
