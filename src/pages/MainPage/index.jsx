@@ -12,7 +12,7 @@ import InvestmentLogo from './InvestmentPortfolio/InvestmentLogo';
 
 const GlobalNetwork = React.lazy(() => import('./GlobalNetwork'));
 const InvestmentPortfolio = React.lazy(() => import('./InvestmentPortfolio'));
-const DIVIDER_HEIGHT = 6;
+const DIVIDER_HEIGHT = 4;
 export default function MainPage() {
   const [pageIdx, setPageIdx] = useState(1);
   const updateisWhite = useOutletContext();
@@ -44,16 +44,16 @@ export default function MainPage() {
         updatePage(2, pageHeight + DIVIDER_HEIGHT, 0, 'smooth');
       } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 2) {
         // 현재 2페이지
-        updatePage(3, pageHeight * 2 + DIVIDER_HEIGHT * 2, 0, 'smooth');
+        updatePage(3, pageHeight * 2 + DIVIDER_HEIGHT, 0, 'smooth');
       } else if (scrollTop >= pageHeight * 2 && scrollTop < pageHeight * 3) {
         // 현재 3페이지
-        updatePage(4, pageHeight * 3 + DIVIDER_HEIGHT * 3, 0, 'smooth');
+        updatePage(4, pageHeight * 3 + DIVIDER_HEIGHT, 0, 'smooth');
       } else if (scrollTop >= pageHeight * 3 && scrollTop < pageHeight * 4) {
         // 현재 4페이지
-        updatePage(5, pageHeight * 4 + DIVIDER_HEIGHT * 4, 0, 'smooth');
+        updatePage(5, pageHeight * 4 + DIVIDER_HEIGHT, 0, 'smooth');
       } else if (scrollTop >= pageHeight * 4 && scrollTop < pageHeight * 5) {
         //현재 5페이지
-        updatePage(6, pageHeight * 5 + DIVIDER_HEIGHT * 5, 0, 'smooth');
+        updatePage(6, pageHeight * 5 + DIVIDER_HEIGHT, 0, 'smooth');
       }
     } else {
       // 스크롤 올릴때
@@ -67,14 +67,14 @@ export default function MainPage() {
         // 현재 3페이지
         updatePage(2, pageHeight + DIVIDER_HEIGHT, 0, 'smooth');
       } else if (scrollTop >= pageHeight * 3 && scrollTop < pageHeight * 4) {
-        updatePage(3, pageHeight * 2 + DIVIDER_HEIGHT * 2, 0, 'smooth');
+        updatePage(3, pageHeight * 2 + DIVIDER_HEIGHT, 0, 'smooth');
       } else if (
         scrollTop >= pageHeight * 4 &&
         scrollTop < pageHeight * 4 + 500
       ) {
-        updatePage(4, pageHeight * 3 + DIVIDER_HEIGHT * 3, 0, 'smooth');
+        updatePage(4, pageHeight * 3 + DIVIDER_HEIGHT, 0, 'smooth');
       } else {
-        updatePage(5, pageHeight * 4 + DIVIDER_HEIGHT * 4, 0, 'smooth');
+        updatePage(5, pageHeight * 4 + DIVIDER_HEIGHT, 0, 'smooth');
       }
     }
   };
@@ -107,6 +107,7 @@ export default function MainPage() {
           pageIdx={pageIdx}
           updatePage={updatePage}
           isBigScreen={isBigScreen}
+          DIVIDER_HEIGHT={DIVIDER_HEIGHT}
         />
       )}
 

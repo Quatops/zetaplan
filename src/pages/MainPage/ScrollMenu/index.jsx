@@ -9,13 +9,19 @@ const Menu = ({
   updatePage,
   hidden,
   isBigScreen,
+  DIVIDER_HEIGHT,
 }) => {
   return (
     <div
       className={`${styles.scroll} ${isActive && styles.active}`}
       style={{ display: hidden ? 'none' : 'visible' }}
       onClick={() =>
-        updatePage(num, window.innerHeight * (num - 1), 0, 'smooth')
+        updatePage(
+          num,
+          window.innerHeight * (num - 1) + DIVIDER_HEIGHT,
+          0,
+          'smooth',
+        )
       }>
       {isBigScreen ? (
         <div
@@ -36,13 +42,13 @@ const Menu = ({
 };
 const scrollMenu = [
   'MAIN',
-  '액셀러레이팅',
+  '엑셀러레이팅',
   '투자 포트폴리오',
   '',
   '글로벌 네트워크',
 ];
 
-const ScrollMenu = ({ pageIdx, updatePage, isBigScreen }) => {
+const ScrollMenu = ({ pageIdx, updatePage, isBigScreen, DIVIDER_HEIGHT }) => {
   return (
     <div className={styles.menu_wrapper}>
       <div className={`${styles.menu_list} ${!isBigScreen && styles.menu_dot}`}>
@@ -53,6 +59,7 @@ const ScrollMenu = ({ pageIdx, updatePage, isBigScreen }) => {
             pageIdx={pageIdx}
             isBigScreen={isBigScreen}
             pageName={title}
+            DIVIDER_HEIGHT={DIVIDER_HEIGHT}
             isActive={
               pageIdx === index + 1 || (index + 1 === 3 && pageIdx === 4)
             }
