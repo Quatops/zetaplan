@@ -37,7 +37,7 @@ a .category {
   font-weight: 500;
   width: 9.3vw;
 }
-a .category:hover {
+.category:hover {
   transition: all 300ms ease;
   color: var(--color-red);
   font-weight: bold;

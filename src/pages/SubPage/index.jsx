@@ -1,5 +1,5 @@
 import SubNavbar from 'components/SubNavbar';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 import { useLocation } from 'react-router-dom';
 import { useOutletContext } from 'react-router-dom';
@@ -29,7 +29,6 @@ export default function SubPage({ pageName }) {
   const { category, subCategory } = useCategoryContext();
   const { isAdmin } = useAuthContext();
   const updateisWhite = useOutletContext();
-  const [scrollPosition, setScrollPosition] = useState(0);
   const [activeNavId, setActiveNavId] = useState(
     location.state ? location.state.id : 0,
   );
@@ -42,11 +41,6 @@ export default function SubPage({ pageName }) {
   const updateActiveNavId = (idx) => {
     setActiveNavId(idx);
   };
-
-  // white인상태로 서브페이지를 왔을 떄 white가 남아있는 경우가 있음.
-  useEffect(() => {
-    updateisWhite(false);
-  });
 
   // 새로고침하면 데이터가 변함. path에 따라 activeId 를 고정시켜줘야함.
   useEffect(() => {
@@ -88,24 +82,21 @@ export default function SubPage({ pageName }) {
       setPost(data);
     });
   }, [activeNavId]);
-  const updateScroll = () => {
-    if (subPageWrapperRef.current) {
-      const wrapperRefCurrent = subPageWrapperRef.current;
-      setScrollPosition(
-        wrapperRefCurrent.scrollY || wrapperRefCurrent.scrollTop,
-      );
-    }
-  };
   useEffect(() => {
     if (subPageWrapperRef.current) {
       const wrapperRefCurrent = subPageWrapperRef.current;
-      wrapperRefCurrent.addEventListener('scroll', updateScroll);
+      if (wrapperRefCurrent.scrollY || wrapperRefCurrent.scrollTop < 120) {
+        updateisWhite(false);
+      }
+      wrapperRefCurrent.addEventListener('scroll', () => {
+        if (wrapperRefCurrent.scrollY || wrapperRefCurrent.scrollTop > 120) {
+          updateisWhite(true);
+        } else {
+          updateisWhite(false);
+        }
+      });
     }
   });
-  useEffect(() => {
-    scrollPosition > 100 ? updateisWhite(true) : updateisWhite(false);
-  }, [scrollPosition]);
-
   const handleRemove = (idx) => {
     if (window.confirm('삭제하시겠습니까?')) {
       removePost.mutate(idx, {
