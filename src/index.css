@@ -85,10 +85,9 @@ select {
 /*header active setting*/
 
 .active > li {
-  color: var(--color-red);
-  font-weight: bold;
+  color: var(--color-red) !important;
+  font-weight: bold !important;
 }
-
 .subnav_nav_items {
   color: var(--color-black);
   height: 3.438rem;
